@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/shared/preview-guard.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Register as Service Provider — GulfHabibi</title>
+<link rel="stylesheet" href="../shared/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="ad-top"><span class="ad-label">Advertisement</span></div>
+<nav class="navbar">
+  <a href="../home.html" class="nav-logo">
+    <div class="nav-logo-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#0e0e0e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+    </div>
+    <div class="nav-logo-text">Gulf<span>Habibi</span></div>
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="../home.html" class="nav-link">Home</a>
+    <a href="../motors/index.html" class="nav-link"><span style="display:inline-flex;width:14px;height:14px;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></span> Motors</a>
+    <a href="../property/index.html" class="nav-link">Property</a>
+    <a href="../jobs/index.html" class="nav-link">Jobs</a>
+    <a href="../marketplace/index.html" class="nav-link">Classifieds</a>
+    <a href="index.html" class="nav-link active">Services</a>
+    <a href="../directory/index.html" class="nav-link">Directory</a>
+    <a href="../about.html" class="nav-link">About Us</a>
+  </div>
+  <div class="nav-actions">
+    <button id="themeToggleBtn" onclick="toggleTheme()" title="Toggle Dark/Light" style="background:var(--bg-card,#0d0d1a);border:1px solid var(--border,#1a1828);border-radius:8px;color:var(--gold,#C9A84C);font-size:15px;padding:5px 9px;cursor:pointer;line-height:1">&#9728;&#65039;</button>
+    <div id="navGuest" style="display:flex;gap:8px;align-items:center">
+      <button class="btn btn-ghost btn-sm" onclick="openAuth('signin')">Sign In</button>
+    </div>
+    <div id="navUser" style="display:none;gap:8px;align-items:center">
+      <span id="navUserName" style="font-size:13px;color:#C9A84C;font-weight:600"></span>
+      <a href="../dashboard/index.html" class="btn btn-ghost btn-sm">&#128100; Dashboard</a>
+      <button class="btn btn-outline btn-sm" onclick="doSignout()" style="font-size:12px;padding:5px 12px">Sign Out</button>
+    </div>
+  </div>
+</nav>
+<div style="max-width:680px;margin:0 auto;padding:32px 20px">
+  <h1 style="font-size:22px;font-weight:700;margin-bottom:6px">Register as a Service Provider</h1>
+  <p style="font-size:13px;color:#666;margin-bottom:20px">List your services for free. Get job requests from clients in your area. Build your reputation with reviews.</p>
+
+  <!-- HOW IT WORKS -->
+  <div style="background:#0e0e0e;border:1px solid #1e1e1e;border-radius:12px;padding:16px;margin-bottom:24px;display:flex;gap:20px;flex-wrap:wrap">
+    <div style="flex:1;min-width:140px;text-align:center"><div style="font-size:22px;margin-bottom:6px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></div><div style="font-size:12px;font-weight:600;color:#ddd;margin-bottom:3px">List Free</div><div style="font-size:11px;color:#555">Register your services</div></div>
+    <div style="flex:1;min-width:140px;text-align:center"><div style="font-size:22px;margin-bottom:6px">📩</div><div style="font-size:12px;font-weight:600;color:#ddd;margin-bottom:3px">Get Requests</div><div style="font-size:11px;color:#555">Clients submit jobs</div></div>
+    <div style="flex:1;min-width:140px;text-align:center"><div style="font-size:22px;margin-bottom:6px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div><div style="font-size:12px;font-weight:600;color:#ddd;margin-bottom:3px">Send Best Price</div><div style="font-size:11px;color:#555">Compete and win jobs</div></div>
+    <div style="flex:1;min-width:140px;text-align:center"><div style="font-size:22px;margin-bottom:6px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div style="font-size:12px;font-weight:600;color:#ddd;margin-bottom:3px">Get Reviews</div><div style="font-size:11px;color:#555">Build your reputation</div></div>
+  </div>
+
+  <div style="display:grid;gap:16px">
+    <div class="form-group">
+      <label class="form-label">Business / Provider Name *</label>
+      <input class="form-input" type="text" id="bizName" placeholder="e.g. Al Rashid AC Services or Your Name">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Service Category *</label>
+      <select class="form-input" id="category">
+        <option value="">Select your main service...</option>
+        <option value="ac">AC & Cooling Repair</option>
+        <option value="plumbing">Plumbing</option>
+        <option value="electrical">Electrical Work</option>
+        <option value="cleaning">Cleaning Services</option>
+        <option value="carpentry">Carpentry & Furniture</option>
+        <option value="painting">Painting</option>
+        <option value="mason">Masonry & Tiling</option>
+        <option value="moving">Moving & Packing</option>
+        <option value="it">IT & Tech Support</option>
+        <option value="pest">Pest Control</option>
+        <option value="handyman">Handyman / General</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Description of Services *</label>
+      <textarea class="form-input" id="description" rows="3" placeholder="Describe what you offer, years of experience, specialisation..."></textarea>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div class="form-group">
+        <label class="form-label">Emirate *</label>
+        <select class="form-input" id="emirate">
+          <option value="">Select...</option>
+          <option>Dubai</option><option>Abu Dhabi</option><option>Sharjah</option>
+          <option>Ajman</option><option>RAK</option><option>Fujairah</option><option>UAQ</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Areas Covered</label>
+        <input class="form-input" type="text" id="areas" placeholder="e.g. Dubai Marina, JLT, JBR">
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div class="form-group">
+        <label class="form-label">Your Name *</label>
+        <input class="form-input" type="text" id="contactName" placeholder="Full name">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Phone / WhatsApp *</label>
+        <input class="form-input" type="tel" id="contactPhone" placeholder="+971 50 000 0000">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Starting Price (AED) — optional</label>
+      <input class="form-input" type="text" id="startPrice" placeholder="e.g. AC service from AED 150">
+    </div>
+
+    <!-- LISTING TIER -->
+    <div style="background:#0e0e0e;border:1px solid #2a2a2a;border-radius:12px;padding:16px">
+      <div style="font-size:14px;font-weight:600;color:#ddd;margin-bottom:12px">Choose Your Listing</div>
+      <div style="display:grid;gap:8px">
+        <label style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:#141414;border:1px solid #2a2a2a;border-radius:8px;cursor:pointer">
+          <input type="radio" name="tier" value="free" checked> <span style="font-size:13px"><strong style="color:#ddd">Free</strong> — Appears in search results</span>
+        </label>
+        <label style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:#141414;border:1px solid rgba(59,130,246,.3);border-radius:8px;cursor:pointer">
+          <input type="radio" name="tier" value="featured"> <span style="font-size:13px"><strong style="color:#60a5fa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Featured — AED 99/month</strong> — Rotates to top of results</span>
+        </label>
+        <label style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:#141414;border:1px solid rgba(201,168,76,.3);border-radius:8px;cursor:pointer">
+          <input type="radio" name="tier" value="premium"> <span style="font-size:13px"><strong style="color:#C9A84C"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg> Premium — AED 299/month</strong> — Always top 3, priority placement</span>
+        </label>
+      </div>
+      <p style="font-size:11px;color:#444;margin-top:10px">Featured and Premium — our team will contact you to arrange payment after submission.</p>
+    </div>
+
+    <button class="btn btn-gold" style="width:100%;padding:14px;font-size:15px" id="submitBtn" onclick="submitProvider()">Register as Provider <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+    <div id="postMsg" style="text-align:center;font-size:13px;padding:4px"></div>
+    <p style="font-size:11px;color:#444;text-align:center">By registering you agree to our <a href="../terms.html" style="color:#666">Terms & Conditions</a>. Listings are subject to review.</p>
+  </div>
+</div>
+<div class="ad-bottom"><span class="ad-label">Advertisement</span></div>
+<!-- AUTH MODAL -->
+<div id="authModal" class="modal-overlay" style="display:none">
+  <div class="modal-box"><button class="modal-close" onclick="closeAuth()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <div class="modal-tabs"><button class="modal-tab active" id="tabSignin" onclick="switchTab('signin')">Sign In</button><button class="modal-tab" id="tabSignup" onclick="switchTab('signup')">Sign Up</button></div>
+    <div id="formSignin"><div style="margin-bottom:14px"><input class="form-input" type="email" id="siEmail" placeholder="Email"></div><div style="margin-bottom:16px"><input class="form-input" type="password" id="siPass" placeholder="Password"></div><button class="btn btn-gold" style="width:100%" onclick="doSignin()">Sign In</button></div>
+    <div id="formSignup" style="display:none"><div style="margin-bottom:14px"><input class="form-input" type="text" id="suName" placeholder="Full name"></div><div style="margin-bottom:14px"><input class="form-input" type="email" id="suEmail" placeholder="Email"></div><div style="margin-bottom:16px"><input class="form-input" type="password" id="suPass" placeholder="Password"></div><button class="btn btn-gold" style="width:100%" onclick="doSignup()">Create Account</button></div>
+    <div id="authMsg" style="margin-top:12px;font-size:13px;text-align:center;color:#ef4444"></div>
+  </div>
+</div>
+<script src="../shared/config.js"></script>
+<!-- auth handled via module below -->
+<script src="../shared/images.js"></script>
+<script>
+const SUPA_URL='https://chfkssclmdshdcijfzdr.supabase.co';
+const SUPA_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNoZmtzc2NsbWRzaGRjaWpmemRyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM1ODc2ODUsImV4cCI6MjA4OTE2MzY4NX0.cbJBIgeDRIqFvk3WMmxRoDWo1C73wM44oBDekdcc3sE';
+
+async function submitProvider(){
+  const tier=document.querySelector('input[name="tier"]:checked').value;
+  const req={business_name:document.getElementById('bizName').value.trim(),category:document.getElementById('category').value,description:document.getElementById('description').value.trim(),emirate:document.getElementById('emirate').value,area:document.getElementById('areas').value,phone:document.getElementById('contactPhone').value.trim(),contact_name:document.getElementById('contactName').value.trim(),start_price:document.getElementById('startPrice').value,tier,status:'active'};
+  if(!req.business_name||!req.category||!req.description||!req.emirate||!req.phone){document.getElementById('postMsg').style.color='#ef4444';document.getElementById('postMsg').textContent='Please fill all required fields.';return;}
+  document.getElementById('submitBtn').textContent='Registering...';document.getElementById('submitBtn').disabled=true;
+  const r=await fetch(`${SUPA_URL}/rest/v1/services`,{method:'POST',headers:{'Content-Type':'application/json',apikey:SUPA_KEY,Authorization:'Bearer '+SUPA_KEY,'Prefer':'return=minimal'},body:JSON.stringify(req)});
+  if(r.ok||r.status===201){
+    if(tier==='free'){document.getElementById('postMsg').style.color='#22c55e';document.getElementById('postMsg').textContent='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg> Registered! You\'re now listed. Redirecting...';setTimeout(()=>window.location.href='index.html',2000);}
+    else{document.getElementById('postMsg').style.color='#C9A84C';document.getElementById('postMsg').innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg> Registered! Our team will contact you on <strong>'+req.phone+'</strong> to arrange your '+tier+' listing payment.';}
+  } else {
+    document.getElementById('postMsg').style.color='#ef4444';document.getElementById('postMsg').textContent='Error submitting. Please try again.';
+    document.getElementById('submitBtn').textContent='Register as Provider <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';document.getElementById('submitBtn').disabled=false;
+  }
+}
+</script>
+<script src="../shared/theme.js"></script>
+<script>
+(function(){
+  function checkAuthState(){
+    var user=localStorage.getItem('gb_user');
+    var guest=document.getElementById('navGuest');
+    var navUser=document.getElementById('navUser');
+    var nameEl=document.getElementById('navUserName');
+    if(user){try{
+      var u=JSON.parse(user);
+      var name=(u.user_metadata&&u.user_metadata.full_name)||u.email.split('@')[0]||'Account';
+      if(nameEl)nameEl.textContent='Hi, '+name.split(' ')[0];
+      if(guest)guest.style.display='none';
+      if(navUser)navUser.style.display='flex';
+    }catch(e){}}
+    else{if(guest)guest.style.display='flex';if(navUser)navUser.style.display='none';}
+  }
+  function doSignout(){localStorage.removeItem('gb_token');localStorage.removeItem('gb_user');checkAuthState();}
+  window.doSignout=doSignout;
+  document.addEventListener('DOMContentLoaded',checkAuthState);
+})();
+</script>
+
+
+</body>
+</html>

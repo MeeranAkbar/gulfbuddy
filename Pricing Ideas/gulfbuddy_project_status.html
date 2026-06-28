@@ -1,0 +1,105 @@
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.w{font-family:sans-serif;padding:6px 0}
+.sec{margin-bottom:18px}
+.sec-t{font-size:10px;font-weight:700;color:#C9A84C;text-transform:uppercase;letter-spacing:1.2px;padding-bottom:7px;border-bottom:1px solid #1a1828;margin-bottom:10px}
+.row{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid #0d0d1a}
+.row:last-child{border-bottom:none}
+.dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.dot-done{background:#22c55e}
+.dot-partial{background:#f59e0b}
+.dot-todo{background:#1a1828;border:1px solid #2a2a3a}
+.dot-plan{background:#3a3a5a}
+.label{font-size:12px;flex:1}
+.label-done{color:#ececec}
+.label-partial{color:#aaa}
+.label-todo{color:#555}
+.label-plan{color:#3a3a5a}
+.tag{font-size:9px;font-weight:700;padding:2px 7px;border-radius:20px;flex-shrink:0}
+.t-done{background:rgba(34,197,94,.12);color:#22c55e;border:1px solid rgba(34,197,94,.2)}
+.t-partial{background:rgba(245,158,11,.12);color:#f59e0b;border:1px solid rgba(245,158,11,.2)}
+.t-next{background:rgba(201,168,76,.12);color:#C9A84C;border:1px solid rgba(201,168,76,.2)}
+.t-plan{background:#111128;color:#3a3a5a;border:1px solid #1a1828}
+.progress-bar{background:#0d0d1a;border-radius:20px;height:8px;overflow:hidden;margin-bottom:6px}
+.progress-fill{height:100%;border-radius:20px;background:linear-gradient(90deg,#22c55e,#C9A84C)}
+.progress-label{font-size:11px;color:#555;margin-bottom:12px;display:flex;justify-content:space-between}
+.phase{background:#0d0d1a;border:1px solid #1a1828;border-radius:10px;padding:12px 14px;margin-bottom:8px}
+.phase-title{font-size:12px;font-weight:700;margin-bottom:8px}
+.phase-done .phase-title{color:#22c55e}
+.phase-active .phase-title{color:#C9A84C}
+.phase-next .phase-title{color:#f59e0b}
+.phase-future .phase-title{color:#3a3a5a}
+</style>
+<div class="w">
+
+<!-- OVERALL PROGRESS -->
+<div class="sec">
+<div class="sec-t">📊 Overall Project Progress</div>
+<div class="progress-label"><span>Frontend Platform</span><span style="color:#22c55e">72% complete</span></div>
+<div class="progress-bar"><div class="progress-fill" style="width:72%"></div></div>
+<div class="progress-label" style="margin-top:8px"><span>Business Logic + Backend</span><span style="color:#f59e0b">25% complete</span></div>
+<div class="progress-bar"><div class="progress-fill" style="width:25%;background:linear-gradient(90deg,#f59e0b,#C9A84C)"></div></div>
+<div class="progress-label" style="margin-top:8px"><span>Revenue + Monetisation</span><span style="color:#3a3a5a">0% built (fully planned)</span></div>
+<div class="progress-bar"><div class="progress-fill" style="width:5%;background:#3a3a5a"></div></div>
+</div>
+
+<!-- PAGES STATUS -->
+<div class="sec">
+<div class="sec-t">📄 Pages — What's Built</div>
+<div class="row"><div class="dot dot-done"></div><div class="label label-done">home.html — Dubai skyline hero + Islamic pattern + search tabs</div><span class="tag t-done">Done</span></div>
+<div class="row"><div class="dot dot-done"></div><div class="label label-done">motors/index.html — sidebar + horizontal filter bar per type</div><span class="tag t-done">Done</span></div>
+<div class="row"><div class="dot dot-done"></div><div class="label label-done">motors/post.html — vehicle type + brand/model + photos + compression</div><span class="tag t-done">Done</span></div>
+<div class="row"><div class="dot dot-done"></div><div class="label label-done">property/index.html — purpose toggle + sidebar + filter bar + sub-locations</div><span class="tag t-done">Done</span></div>
+<div class="row"><div class="dot dot-done"></div><div class="label label-done">property/post.html — RERA + posted_by + all fields</div><span class="tag t-done">Done</span></div>
+<div class="row"><div class="dot dot-done"></div><div class="label label-done">jobs/index.html — 16 industry sidebar + horizontal filter bar</div><span class="tag t-done">Done</span></div>
+<div class="row"><div class="dot dot-done"></div><div class="label label-done">jobs/post.html — 16 industries + REST API submit</div><span class="tag t-done">Done</span></div>
+<div class="row"><div class="dot dot-done"></div><div class="label label-done">marketplace/index.html — accordion sidebar + horizontal filter bar</div><span class="tag t-done">Done</span></div>
+<div class="row"><div class="dot dot-done"></div><div class="label label-done">marketplace/post.html — cat cards + sub-cats + condition chips + compression</div><span class="tag t-done">Done</span></div>
+<div class="row"><div class="dot dot-partial"></div><div class="label label-partial">services/index.html — 3-step modal built, NOT connected to Supabase yet</div><span class="tag t-partial">Partial</span></div>
+<div class="row"><div class="dot dot-partial"></div><div class="label label-partial">services/post.html — built, needs images.js + form update</div><span class="tag t-partial">Partial</span></div>
+<div class="row"><div class="dot dot-done"></div><div class="label label-done">directory/index.html — 25 businesses seeded</div><span class="tag t-done">Done</span></div>
+<div class="row"><div class="dot dot-done"></div><div class="label label-done">admin.html — search analytics + demand gaps dashboard</div><span class="tag t-done">Done</span></div>
+<div class="row"><div class="dot dot-partial"></div><div class="label label-partial">pricing.html — built but shows old 3 tiers, needs 4-tier update</div><span class="tag t-partial">Needs update</span></div>
+<div class="row"><div class="dot dot-todo"></div><div class="label label-todo">dashboard/index.html — user my listings + analytics</div><span class="tag t-next">Build next</span></div>
+<div class="row"><div class="dot dot-todo"></div><div class="label label-todo">shared/trust.js — AI spam detection on post submit</div><span class="tag t-next">Build next</span></div>
+<div class="row"><div class="dot dot-todo"></div><div class="label label-todo">shared/otp.js — phone verification flow</div><span class="tag t-next">Build next</span></div>
+</div>
+
+<!-- DATABASE STATUS -->
+<div class="sec">
+<div class="sec-t">🗄️ Database — What's Running</div>
+<div class="row"><div class="dot dot-done"></div><div class="label label-done">listings table — created, has basic columns</div><span class="tag t-done">Live</span></div>
+<div class="row"><div class="dot dot-done"></div><div class="label label-done">directory table — 25 businesses seeded</div><span class="tag t-done">Live</span></div>
+<div class="row"><div class="dot dot-done"></div><div class="label label-done">reviews table — created</div><span class="tag t-done">Live</span></div>
+<div class="row"><div class="dot dot-partial"></div><div class="label label-partial">listings — missing 6 new columns (sub_category, area, vehicle_type etc)</div><span class="tag t-next">Run SQL</span></div>
+<div class="row"><div class="dot dot-todo"></div><div class="label label-todo">jobs table — SQL ready, NOT run yet</div><span class="tag t-next">Run SQL</span></div>
+<div class="row"><div class="dot dot-todo"></div><div class="label label-todo">services + service_requests — SQL ready, NOT run</div><span class="tag t-next">Run SQL</span></div>
+<div class="row"><div class="dot dot-todo"></div><div class="label label-todo">search_log — SQL ready, NOT run</div><span class="tag t-next">Run SQL</span></div>
+<div class="row"><div class="dot dot-plan"></div><div class="label label-plan">analytics columns — view_count, whatsapp_count, expires_at etc — planned</div><span class="tag t-plan">Planned</span></div>
+<div class="row"><div class="dot dot-plan"></div><div class="label label-plan">off-plan columns — floor_plan, payment_plan, dld_number etc — planned</div><span class="tag t-plan">Planned</span></div>
+</div>
+
+<!-- BUSINESS SYSTEM STATUS -->
+<div class="sec">
+<div class="sec-t">💼 Business Systems — What's Decided vs Built</div>
+<div class="row"><div class="dot dot-done"></div><div class="label label-done">4-tier pricing model designed — Free/Featured/Premium/Off-Plan Pro</div><span class="tag t-done">Designed</span></div>
+<div class="row"><div class="dot dot-done"></div><div class="label label-done">Listing lifecycle — 15/90/180 days + expiry emails designed</div><span class="tag t-done">Designed</span></div>
+<div class="row"><div class="dot dot-done"></div><div class="label label-done">AI trust + safety system — fully designed</div><span class="tag t-done">Designed</span></div>
+<div class="row"><div class="dot dot-done"></div><div class="label label-done">Dashboard tiers — free/featured/premium analytics designed</div><span class="tag t-done">Designed</span></div>
+<div class="row"><div class="dot dot-done"></div><div class="label label-done">OTP zero-storage architecture — designed</div><span class="tag t-done">Designed</span></div>
+<div class="row"><div class="dot dot-done"></div><div class="label label-done">Revenue model — ads + listings + off-plan + AI guide designed</div><span class="tag t-done">Designed</span></div>
+<div class="row"><div class="dot dot-todo"></div><div class="label label-todo">NONE of the above is built into code yet — all still planned</div><span class="tag t-next">Build next</span></div>
+</div>
+
+<!-- WHATS NOT STARTED AT ALL -->
+<div class="sec">
+<div class="sec-t">🔮 Not Started Yet</div>
+<div class="row"><div class="dot dot-plan"></div><div class="label label-plan">Upload to server — gulfhabibi.com not live</div><span class="tag t-plan">Phase 2</span></div>
+<div class="row"><div class="dot dot-plan"></div><div class="label label-plan">Payment gateway — PayTabs not integrated</div><span class="tag t-plan">Phase 2</span></div>
+<div class="row"><div class="dot dot-plan"></div><div class="label label-plan">Google Auth — not connected yet</div><span class="tag t-plan">Phase 2</span></div>
+<div class="row"><div class="dot dot-plan"></div><div class="label label-plan">AI Guide (GulfHabibi AI) — built separately, not connected</div><span class="tag t-plan">Phase 2</span></div>
+<div class="row"><div class="dot dot-plan"></div><div class="label label-plan">Logo — not finalised</div><span class="tag t-plan">Canva</span></div>
+<div class="row"><div class="dot dot-plan"></div><div class="label label-plan">Mobile app — Phase 3</div><span class="tag t-plan">Phase 3</span></div>
+</div>
+
+</div>

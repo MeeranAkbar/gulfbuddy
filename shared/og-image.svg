@@ -1,0 +1,18 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">GulfHabibi UAE</title>
+  <desc id="desc">GulfHabibi UAE classifieds preview image</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#111111"/>
+      <stop offset="100%" stop-color="#2b2414"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="1010" cy="120" r="160" fill="#C9A84C" opacity="0.12"/>
+  <circle cx="140" cy="540" r="190" fill="#C9A84C" opacity="0.08"/>
+  <rect x="84" y="88" width="156" height="156" rx="28" fill="#C9A84C"/>
+  <text x="162" y="193" text-anchor="middle" font-family="Arial, sans-serif" font-size="92" font-weight="700" fill="#111111">G</text>
+  <text x="84" y="340" font-family="Arial, sans-serif" font-size="68" font-weight="700" fill="#ffffff">GulfHabibi UAE</text>
+  <text x="84" y="410" font-family="Arial, sans-serif" font-size="30" fill="#e7dcc0">Free classifieds, jobs, property, motors and services across all 7 Emirates.</text>
+  <text x="84" y="474" font-family="Arial, sans-serif" font-size="24" fill="#C9A84C">Preview build</text>
+</svg>

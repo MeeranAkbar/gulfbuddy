@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/shared/preview-guard.js"></script>
+  <!-- SEO META -->
+  <title>Jobs in UAE — Work in Dubai, Abu Dhabi & Sharjah | GulfHabibi</title>
+  <meta name="description" content="Thousands of job listings across 16 industries in UAE. Full-time, part-time, freelance. Post a job free.">
+  <meta name="keywords" content="jobs UAE, jobs Dubai, vacancies Abu Dhabi, hiring UAE, work in Dubai, jobs Sharjah">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="GulfHabibi UAE">
+  <meta property="og:title" content="Jobs in UAE — Work in Dubai, Abu Dhabi & Sharjah | GulfHabibi">
+  <meta property="og:description" content="Thousands of job listings across 16 industries in UAE. Full-time, part-time, freelance. Post a job free.">
+  <meta property="og:url" content="https://gulfhabibi.com/jobs/">
+  <meta property="og:image" content="https://gulfhabibi.com/shared/og-image.svg">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="GulfHabibi UAE">
+  <meta property="og:locale" content="en_AE">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Jobs in UAE — Work in Dubai, Abu Dhabi & Sharjah | GulfHabibi">
+  <meta name="twitter:description" content="Thousands of job listings across 16 industries in UAE. Full-time, part-time, freelance. Post a job free.">
+  <meta name="twitter:image" content="https://gulfhabibi.com/shared/og-image.svg">
+  <meta name="geo.region" content="AE">
+  <meta name="theme-color" content="#06060e">
+  <link rel="canonical" href="https://gulfhabibi.com/jobs/">
+  <link rel="icon" href="../shared/favicon.svg" type="image/svg+xml"><link rel="icon" href="../shared/favicon.png" type="image/png">
+  <script src="../shared/seo.js"></script>
+  <!-- SECTION GATE — runs before page renders -->
+  <script>
+  (function(){
+    try{
+      var saved=localStorage.getItem('gb_admin_settings');
+      if(saved){
+        var s=JSON.parse(saved);
+        if(s.section_jobs===false||s.section_jobs==='false'){
+          window.location.replace('../coming-soon.html?section=jobs');
+        }
+      }
+    }catch(e){}
+  })();
+  </script>
+  <!-- END SEO META -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link rel="stylesheet" href="../shared/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+body{background:#ffffff}
+.jobs-page{display:flex;flex-direction:column;min-height:calc(100vh - 136px)}
+.jobs-topbar{background:#f8f8f8;border-bottom:1px solid #e5e5e5;padding:10px 16px;display:flex;gap:8px;align-items:center}
+.jobs-topbar input{flex:1;background:#f8f8f8;border:1px solid #e5e5e5;border-radius:8px;color:#111;font-family:inherit;font-size:14px;padding:9px 14px;outline:none;transition:border-color .15s}
+.jobs-topbar input:focus{border-color:#C9A84C}
+.jobs-topbar input::placeholder{color:#ccc}
+.jobs-topbar select{background:#f8f8f8;border:1px solid #e5e5e5;border-radius:8px;color:#666;font-family:inherit;font-size:13px;padding:9px 10px;outline:none}
+.h-filter-bar{background:#0b0b1e;border-bottom:2px solid rgba(201,168,76,.3);padding:10px 16px;display:none;gap:0;align-items:stretch;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.h-filter-bar.show{display:flex}
+.h-filter-bar::-webkit-scrollbar{height:3px}
+.h-filter-bar::-webkit-scrollbar-thumb{background:#C9A84C;border-radius:2px}
+.hf{display:flex;flex-direction:column;gap:4px;padding:0 14px;border-right:1px solid #1a1828;flex-shrink:0}
+.hf:first-child{padding-left:0}
+.hf-lbl{font-size:10px;font-weight:700;color:#C9A84C;text-transform:uppercase;letter-spacing:.8px;white-space:nowrap}
+.hf-sel{background:#0f0f24;border:1px solid #1e1e38;border-radius:7px;color:#666;font-family:inherit;font-size:12px;padding:7px 10px;outline:none;min-width:110px;cursor:pointer;transition:border-color .15s}
+.hf-sel:focus,.hf-sel:hover{border-color:#C9A84C;color:#111}
+.hf-sel option{background:#0f0f24}
+.hf-range{display:flex;align-items:center;gap:5px}
+.hf-num{background:#0f0f24;border:1px solid #1e1e38;border-radius:7px;color:#666;font-family:inherit;font-size:12px;padding:7px 8px;outline:none;width:85px;transition:border-color .15s}
+.hf-num:focus{border-color:#C9A84C;color:#111}
+.hf-num::placeholder{color:#ccc;font-size:11px}
+.hf-dash{color:#ccc;font-size:13px;flex-shrink:0}
+.hf-clear{background:none;border:1px solid #e5e5e5;border-radius:8px;color:#999;font-size:11px;padding:8px 12px;cursor:pointer;align-self:flex-end;font-family:inherit;transition:all .15s;flex-shrink:0;white-space:nowrap;margin-left:8px}
+.hf-clear:hover{border-color:#555;color:#888}
+.jobs-body{display:flex;flex:1}
+.jobs-sidebar{width:200px;flex-shrink:0;background:#f8f8f8;border-right:1px solid #1a1828;padding:14px 0;overflow-y:auto}
+.js-title{font-size:10px;font-weight:700;color:#999;text-transform:uppercase;letter-spacing:1px;padding:0 14px;margin-bottom:6px}
+.js-item{display:flex;align-items:center;gap:8px;padding:9px 14px;font-size:13px;color:#555;cursor:pointer;border-left:3px solid transparent;transition:all .15s;width:100%;background:none;border-top:none;border-right:none;border-bottom:none;font-family:inherit;text-align:left}
+.js-item:hover{background:rgba(201,168,76,.04);color:#999;border-left-color:rgba(201,168,76,.2)}
+.js-item.active{background:rgba(201,168,76,.1);color:#C9A84C;border-left-color:#C9A84C;font-weight:600}
+.js-icon{font-size:15px;width:20px;text-align:center;flex-shrink:0}
+.js-divider{border:none;border-top:1px solid #e5e5e5;margin:8px 14px}
+.jobs-main{flex:1;min-width:0;padding:16px 20px}
+.results-count{font-size:13px;color:#444;margin-bottom:14px}
+.results-count strong{color:#111}
+.job-card{background:#ffffff;border:1px solid #e5e5e5;border-radius:12px;padding:16px 18px;margin-bottom:10px;transition:all .2s;cursor:pointer;display:flex;gap:14px;align-items:flex-start}
+.job-card:hover{border-color:#C9A84C;transform:translateX(3px)}
+.job-card.featured{border-color:rgba(201,168,76,.4);background:rgba(201,168,76,.03)}
+.jc-logo{width:46px;height:46px;border-radius:10px;background:#f0f0f0;border:1px solid #e5e5e5;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.jc-info{flex:1;min-width:0}
+.jc-title{font-size:14px;font-weight:600;color:#111;margin-bottom:3px}
+.jc-company{font-size:12px;color:#C9A84C;margin-bottom:7px}
+.jc-tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:7px}
+.jc-tag{font-size:10px;padding:3px 8px;border-radius:20px;background:#f0f0f0;border:1px solid #e5e5e5;color:#555}
+.jc-tag.type{color:#22c55e;border-color:rgba(34,197,94,.3);background:rgba(34,197,94,.07)}
+.jc-tag.salary{color:#C9A84C;border-color:rgba(201,168,76,.3);background:rgba(201,168,76,.07)}
+.jc-meta{font-size:11px;color:#ccc;display:flex;gap:12px;flex-wrap:wrap}
+.jc-right{text-align:right;flex-shrink:0}
+.jc-date{font-size:11px;color:#ccc}
+.jc-apply{background:#C9A84C;border:none;border-radius:7px;color:#000;font-size:11px;font-weight:700;padding:7px 13px;cursor:pointer;font-family:inherit;margin-top:8px}
+</style>
+</head>
+<body>
+
+
+<div class="ad-top"><span class="ad-label">Advertisement</span></div>
+<nav class="navbar" style="background:#f8f8f8;border-bottom:1px solid #e5e5e5">
+  <a href="../home.html" class="nav-logo">
+    <div class="nav-logo-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#0e0e0e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+    </div>
+    <div class="nav-logo-text">Gulf<span>Habibi</span></div>
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="../home.html" class="nav-link">Home</a>
+    <a href="../motors/index.html" class="nav-link"><span style="display:inline-flex;width:14px;height:14px;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></span> Motors</a>
+    <a href="../property/index.html" class="nav-link">Property</a>
+    <a href="index.html" class="nav-link active">Jobs</a>
+    <a href="../marketplace/index.html" class="nav-link">Classifieds</a>
+    <a href="../services/index.html" class="nav-link">Services</a>
+    <a href="../directory/index.html" class="nav-link">Directory</a>
+    <a href="../about.html" class="nav-link">About Us</a>
+  </div>
+  <div class="nav-actions" id="authSection">
+    <button id="themeToggleBtn" onclick="toggleTheme()" title="Toggle Dark/Light" style="background:var(--bg-card,#0d0d1a);border:1px solid var(--border,#1a1828);border-radius:8px;color:var(--gold,#C9A84C);font-size:15px;padding:5px 9px;cursor:pointer;line-height:1">&#9728;&#65039;</button>
+    <div id="navGuest" style="display:flex;gap:8px;align-items:center">
+      <button class="btn btn-ghost btn-sm" onclick="openAuth('signin')">Sign In</button>
+    </div>
+    <div id="navUser" style="display:none;gap:8px;align-items:center">
+      <span id="navUserName" style="font-size:13px;color:#C9A84C;font-weight:600"></span>
+      <a href="../dashboard/index.html" class="btn btn-ghost btn-sm">&#128100; Dashboard</a>
+      <button class="btn btn-outline btn-sm" onclick="doSignout()" style="font-size:12px;padding:5px 12px">Sign Out</button>
+    </div>
+  </div>
+  <button class="nav-hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+</nav>
+
+<div class="jobs-page">
+  <!-- TOP BAR — keyword + sort ONLY -->
+  <div class="jobs-topbar">
+    <input type="text" id="jSearch" autocomplete="off" placeholder="Search jobs, companies, skills..." oninput="loadJobs()">
+    <select id="jSort" onchange="loadJobs()" style="background:#f8f8f8;border:1px solid #e5e5e5;border-radius:8px;color:#666;font-family:inherit;font-size:13px;padding:9px 10px;outline:none">
+      <option value="newest">Newest First</option>
+      <option value="salary_high">Salary: High to Low</option>
+    </select>
+  </div>
+
+  <!-- HORIZONTAL FILTER BAR — appears when industry clicked -->
+  <div class="h-filter-bar" id="hFilterBar"></div>
+
+  <div class="jobs-body">
+    <!-- LEFT SIDEBAR — industry -->
+    <div class="jobs-sidebar">
+      <div class="js-title">Industry</div>
+      <button class="js-item active" onclick="selectIndustry(this,'','All Jobs')">
+        <span class="js-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></span>All Jobs
+      </button>
+      <button class="js-item" onclick="selectIndustry(this,'construction','Construction')">
+        <span class="js-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M2 20h20"/><path d="M6 20V10l6-7 6 7v10"/><path d="M9 20v-5h6v5"/></svg></span>Construction
+      </button>
+      <button class="js-item" onclick="selectIndustry(this,'it','IT & Technology')">
+        <span class="js-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg></span>IT & Technology
+      </button>
+      <button class="js-item" onclick="selectIndustry(this,'healthcare','Healthcare')">
+        <span class="js-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span>Healthcare
+      </button>
+      <button class="js-item" onclick="selectIndustry(this,'realestate','Real Estate')">
+        <span class="js-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>Real Estate
+      </button>
+      <button class="js-item" onclick="selectIndustry(this,'hospitality','Hospitality')">
+        <span class="js-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg></span>Hospitality & Food
+      </button>
+      <button class="js-item" onclick="selectIndustry(this,'finance','Finance & Banking')">
+        <span class="js-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></span>Finance & Banking
+      </button>
+      <button class="js-item" onclick="selectIndustry(this,'retail','Retail & Sales')">
+        <span class="js-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span>Retail & Sales
+      </button>
+      <button class="js-item" onclick="selectIndustry(this,'engineering','Engineering')">
+        <span class="js-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>Engineering
+      </button>
+      <button class="js-item" onclick="selectIndustry(this,'education','Education')">
+        <span class="js-icon">📚</span>Education
+      </button>
+      <button class="js-item" onclick="selectIndustry(this,'logistics','Logistics & Warehouse')">
+        <span class="js-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></span>Logistics
+      </button>
+      <button class="js-item" onclick="selectIndustry(this,'automotive','Automotive')">
+        <span class="js-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></span>Automotive
+      </button>
+      <button class="js-item" onclick="selectIndustry(this,'creative','Creative & Design')">
+        <span class="js-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M18.37 2.63 14 7l-1.59-1.59a2 2 0 0 0-2.82 0L8 7l9 9 1.59-1.59a2 2 0 0 0 0-2.82L17 10l4.37-4.37a2.12 2.12 0 1 0-3-3Z"/><path d="M9 8c-2 3-4 3.5-7 4l8 10c2-1 6-5 6-7"/></svg></span>Creative & Design
+      </button>
+      <button class="js-item" onclick="selectIndustry(this,'admin','Admin & HR')">
+        <span class="js-icon">👔</span>Admin & HR
+      </button>
+      <button class="js-item" onclick="selectIndustry(this,'legal','Legal')">
+        <span class="js-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>Legal
+      </button>
+      <button class="js-item" onclick="selectIndustry(this,'other','Other')">
+        <span class="js-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></span>Other
+      </button>
+    </div>
+
+    <!-- MAIN -->
+    <div class="jobs-main">
+      <div class="results-count" id="jCount">Loading...</div>
+      <div id="jList"></div>
+    </div>
+
+    <!-- RIGHT ADS -->
+    <div class="ad-right-wrap">
+      <div style="background:#ffffff;border:1px solid #e5e5e5;border-radius:8px;height:260px;display:flex;align-items:center;justify-content:center"><span class="ad-label">Ad</span></div>
+      <div style="background:#ffffff;border:1px solid #e5e5e5;border-radius:8px;height:260px;display:flex;align-items:center;justify-content:center"><span class="ad-label">Ad</span></div>
+    </div>
+  </div>
+</div>
+<div class="ad-bottom"><span class="ad-label">Advertisement</span></div>
+<!-- AUTH MODAL -->
+<div id="authModal" class="modal-overlay" style="display:none">
+  <div class="modal-box"><button class="modal-close" onclick="closeAuth()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <div class="modal-tabs"><button class="modal-tab active" id="tabSignin" onclick="switchTab('signin')">Sign In</button><button class="modal-tab" id="tabSignup" onclick="switchTab('signup')">Sign Up</button></div>
+    <div id="formSignin"><div style="margin-bottom:14px"><input class="form-input" type="email" id="siEmail" placeholder="Email"></div><div style="margin-bottom:16px"><input class="form-input" type="password" id="siPass" placeholder="Password"></div><button class="btn btn-gold" style="width:100%" onclick="doSignin()">Sign In</button></div>
+    <div id="formSignup" style="display:none"><div style="margin-bottom:14px"><input class="form-input" type="text" id="suName" placeholder="Full name"></div><div style="margin-bottom:14px"><input class="form-input" type="email" id="suEmail" placeholder="Email"></div><div style="margin-bottom:16px"><input class="form-input" type="password" id="suPass" placeholder="Password"></div><button class="btn btn-gold" style="width:100%" onclick="doSignup()">Create Account</button></div>
+    <div id="authMsg" style="margin-top:12px;font-size:13px;text-align:center;color:#ef4444"></div>
+  </div>
+</div>
+<script src="../shared/config.js"></script>
+<script src="../shared/gb-ref.js"></script>
+<!-- auth handled via module below -->
+<script>
+const SB='https://chfkssclmdshdcijfzdr.supabase.co';
+const SK='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNoZmtzc2NsbWRzaGRjaWpmemRyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM1ODc2ODUsImV4cCI6MjA4OTE2MzY4NX0.cbJBIgeDRIqFvk3WMmxRoDWo1C73wM44oBDekdcc3sE';
+const H={apikey:SK,Authorization:'Bearer '+SK};
+
+const AREAS={Dubai:['Downtown','Marina','DIFC','Business Bay','JLT','Deira','Bur Dubai','Al Barsha','Mirdif'],
+'Abu Dhabi':['Corniche','Khalidiyah','Al Reem Island','Mussafah','Khalifa City'],
+Sharjah:['Al Nahda','Al Majaz','Al Qasba'],Ajman:['Al Nuaimiya','Al Rashidiya'],
+RAK:['Al Nakheel','Al Hamra'],Fujairah:['City Centre']};
+
+const IND_ICONS={all:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>',construction:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M2 20h20"/><path d="M6 20V10l6-7 6 7v10"/><path d="M9 20v-5h6v5"/></svg>',realestate:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>',it:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>',medical:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>',education:'📚',
+hospitality:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>',automotive:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>',finance:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>',retail:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>',engineering:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>',logistics:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>',
+creative:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M18.37 2.63 14 7l-1.59-1.59a2 2 0 0 0-2.82 0L8 7l9 9 1.59-1.59a2 2 0 0 0 0-2.82L17 10l4.37-4.37a2.12 2.12 0 1 0-3-3Z"/><path d="M9 8c-2 3-4 3.5-7 4l8 10c2-1 6-5 6-7"/></svg>',admin:'👔',legal:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',labour:'👷',other:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>'};
+
+let activeIndustry='all';
+
+function updateArea(){
+  const em=document.getElementById('fEmirate')?.value;
+  const sel=document.getElementById('fArea');
+  if(!sel)return;
+  sel.innerHTML='<option value="">All Areas</option>';
+  (AREAS[em]||[]).forEach(a=>sel.innerHTML+=`<option>${a}</option>`);
+}
+
+function selectIndustry(btn,industry,label){
+  document.querySelectorAll('.js-item').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  activeIndustry=industry;
+  buildFilterBar(industry,label);
+  loadJobs();
+}
+
+function buildFilterBar(industry,label){
+  const bar=document.getElementById('hFilterBar');
+  if(industry==='all'){bar.classList.remove('show');bar.innerHTML='';return;}
+
+  let html='';
+
+  // Emirate — always first
+  html+=`<div class="hf"><div class="hf-lbl">Emirate</div>
+    <select class="hf-sel" id="fEmirate" onchange="updateArea();loadJobs()">
+      <option value="">All UAE</option>
+      <option>Dubai</option><option>Abu Dhabi</option><option>Sharjah</option>
+      <option>Ajman</option><option>RAK</option><option>Fujairah</option>
+    </select></div>`;
+
+  // Area — always second
+  html+=`<div class="hf"><div class="hf-lbl">Area</div>
+    <select class="hf-sel" id="fArea" onchange="loadJobs()" style="min-width:120px">
+      <option value="">All Areas</option>
+    </select></div>`;
+
+  // Job type
+  html+=`<div class="hf"><div class="hf-lbl">Job Type</div>
+    <select class="hf-sel" id="fType" onchange="loadJobs()">
+      <option value="">Any Type</option>
+      <option value="fulltime">Full Time</option>
+      <option value="parttime">Part Time</option>
+      <option value="contract">Contract</option>
+      <option value="freelance">Freelance</option>
+      <option value="internship">Internship</option>
+    </select></div>`;
+
+  // Experience
+  html+=`<div class="hf"><div class="hf-lbl">Experience</div>
+    <select class="hf-sel" id="fExp" onchange="loadJobs()">
+      <option value="">Any Level</option>
+      <option value="entry">Entry (0-2 yrs)</option>
+      <option value="mid">Mid (2-5 yrs)</option>
+      <option value="senior">Senior (5+ yrs)</option>
+      <option value="manager">Manager / Director</option>
+    </select></div>`;
+
+  // Salary range
+  html+=`<div class="hf"><div class="hf-lbl">Salary / Month (AED)</div>
+    <div class="hf-range">
+      <input class="hf-num" type="number" id="fSalMin" placeholder="0" oninput="loadJobs()">
+      <span class="hf-dash">—</span>
+      <input class="hf-num" type="number" id="fSalMax" placeholder="Max" oninput="loadJobs()">
+    </div></div>`;
+
+  html+=`<button class="hf-clear" onclick="clearFilters()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Clear</button>`;
+  bar.innerHTML=html;
+  bar.classList.add('show');
+}
+
+function clearFilters(){
+  document.querySelectorAll('#hFilterBar select').forEach(s=>s.value='');
+  document.querySelectorAll('#hFilterBar input[type=number]').forEach(i=>i.value='');
+  loadJobs();
+}
+
+function ago(d){const x=Math.floor((Date.now()-new Date(d))/86400000);return x===0?'Today':x===1?'Yesterday':x<7?x+'d ago':Math.floor(x/7)+'w ago';}
+
+async function loadJobs(){
+  const q=document.getElementById('jSearch')?.value.trim()||'';
+  const em=document.getElementById('fEmirate')?.value||'';
+  const area=document.getElementById('fArea')?.value||'';
+  const type=document.getElementById('fType')?.value||'';
+  const exp=document.getElementById('fExp')?.value||'';
+  const salMin=document.getElementById('fSalMin')?.value||'';
+  const salMax=document.getElementById('fSalMax')?.value||'';
+
+  let url=`${SB}/rest/v1/jobs?select=*&order=created_at.desc`;
+  if(activeIndustry!=='all') url+=`&category=eq.${activeIndustry}`;
+  if(em) url+=`&emirate=eq.${encodeURIComponent(em)}`;
+  if(area) url+=`&area=eq.${encodeURIComponent(area)}`;
+  if(type) url+=`&job_type=eq.${encodeURIComponent(type)}`;
+  if(exp) url+=`&experience=eq.${encodeURIComponent(exp)}`;
+  if(salMin) url+=`&salary_min=gte.${salMin}`;
+  if(salMax) url+=`&salary_max=lte.${salMax}`;
+  if(q) url+=`&title=ilike.%25${encodeURIComponent(q)}%25`;
+
+  const r=await fetch(url,{headers:H});
+  let data=await r.json();
+  if(!Array.isArray(data))data=[];
+
+  const cnt=document.getElementById('jCount');
+  const list=document.getElementById('jList');
+  const indName=document.querySelector('.js-item.active')?.textContent.trim()||'All Jobs';
+  cnt.innerHTML=`<strong>${data.length}</strong> ${indName} found`;
+
+  if(data.length===0){
+    list.innerHTML=`<div style="text-align:center;padding:60px 20px">
+      <div style="font-size:44px;margin-bottom:14px">${IND_ICONS[activeIndustry]||'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>'}</div>
+      <div style="font-size:15px;color:#555;margin-bottom:8px">No jobs found</div>
+      <div style="font-size:12px;color:#333;margin-bottom:20px">Be the first to post a job in this industry!</div>
+      <a href="post.html" class="btn btn-gold">+ Post a Job Free</a></div>`;
+    return;
+  }
+
+  list.innerHTML=data.map(j=>`
+    <div class="jc${j.is_featured?' featured':''}">
+      <div class="jc-logo">${IND_ICONS[j.category]||'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>'}</div>
+      <div class="jc-info">
+        <div class="jc-title">${j.title}${j.is_featured?' <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>':''}</div>
+        <div class="jc-company">${j.company||'Company'} · ${[j.area,j.emirate].filter(Boolean).join(', ')}</div>
+        <div class="jc-tags">
+          ${j.job_type?`<span class="jc-tag type">${j.job_type}</span>`:''}
+          ${j.experience?`<span class="jc-tag">${j.experience}</span>`:''}
+          ${j.salary_min?`<span class="jc-tag salary">AED ${Number(j.salary_min).toLocaleString()}${j.salary_max?' – '+Number(j.salary_max).toLocaleString():''}/mo</span>`:''}
+        </div>
+        <div class="jc-meta">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> ${j.emirate||'UAE'}</span>
+          ${j.openings?`<span>👥 ${j.openings} opening${j.openings>1?'s':''}</span>`:''}
+          <span>${ago(j.created_at)}</span>
+        </div>
+      </div>
+      <div class="jc-right">
+        <div class="jc-date">${ago(j.created_at)}</div>
+        <a href="tel:${j.contact_phone}" class="jc-apply" onclick="event.stopPropagation()">Apply</a>
+      </div>
+    </div>`).join('');
+}
+
+document.addEventListener('DOMContentLoaded',()=>loadJobs());
+</script>
+<script src="../shared/theme.js"></script>
+<script>
+(function(){
+  function checkAuthState(){
+    var user=localStorage.getItem('gb_user');
+    var guest=document.getElementById('navGuest');
+    var navUser=document.getElementById('navUser');
+    var nameEl=document.getElementById('navUserName');
+    if(user){try{
+      var u=JSON.parse(user);
+      var name=(u.user_metadata&&u.user_metadata.full_name)||u.email.split('@')[0]||'Account';
+      if(nameEl)nameEl.textContent='Hi, '+name.split(' ')[0];
+      if(guest)guest.style.display='none';
+      if(navUser)navUser.style.display='flex';
+    }catch(e){}}
+    else{if(guest)guest.style.display='flex';if(navUser)navUser.style.display='none';}
+  }
+  function doSignout(){localStorage.removeItem('gb_token');localStorage.removeItem('gb_user');checkAuthState();}
+  window.doSignout=doSignout;
+  document.addEventListener('DOMContentLoaded',checkAuthState);
+})();
+</script>
+
+
+</body>
+</html>
+<!-- AUTH MODAL -->
+<div id="authModal" class="modal-overlay" style="display:none">
+  <div class="modal-box"><button class="modal-close" onclick="closeAuth()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <div class="modal-tabs"><button class="modal-tab active" id="tabSignin" onclick="switchTab('signin')">Sign In</button><button class="modal-tab" id="tabSignup" onclick="switchTab('signup')">Sign Up</button></div>
+    <div id="formSignin"><div style="margin-bottom:14px"><input class="form-input" type="email" id="siEmail" placeholder="Email"></div><div style="margin-bottom:16px"><input class="form-input" type="password" id="siPass" placeholder="Password"></div><button class="btn btn-gold" style="width:100%" onclick="doSignin()">Sign In</button></div>
+    <div id="formSignup" style="display:none"><div style="margin-bottom:14px"><input class="form-input" type="text" id="suName" placeholder="Full name"></div><div style="margin-bottom:14px"><input class="form-input" type="email" id="suEmail" placeholder="Email"></div><div style="margin-bottom:16px"><input class="form-input" type="password" id="suPass" placeholder="Password"></div><button class="btn btn-gold" style="width:100%" onclick="doSignup()">Create Account</button></div>
+    <div id="authMsg" style="margin-top:12px;font-size:13px;text-align:center;color:#ef4444"></div>
+  </div>
+</div>
+<script src="../shared/config.js"></script>
+<!-- auth handled via module below -->
+<script>
+const SB='https://chfkssclmdshdcijfzdr.supabase.co';
+const SK='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNoZmtzc2NsbWRzaGRjaWpmemRyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM1ODc2ODUsImV4cCI6MjA4OTE2MzY4NX0.cbJBIgeDRIqFvk3WMmxRoDWo1C73wM44oBDekdcc3sE';
+const H={apikey:SK,Authorization:'Bearer '+SK};
+
+const AREAS={Dubai:['Downtown','Marina','JLT','DIFC','Business Bay','Deira','Bur Dubai','Al Barsha','Mirdif','Karama','Al Quoz','Jumeirah'],'Abu Dhabi':['Corniche','Khalidiyah','Al Reem Island','Mussafah','Khalifa City','Saadiyat'],'Sharjah':['Al Nahda','Al Majaz','Al Qasba','Industrial Area'],'Ajman':['Al Nuaimiya','Al Rashidiya','Al Jurf'],'RAK':['Al Nakheel','Al Hamra'],'Fujairah':['City Centre']};
+
+const ICONS={construction:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M2 20h20"/><path d="M6 20V10l6-7 6 7v10"/><path d="M9 20v-5h6v5"/></svg>',it:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>',healthcare:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>',realestate:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>',hospitality:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>',finance:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>',retail:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>',engineering:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>',education:'📚',logistics:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>',automotive:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>',creative:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M18.37 2.63 14 7l-1.59-1.59a2 2 0 0 0-2.82 0L8 7l9 9 1.59-1.59a2 2 0 0 0 0-2.82L17 10l4.37-4.37a2.12 2.12 0 1 0-3-3Z"/><path d="M9 8c-2 3-4 3.5-7 4l8 10c2-1 6-5 6-7"/></svg>',admin:'👔',legal:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',other:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>'};
+
+let activeIndustry='';
+
+function selectIndustry(btn,industry,label){
+  document.querySelectorAll('.js-item').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  activeIndustry=industry;
+  buildFilterBar(industry);
+  loadJobs();
+}
+
+function buildFilterBar(industry){
+  const bar=document.getElementById('hFilterBar');
+  if(!industry){bar.classList.remove('show');bar.innerHTML='';return;}
+
+  let html='';
+
+  // EMIRATE — always first
+  html+=`<div class="hf">
+    <div class="hf-lbl">Emirate</div>
+    <select class="hf-sel" id="fEmirate" onchange="updateArea();loadJobs()">
+      <option value="">All UAE</option>
+      <option>Dubai</option><option>Abu Dhabi</option><option>Sharjah</option>
+      <option>Ajman</option><option>RAK</option><option>Fujairah</option>
+    </select>
+  </div>`;
+
+  // AREA — always second
+  html+=`<div class="hf">
+    <div class="hf-lbl">Area</div>
+    <select class="hf-sel" id="fArea" onchange="loadJobs()" style="min-width:120px">
+      <option value="">All Areas</option>
+    </select>
+  </div>`;
+
+  // JOB TYPE
+  html+=`<div class="hf">
+    <div class="hf-lbl">Job Type</div>
+    <select class="hf-sel" id="fType" onchange="loadJobs()">
+      <option value="">Any Type</option>
+      <option>Full Time</option>
+      <option>Part Time</option>
+      <option>Contract</option>
+      <option>Freelance</option>
+      <option>Internship</option>
+    </select>
+  </div>`;
+
+  // EXPERIENCE
+  html+=`<div class="hf">
+    <div class="hf-lbl">Experience</div>
+    <select class="hf-sel" id="fExp" onchange="loadJobs()">
+      <option value="">Any Level</option>
+      <option>Entry Level</option>
+      <option>Mid Level</option>
+      <option>Senior</option>
+      <option>Manager</option>
+      <option>Director</option>
+    </select>
+  </div>`;
+
+  // SALARY range
+  html+=`<div class="hf">
+    <div class="hf-lbl">Salary/mo (AED)</div>
+    <div class="hf-range">
+      <input class="hf-num" type="number" id="fSalMin" placeholder="0" oninput="loadJobs()">
+      <span class="hf-dash">—</span>
+      <input class="hf-num" type="number" id="fSalMax" placeholder="Max" oninput="loadJobs()">
+    </div>
+  </div>`;
+
+  html+=`<button class="hf-clear" onclick="clearFilters()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Clear</button>`;
+  bar.innerHTML=html;
+  bar.classList.add('show');
+}
+
+function updateArea(){
+  const em=document.getElementById('fEmirate')?.value;
+  const sel=document.getElementById('fArea');
+  if(!sel)return;
+  sel.innerHTML='<option value="">All Areas</option>';
+  (AREAS[em]||[]).forEach(a=>sel.innerHTML+=`<option>${a}</option>`);
+}
+
+function clearFilters(){
+  document.querySelectorAll('#hFilterBar select').forEach(s=>s.value='');
+  document.querySelectorAll('#hFilterBar input[type=number]').forEach(i=>i.value='');
+  loadJobs();
+}
+
+function timeAgo(d){
+  const x=Math.floor((Date.now()-new Date(d))/86400000);
+  return x===0?'Today':x===1?'Yesterday':x<7?x+'d ago':Math.floor(x/7)+'w ago';
+}
+
+async function loadJobs(){
+  const q=document.getElementById('jSearch')?.value.trim()||'';
+  const em=document.getElementById('fEmirate')?.value||'';
+  const area=document.getElementById('fArea')?.value||'';
+  const type=document.getElementById('fType')?.value||'';
+  const exp=document.getElementById('fExp')?.value||'';
+  const salMin=document.getElementById('fSalMin')?.value||'';
+  const salMax=document.getElementById('fSalMax')?.value||'';
+
+  let url=`${SB}/rest/v1/jobs?select=*&order=created_at.desc`;
+  if(activeIndustry) url+=`&industry=eq.${activeIndustry}`;
+  if(em) url+=`&emirate=eq.${encodeURIComponent(em)}`;
+  if(area) url+=`&area=eq.${encodeURIComponent(area)}`;
+  if(type) url+=`&job_type=eq.${encodeURIComponent(type)}`;
+  if(exp) url+=`&experience=eq.${encodeURIComponent(exp)}`;
+  if(salMin) url+=`&salary_min=gte.${salMin}`;
+  if(salMax) url+=`&salary_max=lte.${salMax}`;
+  if(q) url+=`&title=ilike.%25${encodeURIComponent(q)}%25`;
+
+  const r=await fetch(url,{headers:H});
+  let data=await r.json();
+  if(!Array.isArray(data))data=[];
+
+  const cnt=document.getElementById('jCount');
+  const list=document.getElementById('jList');
+  const indName=document.querySelector('.js-item.active')?.textContent.trim()||'All Jobs';
+  cnt.innerHTML=`<strong>${data.length}</strong> ${indName} found`;
+
+  if(data.length===0){
+    list.innerHTML=`<div style="text-align:center;padding:60px 20px">
+      <div style="font-size:44px;margin-bottom:14px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+      <div style="font-size:15px;color:#555;margin-bottom:8px">No jobs found</div>
+      <div style="font-size:12px;color:#333;margin-bottom:20px">Try different filters or post a job!</div>
+      <a href="post.html" class="btn btn-gold">+ Post a Job Free</a>
+    </div>`;
+    return;
+  }
+
+  list.innerHTML=data.map(j=>`
+    <div class="job-card${j.is_featured?' featured':''}" onclick="window.location.href='listing.html?id=${j.id}'">`
+      <div class="jc-logo">${ICONS[j.industry]||'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>'}</div>
+      <div class="jc-info">
+        <div class="jc-title">${j.title}${j.is_featured?' <span style="background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.3);border-radius:20px;font-size:9px;color:#C9A84C;padding:2px 7px;margin-left:6px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Featured</span>':''}</div>
+        <div class="jc-company">${j.company||'Company'}${j.area?' · '+j.area:j.emirate?' · '+j.emirate:''}</div>
+        <div class="jc-tags">
+          ${j.job_type?`<span class="jc-tag type">${j.job_type}</span>`:''}
+          ${j.experience?`<span class="jc-tag">${j.experience}</span>`:''}
+          ${j.salary_min?`<span class="jc-tag salary">AED ${Number(j.salary_min).toLocaleString()}${j.salary_max?' — '+Number(j.salary_max).toLocaleString():''}/mo</span>`:''}
+        </div>
+        <div class="jc-meta">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> ${j.emirate||''}</span>
+          ${j.openings?`<span>👥 ${j.openings} opening${j.openings>1?'s':''}</span>`:''}
+          <span>${timeAgo(j.created_at)}</span>
+        </div>
+      </div>
+      <div class="jc-right">
+        <div class="jc-date">${timeAgo(j.created_at)}</div>
+        <button class="jc-apply" onclick="event.stopPropagation()">Apply <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+      </div>
+    </div>`).join('');
+}
+
+document.addEventListener('DOMContentLoaded',()=>loadJobs());
+</script>
+</body>
+</html>

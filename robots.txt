@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /preview-login.html
+Disallow: /gb-admin-ctrl.html
+Disallow: /dashboard/
+
+Sitemap: https://gulfhabibi.com/sitemap.xml

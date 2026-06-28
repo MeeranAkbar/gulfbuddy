@@ -1,0 +1,112 @@
+<style>
+body{font-family:sans-serif}
+.wrap{padding:6px 0}
+.tier{border-radius:12px;padding:16px;margin-bottom:14px}
+.tier-free{background:#0d0d1a;border:1px solid #1a1828}
+.tier-featured{background:#0f0f1e;border:2px solid rgba(201,168,76,.4)}
+.tier-premium{background:#100f1a;border:2px solid rgba(201,168,76,.8)}
+.tier-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.tier-name{font-size:14px;font-weight:700}
+.tier-free .tier-name{color:#666}
+.tier-featured .tier-name{color:#C9A84C}
+.tier-premium .tier-name{color:#E8C97A}
+.tier-price{font-size:12px;font-weight:700;padding:3px 10px;border-radius:20px}
+.tier-free .tier-price{background:#1a1828;color:#444}
+.tier-featured .tier-price{background:rgba(201,168,76,.15);color:#C9A84C}
+.tier-premium .tier-price{background:rgba(201,168,76,.25);color:#E8C97A}
+.features{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.feat{font-size:11px;padding:6px 9px;border-radius:7px;display:flex;align-items:flex-start;gap:6px;line-height:1.4}
+.feat-yes{background:#0a1a0a;color:#22c55e;border:1px solid rgba(34,197,94,.15)}
+.feat-no{background:#0d0d0d;color:#333;border:1px solid #1a1828;text-decoration:line-through}
+.feat-gold{background:rgba(201,168,76,.08);color:#C9A84C;border:1px solid rgba(201,168,76,.2)}
+.feat-dot{flex-shrink:0;margin-top:1px}
+.policy-box{background:#100a0a;border:1px solid rgba(239,68,68,.2);border-radius:10px;padding:14px;margin-top:14px}
+.policy-title{font-size:11px;font-weight:700;color:#ef4444;text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px}
+.policy-item{font-size:11px;color:#666;padding:4px 0;border-bottom:1px solid #1a0a0a;display:flex;gap:8px}
+.policy-item:last-child{border-bottom:none}
+.divider{font-size:10px;font-weight:700;color:#3a3a5a;text-transform:uppercase;letter-spacing:1px;margin:16px 0 8px;padding-bottom:6px;border-bottom:1px solid #1a1828}
+</style>
+<div class="wrap">
+
+<div class="divider">Dashboard Access by Plan</div>
+
+<!-- FREE TIER -->
+<div class="tier tier-free">
+  <div class="tier-header">
+    <span class="tier-name">Free Account</span>
+    <span class="tier-price">AED 0</span>
+  </div>
+  <div class="features">
+    <div class="feat feat-yes"><span class="feat-dot">✓</span>See own listings (title, status)</div>
+    <div class="feat feat-yes"><span class="feat-dot">✓</span>Total call clicks count</div>
+    <div class="feat feat-yes"><span class="feat-dot">✓</span>Edit listing (max 2× per listing)</div>
+    <div class="feat feat-yes"><span class="feat-dot">✓</span>Delete own listing</div>
+    <div class="feat feat-yes"><span class="feat-dot">✓</span>Mark as Sold</div>
+    <div class="feat feat-yes"><span class="feat-dot">✓</span>Max 3 active listings</div>
+    <div class="feat feat-no"><span class="feat-dot">✗</span>Views per listing</div>
+    <div class="feat feat-no"><span class="feat-dot">✗</span>Who viewed (emirate)</div>
+    <div class="feat feat-no"><span class="feat-dot">✗</span>Best time of day data</div>
+    <div class="feat feat-no"><span class="feat-dot">✗</span>Competitor insights</div>
+    <div class="feat feat-no"><span class="feat-dot">✗</span>WhatsApp clicks</div>
+    <div class="feat feat-no"><span class="feat-dot">✗</span>Listing performance score</div>
+  </div>
+</div>
+
+<!-- FEATURED TIER -->
+<div class="tier tier-featured">
+  <div class="tier-header">
+    <span class="tier-name">⭐ Featured — AED 99/mo</span>
+    <span class="tier-price">Most Popular</span>
+  </div>
+  <div class="features">
+    <div class="feat feat-yes"><span class="feat-dot">✓</span>Everything in Free</div>
+    <div class="feat feat-yes"><span class="feat-dot">✓</span>Views per listing (daily)</div>
+    <div class="feat feat-yes"><span class="feat-dot">✓</span>Call + WhatsApp click count</div>
+    <div class="feat feat-yes"><span class="feat-dot">✓</span>Viewer emirate breakdown</div>
+    <div class="feat feat-yes"><span class="feat-dot">✓</span>Edit unlimited times</div>
+    <div class="feat feat-yes"><span class="feat-dot">✓</span>Max 10 active listings</div>
+    <div class="feat feat-gold"><span class="feat-dot">★</span>Listing appears top of results</div>
+    <div class="feat feat-gold"><span class="feat-dot">★</span>Featured badge on card</div>
+    <div class="feat feat-yes"><span class="feat-dot">✓</span>7-day views chart</div>
+    <div class="feat feat-yes"><span class="feat-dot">✓</span>Best day to repost tip</div>
+    <div class="feat feat-no"><span class="feat-dot">✗</span>Competitor price insights</div>
+    <div class="feat feat-no"><span class="feat-dot">✗</span>Auto-bump every 3 days</div>
+  </div>
+</div>
+
+<!-- PREMIUM TIER -->
+<div class="tier tier-premium">
+  <div class="tier-header">
+    <span class="tier-name">💎 Premium — AED 299/mo</span>
+    <span class="tier-price">Power Sellers</span>
+  </div>
+  <div class="features">
+    <div class="feat feat-yes"><span class="feat-dot">✓</span>Everything in Featured</div>
+    <div class="feat feat-gold"><span class="feat-dot">★</span>Always top 3 positions</div>
+    <div class="feat feat-gold"><span class="feat-dot">★</span>Auto-bump every 3 days</div>
+    <div class="feat feat-gold"><span class="feat-dot">★</span>Competitor price comparison</div>
+    <div class="feat feat-gold"><span class="feat-dot">★</span>Best time to post insights</div>
+    <div class="feat feat-gold"><span class="feat-dot">★</span>30-day performance report</div>
+    <div class="feat feat-gold"><span class="feat-dot">★</span>Unlimited active listings</div>
+    <div class="feat feat-gold"><span class="feat-dot">★</span>Priority customer support</div>
+    <div class="feat feat-gold"><span class="feat-dot">★</span>Search keyword insights</div>
+    <div class="feat feat-gold"><span class="feat-dot">★</span>Verified Seller badge</div>
+    <div class="feat feat-gold"><span class="feat-dot">★</span>WhatsApp business link</div>
+    <div class="feat feat-gold"><span class="feat-dot">★</span>Export leads to CSV</div>
+  </div>
+</div>
+
+<!-- POLICIES -->
+<div class="policy-box">
+  <div class="policy-title">📋 Listing Policies (All Users)</div>
+  <div class="policy-item"><span style="color:#ef4444">✕</span>Free accounts: max 3 active listings at once</div>
+  <div class="policy-item"><span style="color:#ef4444">✕</span>Free accounts: can only edit a listing 2× after posting</div>
+  <div class="policy-item"><span style="color:#ef4444">✕</span>Listings auto-expire after 60 days (free) / 90 days (featured) / never (premium)</div>
+  <div class="policy-item"><span style="color:#ef4444">✕</span>No duplicate listings — same title + same phone = blocked</div>
+  <div class="policy-item"><span style="color:#ef4444">✕</span>Price cannot be edited more than 3× (prevents spam)</div>
+  <div class="policy-item"><span style="color:#ef4444">✕</span>Sold listings cannot be reactivated — must post fresh</div>
+  <div class="policy-item"><span style="color:#ef4444">✕</span>Images cannot be changed after 24 hours (free users)</div>
+  <div class="policy-item"><span style="color:#ef4444">✕</span>Reported listings go under review — hidden until cleared</div>
+</div>
+
+</div>

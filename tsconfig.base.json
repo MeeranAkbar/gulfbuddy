@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "allowJs": false,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "@gulfbuddy/types": ["packages/types/src/index.ts"],
+      "@gulfbuddy/types/*": ["packages/types/src/*"],
+      "@gulfbuddy/config": ["packages/config/src/index.ts"],
+      "@gulfbuddy/config/*": ["packages/config/src/*"],
+      "@gulfbuddy/seo": ["packages/seo/src/index.ts"],
+      "@gulfbuddy/seo/*": ["packages/seo/src/*"],
+      "@gulfbuddy/analytics": ["packages/analytics/src/index.ts"],
+      "@gulfbuddy/analytics/*": ["packages/analytics/src/*"],
+      "@gulfbuddy/validation": ["packages/validation/src/index.ts"],
+      "@gulfbuddy/validation/*": ["packages/validation/src/*"],
+      "@gulfbuddy/ui": ["packages/ui/src/index.tsx"],
+      "@gulfbuddy/ui/*": ["packages/ui/src/*"]
+    }
+  }
+}

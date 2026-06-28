@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="/shared/preview-guard.js"></script>
+<title>GulfHabibi Preview</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',-apple-system,sans-serif;background:#ffffff;color:#111;display:flex;align-items:center;justify-content:center;min-height:100vh}
+.box{background:#f8f8f8;border:1px solid #2e2e2e;border-radius:16px;padding:40px;width:100%;max-width:360px;text-align:center}
+.logo{font-size:36px;margin-bottom:12px}
+.title{font-size:20px;font-weight:600;margin-bottom:6px}
+.sub{font-size:13px;color:#8e8e8e;margin-bottom:28px}
+input{width:100%;background:#242424;border:1px solid #2e2e2e;border-radius:10px;padding:12px 16px;color:#111;font-size:14px;outline:none;margin-bottom:12px}
+input:focus{border-color:#C9A84C}
+button{width:100%;padding:12px;background:#C9A84C;border:none;border-radius:10px;color:#000;font-size:14px;font-weight:600;cursor:pointer}
+button:hover{background:#E8C97A}
+.err{color:#ef4444;font-size:13px;margin-top:10px;display:none}
+</style>
+</head>
+<body>
+<div class="box">
+  <div class="logo"></div>
+  <div class="title">GulfHabibi Preview</div>
+  <div class="sub">Private preview - enter password to continue</div>
+  <input type="password" id="pwd" placeholder="Enter preview password" onkeydown="if(event.key==='Enter')check()">
+  <button onclick="check()">Access Preview</button>
+  <div class="err" id="err"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Wrong password. Try again.</div>
+</div>
+<script>
+function simpleHash(s){
+  let h = 5381;
+  for(let i = 0; i < s.length; i++) h = ((h << 5) + h) ^ s.charCodeAt(i);
+  return (h >>> 0).toString(36);
+}
+const PREVIEW_HASH = 'ugsfmb';
+function getNextTarget(){
+  const next = new URLSearchParams(window.location.search).get('next');
+  if(next && next.startsWith('/') && !next.startsWith('//')) return next;
+  return 'home.html';
+}
+function check(){
+  const val = document.getElementById('pwd').value;
+  if(simpleHash(val) === PREVIEW_HASH){
+    const secure = window.location.protocol === 'https:' ? '; Secure' : '';
+    document.cookie = 'gh_preview=1; path=/; max-age=86400; SameSite=Lax' + secure;
+    sessionStorage.setItem('gb_auth','1');
+    window.location.href = getNextTarget();
+  } else {
+    document.getElementById('err').style.display='block';
+    document.getElementById('pwd').value='';
+  }
+}
+document.getElementById('pwd').addEventListener('keydown', e => { if(e.key==='Enter') check(); });
+</script>
+</body>
+</html>

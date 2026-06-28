@@ -1,0 +1,152 @@
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.w{font-family:sans-serif;padding:6px 0}
+.sec{margin-bottom:18px}
+.sec-t{font-size:10px;font-weight:700;color:#C9A84C;text-transform:uppercase;letter-spacing:1.2px;padding-bottom:7px;border-bottom:1px solid #1a1828;margin-bottom:10px}
+.layer{border-radius:10px;padding:13px 14px;margin-bottom:8px;display:flex;gap:12px;align-items:flex-start}
+.l-red{background:#130808;border:1px solid rgba(239,68,68,.3)}
+.l-yellow{background:#131000;border:1px solid rgba(245,158,11,.3)}
+.l-green{background:#080f08;border:1px solid rgba(34,197,94,.3)}
+.l-blue{background:#080810;border:1px solid rgba(96,165,250,.3)}
+.l-icon{font-size:20px;flex-shrink:0;margin-top:1px}
+.l-body{flex:1}
+.l-title{font-size:12px;font-weight:700;margin-bottom:4px}
+.l-red .l-title{color:#ef4444}
+.l-yellow .l-title{color:#f59e0b}
+.l-green .l-title{color:#22c55e}
+.l-blue .l-title{color:#60a5fa}
+.l-desc{font-size:11px;color:#555;line-height:1.6}
+.l-status{font-size:9px;font-weight:700;padding:2px 8px;border-radius:20px;white-space:nowrap;flex-shrink:0;margin-top:2px}
+.s-danger{background:rgba(239,68,68,.15);color:#ef4444;border:1px solid rgba(239,68,68,.3)}
+.s-warn{background:rgba(245,158,11,.15);color:#f59e0b;border:1px solid rgba(245,158,11,.3)}
+.s-done{background:rgba(34,197,94,.15);color:#22c55e;border:1px solid rgba(34,197,94,.3)}
+.s-build{background:rgba(96,165,250,.15);color:#60a5fa;border:1px solid rgba(96,165,250,.3)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.card{border-radius:10px;padding:12px 13px;background:#0d0d1a;border:1px solid #1a1828}
+.card-t{font-size:11px;font-weight:700;color:#C9A84C;margin-bottom:8px}
+.card-item{font-size:11px;color:#555;padding:4px 0;border-bottom:1px solid #0a0a14;display:flex;gap:8px;align-items:flex-start;line-height:1.5}
+.card-item:last-child{border-bottom:none}
+</style>
+<div class="w">
+
+<!-- CURRENT VULNERABILITIES -->
+<div class="sec">
+<div class="sec-t">🚨 Current Security Gaps (fix before go-live)</div>
+
+<div class="layer l-red">
+  <div class="l-icon">🔑</div>
+  <div class="l-body">
+    <div class="l-title">API Key Exposed in Frontend JavaScript</div>
+    <div class="l-desc">Supabase anon key is hardcoded in every HTML file — visible to anyone who views page source. Currently safe because RLS (Row Level Security) is not fully configured. Must fix before launch.</div>
+  </div>
+  <span class="l-status s-danger">Critical</span>
+</div>
+
+<div class="layer l-red">
+  <div class="l-icon">🗄️</div>
+  <div class="l-body">
+    <div class="l-title">Supabase RLS (Row Level Security) Not Configured</div>
+    <div class="l-desc">Right now anyone can read, write, or delete ANY row in your database directly via API. No authentication required. A simple API call from anyone's browser can wipe all listings.</div>
+  </div>
+  <span class="l-status s-danger">Critical</span>
+</div>
+
+<div class="layer l-red">
+  <div class="l-icon">💉</div>
+  <div class="l-body">
+    <div class="l-title">No Input Sanitisation</div>
+    <div class="l-desc">Post forms accept any text including HTML/JavaScript. Someone can post a listing with script tags that execute on other users' browsers (XSS — Cross Site Scripting). All form inputs need sanitising before saving to DB.</div>
+  </div>
+  <span class="l-status s-danger">Critical</span>
+</div>
+
+<div class="layer l-yellow">
+  <div class="l-icon">🌐</div>
+  <div class="l-body">
+    <div class="l-title">No HTTPS / SSL Certificate</div>
+    <div class="l-desc">Currently localhost — no issue now. But when live on gulfhabibi.com, must have SSL certificate. Without it browsers show "Not Secure" warning and Google penalises your ranking.</div>
+  </div>
+  <span class="l-status s-warn">Fix at launch</span>
+</div>
+
+<div class="layer l-yellow">
+  <div class="l-icon">⚡</div>
+  <div class="l-body">
+    <div class="l-title">No Rate Limiting</div>
+    <div class="l-desc">Anyone can spam your post form or search endpoint thousands of times per second. Can crash the server or exhaust your Supabase free tier rows in minutes. Need rate limiting on all API calls.</div>
+  </div>
+  <span class="l-status s-warn">Important</span>
+</div>
+
+<div class="layer l-yellow">
+  <div class="l-icon">📁</div>
+  <div class="l-body">
+    <div class="l-title">No File Upload Validation</div>
+    <div class="l-desc">Images.js compresses images — good. But doesn't check if the file is actually an image. Someone could upload a disguised executable or malicious file. Need MIME type + file signature validation.</div>
+  </div>
+  <span class="l-status s-warn">Important</span>
+</div>
+
+<div class="layer l-green">
+  <div class="l-icon">🔐</div>
+  <div class="l-body">
+    <div class="l-title">Password Gate (index.html)</div>
+    <div class="l-desc">Current password gate (gulf2024) protects the preview URL. Basic but effective for localhost testing phase.</div>
+  </div>
+  <span class="l-status s-done">OK for now</span>
+</div>
+
+<div class="layer l-green">
+  <div class="l-icon">🖼️</div>
+  <div class="l-body">
+    <div class="l-title">Image Compression (images.js)</div>
+    <div class="l-desc">Already built — strips EXIF metadata (GPS location data) from photos before upload. Protects seller privacy. Max size limits prevent file bomb attacks.</div>
+  </div>
+  <span class="l-status s-done">Done</span>
+</div>
+</div>
+
+<!-- AI SECURITY SYSTEM -->
+<div class="sec">
+<div class="sec-t">🤖 AI Security System — What to Build</div>
+<div class="g2">
+  <div class="card">
+    <div class="card-t">Layer 1 — Instant (on every post)</div>
+    <div class="card-item"><span style="color:#22c55e">✓</span>Strip all HTML/JS from text inputs</div>
+    <div class="card-item"><span style="color:#22c55e">✓</span>Validate UAE phone format (+971...)</div>
+    <div class="card-item"><span style="color:#22c55e">✓</span>Block duplicate title + phone combos</div>
+    <div class="card-item"><span style="color:#22c55e">✓</span>Check MIME type on image upload</div>
+    <div class="card-item"><span style="color:#22c55e">✓</span>Enforce max listing count per account</div>
+    <div class="card-item"><span style="color:#22c55e">✓</span>Reject prices that are impossibly low</div>
+  </div>
+  <div class="card">
+    <div class="card-t">Layer 2 — AI Content Scan (Groq)</div>
+    <div class="card-item"><span style="color:#C9A84C">★</span>Scan description for scam phrases</div>
+    <div class="card-item"><span style="color:#C9A84C">★</span>Detect prohibited items (weapons etc)</div>
+    <div class="card-item"><span style="color:#C9A84C">★</span>Category vs description mismatch</div>
+    <div class="card-item"><span style="color:#C9A84C">★</span>Score listing 0–100 trust score</div>
+    <div class="card-item"><span style="color:#C9A84C">★</span>Flag for manual review if score &lt; 40</div>
+    <div class="card-item"><span style="color:#C9A84C">★</span>Auto-reject if score &lt; 20</div>
+  </div>
+  <div class="card">
+    <div class="card-t">Layer 3 — Supabase RLS Rules</div>
+    <div class="card-item"><span style="color:#60a5fa">→</span>Users can only read public listings</div>
+    <div class="card-item"><span style="color:#60a5fa">→</span>Users can only edit THEIR OWN listings</div>
+    <div class="card-item"><span style="color:#60a5fa">→</span>Users cannot delete other users data</div>
+    <div class="card-item"><span style="color:#60a5fa">→</span>Admin table — only your account reads it</div>
+    <div class="card-item"><span style="color:#60a5fa">→</span>search_log — insert only, no read for users</div>
+    <div class="card-item"><span style="color:#60a5fa">→</span>All writes require authenticated session</div>
+  </div>
+  <div class="card">
+    <div class="card-t">Layer 4 — Ongoing Monitoring</div>
+    <div class="card-item"><span style="color:#888">◉</span>Rate limit: max 5 posts per hour per IP</div>
+    <div class="card-item"><span style="color:#888">◉</span>Community report button (3 = hidden)</div>
+    <div class="card-item"><span style="color:#888">◉</span>Admin dashboard — flagged queue</div>
+    <div class="card-item"><span style="color:#888">◉</span>Auto-expire free listings (15 days)</div>
+    <div class="card-item"><span style="color:#888">◉</span>3 strikes = account suspended</div>
+    <div class="card-item"><span style="color:#888">◉</span>Supabase logs — monitor unusual traffic</div>
+  </div>
+</div>
+</div>
+
+</div>

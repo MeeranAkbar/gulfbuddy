@@ -1,0 +1,148 @@
+# ============================================================
+# GulfHabibi UAE — .htaccess
+# Security + SEO + Performance
+# Last updated: 22 March 2026
+# ============================================================
+
+# ── FORCE HTTPS ─────────────────────────────────────────────
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# ── FORCE NON-WWW ───────────────────────────────────────────
+RewriteCond %{HTTP_HOST} ^www\.gulfhabibi\.com [NC]
+RewriteRule ^(.*)$ https://gulfhabibi.com/$1 [L,R=301]
+
+# Preview domain rules only apply on the spare staging host.
+SetEnvIfNoCase Host "^(.+\.)?natuaralcureguide\.com$" IS_PREVIEW_HOST=1
+
+# Serve preview-only robots and sitemap on the staging host.
+RewriteCond %{ENV:IS_PREVIEW_HOST} =1
+RewriteRule ^robots\.txt$ /robots-preview.txt [L]
+RewriteCond %{ENV:IS_PREVIEW_HOST} =1
+RewriteRule ^sitemap\.xml$ /sitemap-preview.xml [L]
+
+# AI Guide has been removed from the platform.
+RewriteRule ^ai-guide(/.*)?$ /home.html [L,R=302]
+
+# ── STAGING PROTECTION — ACTIVE ─────────────────────────────
+# Blocks ALL direct URL access on preview domain
+# Forces visitors through /index.html password gate
+# Cookie gh_preview=1 is set by index.html after correct password
+<IfModule mod_rewrite.c>
+  RewriteCond %{ENV:IS_PREVIEW_HOST} =1
+  RewriteCond %{REQUEST_URI} !^/robots-preview\.txt$
+  RewriteCond %{REQUEST_URI} !^/sitemap-preview\.xml$
+  # Allow: index.html, preview-login.html, shared assets, robots.txt, sitemap.xml
+  RewriteCond %{REQUEST_URI} !^/index\.html$
+  RewriteCond %{REQUEST_URI} !^/preview-login\.html$
+  RewriteCond %{REQUEST_URI} !^/shared/
+  RewriteCond %{REQUEST_URI} !^/robots\.txt$
+  RewriteCond %{REQUEST_URI} !^/sitemap\.xml$
+  RewriteCond %{REQUEST_URI} !\.(css|js|png|jpg|jpeg|svg|ico|webp|woff2?|gif)$
+  # Check for preview cookie
+  RewriteCond %{HTTP_COOKIE} !(^|;\s*)gh_preview=1(;|$)
+  RewriteRule ^ /index.html [L,R=302]
+</IfModule>
+
+# ── SEO FRIENDLY URLS ───────────────────────────────────────
+RewriteRule ^motors/cars-([a-z-]+)/?$    motors/index.html?type=car&emirate=$1    [L,QSA]
+RewriteRule ^motors/suvs-([a-z-]+)/?$    motors/index.html?type=suv&emirate=$1    [L,QSA]
+RewriteRule ^property/rent-([a-z-]+)/?$  property/index.html?purpose=rent&emirate=$1 [L,QSA]
+RewriteRule ^property/sale-([a-z-]+)/?$  property/index.html?purpose=sale&emirate=$1 [L,QSA]
+RewriteRule ^jobs/([a-z-]+)-([a-z-]+)/?$ jobs/index.html?category=$1&emirate=$2   [L,QSA]
+
+# ── BROWSER CACHING ──────────────────────────────────────────
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpeg              "access plus 1 month"
+  ExpiresByType image/png               "access plus 1 month"
+  ExpiresByType image/webp              "access plus 1 month"
+  ExpiresByType image/svg+xml           "access plus 1 month"
+  ExpiresByType text/css                "access plus 1 week"
+  ExpiresByType application/javascript  "access plus 1 week"
+  ExpiresByType text/html               "access plus 1 hour"
+</IfModule>
+
+# ── GZIP COMPRESSION ─────────────────────────────────────────
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript
+  AddOutputFilterByType DEFLATE application/json text/xml
+</IfModule>
+
+# ── SECURITY HEADERS ─────────────────────────────────────────
+# HSTS — tells browsers to always use HTTPS (1 year)
+Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+
+# No MIME sniffing
+Header always set X-Content-Type-Options "nosniff"
+
+# Clickjacking protection
+Header always set X-Frame-Options "SAMEORIGIN"
+
+# Referrer policy
+Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+# Permissions policy — disable unused browser features
+Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(self), payment=()"
+Header always set X-Robots-Tag "noindex, nofollow, noarchive" env=IS_PREVIEW_HOST
+
+# Remove X-XSS-Protection (deprecated — CSP replaces it)
+Header always unset X-XSS-Protection
+
+# Content Security Policy
+# NOTE: 'unsafe-inline' is required while scripts are still inline in HTML pages.
+# After scripts are moved to .js files, replace 'unsafe-inline' with nonces.
+Header always set Content-Security-Policy "\
+  default-src 'self'; \
+  script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; \
+  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com; \
+  font-src 'self' https://fonts.gstatic.com; \
+  img-src 'self' data: https: blob:; \
+  connect-src 'self' https://chfkssclmdshdcijfzdr.supabase.co https://*.workers.dev wss://chfkssclmdshdcijfzdr.supabase.co; \
+  frame-src 'none'; \
+  object-src 'none'; \
+  base-uri 'self'; \
+  form-action 'self';"
+
+# ── BLOCK SENSITIVE FILES ────────────────────────────────────
+<FilesMatch "\.(sql|md|py|env|log|sh|bak|txt)$">
+  Order allow,deny
+  Deny from all
+</FilesMatch>
+
+# Allow robots.txt and sitemap.xml specifically
+<Files "robots.txt">
+  Allow from all
+</Files>
+<Files "robots-preview.txt">
+  Allow from all
+</Files>
+<Files "sitemap.xml">
+  Allow from all
+</Files>
+<Files "sitemap-preview.xml">
+  Allow from all
+</Files>
+
+# Block admin panel from non-local IPs in staging
+# Uncomment before uploading to staging:
+# <Files "gb-admin-ctrl.html">
+#   Order Deny,Allow
+#   Deny from all
+#   Allow from 127.0.0.1
+# </Files>
+
+# ── HIDE SERVER INFO ─────────────────────────────────────────
+ServerSignature Off
+
+# ── BLOCK COMMON ATTACK PATTERNS ────────────────────────────
+<IfModule mod_rewrite.c>
+  # Block SQL injection attempts in query strings
+  RewriteCond %{QUERY_STRING} (union|select|insert|drop|delete|update|cast|exec|char|declare).* [NC]
+  RewriteRule .* - [F,L]
+
+  # Block path traversal
+  RewriteCond %{REQUEST_URI} \.\./
+  RewriteRule .* - [F,L]
+</IfModule>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="/shared/preview-guard.js"></script>
+<title>List Your Business — GulfHabibi Directory</title>
+<link rel="stylesheet" href="../shared/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+.list-wrap { max-width:620px; margin:0 auto; padding:30px 20px; }
+.tier-select { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:20px; }
+.tier-btn { background:var(--bg2); border:2px solid var(--border); border-radius:var(--radius); padding:14px; text-align:center; cursor:pointer; transition:all 0.15s; }
+.tier-btn:hover, .tier-btn.selected { border-color:var(--gold); background:var(--gold-dim); }
+.tier-btn-name { font-size:13px; font-weight:600; }
+.tier-btn-price { font-size:16px; font-weight:700; color:var(--gold); margin-top:4px; }
+.section-title { font-size:13px; font-weight:600; color:var(--gold); text-transform:uppercase; letter-spacing:0.5px; margin:20px 0 12px; }
+.img-upload { border:2px dashed var(--border); border-radius:var(--radius); padding:24px; text-align:center; cursor:pointer; transition:all 0.15s; }
+.img-upload:hover { border-color:var(--gold); }
+.img-previews { display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
+.img-preview { width:80px; height:80px; border-radius:8px; object-fit:cover; }
+</style>
+</head>
+<body>
+<nav class="navbar">
+  <a href="../home.html" class="nav-logo">
+    <div class="nav-logo-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#0e0e0e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+    </div>
+    <div class="nav-logo-text">Gulf<span>Habibi</span></div>
+  </a>
+  <div class="nav-actions" id="authSection">
+    <button id="themeToggleBtn" onclick="toggleTheme()" title="Toggle Dark/Light" style="background:var(--bg-card,#0d0d1a);border:1px solid var(--border,#1a1828);border-radius:8px;color:var(--gold,#C9A84C);font-size:15px;padding:5px 9px;cursor:pointer;line-height:1">&#9728;&#65039;</button>
+    <div id="navGuest" style="display:flex;gap:8px;align-items:center">
+      <button class="btn btn-ghost btn-sm" onclick="openAuth('signin')">Sign In</button>
+    </div>
+    <div id="navUser" style="display:none;gap:8px;align-items:center">
+      <span id="navUserName" style="font-size:13px;color:#C9A84C;font-weight:600"></span>
+      <a href="../dashboard/index.html" class="btn btn-ghost btn-sm">&#128100; Dashboard</a>
+      <button class="btn btn-outline btn-sm" onclick="doSignout()" style="font-size:12px;padding:5px 12px">Sign Out</button>
+    </div>
+  </div>
+</nav>
+
+<div class="list-wrap">
+  <div style="font-size:22px;font-weight:600;margin-bottom:6px">List Your Business</div>
+  <div style="font-size:14px;color:var(--text-dim);margin-bottom:24px">Free basic listing. Upgrade to get more visibility.</div>
+
+  <div class="section-title">Choose Your Plan</div>
+  <div class="tier-select">
+    <div class="tier-btn selected" onclick="selectTier('free',this)">
+      <div class="tier-btn-name">Free</div>
+      <div class="tier-btn-price">AED 0</div>
+      <div style="font-size:11px;color:var(--text-muted);margin-top:4px">Basic listing</div>
+    </div>
+    <div class="tier-btn" onclick="selectTier('featured',this)">
+      <div class="tier-btn-name"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Featured</div>
+      <div class="tier-btn-price">AED 99/mo</div>
+      <div style="font-size:11px;color:var(--text-muted);margin-top:4px">Top rotation</div>
+    </div>
+    <div class="tier-btn" onclick="selectTier('premium',this)">
+      <div class="tier-btn-name"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg> Premium</div>
+      <div class="tier-btn-price">AED 299/mo</div>
+      <div style="font-size:11px;color:var(--text-muted);margin-top:4px">Always top 3</div>
+    </div>
+  </div>
+
+  <div class="section-title">Business Photos</div>
+  <div class="img-upload" onclick="document.getElementById('imgInput').click()">
+    <div style="font-size:24px;margin-bottom:6px">📸</div>
+    <div style="font-size:13px;color:var(--text-dim)">Upload business photos (max 5)</div>
+  </div>
+  <input type="file" id="imgInput" multiple accept="image/*" style="display:none" onchange="previewImgs(event)">
+  <div class="img-previews" id="imgPreviews"></div>
+
+  <div class="section-title">Business Details</div>
+  <div class="form-group">
+    <label class="form-label">Business Name *</label>
+    <input type="text" class="form-input" id="bizName" placeholder="Your business name">
+  </div>
+  <div class="form-group">
+    <label class="form-label">Category *</label>
+    <select class="form-input" id="category"><option value="">Select category</option></select>
+  </div>
+  <div class="form-group">
+    <label class="form-label">Description</label>
+    <textarea class="form-input" id="description" placeholder="What does your business offer? Services, specialties..."></textarea>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+    <div class="form-group">
+      <label class="form-label">Emirate *</label>
+      <select class="form-input" id="emirate"></select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Area</label>
+      <input type="text" class="form-input" id="area" placeholder="e.g. Business Bay">
+    </div>
+  </div>
+
+  <div class="section-title">Contact</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+    <div class="form-group">
+      <label class="form-label">Phone *</label>
+      <input type="tel" class="form-input" id="phone" placeholder="+971 4 000 0000">
+    </div>
+    <div class="form-group">
+      <label class="form-label">WhatsApp</label>
+      <input type="tel" class="form-input" id="whatsapp" placeholder="+971 50 000 0000">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="form-label">Website (optional)</label>
+    <input type="url" class="form-input" id="website" placeholder="https://yourbusiness.com">
+  </div>
+  <div class="form-group">
+    <label class="form-label">Working Hours</label>
+    <input type="text" class="form-input" id="hours" placeholder="e.g. Mon-Sat 9am-6pm">
+  </div>
+
+  <button class="btn btn-gold" style="width:100%;padding:14px;font-size:15px;margin-top:8px" onclick="submitBusiness()" id="submitBtn">
+    List My Business
+  </button>
+  <p style="text-align:center;font-size:12px;color:var(--text-muted);margin-top:10px">Your listing goes live instantly after submission.</p>
+</div>
+
+<script type="module">
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+const supabase = createClient(
+  'https://chfkssclmdshdcijfzdr.supabase.co',
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNoZmtzc2NsbWRzaGRjaWpmemRyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM1ODc2ODUsImV4cCI6MjA4OTE2MzY4NX0.cbJBIgeDRIqFvk3WMmxRoDWo1C73wM44oBDekdcc3sE'
+);
+
+const CATS = ['interior','construction','medical','legal','food','beauty','education','it','realestate','cleaning','transport','finance','retail','other'];
+const EMIRATES = ['Dubai','Abu Dhabi','Sharjah','Ajman','Umm Al Quwain','Ras Al Khaimah','Fujairah'];
+let selectedTier = 'free';
+let uploadedFiles = [];
+
+const { data:{session} } = await supabase.auth.getSession();
+if (!session) { await supabase.auth.signInWithOAuth({provider:'google',options:{redirectTo:window.location.href}}); }
+
+const catEl = document.getElementById('category');
+CATS.forEach(c => { const o=document.createElement('option'); o.value=c; o.textContent=c.charAt(0).toUpperCase()+c.slice(1); catEl.appendChild(o); });
+const emEl = document.getElementById('emirate');
+EMIRATES.forEach(e => { const o=document.createElement('option'); o.value=e; o.textContent=e; emEl.appendChild(o); });
+
+window.selectTier = (tier, el) => { selectedTier=tier; document.querySelectorAll('.tier-btn').forEach(b=>b.classList.remove('selected')); el.classList.add('selected'); };
+window.previewImgs = (e) => { uploadedFiles=Array.from(e.target.files).slice(0,5); document.getElementById('imgPreviews').innerHTML=uploadedFiles.map(f=>`<img src="${URL.createObjectURL(f)}" class="img-preview">`).join(''); };
+
+window.submitBusiness = async () => {
+  const bizName = document.getElementById('bizName').value.trim();
+  const category = document.getElementById('category').value;
+  const phone = document.getElementById('phone').value.trim();
+  const emirate = document.getElementById('emirate').value;
+  if (!bizName || !category || !phone || !emirate) { showToast('Please fill all required fields', 'error'); return; }
+  const btn = document.getElementById('submitBtn');
+  btn.textContent = 'Submitting...'; btn.disabled = true;
+
+  let imageUrls = [];
+  for (const file of uploadedFiles) {
+    const ext = file.name.split('.').pop();
+    const path = `${session.user.id}/${Date.now()}.${ext}`;
+    const { data } = await supabase.storage.from('directory-images').upload(path, file);
+    if (data) { const { data:url } = supabase.storage.from('directory-images').getPublicUrl(path); imageUrls.push(url.publicUrl); }
+  }
+
+  const { error } = await supabase.from('directory').insert({
+    user_id: session.user.id,
+    business_name: bizName, category, emirate,
+    description: document.getElementById('description').value,
+    area: document.getElementById('area').value,
+    phone, whatsapp: document.getElementById('whatsapp').value,
+    website: document.getElementById('website').value,
+    working_hours: document.getElementById('hours').value,
+    images: imageUrls, tier: selectedTier
+  });
+
+  if (error) { showToast('Error. Try again.', 'error'); btn.textContent='List My Business'; btn.disabled=false; return; }
+  showToast('Business listed successfully!', 'success');
+  setTimeout(() => window.location.href = 'index.html', 1500);
+};
+
+function showToast(msg, type) {
+  const t=document.createElement('div'); t.className=`toast ${type}`; t.textContent=msg;
+  document.body.appendChild(t); setTimeout(()=>t.remove(),3000);
+}
+</script>
+<script src="../shared/theme.js"></script>
+<script>
+(function(){
+  function checkAuthState(){
+    var user=localStorage.getItem('gb_user');
+    var guest=document.getElementById('navGuest');
+    var navUser=document.getElementById('navUser');
+    var nameEl=document.getElementById('navUserName');
+    if(user){try{
+      var u=JSON.parse(user);
+      var name=(u.user_metadata&&u.user_metadata.full_name)||u.email.split('@')[0]||'Account';
+      if(nameEl)nameEl.textContent='Hi, '+name.split(' ')[0];
+      if(guest)guest.style.display='none';
+      if(navUser)navUser.style.display='flex';
+    }catch(e){}}
+    else{if(guest)guest.style.display='flex';if(navUser)navUser.style.display='none';}
+  }
+  function doSignout(){localStorage.removeItem('gb_token');localStorage.removeItem('gb_user');checkAuthState();}
+  window.doSignout=doSignout;
+  document.addEventListener('DOMContentLoaded',checkAuthState);
+})();
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+.next
+node_modules
+dist
+.turbo
+.vercel
+.wrangler
+coverage
+*.log
+.env
+.env.local
+.env.staging
+.env.production
+supabase/.temp
+CODEX_PRIVATE_ACCESS.md

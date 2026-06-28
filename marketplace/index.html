@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/shared/preview-guard.js"></script>
+  <!-- SEO META -->
+  <title>Buy & Sell in UAE — Electronics, Furniture, Fashion | GulfHabibi</title>
+  <meta name="description" content="Buy and sell electronics, furniture, fashion, baby items and more across UAE. Verified sellers. Free listings on GulfHabibi.">
+  <meta name="keywords" content="buy sell UAE, classifieds Dubai, electronics Dubai, furniture UAE, second hand Dubai">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="GulfHabibi UAE">
+  <meta property="og:title" content="Buy & Sell in UAE — Electronics, Furniture, Fashion | GulfHabibi">
+  <meta property="og:description" content="Buy and sell electronics, furniture, fashion, baby items and more across UAE. Verified sellers. Free listings on GulfHabibi.">
+  <meta property="og:url" content="https://gulfhabibi.com/marketplace/">
+  <meta property="og:image" content="https://gulfhabibi.com/shared/og-image.svg">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="GulfHabibi UAE">
+  <meta property="og:locale" content="en_AE">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Buy & Sell in UAE — Electronics, Furniture, Fashion | GulfHabibi">
+  <meta name="twitter:description" content="Buy and sell electronics, furniture, fashion, baby items and more across UAE. Verified sellers. Free listings on GulfHabibi.">
+  <meta name="twitter:image" content="https://gulfhabibi.com/shared/og-image.svg">
+  <meta name="geo.region" content="AE">
+  <meta name="theme-color" content="#06060e">
+  <link rel="canonical" href="https://gulfhabibi.com/marketplace/">
+  <link rel="icon" href="../shared/favicon.svg" type="image/svg+xml"><link rel="icon" href="../shared/favicon.png" type="image/png">
+  <script src="../shared/seo.js"></script>
+  <!-- SECTION GATE — runs before page renders -->
+  <script>
+  (function(){
+    try{
+      var saved=localStorage.getItem('gb_admin_settings');
+      if(saved){
+        var s=JSON.parse(saved);
+        if(s.section_classifieds===false||s.section_classifieds==='false'){
+          window.location.replace('../coming-soon.html?section=classifieds');
+        }
+      }
+    }catch(e){}
+  })();
+  </script>
+  <!-- END SEO META -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link rel="stylesheet" href="../shared/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+body{background:#ffffff}
+.cl-page{display:flex;flex-direction:column;min-height:calc(100vh - 136px)}
+.cl-topbar{background:#f8f8f8;border-bottom:1px solid #e5e5e5;padding:10px 16px;display:flex;gap:8px;align-items:center}
+.cl-topbar input{flex:1;background:#f8f8f8;border:1px solid #e5e5e5;border-radius:8px;color:#111;font-family:inherit;font-size:14px;padding:9px 14px;outline:none;transition:border-color .15s}
+.cl-topbar input:focus{border-color:#C9A84C}
+.cl-topbar input::placeholder{color:#ccc}
+.cl-topbar select{background:#f8f8f8;border:1px solid #e5e5e5;border-radius:8px;color:#666;font-family:inherit;font-size:13px;padding:9px 10px;outline:none}
+.h-filter-bar{background:#0b0b1e;border-bottom:2px solid rgba(201,168,76,.3);padding:10px 16px;display:none;gap:0;align-items:stretch;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.h-filter-bar.show{display:flex}
+.h-filter-bar::-webkit-scrollbar{height:3px}
+.h-filter-bar::-webkit-scrollbar-thumb{background:#C9A84C;border-radius:2px}
+.hf{display:flex;flex-direction:column;gap:4px;padding:0 14px;border-right:1px solid #1a1828;flex-shrink:0}
+.hf:first-child{padding-left:0}
+.hf-lbl{font-size:10px;font-weight:700;color:#C9A84C;text-transform:uppercase;letter-spacing:.8px;white-space:nowrap}
+.hf-sel{background:#0f0f24;border:1px solid #1e1e38;border-radius:7px;color:#666;font-family:inherit;font-size:12px;padding:7px 10px;outline:none;min-width:110px;cursor:pointer;transition:border-color .15s}
+.hf-sel:focus,.hf-sel:hover{border-color:#C9A84C;color:#111}
+.hf-sel option{background:#0f0f24}
+.hf-range{display:flex;align-items:center;gap:5px}
+.hf-num{background:#0f0f24;border:1px solid #1e1e38;border-radius:7px;color:#666;font-family:inherit;font-size:12px;padding:7px 8px;outline:none;width:85px;transition:border-color .15s}
+.hf-num:focus{border-color:#C9A84C;color:#111}
+.hf-num::placeholder{color:#ccc;font-size:11px}
+.hf-dash{color:#ccc;font-size:13px;flex-shrink:0}
+.hf-clear{background:none;border:1px solid #e5e5e5;border-radius:8px;color:#999;font-size:11px;padding:8px 12px;cursor:pointer;align-self:flex-end;font-family:inherit;transition:all .15s;flex-shrink:0;white-space:nowrap;margin-left:8px}
+.hf-clear:hover{border-color:#555;color:#888}
+.cl-body{display:flex;flex:1}
+.cl-sidebar{width:190px;flex-shrink:0;background:#f8f8f8;border-right:1px solid #1a1828;padding:8px 0;overflow-y:auto}
+.cs-all{display:flex;align-items:center;gap:8px;padding:10px 14px;font-size:13px;color:#555;cursor:pointer;border-left:3px solid transparent;transition:all .15s;width:100%;background:none;border:none;font-family:inherit;text-align:left;margin-bottom:2px}
+.cs-all:hover{background:rgba(201,168,76,.04);color:#999}
+.cs-all.active{background:rgba(201,168,76,.1);color:#C9A84C;border-left-color:#C9A84C;border-left:3px solid #c9a84c;font-weight:600}
+.cs-group{border-bottom:1px solid #e5e5e5}
+.cs-heading{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;font-size:11px;font-weight:700;color:#999;cursor:pointer;transition:all .15s;background:none;border:none;width:100%;font-family:inherit;text-align:left;text-transform:uppercase;letter-spacing:.8px}
+.cs-heading:hover{color:#666;background:rgba(255,255,255,.02)}
+.cs-heading.open{color:#C9A84C}
+.cs-arrow{font-size:9px;transition:transform .2s;color:#ccc;margin-left:auto}
+.cs-heading.open .cs-arrow{transform:rotate(90deg);color:#C9A84C}
+.cs-items{display:none;padding-bottom:4px}
+.cs-items.open{display:block}
+.cs-item{display:flex;align-items:center;gap:7px;padding:7px 12px 7px 22px;font-size:12px;color:#4a4a6a;cursor:pointer;border-left:3px solid transparent;transition:all .15s;width:100%;background:none;border-top:none;border-right:none;border-bottom:none;font-family:inherit;text-align:left}
+.cs-item:hover{background:rgba(201,168,76,.04);color:#888;border-left-color:rgba(201,168,76,.2)}
+.cs-item.active{background:rgba(201,168,76,.08);color:#C9A84C;border-left-color:#C9A84C;font-weight:600}
+.cs-icon{font-size:13px;width:16px;text-align:center;flex-shrink:0}
+.cl-main{flex:1;min-width:0;padding:16px 20px}
+.results-count{font-size:13px;color:#444;margin-bottom:14px}
+.results-count strong{color:#111}
+.cl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
+.lc{background:#ffffff;border:1px solid #e5e5e5;border-radius:12px;overflow:hidden;transition:all .2s;cursor:pointer}
+.lc:hover{border-color:#C9A84C;transform:translateY(-2px)}
+.lc.is-featured{border:2px solid #C9A84C;background:#f5f5f5;box-shadow:0 4px 20px rgba(201,168,76,.1)}
+.lc.is-premium{border:2px solid #E8C97A;background:#100f1c;box-shadow:0 4px 24px rgba(232,201,122,.15)}
+.lc-crown{position:absolute;top:0;left:50%;transform:translateX(-50%);font-size:9px;font-weight:700;padding:2px 12px;border-radius:0 0 7px 7px;z-index:2;white-space:nowrap}
+.lc-crown.feat{background:#C9A84C;color:#000}
+.lc-crown.prem{background:linear-gradient(90deg,#C9A84C,#E8C97A);color:#000}
+.lc-img{height:150px;background:#f0f0f0;display:flex;align-items:center;justify-content:center;font-size:40px;position:relative;overflow:hidden}
+.lc-img img{width:100%;height:100%;object-fit:cover}
+.lc-cond{position:absolute;top:7px;left:7px;padding:3px 7px;border-radius:5px;font-size:10px;font-weight:700}
+.lc-cond.new{background:#22c55e;color:#000}
+.lc-cond.used{background:rgba(0,0,0,.7);color:#666}
+.lc-free{position:absolute;top:7px;right:7px;background:#C9A84C;color:#000;border-radius:5px;padding:3px 7px;font-size:10px;font-weight:700}
+.lc-body{padding:10px 12px}
+.lc-title{font-size:13px;font-weight:600;color:#111;margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lc-loc{font-size:11px;color:#ccc;margin-bottom:8px}
+.lc-foot{display:flex;align-items:center;justify-content:space-between}
+.lc-price{font-size:15px;font-weight:700;color:#C9A84C}
+.lc-call{background:#C9A84C;border:none;border-radius:7px;color:#000;font-size:11px;font-weight:700;padding:5px 11px;cursor:pointer;text-decoration:none;font-family:inherit}
+</style>
+</head>
+<body>
+
+
+<div class="ad-top"><span class="ad-label">Advertisement</span></div>
+<nav class="navbar" style="background:#f8f8f8;border-bottom:1px solid #e5e5e5">
+  <a href="../home.html" class="nav-logo">
+    <div class="nav-logo-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#0e0e0e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+    </div>
+    <div class="nav-logo-text">Gulf<span>Habibi</span></div>
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="../home.html" class="nav-link">Home</a>
+    <a href="../motors/index.html" class="nav-link"><span style="display:inline-flex;width:14px;height:14px;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></span> Motors</a>
+    <a href="../property/index.html" class="nav-link">Property</a>
+    <a href="../jobs/index.html" class="nav-link">Jobs</a>
+    <a href="index.html" class="nav-link active">Classifieds</a>
+    <a href="../services/index.html" class="nav-link">Services</a>
+    <a href="../directory/index.html" class="nav-link">Directory</a>
+    <a href="../about.html" class="nav-link">About Us</a>
+  </div>
+  <div class="nav-actions" id="authSection">
+    <button id="themeToggleBtn" onclick="toggleTheme()" title="Toggle Dark/Light" style="background:var(--bg-card,#0d0d1a);border:1px solid var(--border,#1a1828);border-radius:8px;color:var(--gold,#C9A84C);font-size:15px;padding:5px 9px;cursor:pointer;line-height:1">&#9728;&#65039;</button>
+    <div id="navGuest" style="display:flex;gap:8px;align-items:center">
+      <button class="btn btn-ghost btn-sm" onclick="openAuth('signin')">Sign In</button>
+    </div>
+    <div id="navUser" style="display:none;gap:8px;align-items:center">
+      <span id="navUserName" style="font-size:13px;color:#C9A84C;font-weight:600"></span>
+      <a href="../dashboard/index.html" class="btn btn-ghost btn-sm">&#128100; Dashboard</a>
+      <button class="btn btn-outline btn-sm" onclick="doSignout()" style="font-size:12px;padding:5px 12px">Sign Out</button>
+    </div>
+  </div>
+  <button class="nav-hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+</nav>
+
+<div class="cl-page">
+  <!-- TOP BAR — keyword search + sort ONLY -->
+  <div class="cl-topbar">
+    <input type="text" id="clSearch" autocomplete="off" placeholder="Search classifieds..." oninput="loadItems()">
+    <select id="clSort" onchange="loadItems()" style="background:#f8f8f8;border:1px solid #e5e5e5;border-radius:8px;color:#666;font-family:inherit;font-size:13px;padding:9px 10px;outline:none">
+      <option value="newest">Newest First</option>
+      <option value="price_low">Price: Low to High</option>
+      <option value="price_high">Price: High to Low</option>
+    </select>
+  </div>
+
+  <!-- HORIZONTAL FILTER BAR — appears when category clicked -->
+  <div class="h-filter-bar" id="hFilterBar"></div>
+
+  <div class="cl-body">
+    <!-- LEFT SIDEBAR — accordion style -->
+    <div class="cl-sidebar">
+      <!-- All Classifieds -->
+      <button class="cs-all active" onclick="selectCat(this,'all','All Classifieds')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg> All Classifieds</button>
+
+      <!-- Electronics -->
+      <div class="cs-group">
+        <button class="cs-heading open" onclick="toggleGroup(this)">📱 Electronics <span class="cs-arrow">›</span></button>
+        <div class="cs-items open">
+          <button class="cs-item" onclick="selectCat(this,'mobile','Mobiles & Tablets')"><span class="cs-icon">📱</span>Mobiles & Tablets</button>
+          <button class="cs-item" onclick="selectCat(this,'laptop','Computers & Laptops')"><span class="cs-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg></span>Computers & Laptops</button>
+          <button class="cs-item" onclick="selectCat(this,'tv','TVs & Screens')"><span class="cs-icon">📺</span>TVs & Screens</button>
+          <button class="cs-item" onclick="selectCat(this,'gaming','Gaming')"><span class="cs-icon">🎮</span>Gaming</button>
+          <button class="cs-item" onclick="selectCat(this,'audio','Audio & Headphones')"><span class="cs-icon">🎧</span>Audio & Headphones</button>
+          <button class="cs-item" onclick="selectCat(this,'camera','Cameras')"><span class="cs-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></span>Cameras</button>
+        </div>
+      </div>
+
+      <!-- Home & Living -->
+      <div class="cs-group">
+        <button class="cs-heading" onclick="toggleGroup(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> Home & Living <span class="cs-arrow">›</span></button>
+        <div class="cs-items">
+          <button class="cs-item" onclick="selectCat(this,'furniture','Furniture')"><span class="cs-icon">🛋️</span>Furniture</button>
+          <button class="cs-item" onclick="selectCat(this,'appliances','Home Appliances')"><span class="cs-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275Z"/></svg></span>Home Appliances</button>
+          <button class="cs-item" onclick="selectCat(this,'kitchen','Kitchen & Dining')"><span class="cs-icon">🍳</span>Kitchen & Dining</button>
+          <button class="cs-item" onclick="selectCat(this,'garden','Garden & Outdoor')"><span class="cs-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></span>Garden & Outdoor</button>
+        </div>
+      </div>
+
+      <!-- Fashion -->
+      <div class="cs-group">
+        <button class="cs-heading" onclick="toggleGroup(this)">👗 Fashion <span class="cs-arrow">›</span></button>
+        <div class="cs-items">
+          <button class="cs-item" onclick="selectCat(this,'mens','Mens Clothing')"><span class="cs-icon">👔</span>Men's Clothing</button>
+          <button class="cs-item" onclick="selectCat(this,'womens','Womens Clothing')"><span class="cs-icon">👗</span>Women's Clothing</button>
+          <button class="cs-item" onclick="selectCat(this,'shoes','Shoes & Footwear')"><span class="cs-icon">👟</span>Shoes & Footwear</button>
+          <button class="cs-item" onclick="selectCat(this,'bags','Bags & Accessories')"><span class="cs-icon">👜</span>Bags & Accessories</button>
+          <button class="cs-item" onclick="selectCat(this,'watches','Watches & Jewellery')"><span class="cs-icon">⌚</span>Watches & Jewellery</button>
+        </div>
+      </div>
+
+      <!-- Kids & Baby -->
+      <div class="cs-group">
+        <button class="cs-heading" onclick="toggleGroup(this)">🧸 Kids & Baby <span class="cs-arrow">›</span></button>
+        <div class="cs-items">
+          <button class="cs-item" onclick="selectCat(this,'toys','Toys & Games')"><span class="cs-icon">🧸</span>Toys & Games</button>
+          <button class="cs-item" onclick="selectCat(this,'baby','Baby Gear')"><span class="cs-icon">🍼</span>Baby Gear & Clothes</button>
+        </div>
+      </div>
+
+      <!-- Sports -->
+      <div class="cs-group">
+        <button class="cs-heading" onclick="toggleGroup(this)">⚽ Sports & Outdoors <span class="cs-arrow">›</span></button>
+        <div class="cs-items">
+          <button class="cs-item" onclick="selectCat(this,'sports','Sports Equipment')"><span class="cs-icon">⚽</span>Sports Equipment</button>
+          <button class="cs-item" onclick="selectCat(this,'bikes','Bicycles & Scooters')"><span class="cs-icon">🚲</span>Bicycles & Scooters</button>
+        </div>
+      </div>
+
+      <!-- Other -->
+      <div class="cs-group">
+        <button class="cs-heading" onclick="toggleGroup(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> Other <span class="cs-arrow">›</span></button>
+        <div class="cs-items">
+          <button class="cs-item" onclick="selectCat(this,'books','Books & Stationery')"><span class="cs-icon">📚</span>Books & Stationery</button>
+          <button class="cs-item" onclick="selectCat(this,'pets','Pets & Accessories')"><span class="cs-icon">🐾</span>Pets & Accessories</button>
+          <button class="cs-item" onclick="selectCat(this,'free','Free Stuff')"><span class="cs-icon">🎁</span>Free Stuff</button>
+          <button class="cs-item" onclick="selectCat(this,'other','Other Items')"><span class="cs-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></span>Other Items</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="cl-main">
+      <div class="results-count" id="clCount">Loading...</div>
+      <div class="cl-grid" id="clGrid"></div>
+    </div>
+
+    <!-- RIGHT ADS -->
+    <div class="ad-right-wrap">
+      <div style="background:#ffffff;border:1px solid #e5e5e5;border-radius:8px;height:260px;display:flex;align-items:center;justify-content:center"><span class="ad-label">Ad</span></div>
+      <div style="background:#ffffff;border:1px solid #e5e5e5;border-radius:8px;height:260px;display:flex;align-items:center;justify-content:center"><span class="ad-label">Ad</span></div>
+    </div>
+  </div>
+</div>
+<div class="ad-bottom"><span class="ad-label">Advertisement</span></div>
+<!-- AUTH MODAL -->
+<div id="authModal" class="modal-overlay" style="display:none">
+  <div class="modal-box"><button class="modal-close" onclick="closeAuth()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <div class="modal-tabs"><button class="modal-tab active" id="tabSignin" onclick="switchTab('signin')">Sign In</button><button class="modal-tab" id="tabSignup" onclick="switchTab('signup')">Sign Up</button></div>
+    <div id="formSignin"><div style="margin-bottom:14px"><input class="form-input" type="email" id="siEmail" placeholder="Email"></div><div style="margin-bottom:16px"><input class="form-input" type="password" id="siPass" placeholder="Password"></div><button class="btn btn-gold" style="width:100%" onclick="doSignin()">Sign In</button></div>
+    <div id="formSignup" style="display:none"><div style="margin-bottom:14px"><input class="form-input" type="text" id="suName" placeholder="Full name"></div><div style="margin-bottom:14px"><input class="form-input" type="email" id="suEmail" placeholder="Email"></div><div style="margin-bottom:16px"><input class="form-input" type="password" id="suPass" placeholder="Password"></div><button class="btn btn-gold" style="width:100%" onclick="doSignup()">Create Account</button></div>
+    <div id="authMsg" style="margin-top:12px;font-size:13px;text-align:center;color:#ef4444"></div>
+  </div>
+</div>
+<script src="../shared/config.js"></script>
+<script src="../shared/gb-ref.js"></script>
+<!-- auth handled via module below -->
+<script>
+const SB='https://chfkssclmdshdcijfzdr.supabase.co';
+const SK='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNoZmtzc2NsbWRzaGRjaWpmemRyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM1ODc2ODUsImV4cCI6MjA4OTE2MzY4NX0.cbJBIgeDRIqFvk3WMmxRoDWo1C73wM44oBDekdcc3sE';
+const H={apikey:SK,Authorization:'Bearer '+SK};
+
+const AREAS={Dubai:['Downtown','Marina','JLT','JBR','Jumeirah','Al Barsha','Deira','Bur Dubai','Mirdif','Al Quoz','Karama'],
+'Abu Dhabi':['Corniche','Khalidiyah','Al Reem Island','Mussafah','Khalifa City'],
+Sharjah:['Al Nahda','Al Majaz','Al Qasba','Al Khan'],Ajman:['Al Nuaimiya','Al Rashidiya'],
+RAK:['Al Nakheel','Al Hamra'],Fujairah:['City Centre','Faseel']};
+
+let activeCat='all';
+
+function updateArea(){
+  const em=document.getElementById('fEmirate')?.value;
+  const sel=document.getElementById('fArea');
+  if(!sel)return;
+  sel.innerHTML='<option value="">All Areas</option>';
+  (AREAS[em]||[]).forEach(a=>sel.innerHTML+=`<option>${a}</option>`);
+}
+
+function toggleGroup(btn){
+  btn.classList.toggle('open');
+  btn.nextElementSibling.classList.toggle('open');
+}
+
+function selectCat(btn,cat,label){
+  document.querySelectorAll('.cs-item,.cs-all').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  activeCat=cat;
+  console.log('Category selected:',cat);
+  buildFilterBar(cat,label);
+  loadItems();
+}
+
+function buildFilterBar(cat,label){
+  const bar=document.getElementById('hFilterBar');
+  if(cat==='all'){bar.classList.remove('show');bar.innerHTML='';return;}
+  let html='';
+
+  // Emirate — always first
+  html+=`<div class="hf"><div class="hf-lbl">Emirate</div>
+    <select class="hf-sel" id="fEmirate" onchange="updateArea();loadItems()">
+      <option value="">All UAE</option>
+      <option>Dubai</option><option>Abu Dhabi</option><option>Sharjah</option>
+      <option>Ajman</option><option>RAK</option><option>Fujairah</option>
+    </select></div>`;
+
+  // Area — always second
+  html+=`<div class="hf"><div class="hf-lbl">Area</div>
+    <select class="hf-sel" id="fArea" onchange="loadItems()" style="min-width:120px">
+      <option value="">All Areas</option>
+    </select></div>`;
+
+  // Condition — for physical items
+  if(!['books','free'].includes(cat)){
+    html+=`<div class="hf"><div class="hf-lbl">Condition</div>
+      <select class="hf-sel" id="fCondition" onchange="loadItems()">
+        <option value="">Any</option>
+        <option>New</option><option>Like New</option><option>Good</option><option>Fair</option>
+      </select></div>`;
+  }
+
+  // Price range — for non-free categories
+  if(cat!=='free'){
+    html+=`<div class="hf"><div class="hf-lbl">Price (AED)</div>
+      <div class="hf-range">
+        <input class="hf-num" type="number" id="fPriceMin" placeholder="0" oninput="loadItems()">
+        <span class="hf-dash">—</span>
+        <input class="hf-num" type="number" id="fPriceMax" placeholder="Max" oninput="loadItems()">
+      </div></div>`;
+  }
+
+  html+=`<button class="hf-clear" onclick="clearFilters()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Clear</button>`;
+  bar.innerHTML=html;
+  bar.classList.add('show');
+}
+
+function clearFilters(){
+  document.querySelectorAll('#hFilterBar select').forEach(s=>s.value='');
+  document.querySelectorAll('#hFilterBar input[type=number]').forEach(i=>i.value='');
+  loadItems();
+}
+
+const CAT_ICONS={all:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>',mobile:'📱',laptop:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>',tv:'📺',gaming:'🎮',audio:'🎧',camera:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>',
+furniture:'🛋️',appliances:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>',kitchen:'🍳',garden:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>',mens:'👔',womens:'👗',shoes:'👟',
+bags:'👜',watches:'⌚',toys:'🧸',baby:'🍼',sports:'⚽',bikes:'🚲',books:'📚',pets:'🐾',free:'🎁',other:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>'};
+
+async function loadItems(){
+  const q=document.getElementById('clSearch')?.value.trim()||'';
+  const em=document.getElementById('fEmirate')?.value||'';
+  const area=document.getElementById('fArea')?.value||'';
+  const cond=document.getElementById('fCondition')?.value||'';
+  const pMin=document.getElementById('fPriceMin')?.value||'';
+  const pMax=document.getElementById('fPriceMax')?.value||'';
+
+  let url=`${SB}/rest/v1/listings?select=*&category=eq.classifieds&order=plan.desc,created_at.desc`;
+  if(activeCat!=='all') url+=`&sub_category=eq.${activeCat}`;
+  if(em) url+=`&emirate=eq.${encodeURIComponent(em)}`;
+  if(area) url+=`&area=eq.${encodeURIComponent(area)}`;
+  if(cond) url+=`&condition=eq.${encodeURIComponent(cond)}`;
+  if(pMin) url+=`&price=gte.${pMin}`;
+  if(pMax) url+=`&price=lte.${pMax}`;
+  if(q) url+=`&title=ilike.%25${encodeURIComponent(q)}%25`;
+
+  const r=await fetch(url,{headers:H});
+  let data=await r.json();
+  if(!Array.isArray(data))data=[];
+
+  const cnt=document.getElementById('clCount');
+  const grid=document.getElementById('clGrid');
+  const catName=document.querySelector('.cs-item.active')?.textContent.trim()||'All Classifieds';
+  cnt.innerHTML=`<strong>${data.length}</strong> ${catName} found`;
+
+  if(data.length===0){
+    grid.innerHTML=`<div style="grid-column:1/-1;text-align:center;padding:60px 20px">
+      <div style="font-size:44px;margin-bottom:14px">${CAT_ICONS[activeCat]||'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>'}</div>
+      <div style="font-size:15px;color:#555;margin-bottom:8px">No listings found</div>
+      <div style="font-size:12px;color:#333;margin-bottom:20px">Be the first to post in this category!</div>
+      <a href="post.html" class="btn btn-gold">+ Post Free</a></div>`;
+    return;
+  }
+
+    grid.innerHTML=data.map(function(it){
+    var icon=CAT_ICONS[it.sub_category]||'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>';
+    var isPrem=it.plan==='premium', isFeat=it.plan==='featured';
+    var tierCls=isPrem?'is-premium':isFeat?'is-featured':'';
+    var crown=isPrem?'<div class="lc-crown prem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Premium</div>':isFeat?'<div class="lc-crown feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Featured</div>':'';
+    var img=it.images&&it.images[0]?'<img src="'+it.images[0]+'" loading="lazy">':icon;
+    var cond=it.condition==='New'?'<span class="lc-cond new">NEW</span>':it.condition?'<span class="lc-cond used">'+it.condition+'</span>':'';
+    var freeTag=(!it.price||it.price==0)?'<span class="lc-free">FREE</span>':'';
+    var price=(!it.price||it.price==0)?'Free':'AED '+Number(it.price).toLocaleString();
+    var phone=it.contact_phone||'';
+    return '<div class="lc '+tierCls+'" onclick="window.location.href=\'listing.html?id='+it.id+'\'">'+
+      '<div class="lc-img">'+img+crown+cond+freeTag+'</div>'+
+      '<div class="lc-body">'+
+      '<div class="lc-title">'+it.title+'</div>'+
+      '<div class="lc-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> '+[it.area,it.emirate].filter(Boolean).join(', ')+'</div>'+
+      '<div class="lc-foot"><span class="lc-price">'+price+'</span>'+
+      '<a href="tel:'+phone+'" class="lc-call" onclick="event.stopPropagation()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Call</a>'+
+      '</div></div></div>';
+  }).join('');
+}
+
+document.addEventListener('DOMContentLoaded',()=>loadItems());
+</script>
+<script src="../shared/theme.js"></script>
+<script>
+(function(){
+  function checkAuthState(){
+    var user=localStorage.getItem('gb_user');
+    var guest=document.getElementById('navGuest');
+    var navUser=document.getElementById('navUser');
+    var nameEl=document.getElementById('navUserName');
+    if(user){try{
+      var u=JSON.parse(user);
+      var name=(u.user_metadata&&u.user_metadata.full_name)||u.email.split('@')[0]||'Account';
+      if(nameEl)nameEl.textContent='Hi, '+name.split(' ')[0];
+      if(guest)guest.style.display='none';
+      if(navUser)navUser.style.display='flex';
+    }catch(e){}}
+    else{if(guest)guest.style.display='flex';if(navUser)navUser.style.display='none';}
+  }
+  function doSignout(){localStorage.removeItem('gb_token');localStorage.removeItem('gb_user');checkAuthState();}
+  window.doSignout=doSignout;
+  document.addEventListener('DOMContentLoaded',checkAuthState);
+})();
+</script>
+
+
+</body>
+</html>

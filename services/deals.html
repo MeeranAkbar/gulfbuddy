@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/shared/preview-guard.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Today's Service Deals — GulfHabibi UAE</title>
+<link rel="stylesheet" href="../shared/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="../shared/theme.js"></script>
+<style>
+body{background:#ffffff}
+.page-wrap{max-width:1000px;margin:0 auto;padding:24px 20px 60px}
+.hero-strip{background:linear-gradient(135deg,#0d0d1a 0%,#12111e 100%);border:1px solid rgba(201,168,76,.15);border-radius:16px;padding:24px 28px;margin-bottom:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.filter-bar select{background:#ffffff;border:1px solid #e5e5e5;border-radius:8px;color:#888;font-size:13px;font-family:inherit;padding:8px 12px;outline:none}
+.cat-scroll{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;margin-bottom:20px;scrollbar-width:none}
+.cat-scroll::-webkit-scrollbar{display:none}
+.cat-btn{flex-shrink:0;background:#ffffff;border:1.5px solid #1a1828;border-radius:20px;padding:7px 14px;font-size:12px;font-weight:600;color:#555;cursor:pointer;white-space:nowrap;transition:all .15s;font-family:inherit}
+.cat-btn:hover{border-color:#999;color:#888}
+.cat-btn.active{border-color:#C9A84C;background:rgba(201,168,76,.1);color:#C9A84C}
+.deals-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px}
+.deal-card{background:#ffffff;border:1px solid #e5e5e5;border-radius:14px;overflow:hidden;transition:all .2s;position:relative}
+.deal-card:hover{border-color:rgba(201,168,76,.35);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.5)}
+.deal-card.full{opacity:.6;pointer-events:none}
+.deal-badge{position:absolute;top:12px;left:12px;z-index:2}
+.deal-header{background:linear-gradient(135deg,#111120,#0d0d18);padding:20px;border-bottom:1px solid #e5e5e5}
+.deal-icon{font-size:36px;margin-bottom:8px}
+.deal-title{font-size:15px;font-weight:700;color:#111;margin-bottom:4px}
+.deal-includes{font-size:11px;color:#555;line-height:1.6}
+.deal-body{padding:16px}
+.deal-price{font-size:26px;font-weight:800;color:#C9A84C;margin-bottom:4px}
+.deal-areas{font-size:11px;color:#444;margin-bottom:10px}
+.deal-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.slots-bar{height:4px;background:#f8f8f8;border-radius:2px;margin-bottom:12px;overflow:hidden}
+.slots-fill{height:100%;background:#C9A84C;border-radius:2px;transition:width .3s}
+.slots-text{font-size:11px;margin-bottom:8px}
+.book-btn{width:100%;background:#C9A84C;border:none;border-radius:10px;padding:11px;font-size:14px;font-weight:700;color:#000;cursor:pointer;font-family:inherit;transition:background .15s}
+.book-btn:hover{background:#E8C97A}
+.full-btn{width:100%;background:#f8f8f8;border:1px solid #e5e5e5;border-radius:10px;padding:11px;font-size:13px;font-weight:600;color:#444;cursor:default;font-family:inherit}
+.tier-badge{display:inline-flex;align-items:center;gap:3px;font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px}
+.tier-new{background:rgba(100,100,120,.15);color:#666;border:1px solid #e5e5e5}
+.tier-verified{background:rgba(34,197,94,.1);color:#22c55e;border:1px solid rgba(34,197,94,.2)}
+.tier-top{background:rgba(201,168,76,.12);color:#C9A84C;border:1px solid rgba(201,168,76,.25)}
+/* Book Modal */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:1000;display:none;align-items:center;justify-content:center;padding:16px}
+.modal-overlay.show{display:flex}
+.modal-box{background:#ffffff;border:1px solid rgba(201,168,76,.25);border-radius:18px;padding:28px;max-width:460px;width:100%;max-height:90vh;overflow-y:auto}
+@media(max-width:600px){.deals-grid{grid-template-columns:1fr}.hero-strip{padding:16px}}
+</style>
+</head>
+<body>
+<div class="ad-top"><span class="ad-label">Advertisement</span></div>
+<nav class="navbar">
+  <a href="../home.html" class="nav-logo">
+    <div class="nav-logo-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#0e0e0e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+    </div>
+    <div class="nav-logo-text">Gulf<span>Habibi</span></div>
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="../home.html" class="nav-link">Home</a>
+    <a href="../motors/index.html" class="nav-link"><span style="display:inline-flex;width:14px;height:14px;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></span> Motors</a>
+    <a href="../property/index.html" class="nav-link">Property</a>
+    <a href="../jobs/index.html" class="nav-link">Jobs</a>
+    <a href="../marketplace/index.html" class="nav-link">Classifieds</a>
+    <a href="index.html" class="nav-link active">Services</a>
+    <a href="../directory/index.html" class="nav-link">Directory</a>
+  </div>
+  <div class="nav-actions" id="navActions">
+    <button id="themeToggleBtn" onclick="toggleTheme()" style="background:var(--bg-card,#0d0d1a);border:1px solid var(--border,#1a1828);border-radius:8px;color:var(--gold,#C9A84C);font-size:15px;padding:5px 9px;cursor:pointer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>
+    <div id="navGuest" style="display:flex;gap:8px;align-items:center">
+      <button class="btn btn-ghost btn-sm" onclick="openAuth('signin')">Sign In</button>
+    </div>
+    <div id="navUser" style="display:none;gap:8px;align-items:center">
+      <span id="navUserName" style="font-size:13px;color:#C9A84C;font-weight:600"></span>
+      <a href="../dashboard/index.html" class="btn btn-ghost btn-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Dashboard</a>
+      <button class="btn btn-outline btn-sm" onclick="doSignout()">Sign Out</button>
+    </div>
+  </div>
+  <button class="nav-hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+</nav>
+
+<div class="page-wrap">
+  <!-- HERO STRIP -->
+  <div class="hero-strip">
+    <div>
+      <div style="font-size:22px;font-weight:800;color:#111;margin-bottom:4px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg> Today's Service Deals</div>
+      <div style="font-size:13px;color:#555">Verified providers. Fixed prices. Book in 60 seconds.</div>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <a href="post-deal.html" class="btn btn-gold" style="padding:10px 18px;font-size:13px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> I'm a Provider — Post Deal</a>
+      <a href="post-job.html" class="btn btn-outline btn-sm" style="padding:10px 14px;font-size:13px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg> Custom Job Request</a>
+    </div>
+  </div>
+
+  <!-- CATEGORY SCROLL -->
+  <div class="cat-scroll" id="catScroll">
+    <button class="cat-btn active" onclick="filterCat(this,'')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg> All Deals</button>
+    <button class="cat-btn" onclick="filterCat(this,'ac')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"/><path d="M9.6 4.6A2 2 0 1 1 11 8H2"/><path d="M12.6 19.4A2 2 0 1 0 14 16H2"/></svg> AC & Cooling</button>
+    <button class="cat-btn" onclick="filterCat(this,'cleaning')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275Z"/></svg> Cleaning</button>
+    <button class="cat-btn" onclick="filterCat(this,'plumbing')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg> Plumbing</button>
+    <button class="cat-btn" onclick="filterCat(this,'electrical')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg> Electrical</button>
+    <button class="cat-btn" onclick="filterCat(this,'carpentry')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="m14.5 12.5-8 8a2.119 2.119 0 0 1-3-3l8-8"/><path d="m16 16 6-6"/><path d="m8 8 6-6"/><path d="m9 7 8 8"/><path d="m21 11-8-8"/></svg> Carpentry</button>
+    <button class="cat-btn" onclick="filterCat(this,'painting')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M18.37 2.63 14 7l-1.59-1.59a2 2 0 0 0-2.82 0L8 7l9 9 1.59-1.59a2 2 0 0 0 0-2.82L17 10l4.37-4.37a2.12 2.12 0 1 0-3-3Z"/><path d="M9 8c-2 3-4 3.5-7 4l8 10c2-1 6-5 6-7"/></svg> Painting</button>
+    <button class="cat-btn" onclick="filterCat(this,'moving')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> Moving</button>
+    <button class="cat-btn" onclick="filterCat(this,'pest')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="m8 2 1.88 1.88"/><path d="M14.12 3.88 16 2"/><path d="M9 7.13v-1a3.003 3.003 0 1 1 6 0v1"/><path d="M12 20c-3.3 0-6-2.7-6-6v-3a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v3c0 3.3-2.7 6-6 6"/><path d="M12 20v-9"/><path d="M6.53 9C4.6 8.8 3 7.1 3 5"/><path d="M6 13H2"/><path d="M3 21c0-2.1 1.7-3.9 3.8-4"/><path d="M20.97 5c0 2.1-1.6 3.8-3.5 4"/><path d="M22 13h-4"/><path d="M17.2 17c2.1.1 3.8 1.9 3.8 4"/></svg> Pest Control</button>
+    <button class="cat-btn" onclick="filterCat(this,'handyman')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> Handyman</button>
+    <button class="cat-btn" onclick="filterCat(this,'it')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg> IT Support</button>
+    <button class="cat-btn" onclick="filterCat(this,'gardening')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg> Gardening</button>
+  </div>
+
+  <!-- EMIRATE FILTER -->
+  <div class="filter-bar">
+    <select id="fEm" onchange="loadDeals()">
+      <option value=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> All Emirates</option>
+      <option>Dubai</option><option>Abu Dhabi</option><option>Sharjah</option>
+      <option>Ajman</option><option>RAK</option><option>Fujairah</option>
+    </select>
+    <select id="fSort" onchange="loadDeals()">
+      <option value="created_at">Latest</option>
+      <option value="price">Lowest Price</option>
+      <option value="slots">Most Available</option>
+    </select>
+    <div id="dealsCount" style="font-size:13px;color:#444;padding:8px 4px;align-self:center"></div>
+  </div>
+
+  <!-- DEALS GRID -->
+  <div class="deals-grid" id="dealsGrid">
+    <div style="grid-column:1/-1;text-align:center;padding:60px;color:#555">Loading deals...</div>
+  </div>
+</div>
+
+<!-- BOOK MODAL -->
+<div class="modal-overlay" id="bookModal">
+  <div class="modal-box">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+      <div style="font-size:17px;font-weight:700;color:#111">Book This Deal</div>
+      <button onclick="closeBookModal()" style="background:none;border:none;color:#555;font-size:22px;cursor:pointer;line-height:1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div id="modalDealSummary" style="background:#f8f8f8;border:1px solid #e5e5e5;border-radius:10px;padding:14px;margin-bottom:18px;font-size:13px"></div>
+    <div class="form-group">
+      <label class="form-label">Your Name *</label>
+      <input class="form-input" type="text" id="bookName" placeholder="Full name">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Phone / WhatsApp *</label>
+      <input class="form-input" type="tel" id="bookPhone" placeholder="+971 50 000 0000">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Your Area *</label>
+      <input class="form-input" type="text" id="bookArea" placeholder="e.g. Marina Gate 1, JLT Cluster J">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Notes for Provider (optional)</label>
+      <textarea class="form-input" id="bookNotes" rows="2" placeholder="e.g. 2 AC units, 3rd floor, split type..."></textarea>
+    </div>
+    <div style="background:#0a0a14;border:1px solid rgba(201,168,76,.12);border-radius:10px;padding:12px 14px;margin-bottom:16px;font-size:12px;color:#555;line-height:1.8">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> <strong style="color:#888">GulfHabibi Escrow:</strong> Payment held until you confirm job done. Full refund if provider doesn't show.
+    </div>
+    <button class="book-btn" onclick="confirmBooking()">Confirm Booking <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+    <div id="bookMsg" style="text-align:center;font-size:13px;margin-top:10px"></div>
+  </div>
+</div>
+
+<div class="ad-bottom"><span class="ad-label">Advertisement</span></div>
+<script src="../shared/config.js"></script>
+<!-- auth handled via module below -->
+<script src="../shared/gb-ref.js"></script>
+<script>
+const SB='https://chfkssclmdshdcijfzdr.supabase.co';
+const SK='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNoZmtzc2NsbWRzaGRjaWpmemRyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM1ODc2ODUsImV4cCI6MjA4OTE2MzY4NX0.cbJBIgeDRIqFvk3WMmxRoDWo1C73wM44oBDekdcc3sE';
+const H={apikey:SK,Authorization:'Bearer '+SK};
+const CAT_ICONS={ac:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"/><path d="M9.6 4.6A2 2 0 1 1 11 8H2"/><path d="M12.6 19.4A2 2 0 1 0 14 16H2"/></svg>',cleaning:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275Z"/></svg>',plumbing:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg>',electrical:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>',carpentry:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="m14.5 12.5-8 8a2.119 2.119 0 0 1-3-3l8-8"/><path d="m16 16 6-6"/><path d="m8 8 6-6"/><path d="m9 7 8 8"/><path d="m21 11-8-8"/></svg>',painting:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M18.37 2.63 14 7l-1.59-1.59a2 2 0 0 0-2.82 0L8 7l9 9 1.59-1.59a2 2 0 0 0 0-2.82L17 10l4.37-4.37a2.12 2.12 0 1 0-3-3Z"/><path d="M9 8c-2 3-4 3.5-7 4l8 10c2-1 6-5 6-7"/></svg>',moving:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>',pest:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="m8 2 1.88 1.88"/><path d="M14.12 3.88 16 2"/><path d="M9 7.13v-1a3.003 3.003 0 1 1 6 0v1"/><path d="M12 20c-3.3 0-6-2.7-6-6v-3a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v3c0 3.3-2.7 6-6 6"/><path d="M12 20v-9"/><path d="M6.53 9C4.6 8.8 3 7.1 3 5"/><path d="M6 13H2"/><path d="M3 21c0-2.1 1.7-3.9 3.8-4"/><path d="M20.97 5c0 2.1-1.6 3.8-3.5 4"/><path d="M22 13h-4"/><path d="M17.2 17c2.1.1 3.8 1.9 3.8 4"/></svg>',handyman:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>',it:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>',gardening:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>',other:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>'};
+let activeCat='', activeDeal=null;
+
+function filterCat(btn,cat){
+  document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active'); activeCat=cat; loadDeals();
+}
+
+function tierBadge(t){
+  const map={top_rated:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Top Rated',verified:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg> Verified',new:'🆕 New'};
+  const cls={top_rated:'tier-top',verified:'tier-verified',new:'tier-new'};
+  return `<span class="tier-badge ${cls[t]||'tier-new'}">${map[t]||'🆕 New'}</span>`;
+}
+
+async function loadDeals(){
+  const em=document.getElementById('fEm').value;
+  const sort=document.getElementById('fSort').value;
+  let url=`${SB}/rest/v1/service_deals?status=eq.active&order=${sort==='price'?'price.asc':sort==='slots'?'slots_total.desc':'created_at.desc'}&limit=50`;
+  if(activeCat) url+=`&category=eq.${activeCat}`;
+  if(em) url+=`&emirate=eq.${encodeURIComponent(em)}`;
+  const r=await fetch(url,{headers:H});
+  const data=await r.json();
+  const grid=document.getElementById('dealsGrid');
+  document.getElementById('dealsCount').textContent=Array.isArray(data)?`${data.length} deals found`:'';
+  if(!Array.isArray(data)||data.length===0){
+    grid.innerHTML=`<div style="grid-column:1/-1;text-align:center;padding:60px 20px">
+      <div style="font-size:44px;margin-bottom:14px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+      <div style="font-size:15px;color:#555;margin-bottom:8px">No deals in this area yet</div>
+      <div style="font-size:12px;color:#333;margin-bottom:20px">Be the first provider to post a deal!</div>
+      <a href="post-deal.html" class="btn btn-gold">Post a Deal Now</a>
+    </div>`;
+    return;
+  }
+  grid.innerHTML=data.map(d=>{
+    const icon=CAT_ICONS[d.category]||'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>';
+    const slotsLeft=d.slots_total-d.slots_booked;
+    const pct=Math.round((d.slots_booked/d.slots_total)*100);
+    const isFull=slotsLeft<=0;
+    const areas=(d.areas_covered||[]).join(' · ')||d.emirate;
+    const urgency=slotsLeft===1?`<span style="color:#ef4444;font-size:11px;font-weight:700"> Last slot!</span>`:
+                  slotsLeft<=2?`<span style="color:#f59e0b;font-size:11px;font-weight:700">🟡 ${slotsLeft} slots left</span>`:
+                  `<span style="color:#22c55e;font-size:11px">🟢 ${slotsLeft} slots available</span>`;
+    return `<div class="deal-card${isFull?' full':''}">
+      <div class="deal-badge">${tierBadge(d.provider_tier)}</div>
+      <div class="deal-header">
+        <div class="deal-icon">${icon}</div>
+        <div class="deal-title">${d.title}</div>
+        ${d.price_includes?`<div class="deal-includes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg> ${d.price_includes}</div>`:''}
+      </div>
+      <div class="deal-body">
+        <div class="deal-price">AED ${Number(d.price).toLocaleString()}</div>
+        <div class="deal-areas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> ${areas}</div>
+        <div class="deal-meta">
+          ${urgency}
+          ${d.available_time?`<span style="font-size:11px;color:#444">🕐 ${d.available_time}</span>`:''}
+        </div>
+        <div class="slots-bar"><div class="slots-fill" style="width:${pct}%"></div></div>
+        ${d.gb_ref?`<div style="font-size:10px;color:#ccc;font-family:monospace;margin-bottom:8px">${d.gb_ref}</div>`:''}
+        ${isFull
+          ?`<button class="full-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Fully Booked Today</button>`
+          :`<button class="book-btn" onclick='openBookModal(${JSON.stringify(d)})'>Book Now — AED ${Number(d.price).toLocaleString()}</button>`
+        }
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function openBookModal(deal){
+  activeDeal=deal;
+  const areas=(deal.areas_covered||[]).join(', ')||deal.emirate;
+  document.getElementById('modalDealSummary').innerHTML=`
+    <div style="font-size:15px;font-weight:700;color:#111;margin-bottom:6px">${CAT_ICONS[deal.category]||'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>'} ${deal.title}</div>
+    <div style="font-size:22px;font-weight:800;color:#C9A84C;margin-bottom:6px">AED ${Number(deal.price).toLocaleString()}</div>
+    ${deal.price_includes?`<div style="color:#555;font-size:12px;margin-bottom:4px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg> ${deal.price_includes}</div>`:''}
+    <div style="color:#444;font-size:12px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> ${areas}</div>`;
+  document.getElementById('bookName').value='';
+  document.getElementById('bookPhone').value='';
+  document.getElementById('bookArea').value='';
+  document.getElementById('bookNotes').value='';
+  document.getElementById('bookMsg').textContent='';
+  document.getElementById('bookModal').classList.add('show');
+}
+function closeBookModal(){document.getElementById('bookModal').classList.remove('show');}
+
+async function confirmBooking(){
+  const name=document.getElementById('bookName').value.trim();
+  const phone=document.getElementById('bookPhone').value.trim();
+  const area=document.getElementById('bookArea').value.trim();
+  if(!name||!phone||!area){document.getElementById('bookMsg').style.color='#ef4444';document.getElementById('bookMsg').textContent='Please fill all required fields.';return;}
+  if(!activeDeal){return;}
+  const commPct=activeDeal.commission_pct||10;
+  const commAmt=Math.round(activeDeal.price*commPct/100*100)/100;
+  const payout=Math.round((activeDeal.price-commAmt)*100)/100;
+  const booking={
+    deal_id:activeDeal.id,
+    client_name:name, client_phone:phone,
+    client_area:area,
+    client_notes:document.getElementById('bookNotes').value||null,
+    amount_paid:activeDeal.price,
+    commission_pct:commPct, commission_amt:commAmt,
+    provider_payout:payout,
+    status:'confirmed'
+  };
+  // Increment slots_booked
+  const newBooked=(activeDeal.slots_booked||0)+1;
+  const newStatus=newBooked>=activeDeal.slots_total?'full':'active';
+  const [r1,r2]=await Promise.all([
+    fetch(`${SB}/rest/v1/service_bookings`,{method:'POST',headers:{...H,'Content-Type':'application/json','Prefer':'return=representation'},body:JSON.stringify(booking)}),
+    fetch(`${SB}/rest/v1/service_deals?id=eq.${activeDeal.id}`,{method:'PATCH',headers:{...H,'Content-Type':'application/json'},body:JSON.stringify({slots_booked:newBooked,status:newStatus})})
+  ]);
+  if(r1.ok||r1.status===201){
+    document.getElementById('bookMsg').style.color='#22c55e';
+    document.getElementById('bookMsg').innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg> Booked! The provider will contact you on <strong>'+phone+'</strong> shortly.';
+    setTimeout(()=>closeBookModal(),3500);
+    loadDeals();
+  } else {
+    document.getElementById('bookMsg').style.color='#ef4444';
+    document.getElementById('bookMsg').textContent='Error booking. Please try again.';
+  }
+}
+
+function checkAuthState(){
+  const u=localStorage.getItem('gb_user'),g=document.getElementById('navGuest'),nu=document.getElementById('navUser'),ne=document.getElementById('navUserName');
+  if(u){try{const p=JSON.parse(u);const n=(p.user_metadata&&p.user_metadata.full_name)||p.email.split('@')[0];if(ne)ne.textContent='Hi, '+n.split(' ')[0];if(g)g.style.display='none';if(nu)nu.style.display='flex';}catch(e){}}
+  else{if(g)g.style.display='flex';if(nu)nu.style.display='none';}
+}
+function doSignout(){localStorage.removeItem('gb_token');localStorage.removeItem('gb_user');checkAuthState();}
+document.addEventListener('DOMContentLoaded',()=>{checkAuthState();loadDeals();});
+</script>
+
+
+</body>
+</html>

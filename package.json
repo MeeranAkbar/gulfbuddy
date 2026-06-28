@@ -1,0 +1,23 @@
+{
+  "name": "gulfbuddy-platform",
+  "private": true,
+  "version": "0.1.0",
+  "packageManager": "npm@11.9.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "turbo run dev --parallel",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "verify:staging": "node ./scripts/verify-staging-supabase.mjs",
+    "smoke:local": "node ./scripts/smoke-test-local-routes.mjs",
+    "package:web": "node ./scripts/package-web-standalone.mjs"
+  },
+  "devDependencies": {
+    "turbo": "^2.5.0",
+    "typescript": "^5.8.2"
+  }
+}

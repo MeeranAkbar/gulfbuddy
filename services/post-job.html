@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/shared/preview-guard.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Post a Service Job — GulfHabibi</title>
+<link rel="stylesheet" href="../shared/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="../shared/theme.js"></script>
+<style>
+body{background:#ffffff}
+.post-wrap{max-width:680px;margin:0 auto;padding:32px 20px 60px}
+.sec-title{font-size:11px;font-weight:700;color:#C9A84C;text-transform:uppercase;letter-spacing:1px;margin:24px 0 12px;padding-bottom:8px;border-bottom:1px solid #e5e5e5}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.job-type-cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:4px}
+.jt-card{background:#f8f8f8;border:2px solid #1a1828;border-radius:12px;padding:16px;cursor:pointer;transition:all .15s;text-align:center}
+.jt-card:hover{border-color:#999}
+.jt-card.active{border-color:#C9A84C;background:rgba(201,168,76,.06)}
+.jt-icon{font-size:28px;margin-bottom:8px}
+.jt-label{font-size:13px;font-weight:600;color:#888}
+.jt-card.active .jt-label{color:#C9A84C}
+.jt-desc{font-size:11px;color:#444;margin-top:4px;line-height:1.5}
+.cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.cat-chip{background:#f8f8f8;border:1.5px solid #1a1828;border-radius:10px;padding:10px 8px;text-align:center;cursor:pointer;transition:all .15s}
+.cat-chip:hover{border-color:#999}
+.cat-chip.active{border-color:#C9A84C;background:rgba(201,168,76,.07)}
+.cat-chip-icon{font-size:20px;margin-bottom:4px}
+.cat-chip-label{font-size:11px;font-weight:600;color:#555}
+.cat-chip.active .cat-chip-label{color:#C9A84C}
+.timing-chips{display:flex;gap:8px;flex-wrap:wrap}
+.t-chip{background:#f8f8f8;border:1.5px solid #1a1828;border-radius:20px;padding:7px 14px;font-size:12px;font-weight:600;color:#555;cursor:pointer;transition:all .15s}
+.t-chip:hover{border-color:#999;color:#888}
+.t-chip.active{border-color:#C9A84C;background:rgba(201,168,76,.1);color:#C9A84C}
+.info-box{background:#ffffff;border:1px solid rgba(201,168,76,.15);border-radius:10px;padding:14px 16px;font-size:12px;color:#555;line-height:1.7;margin-bottom:20px}
+.info-box strong{color:#C9A84C}
+</style>
+</head>
+<body>
+<div class="ad-top"><span class="ad-label">Advertisement</span></div>
+<nav class="navbar">
+  <a href="../home.html" class="nav-logo">
+    <div class="nav-logo-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#0e0e0e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+    </div>
+    <div class="nav-logo-text">Gulf<span>Habibi</span></div>
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="../home.html" class="nav-link">Home</a>
+    <a href="../motors/index.html" class="nav-link"><span style="display:inline-flex;width:14px;height:14px;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></span> Motors</a>
+    <a href="../property/index.html" class="nav-link">Property</a>
+    <a href="../jobs/index.html" class="nav-link">Jobs</a>
+    <a href="../marketplace/index.html" class="nav-link">Classifieds</a>
+    <a href="index.html" class="nav-link active">Services</a>
+    <a href="../directory/index.html" class="nav-link">Directory</a>
+  </div>
+  <div class="nav-actions" id="navActions">
+    <button id="themeToggleBtn" onclick="toggleTheme()" title="Toggle" style="background:var(--bg-card,#0d0d1a);border:1px solid var(--border,#1a1828);border-radius:8px;color:var(--gold,#C9A84C);font-size:15px;padding:5px 9px;cursor:pointer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>
+    <div id="navGuest" style="display:flex;gap:8px;align-items:center">
+      <button class="btn btn-ghost btn-sm" onclick="openAuth('signin')">Sign In</button>
+    </div>
+    <div id="navUser" style="display:none;gap:8px;align-items:center">
+      <span id="navUserName" style="font-size:13px;color:#C9A84C;font-weight:600"></span>
+      <a href="../dashboard/index.html" class="btn btn-ghost btn-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Dashboard</a>
+      <button class="btn btn-outline btn-sm" onclick="doSignout()">Sign Out</button>
+    </div>
+  </div>
+  <button class="nav-hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+</nav>
+
+<div class="post-wrap">
+  <div style="font-size:22px;font-weight:700;color:#111;margin-bottom:4px">Post a Service Job</div>
+  <div style="font-size:13px;color:#555;margin-bottom:20px">Describe your job — qualified providers will bid. Free to post. You only pay when job is done.</div>
+
+  <div class="info-box">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> <strong>GulfHabibi Escrow Protection:</strong> Your payment is held safely until you confirm the job is complete. If the job isn't done — you get a full refund. Providers are rated after every job.
+  </div>
+
+  <!-- JOB TYPE -->
+  <div class="sec-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg> Job Type</div>
+  <div class="job-type-cards">
+    <div class="jt-card active" onclick="selectJobType(this,'fixed')" id="jtFixed">
+      <div class="jt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div>
+      <div class="jt-label">Fixed Price</div>
+      <div class="jt-desc">You set a budget. Providers bid their best price.</div>
+    </div>
+    <div class="jt-card" onclick="selectJobType(this,'hourly')" id="jtHourly">
+      <div class="jt-icon">⏱️</div>
+      <div class="jt-label">Hourly Rate</div>
+      <div class="jt-desc">Pay by the hour. Good for ongoing or unclear-scope jobs.</div>
+    </div>
+  </div>
+  <input type="hidden" id="jobType" value="fixed">
+
+  <!-- CATEGORY -->
+  <div class="sec-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> Service Category</div>
+  <div class="cat-grid" id="catGrid">
+    <div class="cat-chip" onclick="selectCat(this,'ac')"><div class="cat-chip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"/><path d="M9.6 4.6A2 2 0 1 1 11 8H2"/><path d="M12.6 19.4A2 2 0 1 0 14 16H2"/></svg></div><div class="cat-chip-label">AC & Cooling</div></div>
+    <div class="cat-chip" onclick="selectCat(this,'plumbing')"><div class="cat-chip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg></div><div class="cat-chip-label">Plumbing</div></div>
+    <div class="cat-chip" onclick="selectCat(this,'electrical')"><div class="cat-chip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><div class="cat-chip-label">Electrical</div></div>
+    <div class="cat-chip" onclick="selectCat(this,'cleaning')"><div class="cat-chip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275Z"/></svg></div><div class="cat-chip-label">Cleaning</div></div>
+    <div class="cat-chip" onclick="selectCat(this,'carpentry')"><div class="cat-chip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="m14.5 12.5-8 8a2.119 2.119 0 0 1-3-3l8-8"/><path d="m16 16 6-6"/><path d="m8 8 6-6"/><path d="m9 7 8 8"/><path d="m21 11-8-8"/></svg></div><div class="cat-chip-label">Carpentry</div></div>
+    <div class="cat-chip" onclick="selectCat(this,'painting')"><div class="cat-chip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M18.37 2.63 14 7l-1.59-1.59a2 2 0 0 0-2.82 0L8 7l9 9 1.59-1.59a2 2 0 0 0 0-2.82L17 10l4.37-4.37a2.12 2.12 0 1 0-3-3Z"/><path d="M9 8c-2 3-4 3.5-7 4l8 10c2-1 6-5 6-7"/></svg></div><div class="cat-chip-label">Painting</div></div>
+    <div class="cat-chip" onclick="selectCat(this,'moving')"><div class="cat-chip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div><div class="cat-chip-label">Moving</div></div>
+    <div class="cat-chip" onclick="selectCat(this,'it')"><div class="cat-chip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg></div><div class="cat-chip-label">IT Support</div></div>
+    <div class="cat-chip" onclick="selectCat(this,'pest')"><div class="cat-chip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="m8 2 1.88 1.88"/><path d="M14.12 3.88 16 2"/><path d="M9 7.13v-1a3.003 3.003 0 1 1 6 0v1"/><path d="M12 20c-3.3 0-6-2.7-6-6v-3a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v3c0 3.3-2.7 6-6 6"/><path d="M12 20v-9"/><path d="M6.53 9C4.6 8.8 3 7.1 3 5"/><path d="M6 13H2"/><path d="M3 21c0-2.1 1.7-3.9 3.8-4"/><path d="M20.97 5c0 2.1-1.6 3.8-3.5 4"/><path d="M22 13h-4"/><path d="M17.2 17c2.1.1 3.8 1.9 3.8 4"/></svg></div><div class="cat-chip-label">Pest Control</div></div>
+    <div class="cat-chip" onclick="selectCat(this,'handyman')"><div class="cat-chip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><div class="cat-chip-label">Handyman</div></div>
+    <div class="cat-chip" onclick="selectCat(this,'gardening')"><div class="cat-chip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></div><div class="cat-chip-label">Gardening</div></div>
+    <div class="cat-chip" onclick="selectCat(this,'other')"><div class="cat-chip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><div class="cat-chip-label">Other</div></div>
+  </div>
+  <input type="hidden" id="jobCategory" value="">
+
+  <!-- JOB DETAILS -->
+  <div class="sec-title">📝 Job Details</div>
+  <div class="form-group">
+    <label class="form-label">Job Title *</label>
+    <input class="form-input" type="text" id="jobTitle" placeholder="e.g. AC not cooling — needs service and gas refill">
+  </div>
+  <div class="form-group">
+    <label class="form-label">Full Description *</label>
+    <textarea class="form-input" id="jobDesc" rows="4" placeholder="Describe the problem in detail — how many units, type (split/window/central), last service date, symptoms..."></textarea>
+  </div>
+
+  <!-- BUDGET -->
+  <div class="sec-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg> Budget</div>
+  <div id="fixedBudgetSection">
+    <div class="two-col">
+      <div class="form-group">
+        <label class="form-label">Minimum Budget (AED)</label>
+        <input class="form-input" type="number" id="budgetMin" placeholder="e.g. 150">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Maximum Budget (AED)</label>
+        <input class="form-input" type="number" id="budgetMax" placeholder="e.g. 300">
+      </div>
+    </div>
+    <div style="font-size:11px;color:#444;margin-top:-8px;margin-bottom:14px">Providers will bid within your budget range. You pick the best offer.</div>
+  </div>
+  <div id="hourlyBudgetSection" style="display:none">
+    <div class="form-group">
+      <label class="form-label">Maximum Hourly Rate (AED/hour)</label>
+      <input class="form-input" type="number" id="hourlyRate" placeholder="e.g. 80">
+    </div>
+  </div>
+
+  <!-- LOCATION -->
+  <div class="sec-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Location</div>
+  <div class="two-col">
+    <div class="form-group">
+      <label class="form-label">Emirate *</label>
+      <select class="form-input" id="emirate" onchange="updateAreas()">
+        <option value="">Select...</option>
+        <option>Dubai</option><option>Abu Dhabi</option><option>Sharjah</option>
+        <option>Ajman</option><option>RAK</option><option>Fujairah</option><option>UAQ</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Area</label>
+      <select class="form-input" id="area"><option value="">Select area...</option></select>
+    </div>
+  </div>
+
+  <!-- TIMING -->
+  <div class="sec-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> When Do You Need It?</div>
+  <div class="timing-chips">
+    <div class="t-chip active" onclick="selectTiming(this,'asap')"> ASAP</div>
+    <div class="t-chip" onclick="selectTiming(this,'today')">Today</div>
+    <div class="t-chip" onclick="selectTiming(this,'this_week')">This Week</div>
+    <div class="t-chip" onclick="selectTiming(this,'weekend')">Weekend</div>
+    <div class="t-chip" onclick="selectTiming(this,'flexible')">Flexible</div>
+  </div>
+  <input type="hidden" id="timing" value="asap">
+
+  <!-- CONTACT -->
+  <div class="sec-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Your Contact</div>
+  <div class="two-col">
+    <div class="form-group">
+      <label class="form-label">Your Name *</label>
+      <input class="form-input" type="text" id="clientName" placeholder="Full name">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Phone / WhatsApp *</label>
+      <input class="form-input" type="tel" id="clientPhone" placeholder="+971 50 000 0000">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="form-label">Email (optional)</label>
+    <input class="form-input" type="email" id="clientEmail" placeholder="you@email.com">
+  </div>
+
+  <div style="background:#ffffff;border:1px solid #e5e5e5;border-radius:12px;padding:16px;margin:20px 0;font-size:12px;color:#444;line-height:1.8">
+    <div style="color:#888;font-weight:600;margin-bottom:6px">How GulfHabibi Commission Works:</div>
+    • Providers bid on your job<br>
+    • You pick the best bid<br>
+    • You pay securely through GulfHabibi<br>
+    • GulfHabibi holds payment until job is done<br>
+    • Provider gets paid after you confirm completion<br>
+    • <span style="color:#C9A84C">GulfHabibi commission (5-10%) is paid by the provider — NOT by you</span>
+  </div>
+
+  <button class="btn btn-gold" style="width:100%;padding:14px;font-size:15px" id="submitBtn" onclick="submitJob()">Post Job & Get Bids <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+  <div id="postMsg" style="text-align:center;font-size:13px;padding:8px;margin-top:8px"></div>
+</div>
+<div class="ad-bottom"><span class="ad-label">Advertisement</span></div>
+
+<script src="../shared/config.js"></script>
+<!-- auth handled via module below -->
+<script src="../shared/sanitise.js"></script>
+<script src="../shared/gb-ref.js"></script>
+<script>
+const SB='https://chfkssclmdshdcijfzdr.supabase.co';
+const SK='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNoZmtzc2NsbWRzaGRjaWpmemRyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM1ODc2ODUsImV4cCI6MjA4OTE2MzY4NX0.cbJBIgeDRIqFvk3WMmxRoDWo1C73wM44oBDekdcc3sE';
+const H={'Content-Type':'application/json',apikey:SK,Authorization:'Bearer '+SK};
+
+const AREAS={Dubai:['Downtown','Marina','JLT','JBR','Jumeirah','Al Barsha','Deira','Bur Dubai','Business Bay','Karama','Mirdif','Al Quoz'],'Abu Dhabi':['Corniche','Khalidiyah','Al Reem','Mussafah','Khalifa City'],'Sharjah':['Al Nahda','Al Majaz','Al Qasba','Industrial Area'],'Ajman':['Al Nuaimiya','Al Rashidiya','Al Jurf'],'RAK':['Al Nakheel','Al Hamra'],'Fujairah':['City Centre'],'UAQ':['Al Salamah']};
+let activeTiming='asap';
+let activeCat='';
+
+function updateAreas(){const em=document.getElementById('emirate').value;const sel=document.getElementById('area');sel.innerHTML='<option value="">Select area...</option>';(AREAS[em]||[]).forEach(a=>sel.innerHTML+=`<option>${a}</option>`);}
+function selectJobType(el,type){document.querySelectorAll('.jt-card').forEach(c=>c.classList.remove('active'));el.classList.add('active');document.getElementById('jobType').value=type;document.getElementById('fixedBudgetSection').style.display=type==='fixed'?'block':'none';document.getElementById('hourlyBudgetSection').style.display=type==='hourly'?'block':'none';}
+function selectCat(el,cat){document.querySelectorAll('.cat-chip').forEach(c=>c.classList.remove('active'));el.classList.add('active');activeCat=cat;document.getElementById('jobCategory').value=cat;}
+function selectTiming(el,t){document.querySelectorAll('.t-chip').forEach(c=>c.classList.remove('active'));el.classList.add('active');activeTiming=t;document.getElementById('timing').value=t;}
+
+async function submitJob(){
+  const title=document.getElementById('jobTitle').value.trim();
+  const desc=document.getElementById('jobDesc').value.trim();
+  const phone=document.getElementById('clientPhone').value.trim();
+  const name=document.getElementById('clientName').value.trim();
+  const emirate=document.getElementById('emirate').value;
+  const jobType=document.getElementById('jobType').value;
+
+  if(!activeCat){setMsg('Please select a service category','error');return;}
+  if(!title){setMsg('Please add a job title','error');return;}
+  if(!desc){setMsg('Please describe the job','error');return;}
+  if(!phone){setMsg('Please add your phone number','error');return;}
+  if(!name){setMsg('Please add your name','error');return;}
+  if(!emirate){setMsg('Please select your emirate','error');return;}
+
+  // Phone validation
+  if(window.GBSanitise){
+    const ph=GBSanitise.phone(phone);
+    if(!ph.valid){setMsg(ph.error,'error');return;}
+  }
+
+  const btn=document.getElementById('submitBtn');
+  btn.textContent='Posting job...';btn.disabled=true;
+
+  const job={
+    category: activeCat,
+    title: window.GBSanitise?GBSanitise.text(title,120):title,
+    description: window.GBSanitise?GBSanitise.text(desc,2000):desc,
+    job_type: jobType,
+    budget_min: document.getElementById('budgetMin')?.value||null,
+    budget_max: document.getElementById('budgetMax')?.value||null,
+    hourly_rate: document.getElementById('hourlyRate')?.value||null,
+    emirate,
+    area: document.getElementById('area').value||null,
+    timing: activeTiming,
+    client_name: name,
+    client_phone: phone,
+    client_email: document.getElementById('clientEmail').value||null,
+    status: 'open'
+  };
+
+  const r=await fetch(`${SB}/rest/v1/service_jobs`,{
+    method:'POST',
+    headers:{...H,'Prefer':'return=representation'},
+    body:JSON.stringify(job)
+  });
+
+  if(r.ok||r.status===201){
+    let gbRef='';
+    try{const d=await r.json();gbRef=d?.[0]?.gb_ref||'';}catch(e){}
+    const refMsg=gbRef?` Your job ref: <strong style="color:#C9A84C">${gbRef}</strong>`:'';
+    setMsg('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg> Job posted! Providers will start bidding soon.'+refMsg,'success');
+    btn.textContent='Job Posted!';
+    setTimeout(()=>window.location.href='jobs.html',3000);
+  } else {
+    const err=await r.json().catch(()=>({}));
+    setMsg('Error: '+(err.message||'Please try again'),'error');
+    btn.textContent='Post Job & Get Bids <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';btn.disabled=false;
+  }
+}
+
+function setMsg(msg,type){
+  const el=document.getElementById('postMsg');
+  el.style.color=type==='success'?'#22c55e':'#ef4444';
+  el.innerHTML=msg;
+}
+
+// Auth state
+function checkAuthState(){
+  const user=localStorage.getItem('gb_user');
+  const g=document.getElementById('navGuest');
+  const nu=document.getElementById('navUser');
+  const ne=document.getElementById('navUserName');
+  if(user){try{const u=JSON.parse(user);const n=(u.user_metadata&&u.user_metadata.full_name)||u.email.split('@')[0];if(ne)ne.textContent='Hi, '+n.split(' ')[0];if(g)g.style.display='none';if(nu)nu.style.display='flex';}catch(e){}}
+  else{if(g)g.style.display='flex';if(nu)nu.style.display='none';}
+}
+function doSignout(){localStorage.removeItem('gb_token');localStorage.removeItem('gb_user');checkAuthState();}
+document.addEventListener('DOMContentLoaded',checkAuthState);
+</script>
+
+
+</body>
+</html>

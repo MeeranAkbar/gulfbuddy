@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/shared/preview-guard.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Post Free Listing — GulfHabibi Classifieds</title>
+<link rel="stylesheet" href="../shared/style.css">
+<link rel="stylesheet" href="../shared/ai-tools.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+body{background:#ffffff}
+.post-wrap{max-width:660px;margin:0 auto;padding:30px 20px 60px}
+.post-title{font-size:22px;font-weight:700;color:#111;margin-bottom:4px}
+.post-sub{font-size:13px;color:#555;margin-bottom:24px}
+.sec-title{font-size:11px;font-weight:700;color:#C9A84C;text-transform:uppercase;letter-spacing:1px;margin:24px 0 12px;padding-bottom:8px;border-bottom:1px solid #e5e5e5}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.form-group{margin-bottom:14px}
+.form-label{display:block;font-size:12px;color:#666;font-weight:600;margin-bottom:5px;text-transform:uppercase;letter-spacing:.4px}
+.form-input{width:100%;background:#f8f8f8;border:1px solid #e5e5e5;border-radius:8px;padding:10px 13px;color:#111;font-size:13px;font-family:inherit;outline:none;transition:border-color .15s}
+.form-input:focus{border-color:#C9A84C}
+.form-input::placeholder{color:#ccc}
+select.form-input option{background:#f8f8f8}
+textarea.form-input{resize:vertical;min-height:90px;line-height:1.6}
+/* Category selector — visual cards */
+.cat-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:4px}
+.cat-card{background:#f8f8f8;border:1.5px solid #1a1828;border-radius:10px;padding:12px 8px;text-align:center;cursor:pointer;transition:all .15s}
+.cat-card:hover{border-color:#999}
+.cat-card.active{border-color:#C9A84C;background:rgba(201,168,76,.08)}
+.cat-card-icon{font-size:22px;margin-bottom:5px}
+.cat-card-label{font-size:11px;font-weight:600;color:#555}
+.cat-card.active .cat-card-label{color:#C9A84C}
+/* Sub-cat select — hidden until category picked */
+.sub-cat-wrap{display:none;margin-bottom:14px}
+.sub-cat-wrap.show{display:block}
+/* Condition chips */
+.cond-chips{display:flex;gap:8px;flex-wrap:wrap}
+.cond-chip{background:#f8f8f8;border:1.5px solid #1a1828;border-radius:20px;padding:6px 14px;font-size:12px;font-weight:600;color:#555;cursor:pointer;transition:all .15s}
+.cond-chip:hover{border-color:#999;color:#888}
+.cond-chip.active{border-color:#C9A84C;background:rgba(201,168,76,.1);color:#C9A84C}
+/* Image upload */
+.img-upload{border:2px dashed #1a1828;border-radius:10px;padding:24px;text-align:center;cursor:pointer;transition:all .15s}
+.img-upload:hover{border-color:#C9A84C}
+.img-previews{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.img-preview{width:76px;height:76px;border-radius:8px;object-fit:cover;border:1px solid #e5e5e5;position:relative}
+/* Submit btn */
+.submit-btn{width:100%;background:#C9A84C;border:none;border-radius:10px;padding:14px;font-size:15px;font-weight:700;color:#000;cursor:pointer;font-family:inherit;transition:background .15s;margin-top:8px}
+.submit-btn:hover{background:#E8C97A}
+.submit-btn:disabled{background:#3a3a2a;color:#666;cursor:not-allowed}
+</style>
+</head>
+<body>
+<div class="ad-top"><span class="ad-label">Advertisement</span></div>
+<nav class="navbar" style="background:#f8f8f8;border-bottom:1px solid #e5e5e5">
+  <a href="../home.html" class="nav-logo">
+    <div class="nav-logo-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#0e0e0e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+    </div>
+    <div class="nav-logo-text">Gulf<span>Habibi</span></div>
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="../home.html" class="nav-link">Home</a>
+    <a href="../motors/index.html" class="nav-link"><span style="display:inline-flex;width:14px;height:14px;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></span> Motors</a>
+    <a href="../property/index.html" class="nav-link">Property</a>
+    <a href="../jobs/index.html" class="nav-link">Jobs</a>
+    <a href="index.html" class="nav-link active">Classifieds</a>
+    <a href="../services/index.html" class="nav-link">Services</a>
+    <a href="../directory/index.html" class="nav-link">Directory</a>
+    <a href="../about.html" class="nav-link">About Us</a>
+  </div>
+  <div class="nav-actions" id="authSection">
+    <button id="themeToggleBtn" onclick="toggleTheme()" title="Toggle Dark/Light" style="background:var(--bg-card,#0d0d1a);border:1px solid var(--border,#1a1828);border-radius:8px;color:var(--gold,#C9A84C);font-size:15px;padding:5px 9px;cursor:pointer;line-height:1">&#9728;&#65039;</button>
+    <div id="navGuest" style="display:flex;gap:8px;align-items:center">
+      <button class="btn btn-ghost btn-sm" onclick="openAuth('signin')">Sign In</button>
+    </div>
+    <div id="navUser" style="display:none;gap:8px;align-items:center">
+      <span id="navUserName" style="font-size:13px;color:#C9A84C;font-weight:600"></span>
+      <a href="../dashboard/index.html" class="btn btn-ghost btn-sm">&#128100; Dashboard</a>
+      <button class="btn btn-outline btn-sm" onclick="doSignout()" style="font-size:12px;padding:5px 12px">Sign Out</button>
+    </div>
+  </div>
+  <button class="nav-hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+</nav>
+
+<div class="post-wrap">
+  <div class="post-title">Post a Free Listing</div>
+  <div class="post-sub">Goes live instantly. Always free.</div>
+
+  <!-- PHOTOS -->
+  <div class="sec-title">📸 Photos</div>
+  <div class="img-upload" onclick="document.getElementById('imgInput').click()">
+    <div style="font-size:28px;margin-bottom:6px">📸</div>
+    <div style="font-size:13px;color:#555">Tap to upload photos (max 5)</div>
+    <div style="font-size:11px;color:#999;margin-top:3px">JPG, PNG — auto-compressed to save space</div>
+  </div>
+  <input type="file" id="imgInput" multiple accept="image/*" style="display:none" onchange="previewImages(Array.from(this.files),'imgPreviews')">
+  <div id="imgMsg" style="font-size:12px;color:#C9A84C;margin-top:6px;display:none"></div>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px" id="imgPreviews"></div>
+
+  <!-- CATEGORY — visual card picker -->
+  <div class="sec-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> Category</div>
+  <div class="cat-cards" id="catCards">
+    <div class="cat-card" onclick="selectCatGroup(this,'electronics')">
+      <div class="cat-card-icon">📱</div>
+      <div class="cat-card-label">Electronics</div>
+    </div>
+    <div class="cat-card" onclick="selectCatGroup(this,'home')">
+      <div class="cat-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+      <div class="cat-card-label">Home & Living</div>
+    </div>
+    <div class="cat-card" onclick="selectCatGroup(this,'fashion')">
+      <div class="cat-card-icon">👗</div>
+      <div class="cat-card-label">Fashion</div>
+    </div>
+    <div class="cat-card" onclick="selectCatGroup(this,'kids')">
+      <div class="cat-card-icon">🧸</div>
+      <div class="cat-card-label">Kids & Baby</div>
+    </div>
+    <div class="cat-card" onclick="selectCatGroup(this,'sports')">
+      <div class="cat-card-icon">⚽</div>
+      <div class="cat-card-label">Sports & Outdoors</div>
+    </div>
+    <div class="cat-card" onclick="selectCatGroup(this,'other')">
+      <div class="cat-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+      <div class="cat-card-label">Other</div>
+    </div>
+  </div>
+
+  <!-- SUB-CATEGORY — appears after category picked -->
+  <div class="sub-cat-wrap" id="subCatWrap">
+    <div class="form-group">
+      <label class="form-label">Sub-category *</label>
+      <select class="form-input" id="subCategory" onchange="onSubCatChange()">
+        <option value="">Select sub-category</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- LISTING DETAILS -->
+  <div class="sec-title">📝 Listing Details</div>
+  <div class="form-group">
+    <label class="form-label">Title *</label>
+    <input type="text" class="form-input" id="title" placeholder="Describe what you're selling...">
+  </div>
+  <div class="form-group">
+    <label class="form-label">Description</label>
+    <textarea class="form-input" id="description" placeholder="Add more details — condition, specs, reason for selling, included accessories..."></textarea>
+      <button type="button" class="ai-desc-btn" onclick="aiWriteDesc()" id="aiDescBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        ✨ Write with AI
+      </button>
+      <div class="ai-desc-loading" id="aiDescLoading"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg> AI is writing your description...</div>
+  </div>
+
+  <!-- CONDITION — chip selection -->
+  <div class="form-group" id="conditionWrap">
+    <label class="form-label">Condition</label>
+    <div class="cond-chips">
+      <div class="cond-chip" onclick="selectCondition(this,'New')">New</div>
+      <div class="cond-chip" onclick="selectCondition(this,'Like New')">Like New</div>
+      <div class="cond-chip" onclick="selectCondition(this,'Good')">Good</div>
+      <div class="cond-chip" onclick="selectCondition(this,'Fair')">Fair</div>
+    </div>
+    <input type="hidden" id="condition" value="">
+  </div>
+
+  <!-- PRICE -->
+  <div class="sec-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg> Price</div>
+  <div class="two-col">
+    <div class="form-group">
+      <label class="form-label">Price Type</label>
+      <select class="form-input" id="priceType" onchange="togglePrice()">
+        <option value="fixed">Fixed Price</option>
+        <option value="negotiable">Negotiable</option>
+        <option value="free">Free</option>
+      </select>
+    </div>
+    <div class="form-group" id="priceGroup">
+      <label class="form-label">Price (AED)</label>
+      <input type="number" class="form-input" id="price" placeholder="0">
+    </div>
+  </div>
+
+  <!-- LOCATION -->
+  <div class="sec-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Location</div>
+  <div class="two-col">
+    <div class="form-group">
+      <label class="form-label">Emirate *</label>
+      <select class="form-input" id="emirate" onchange="updateAreaList()">
+        <option value="">Select Emirate</option>
+        <option>Dubai</option><option>Abu Dhabi</option><option>Sharjah</option>
+        <option>Ajman</option><option>RAK</option><option>Fujairah</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Area</label>
+      <select class="form-input" id="area">
+        <option value="">Select area</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="sec-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Contact</div>
+  <div class="two-col">
+    <div class="form-group">
+      <label class="form-label">Phone *</label>
+      <input type="tel" class="form-input" id="phone" placeholder="+971 50 000 0000">
+    </div>
+    <div class="form-group">
+      <label class="form-label">WhatsApp</label>
+      <input type="tel" class="form-input" id="whatsapp" placeholder="+971 50 000 0000">
+    </div>
+  </div>
+
+  <button class="submit-btn" id="submitBtn" onclick="submitListing()">Post Free</button>
+  <p style="text-align:center;font-size:12px;color:#333;margin-top:8px">Free forever. Goes live instantly.</p>
+</div>
+<!-- AUTH MODAL -->
+<div id="authModal" class="modal-overlay" style="display:none">
+  <div class="modal-box"><button class="modal-close" onclick="closeAuth()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <div class="modal-tabs"><button class="modal-tab active" id="tabSignin" onclick="switchTab('signin')">Sign In</button><button class="modal-tab" id="tabSignup" onclick="switchTab('signup')">Sign Up</button></div>
+    <div id="formSignin"><div style="margin-bottom:14px"><input class="form-input" type="email" id="siEmail" placeholder="Email"></div><div style="margin-bottom:16px"><input class="form-input" type="password" id="siPass" placeholder="Password"></div><button class="btn btn-gold" style="width:100%" onclick="doSignin()">Sign In</button></div>
+    <div id="formSignup" style="display:none"><div style="margin-bottom:14px"><input class="form-input" type="text" id="suName" placeholder="Full name"></div><div style="margin-bottom:14px"><input class="form-input" type="email" id="suEmail" placeholder="Email"></div><div style="margin-bottom:16px"><input class="form-input" type="password" id="suPass" placeholder="Password"></div><button class="btn btn-gold" style="width:100%" onclick="doSignup()">Create Account</button></div>
+    <div id="authMsg" style="margin-top:12px;font-size:13px;text-align:center;color:#ef4444"></div>
+  </div>
+</div>
+<script src="../shared/config.js"></script>
+<script src="../shared/ai-router.js"></script>
+<script src="../shared/images.js"></script>
+<!-- auth handled via module below -->
+<script src="../shared/sanitise.js"></script>
+<script src="../shared/trust.js"></script>
+<script src="../shared/gb-ref.js"></script>
+<script>
+// ── CATEGORIES — matches browse page exactly ────────────────────────
+const CAT_SUBS = {
+  electronics: [
+    {value:'mobile',         label:'📱 Mobiles & Tablets'},
+    {value:'laptop',         label:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg> Computers & Laptops'},
+    {value:'tv',             label:'📺 TVs & Screens'},
+    {value:'gaming',         label:'🎮 Gaming'},
+    {value:'audio',          label:'🎧 Audio & Headphones'},
+    {value:'camera',         label:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg> Cameras & Photography'},
+    {value:'electronics_other', label:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> Other Electronics'},
+  ],
+  home: [
+    {value:'furniture',      label:'🛋️ Furniture'},
+    {value:'appliances',     label:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275Z"/></svg> Home Appliances'},
+    {value:'kitchen',        label:'🍳 Kitchen & Dining'},
+    {value:'garden',         label:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg> Garden & Outdoor'},
+    {value:'home_other',     label:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> Other Home Items'},
+  ],
+  fashion: [
+    {value:'mens',           label:"👔 Men's Clothing"},
+    {value:'womens',         label:"👗 Women's Clothing"},
+    {value:'shoes',          label:'👟 Shoes & Footwear'},
+    {value:'bags',           label:'👜 Bags & Accessories'},
+    {value:'watches',        label:'⌚ Watches & Jewellery'},
+    {value:'fashion_other',  label:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> Other Fashion'},
+  ],
+  kids: [
+    {value:'toys',           label:'🧸 Toys & Games'},
+    {value:'baby',           label:'🍼 Baby Gear & Clothes'},
+    {value:'kids_other',     label:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> Other Kids Items'},
+  ],
+  sports: [
+    {value:'sports',         label:'⚽ Sports Equipment'},
+    {value:'bikes',          label:'🚲 Bicycles & Scooters'},
+    {value:'sports_other',   label:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> Other Sports'},
+  ],
+  other: [
+    {value:'books',          label:'📚 Books & Stationery'},
+    {value:'pets',           label:'🐾 Pets & Accessories'},
+    {value:'free',           label:'🎁 Free Stuff'},
+    {value:'other',          label:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> Other Items'},
+  ]
+};
+
+// Title placeholders per sub-category
+const TITLE_HINTS = {
+  mobile:'e.g. iPhone 14 Pro 256GB Space Black — Excellent',
+  laptop:'e.g. MacBook Pro M2 2023 — 16GB RAM Like New',
+  tv:'e.g. Samsung 65" 4K OLED Smart TV',
+  gaming:'e.g. PlayStation 5 + 2 Controllers + 3 Games',
+  audio:'e.g. Sony WH-1000XM5 Noise Cancelling Headphones',
+  camera:'e.g. Canon EOS R6 Mark II + 24-70mm Lens Kit',
+  furniture:'e.g. IKEA L-Shape Sofa — Great Condition',
+  appliances:'e.g. LG 14KG Washing Machine — 2 Years Old',
+  kitchen:'e.g. Breville Barista Express Coffee Machine',
+  garden:'e.g. Patio Set — Table + 4 Chairs',
+  mens:"e.g. Hugo Boss Suit — Size 40 — Worn Once",
+  womens:"e.g. Zara Floral Dress — Size S — New With Tags",
+  shoes:'e.g. Nike Air Max 270 — Size 42 — New',
+  bags:'e.g. Michael Kors Tote Bag — Brown — Authentic',
+  watches:'e.g. Rolex Submariner — Full Box & Papers',
+  toys:'e.g. LEGO Technic Set — Complete — Excellent',
+  baby:'e.g. Graco Stroller — Excellent Condition',
+  sports:'e.g. Decathlon Treadmill — Barely Used',
+  bikes:'e.g. Trek Mountain Bike 21-Speed — Like New',
+  books:'e.g. IELTS Preparation Books — Full Set',
+  pets:'e.g. Cat Carrier + Bowl + Toys Bundle',
+  free:'e.g. Free Sofa — Must Collect by Weekend',
+  other:'e.g. Describe your item...'
+};
+
+// ── AREAS by Emirate ────────────────────────────────────────────────
+const AREAS = {
+  Dubai:['Downtown','Marina','JLT','JBR','Jumeirah','Al Barsha','Deira','Bur Dubai','Business Bay','DIFC','Palm Jumeirah','Mirdif','Al Quoz','Karama','Satwa','Silicon Oasis'],
+  'Abu Dhabi':['Corniche','Khalidiyah','Al Reem Island','Saadiyat','Yas Island','Mussafah','Khalifa City','Al Ain','Al Bateen'],
+  Sharjah:['Al Nahda','Al Majaz','Al Qasba','Al Khan','Al Taawun','University City'],
+  Ajman:['Al Nuaimiya','Al Rashidiya','Al Jurf'],
+  RAK:['Al Nakheel','Al Dhait','Al Hamra'],
+  Fujairah:['City Centre','Faseel']
+};
+
+let activeCatGroup='';
+let activeCondition='';
+
+function selectCatGroup(card, group){
+  document.querySelectorAll('.cat-card').forEach(c=>c.classList.remove('active'));
+  card.classList.add('active');
+  activeCatGroup=group;
+  // Load sub-categories
+  const subSel=document.getElementById('subCategory');
+  subSel.innerHTML='<option value="">Select sub-category</option>';
+  (CAT_SUBS[group]||[]).forEach(s=>{
+    const o=document.createElement('option');
+    o.value=s.value; o.textContent=s.label;
+    subSel.appendChild(o);
+  });
+  document.getElementById('subCatWrap').classList.add('show');
+  subSel.value='';
+  document.getElementById('title').placeholder='Describe what you\'re selling...';
+}
+
+function onSubCatChange(){
+  const sub=document.getElementById('subCategory').value;
+  if(TITLE_HINTS[sub]) document.getElementById('title').placeholder=TITLE_HINTS[sub];
+  // Hide condition for Free Stuff
+  document.getElementById('conditionWrap').style.display = sub==='free'?'none':'block';
+  // If Free Stuff auto-set price to free
+  if(sub==='free'){
+    document.getElementById('priceType').value='free';
+    document.getElementById('priceGroup').style.display='none';
+  }
+}
+
+function selectCondition(chip, val){
+  document.querySelectorAll('.cond-chip').forEach(c=>c.classList.remove('active'));
+  chip.classList.add('active');
+  activeCondition=val;
+  document.getElementById('condition').value=val;
+}
+
+function togglePrice(){
+  document.getElementById('priceGroup').style.display=
+    document.getElementById('priceType').value==='free'?'none':'block';
+}
+
+function updateAreaList(){
+  const em=document.getElementById('emirate').value;
+  const sel=document.getElementById('area');
+  sel.innerHTML='<option value="">Select area</option>';
+  (AREAS[em]||[]).forEach(a=>{const o=document.createElement('option');o.value=a;o.textContent=a;sel.appendChild(o);});
+}
+
+window.previewImages=(files,containerId)=>{
+  // This is handled by shared/images.js — local override removed
+};
+
+// ── AI DESCRIPTION WRITER ────────────────────────────────────
+async function aiWriteDesc(){
+  const title=document.getElementById('title').value;
+  const subCat=document.getElementById('subCategory').value;
+  const condition=document.getElementById('condition').value;
+  const emirate=document.getElementById('emirate').value;
+  const details=[title,subCat,condition,emirate].filter(Boolean).join(', ');
+  if(!title){alert('Please add a title first.');return;}
+  const btn=document.getElementById('aiDescBtn');
+  const loading=document.getElementById('aiDescLoading');
+  btn.disabled=true;loading.classList.add('show');
+  try{
+    const result=await GBai.writeDescription(details,'service');
+    document.getElementById('description').value=result.trim();
+    loading.textContent='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg> Done! Edit as needed.';
+    setTimeout(()=>{loading.classList.remove('show');btn.disabled=false;},2000);
+  }catch(e){
+    loading.textContent='⚠️ AI unavailable.';
+    setTimeout(()=>{loading.classList.remove('show');btn.disabled=false;},2000);
+  }
+}
+
+  const title=document.getElementById('title').value.trim();
+  const phone=document.getElementById('phone').value.trim();
+  const emirate=document.getElementById('emirate').value;
+  if(!activeCatGroup){showMsg('Please select a category','error');return;}
+  if(!subCat){showMsg('Please select a sub-category','error');return;}
+  if(!title){showMsg('Please add a title','error');return;}
+  if(!phone){showMsg('Please add your phone number','error');return;}
+  if(!emirate){showMsg('Please select an emirate','error');return;}
+
+  const btn=document.getElementById('submitBtn');
+  btn.textContent='Posting...';btn.disabled=true;
+
+  const SB_URL='https://chfkssclmdshdcijfzdr.supabase.co';
+  const SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNoZmtzc2NsbWRzaGRjaWpmemRyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM1ODc2ODUsImV4cCI6MjA4OTE2MzY4NX0.cbJBIgeDRIqFvk3WMmxRoDWo1C73wM44oBDekdcc3sE';
+
+  // Upload and compress images FIRST before building listing object
+  const imageUrls = await uploadImages(SB_URL, SB_KEY, 'listings-images', 'classifieds');
+
+  const listing={
+    title,
+    description:document.getElementById('description').value,
+    category:'classifieds',
+    sub_category:subCat,
+    condition:activeCondition||null,
+    price:document.getElementById('priceType').value==='free'?0:(document.getElementById('price').value||null),
+    price_type:document.getElementById('priceType').value,
+    emirate,
+    area:document.getElementById('area').value||null,
+    contact_phone:phone,
+    contact_whatsapp:document.getElementById('whatsapp').value||null,
+    images:imageUrls.length?imageUrls:null,
+  };
+
+  // Sanitise inputs
+  if(window.GBSanitise){
+    listing.title=GBSanitise.text(listing.title,120);
+    listing.description=GBSanitise.text(listing.description,2000);
+    const ph=GBSanitise.phone(phone);
+    if(!ph.valid){showMsg(ph.error,'error');btn.textContent='Post Free';btn.disabled=false;return;}
+    listing.contact_phone=ph.cleaned;
+  }
+  // Trust check
+  if(window.GBTrust){
+    const trust=await GBTrust.fullCheck(listing,{supaUrl:SB_URL,supaKey:SB_KEY,skipAI:false});
+    if(!trust.allowed){showMsg(trust.message,'error');btn.textContent='Post Free';btn.disabled=false;return;}
+    if(trust.holdForReview) listing.status='pending';
+  }
+  const r=await fetch(`${SB_URL}/rest/v1/listings`,{
+    method:'POST',
+    headers:{'Content-Type':'application/json','apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Prefer':'return=representation'},
+    body:JSON.stringify(listing)
+  });
+  if(r.ok||r.status===201){
+    let gbRef='';try{const d=await r.json();gbRef=d?.[0]?.gb_ref||'';}catch(e){}
+    const refMsg=gbRef?' Ref: <strong style="color:#C9A84C">'+gbRef+'</strong>':'';
+    showMsg('Listed!'+refMsg+' Redirecting...','success');
+    setTimeout(()=>window.location.href='index.html',2500);
+  } else {
+    const err=await r.json().catch(()=>({}));
+    showMsg('Error: '+(err.message||'Try again'),'error');
+    btn.textContent='Post Free';btn.disabled=false;
+  }
+}
+
+function showMsg(msg,type){
+  let t=document.getElementById('toast');
+  if(!t){t=document.createElement('div');t.id='toast';document.body.appendChild(t);}
+  t.style.cssText=`position:fixed;bottom:24px;right:24px;background:${type==='success'?'#0d2a0d':'#2a0d0d'};border:1px solid ${type==='success'?'#22c55e':'#ef4444'};color:${type==='success'?'#22c55e':'#ef4444'};border-radius:8px;padding:10px 18px;font-size:13px;z-index:9999`;
+  t.textContent=msg;
+  setTimeout(()=>t.remove(),3000);
+}
+</script>
+<script src="../shared/theme.js"></script>
+<script>
+(function(){
+  function checkAuthState(){
+    var user=localStorage.getItem('gb_user');
+    var guest=document.getElementById('navGuest');
+    var navUser=document.getElementById('navUser');
+    var nameEl=document.getElementById('navUserName');
+    if(user){try{
+      var u=JSON.parse(user);
+      var name=(u.user_metadata&&u.user_metadata.full_name)||u.email.split('@')[0]||'Account';
+      if(nameEl)nameEl.textContent='Hi, '+name.split(' ')[0];
+      if(guest)guest.style.display='none';
+      if(navUser)navUser.style.display='flex';
+    }catch(e){}}
+    else{if(guest)guest.style.display='flex';if(navUser)navUser.style.display='none';}
+  }
+  function doSignout(){localStorage.removeItem('gb_token');localStorage.removeItem('gb_user');checkAuthState();}
+  window.doSignout=doSignout;
+  document.addEventListener('DOMContentLoaded',checkAuthState);
+})();
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/shared/preview-guard.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>List Your Properties Free — GulfHabibi Partner Program</title>
+<link rel="stylesheet" href="../shared/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<meta name="description" content="List your UAE properties free on GulfHabibi. Connect Propspace, Masterkey or any CRM. Reach thousands of UAE buyers daily.">
+<style>
+body{background:#ffffff}
+.hero{background:#f8f8f8;border-bottom:1px solid #e5e5e5;padding:60px 20px;text-align:center}
+.hero h1{font-size:32px;font-weight:700;color:#111;margin-bottom:12px}
+.hero p{font-size:15px;color:#555;max-width:560px;margin:0 auto 28px}
+.hero-stats{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;margin-top:32px}
+.stat{text-align:center}
+.stat-n{font-size:28px;font-weight:700;color:#C9A84C}
+.stat-l{font-size:12px;color:#444;margin-top:3px}
+.section{max-width:900px;margin:0 auto;padding:50px 20px}
+.sec-title{font-size:22px;font-weight:700;color:#111;margin-bottom:8px}
+.sec-sub{font-size:14px;color:#555;margin-bottom:32px}
+.tier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.tier{background:#ffffff;border:1px solid #e5e5e5;border-radius:14px;padding:24px;text-align:center}
+.tier.featured{border:2px solid rgba(201,168,76,.5);background:#f5f5f5}
+.tier-icon{font-size:32px;margin-bottom:12px}
+.tier-name{font-size:15px;font-weight:700;color:#111;margin-bottom:6px}
+.tier-price{font-size:24px;font-weight:700;color:#C9A84C;margin-bottom:4px}
+.tier-price span{font-size:12px;color:#555;font-weight:400}
+.tier-desc{font-size:12px;color:#555;margin-bottom:16px;line-height:1.6}
+.tier-features{list-style:none;text-align:left;margin-bottom:20px}
+.tier-features li{font-size:12px;color:#666;padding:5px 0;border-bottom:1px solid #e5e5e5;display:flex;gap:8px}
+.tier-features li:last-child{border-bottom:none}
+.tier-features li::before{content:"<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg>";color:#22c55e;font-weight:700;flex-shrink:0}
+.tier-features li.no::before{content:"✗";color:#2a2a3a}
+.tier-features li.no{color:#333}
+.btn-tier{width:100%;padding:11px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;border:none;transition:all .15s}
+.btn-free{background:#f8f8f8;color:#888}
+.btn-free:hover{background:#252535}
+.btn-upgrade{background:#C9A84C;color:#000}
+.btn-upgrade:hover{background:#E8C97A}
+.crm-section{background:#ffffff;border:1px solid #e5e5e5;border-radius:14px;padding:32px;margin:40px 0}
+.crm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px}
+.crm-card{background:#08080f;border:1px solid #e5e5e5;border-radius:10px;padding:16px;text-align:center}
+.crm-logo{font-size:28px;margin-bottom:8px}
+.crm-name{font-size:13px;font-weight:700;color:#111;margin-bottom:6px}
+.crm-status{font-size:11px;padding:2px 10px;border-radius:20px;display:inline-block}
+.crm-live{background:rgba(34,197,94,.12);color:#22c55e;border:1px solid rgba(34,197,94,.2)}
+.crm-soon{background:rgba(201,168,76,.1);color:#C9A84C;border:1px solid rgba(201,168,76,.2)}
+.form-wrap{background:#f8f8f8;border:1px solid #e5e5e5;border-radius:14px;padding:32px;margin:40px 0}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form-group{margin-bottom:16px}
+.form-label{display:block;font-size:11px;color:#555;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+.form-input{width:100%;background:#f8f8f8;border:1px solid #e5e5e5;border-radius:8px;padding:10px 13px;color:#111;font-size:13px;font-family:inherit;outline:none;transition:border-color .15s;box-sizing:border-box}
+.form-input:focus{border-color:#C9A84C}
+.form-input::placeholder{color:#ccc}
+select.form-input option{background:#f8f8f8}
+textarea.form-input{resize:vertical;min-height:80px}
+.submit-btn{width:100%;background:#C9A84C;border:none;border-radius:10px;padding:13px;font-size:14px;font-weight:700;color:#000;cursor:pointer;font-family:inherit;transition:background .15s}
+.submit-btn:hover{background:#E8C97A}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.step{text-align:center;padding:16px 10px;background:#ffffff;border:1px solid #e5e5e5;border-radius:10px}
+.step-num{width:36px;height:36px;border-radius:50%;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.3);color:#C9A84C;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 10px}
+.step-title{font-size:11px;font-weight:700;color:#111;margin-bottom:4px}
+.step-desc{font-size:10px;color:#444;line-height:1.5}
+@media(max-width:680px){.tier-grid,.crm-grid,.form-row,.steps{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="ad-top"><span class="ad-label">Advertisement</span></div>
+<nav class="navbar" style="background:#f8f8f8;border-bottom:1px solid #e5e5e5">
+  <a href="../home.html" class="nav-logo">
+    <div class="nav-logo-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#0e0e0e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+    </div>
+    <div class="nav-logo-text">Gulf<span>Habibi</span></div>
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="../home.html" class="nav-link">Home</a>
+    <a href="../property/index.html" class="nav-link active">Property</a>
+    <a href="../motors/index.html" class="nav-link"><span style="display:inline-flex;width:14px;height:14px;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></span> Motors</a>
+    <a href="../jobs/index.html" class="nav-link">Jobs</a>
+    <a href="../marketplace/index.html" class="nav-link">Classifieds</a>
+    <a href="../pricing.html" class="nav-link">Pricing</a>
+    <a href="../about.html" class="nav-link">About Us</a>
+  </div>
+  <div class="nav-actions">
+    <button id="themeToggleBtn" onclick="toggleTheme()" title="Toggle Dark/Light" style="background:var(--bg-card,#0d0d1a);border:1px solid var(--border,#1a1828);border-radius:8px;color:var(--gold,#C9A84C);font-size:15px;padding:5px 9px;cursor:pointer;line-height:1">&#9728;&#65039;</button>
+    <div id="navGuest" style="display:flex;gap:8px;align-items:center">
+      <button class="btn btn-ghost btn-sm" onclick="openAuth('signin')">Sign In</button>
+    </div>
+    <div id="navUser" style="display:none;gap:8px;align-items:center">
+      <span id="navUserName" style="font-size:13px;color:#C9A84C;font-weight:600"></span>
+      <a href="../dashboard/index.html" class="btn btn-ghost btn-sm">&#128100; Dashboard</a>
+      <button class="btn btn-outline btn-sm" onclick="doSignout()" style="font-size:12px;padding:5px 12px">Sign Out</button>
+    </div>
+  </div>
+  <button class="nav-hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div style="font-size:11px;font-weight:700;color:#C9A84C;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:14px">🤝 Partner Program</div>
+  <h1>List Your Properties Free on GulfHabibi</h1>
+  <p>Connect your CRM and your listings go live instantly. Free forever. Thousands of UAE buyers and tenants daily. Upgrade anytime for more visibility.</p>
+  <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap">
+    <a href="#register" class="btn btn-gold" style="padding:12px 28px;font-size:14px;text-decoration:none">Register Your Agency Free <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    <a href="#crm" class="btn btn-outline" style="padding:12px 28px;font-size:14px;text-decoration:none;border-color:#333;color:#666">Connect Your CRM</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-n">Free</div><div class="stat-l">Basic listings forever</div></div>
+    <div class="stat"><div class="stat-n">7</div><div class="stat-l">Emirates covered</div></div>
+    <div class="stat"><div class="stat-n">Auto</div><div class="stat-l">CRM sync daily</div></div>
+    <div class="stat"><div class="stat-n">24hr</div><div class="stat-l">Go live time</div></div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="section">
+  <div class="sec-title">How It Works</div>
+  <div class="sec-sub">Connect once — your listings sync automatically every day</div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-title">Register below</div>
+      <div class="step-desc">Fill the form. Tell us which CRM you use. Takes 2 minutes.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-title">We connect your CRM</div>
+      <div class="step-desc">We set up the feed sync. No action needed from you.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-title">Listings go live</div>
+      <div class="step-desc">All your active listings appear on GulfHabibi within 24 hours.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-title">Buyers contact you</div>
+      <div class="step-desc">Calls and WhatsApp go straight to you. No middleman.</div>
+    </div>
+  </div>
+</div>
+
+<!-- PRICING TIERS -->
+<div class="section" style="padding-top:0">
+  <div class="sec-title">Listing Tiers</div>
+  <div class="sec-sub">Start free. Upgrade when you want more visibility.</div>
+  <div class="tier-grid">
+
+    <!-- FREE -->
+    <div class="tier">
+      <div class="tier-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+      <div class="tier-name">Free</div>
+      <div class="tier-price">AED 0<span> / month</span></div>
+      <div class="tier-desc">Your listings live on GulfHabibi automatically through CRM sync. Full exposure to UAE buyers.</div>
+      <ul class="tier-features">
+        <li>Unlimited listings via CRM feed</li>
+        <li>All 7 Emirates covered</li>
+        <li>Direct buyer contact (call/WhatsApp)</li>
+        <li>RERA badge displayed</li>
+        <li class="no">Featured placement</li>
+        <li class="no">Analytics dashboard</li>
+        <li class="no">Top of search results</li>
+      </ul>
+      <button class="btn-tier btn-free" onclick="document.getElementById('register').scrollIntoView({behavior:'smooth'})">Register Free <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+    </div>
+
+    <!-- FEATURED -->
+    <div class="tier featured">
+      <div style="font-size:9px;font-weight:700;color:#C9A84C;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Most Popular</div>
+      <div class="tier-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+      <div class="tier-name">Featured Agent</div>
+      <div class="tier-price">AED 99<span> / month</span></div>
+      <div class="tier-desc">Your listings appear at the top of search results with a Featured badge. Maximum visibility.</div>
+      <ul class="tier-features">
+        <li>Everything in Free</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Featured badge on all listings</li>
+        <li>Top of search results</li>
+        <li>Up to 10 featured listings</li>
+        <li>Analytics: views + WhatsApp clicks</li>
+        <li>Viewer emirate breakdown</li>
+        <li>Weekly performance email</li>
+      </ul>
+      <button class="btn-tier btn-upgrade" onclick="window.location.href='../pricing.html'">Upgrade to Featured <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+    </div>
+
+    <!-- PREMIUM -->
+    <div class="tier">
+      <div class="tier-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+      <div class="tier-name">Premium Agent</div>
+      <div class="tier-price">AED 299<span> / month</span></div>
+      <div class="tier-desc">Always in the top 3 positions. Auto-bumped every 3 days. Full analytics and competitor insights.</div>
+      <ul class="tier-features">
+        <li>Everything in Featured</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Always top 3 positions</li>
+        <li>Auto-bump every 3 days</li>
+        <li>Unlimited premium listings</li>
+        <li>Competitor price comparison</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg> Verified Agent badge</li>
+        <li>Monthly analytics report</li>
+      </ul>
+      <button class="btn-tier btn-upgrade" onclick="window.location.href='../pricing.html'">Upgrade to Premium <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+    </div>
+
+  </div>
+</div>
+
+<!-- CRM CONNECTIONS -->
+<div class="section" style="padding-top:0" id="crm">
+  <div class="crm-section">
+    <div style="font-size:18px;font-weight:700;color:#111;margin-bottom:6px">🔗 Supported CRM Connections</div>
+    <div style="font-size:13px;color:#555;margin-bottom:24px">We connect directly to your existing CRM. Your listings sync to GulfHabibi automatically — no extra work.</div>
+    <div class="crm-grid">
+      <div class="crm-card">
+        <div class="crm-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></svg></div>
+        <div class="crm-name">Propspace</div>
+        <span class="crm-status crm-live"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg> Supported</span>
+        <div style="font-size:10px;color:#444;margin-top:8px;line-height:1.5">Most popular UAE CRM. Daily auto-sync. All listings imported automatically.</div>
+      </div>
+      <div class="crm-card">
+        <div class="crm-logo">🔑</div>
+        <div class="crm-name">Masterkey UAE</div>
+        <span class="crm-status crm-live"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg> Supported</span>
+        <div style="font-size:10px;color:#444;margin-top:8px;line-height:1.5">Full API integration. Real-time listing sync when you update in Masterkey.</div>
+      </div>
+      <div class="crm-card">
+        <div class="crm-logo">📊</div>
+        <div class="crm-name">CSV / Excel Import</div>
+        <span class="crm-status crm-live"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg> Supported</span>
+        <div style="font-size:10px;color:#444;margin-top:8px;line-height:1.5">Download from any CRM, upload here. Bulk import up to 500 listings at once.</div>
+      </div>
+      <div class="crm-card">
+        <div class="crm-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <div class="crm-name">Property Plus</div>
+        <span class="crm-status crm-soon">⏳ Coming Soon</span>
+        <div style="font-size:10px;color:#444;margin-top:8px;line-height:1.5">Integration in development. Register now to be notified first.</div>
+      </div>
+      <div class="crm-card">
+        <div class="crm-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+        <div class="crm-name">Agent Plus</div>
+        <span class="crm-status crm-soon">⏳ Coming Soon</span>
+        <div style="font-size:10px;color:#444;margin-top:8px;line-height:1.5">Integration in development. Register now to be notified first.</div>
+      </div>
+      <div class="crm-card">
+        <div class="crm-logo">🔌</div>
+        <div class="crm-name">Other CRM / API</div>
+        <span class="crm-status" style="background:#f0f0f0;color:#999;border:1px solid #e5e5e5">Custom</span>
+        <div style="font-size:10px;color:#444;margin-top:8px;line-height:1.5">Using a different system? We support any XML/JSON feed. Contact us.</div>
+      </div>
+    </div>
+    <div style="background:#060610;border:1px solid rgba(201,168,76,.2);border-radius:8px;padding:12px 16px;font-size:12px;color:#555">
+      💡 <strong style="color:#C9A84C">All CRM integrations are completely free.</strong> We connect to your system at no cost. Revenue comes only from optional Featured and Premium upgrades.
+    </div>
+  </div>
+</div>
+
+<!-- REGISTRATION FORM -->
+<div class="section" style="padding-top:0" id="register">
+  <div class="form-wrap">
+    <div style="font-size:18px;font-weight:700;color:#111;margin-bottom:6px">Register Your Agency</div>
+    <div style="font-size:13px;color:#555;margin-bottom:24px">Free to join. We'll set up your CRM connection and have your listings live within 24 hours.</div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Your Name *</label>
+        <input class="form-input" type="text" id="agentName" placeholder="Full name">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Agency / Company Name *</label>
+        <input class="form-input" type="text" id="agencyName" placeholder="e.g. Dubai Properties LLC">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Email Address *</label>
+        <input class="form-input" type="email" id="agentEmail" placeholder="you@agency.ae">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Phone / WhatsApp *</label>
+        <input class="form-input" type="tel" id="agentPhone" placeholder="+971 50 000 0000">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">CRM You Use *</label>
+        <select class="form-input" id="crmType">
+          <option value="">Select your CRM...</option>
+          <option value="propspace">Propspace</option>
+          <option value="masterkey">Masterkey UAE</option>
+          <option value="csv">CSV / Excel upload</option>
+          <option value="property_plus">Property Plus</option>
+          <option value="agent_plus">Agent Plus</option>
+          <option value="manual">I post manually</option>
+          <option value="other">Other / Custom CRM</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Approx. No. of Listings</label>
+        <select class="form-input" id="listingCount">
+          <option value="">Select...</option>
+          <option value="1-10">1 – 10 listings</option>
+          <option value="11-50">11 – 50 listings</option>
+          <option value="51-200">51 – 200 listings</option>
+          <option value="200+">200+ listings</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Emirates You Cover *</label>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px" id="emirateCheckboxes">
+        <label style="font-size:12px;color:#666;display:flex;align-items:center;gap:5px;cursor:pointer;background:#f8f8f8;border:1px solid #e5e5e5;border-radius:6px;padding:5px 10px"><input type="checkbox" value="Dubai"> Dubai</label>
+        <label style="font-size:12px;color:#666;display:flex;align-items:center;gap:5px;cursor:pointer;background:#f8f8f8;border:1px solid #e5e5e5;border-radius:6px;padding:5px 10px"><input type="checkbox" value="Abu Dhabi"> Abu Dhabi</label>
+        <label style="font-size:12px;color:#666;display:flex;align-items:center;gap:5px;cursor:pointer;background:#f8f8f8;border:1px solid #e5e5e5;border-radius:6px;padding:5px 10px"><input type="checkbox" value="Sharjah"> Sharjah</label>
+        <label style="font-size:12px;color:#666;display:flex;align-items:center;gap:5px;cursor:pointer;background:#f8f8f8;border:1px solid #e5e5e5;border-radius:6px;padding:5px 10px"><input type="checkbox" value="Ajman"> Ajman</label>
+        <label style="font-size:12px;color:#666;display:flex;align-items:center;gap:5px;cursor:pointer;background:#f8f8f8;border:1px solid #e5e5e5;border-radius:6px;padding:5px 10px"><input type="checkbox" value="RAK"> RAK</label>
+        <label style="font-size:12px;color:#666;display:flex;align-items:center;gap:5px;cursor:pointer;background:#f8f8f8;border:1px solid #e5e5e5;border-radius:6px;padding:5px 10px"><input type="checkbox" value="Fujairah"> Fujairah</label>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Anything Else?</label>
+      <textarea class="form-input" id="agentNotes" placeholder="e.g. We specialise in off-plan in Dubai Hills. Our CRM feed URL is..."></textarea>
+    </div>
+    <button class="submit-btn" onclick="submitPartner()">Register Free — Get Listed in 24 Hours <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+    <div id="partnerMsg" style="text-align:center;font-size:12px;margin-top:10px"></div>
+    <p style="font-size:11px;color:#333;text-align:center;margin-top:12px">By registering you agree to our <a href="../terms.html" style="color:#555">Terms</a> and confirm you have rights to list these properties.</p>
+  </div>
+</div>
+
+<div class="ad-bottom"><span class="ad-label">Advertisement</span></div>
+<script src="../shared/config.js"></script>
+<!-- auth handled via module below -->
+<script>
+const SB_URL='https://chfkssclmdshdcijfzdr.supabase.co';
+const SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNoZmtzc2NsbWRzaGRjaWpmemRyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM1ODc2ODUsImV4cCI6MjA4OTE2MzY4NX0.cbJBIgeDRIqFvk3WMmxRoDWo1C73wM44oBDekdcc3sE';
+
+async function submitPartner(){
+  const name   = document.getElementById('agentName').value.trim();
+  const agency = document.getElementById('agencyName').value.trim();
+  const email  = document.getElementById('agentEmail').value.trim();
+  const phone  = document.getElementById('agentPhone').value.trim();
+  const crm    = document.getElementById('crmType').value;
+  const emirates = Array.from(document.querySelectorAll('#emirateCheckboxes input:checked')).map(c=>c.value);
+  const msg    = document.getElementById('partnerMsg');
+
+  if(!name||!agency||!email||!phone||!crm){
+    msg.style.color='#ef4444';
+    msg.textContent='Please fill all required fields.';
+    return;
+  }
+  const btn = document.querySelector('.submit-btn');
+  btn.textContent='Submitting...'; btn.disabled=true;
+
+  const record = {
+    agent_name: name,
+    agency_name: agency,
+    email,
+    phone,
+    crm_type: crm,
+    listing_count: document.getElementById('listingCount').value,
+    emirates_covered: emirates,
+    notes: document.getElementById('agentNotes').value,
+    status: 'pending',
+    created_at: new Date().toISOString()
+  };
+
+  const r = await fetch(`${SB_URL}/rest/v1/partner_registrations`, {
+    method: 'POST',
+    headers: {'Content-Type':'application/json','apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Prefer':'return=minimal'},
+    body: JSON.stringify(record)
+  });
+
+  if(r.ok||r.status===201){
+    msg.style.color='#22c55e';
+    msg.textContent='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg> Registered! We will contact you within 24 hours to set up your CRM connection.';
+    btn.textContent='Registered <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg>';
+    btn.style.background='#22c55e';
+  } else {
+    msg.style.color='#ef4444';
+    msg.textContent='Something went wrong — please email us at partners@gulfhabibi.ae';
+    btn.textContent='Register Free <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>'; btn.disabled=false;
+  }
+}
+</script>
+<script src="../shared/theme.js"></script>
+<script>
+(function(){
+  function checkAuthState(){
+    var user=localStorage.getItem('gb_user');
+    var guest=document.getElementById('navGuest');
+    var navUser=document.getElementById('navUser');
+    var nameEl=document.getElementById('navUserName');
+    if(user){try{
+      var u=JSON.parse(user);
+      var name=(u.user_metadata&&u.user_metadata.full_name)||u.email.split('@')[0]||'Account';
+      if(nameEl)nameEl.textContent='Hi, '+name.split(' ')[0];
+      if(guest)guest.style.display='none';
+      if(navUser)navUser.style.display='flex';
+    }catch(e){}}
+    else{if(guest)guest.style.display='flex';if(navUser)navUser.style.display='none';}
+  }
+  function doSignout(){localStorage.removeItem('gb_token');localStorage.removeItem('gb_user');checkAuthState();}
+  window.doSignout=doSignout;
+  document.addEventListener('DOMContentLoaded',checkAuthState);
+})();
+</script>
+</body>
+</html>

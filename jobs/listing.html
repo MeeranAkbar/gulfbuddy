@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/shared/preview-guard.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Job Listing — GulfHabibi UAE</title>
+<link rel="stylesheet" href="../shared/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="../shared/seo.js"></script>
+<style>
+.job-hero{background:linear-gradient(135deg,#0d0d1a,#0f0f2a);border:1px solid rgba(201,168,76,.2);border-radius:14px;padding:28px;margin-bottom:20px}
+.info-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin:16px 0}
+.info-card{background:#ffffff;border:1px solid #e5e5e5;border-radius:10px;padding:12px 14px}
+.info-card .ic-label{font-size:10px;color:#555;text-transform:uppercase;letter-spacing:.8px;margin-bottom:4px}
+.info-card .ic-val{font-size:14px;font-weight:600;color:#111}
+.contact-box{background:#ffffff;border:1px solid rgba(201,168,76,.2);border-radius:14px;padding:20px;position:sticky;top:80px}
+.btn-apply{background:#C9A84C;color:#000;border:none;width:100%;padding:13px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-bottom:8px}
+.btn-whatsapp{background:#25D366;color:#fff;border:none;width:100%;padding:13px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-bottom:8px}
+.btn-share{background:#f8f8f8;color:#C9A84C;border:1px solid rgba(201,168,76,.3);width:100%;padding:11px;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer}
+.section-title{font-size:15px;font-weight:700;color:#111;margin:20px 0 10px}
+.req-item{display:flex;align-items:flex-start;gap:8px;font-size:13px;color:#888;margin-bottom:6px}
+.similar-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-top:12px}
+.similar-card{background:#ffffff;border:1px solid #e5e5e5;border-radius:12px;padding:14px;cursor:pointer;transition:border-color .2s}
+.similar-card:hover{border-color:rgba(201,168,76,.3)}
+@media(max-width:768px){.layout-2col{flex-direction:column!important}.contact-box{position:static;margin-top:20px}}
+</style>
+</head>
+<body>
+<div class="ad-top"><span class="ad-label">Advertisement</span></div>
+<nav class="navbar">
+  <a href="../home.html" class="nav-logo">
+    <div class="nav-logo-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#0e0e0e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+    </div>
+    <div class="nav-logo-text">Gulf<span>Habibi</span></div>
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="../home.html" class="nav-link">Home</a>
+    <a href="../motors/index.html" class="nav-link"><span style="display:inline-flex;width:14px;height:14px;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></span> Motors</a>
+    <a href="../property/index.html" class="nav-link">Property</a>
+    <a href="index.html" class="nav-link active">Jobs</a>
+    <a href="../marketplace/index.html" class="nav-link">Classifieds</a>
+    <a href="../services/index.html" class="nav-link">Services</a>
+    <a href="../directory/index.html" class="nav-link">Directory</a>
+    <a href="../about.html" class="nav-link">About Us</a>
+  </div>
+  <div class="nav-actions">
+    <button id="themeToggleBtn" onclick="toggleTheme()" title="Toggle Dark/Light" style="background:var(--bg-card,#0d0d1a);border:1px solid var(--border,#1a1828);border-radius:8px;color:var(--gold,#C9A84C);font-size:15px;padding:5px 9px;cursor:pointer;line-height:1">&#9728;&#65039;</button>
+    <div id="navGuest" style="display:flex;gap:8px;align-items:center">
+      <button class="btn btn-ghost btn-sm" onclick="openAuth('signin')">Sign In</button>
+    </div>
+    <div id="navUser" style="display:none;gap:8px;align-items:center">
+      <span id="navUserName" style="font-size:13px;color:#C9A84C;font-weight:600"></span>
+      <a href="../dashboard/index.html" class="btn btn-ghost btn-sm">&#128100; Dashboard</a>
+      <button class="btn btn-outline btn-sm" onclick="doSignout()" style="font-size:12px;padding:5px 12px">Sign Out</button>
+    </div>
+  </div>
+</nav>
+<div style="max-width:1100px;margin:0 auto;padding:14px 20px 0">
+  <div style="font-size:12px;color:#555">
+    <a href="../home.html" style="color:#666;text-decoration:none">Home</a>
+    <span style="margin:0 6px">›</span>
+    <a href="index.html" style="color:#666;text-decoration:none">Jobs</a>
+    <span style="margin:0 6px">›</span>
+    <span id="breadcrumb-title" style="color:#888">Loading...</span>
+  </div>
+</div>
+<div style="max-width:1100px;margin:0 auto;padding:16px 20px 40px;display:flex;gap:24px;align-items:flex-start" class="layout-2col">
+  <div style="flex:1;min-width:0">
+    <div id="loadingState" style="text-align:center;padding:60px 20px;color:#555"><div style="font-size:32px;margin-bottom:12px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div><div>Loading job...</div></div>
+    <div id="errorState" style="display:none;text-align:center;padding:60px 20px"><div style="font-size:32px;margin-bottom:12px">😕</div><div style="color:#ef4444;font-size:15px;margin-bottom:16px">Job not found or removed.</div><a href="index.html" class="btn btn-gold">Browse All Jobs</a></div>
+    <div id="listingContent" style="display:none">
+      <div id="planBadge"></div>
+      <div class="job-hero">
+        <div style="display:flex;align-items:flex-start;gap:16px;flex-wrap:wrap">
+          <div style="width:56px;height:56px;background:#f8f8f8;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0" id="companyIcon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></svg></div>
+          <div style="flex:1">
+            <h1 id="listingTitle" style="font-size:20px;font-weight:700;color:#111;margin-bottom:4px"></h1>
+            <div id="companyName" style="font-size:14px;color:#C9A84C;font-weight:600;margin-bottom:4px"></div>
+            <div id="jobMeta" style="font-size:12px;color:#555"></div>
+          </div>
+        </div>
+      </div>
+      <div class="info-grid" id="infoGrid"></div>
+      <div class="section-title">Job Description</div>
+      <div id="listingDesc" style="font-size:13px;color:#888;line-height:1.8;white-space:pre-wrap"></div>
+      <div id="requirementsSection" style="display:none">
+        <div class="section-title">Requirements</div>
+        <div id="requirementsList" style="font-size:13px;color:#888;line-height:1.8;white-space:pre-wrap"></div>
+      </div>
+      <div class="section-title">Share This Job</div>
+      <div id="shareButtons"></div>
+      <div style="margin-top:20px;padding-top:16px;border-top:1px solid #e5e5e5">
+        <button onclick="reportListing()" style="background:none;border:none;color:#444;font-size:12px;cursor:pointer">🚩 Report this listing</button>
+      </div>
+      <div class="section-title">Similar Jobs</div>
+      <div class="similar-grid" id="similarGrid"><div style="color:#555;font-size:13px">Loading similar jobs...</div></div>
+    </div>
+  </div>
+  <div style="width:300px;flex-shrink:0">
+    <div class="contact-box" id="contactBox" style="display:none">
+      <div id="salaryDisplay" style="font-size:22px;font-weight:700;color:#C9A84C;margin-bottom:4px"></div>
+      <div id="jobTypeDisplay" style="font-size:12px;color:#666;margin-bottom:16px"></div>
+      <button class="btn-apply" id="btnApply">📧 Apply Now</button>
+      <button class="btn-whatsapp" id="btnWhatsapp">💬 WhatsApp</button>
+      <button class="btn-share" onclick="copyLink()">🔗 Copy Link</button>
+      <div style="margin-top:16px;padding-top:16px;border-top:1px solid #e5e5e5">
+        <div style="font-size:11px;color:#444;margin-bottom:6px">POSTED BY</div>
+        <div style="font-size:13px;font-weight:600;color:#ddd" id="posterName"></div>
+        <div style="font-size:11px;color:#555;margin-top:3px" id="posterDate"></div>
+      </div>
+    </div>
+    <div class="ad-right" style="margin-top:16px"><span class="ad-label">Advertisement</span></div>
+  </div>
+</div>
+<div class="ad-bottom"><span class="ad-label">Advertisement</span></div>
+<div id="authModal" class="modal-overlay" style="display:none">
+  <div class="modal-box"><button class="modal-close" onclick="closeAuth()">x</button>
+    <div class="modal-tabs"><button class="modal-tab active" id="tabSignin" onclick="switchTab('signin')">Sign In</button><button class="modal-tab" id="tabSignup" onclick="switchTab('signup')">Sign Up</button></div>
+    <div id="formSignin"><div style="margin-bottom:14px"><input class="form-input" type="email" id="siEmail" placeholder="Email"></div><div style="margin-bottom:16px"><input class="form-input" type="password" id="siPass" placeholder="Password"></div><button class="btn btn-gold" style="width:100%" onclick="doSignin()">Sign In</button></div>
+    <div id="formSignup" style="display:none"><div style="margin-bottom:14px"><input class="form-input" type="text" id="suName" placeholder="Full name"></div><div style="margin-bottom:14px"><input class="form-input" type="email" id="suEmail" placeholder="Email"></div><div style="margin-bottom:16px"><input class="form-input" type="password" id="suPass" placeholder="Password"></div><button class="btn btn-gold" style="width:100%" onclick="doSignup()">Create Account</button></div>
+    <div id="authMsg" style="margin-top:12px;font-size:13px;text-align:center;color:#ef4444"></div>
+  </div>
+</div>
+<script src="../shared/config.js"></script>
+<script src="../shared/gb-ref.js"></script>
+<!-- auth handled via module below -->
+<script>
+const SUPA_URL='https://chfkssclmdshdcijfzdr.supabase.co';
+const SUPA_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNoZmtzc2NsbWRzaGRjaWpmemRyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM1ODc2ODUsImV4cCI6MjA4OTE2MzY4NX0.cbJBIgeDRIqFvk3WMmxRoDWo1C73wM44oBDekdcc3sE';
+let currentJob=null;
+function getListingId(){return new URLSearchParams(window.location.search).get('id');}
+async function loadListing(){
+  const id=getListingId();
+  if(!id){showError();return;}
+  try{
+    const res=await fetch(`${SUPA_URL}/rest/v1/jobs?id=eq.${id}&select=*`,{headers:{apikey:SUPA_KEY,Authorization:'Bearer '+SUPA_KEY}});
+    const data=await res.json();
+    if(!data||data.length===0){showError();return;}
+    currentJob=data[0];
+    renderJob(currentJob);
+    loadSimilar(currentJob);
+  }catch(e){showError();}
+}
+function renderJob(j){
+  document.getElementById('loadingState').style.display='none';
+  document.getElementById('listingContent').style.display='block';
+  document.getElementById('contactBox').style.display='block';
+  if(typeof setSEOForJob==='function') setSEOForJob(j);
+  document.getElementById('breadcrumb-title').textContent=j.title||'Job';
+  if(j.plan==='premium') document.getElementById('planBadge').innerHTML=`<span style="display:inline-flex;align-items:center;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;margin-bottom:10px;background:rgba(232,201,122,.15);color:#E8C97A;border:1px solid rgba(232,201,122,.3)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Premium</span>`;
+  else if(j.plan==='featured') document.getElementById('planBadge').innerHTML=`<span style="display:inline-flex;align-items:center;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;margin-bottom:10px;background:rgba(201,168,76,.12);color:#C9A84C;border:1px solid rgba(201,168,76,.25)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Featured</span>`;
+  document.getElementById('listingTitle').textContent=j.title||'';
+  document.getElementById('companyName').textContent=j.company||'';
+  // GulfHabibi ref badge
+  if(j.gb_ref&&window.GBRef){
+    const refEl=document.createElement('div');
+    refEl.style.marginBottom='8px';
+    refEl.innerHTML=GBRef.badge(j.gb_ref);
+    document.getElementById('companyName').after(refEl);
+  }
+  const metaParts=[];
+  if(j.emirate) metaParts.push('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> '+j.emirate+(j.area?', '+j.area:''));
+  if(j.job_type) metaParts.push('⏰ '+(j.job_type==='fulltime'?'Full Time':j.job_type==='parttime'?'Part Time':'Freelance'));
+  if(j.created_at) metaParts.push('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Posted '+new Date(j.created_at).toLocaleDateString('en-AE',{day:'numeric',month:'short',year:'numeric'}));
+  document.getElementById('jobMeta').textContent=metaParts.join('  ·  ');
+  const infoItems=[
+    j.category&&{label:'Industry',val:j.category},
+    j.experience&&{label:'Experience',val:j.experience},
+    j.openings&&{label:'Openings',val:j.openings},
+    j.nationality&&{label:'Nationality',val:j.nationality},
+    j.gender&&j.gender!=='any'&&{label:'Gender',val:j.gender},
+  ].filter(Boolean);
+  document.getElementById('infoGrid').innerHTML=infoItems.map(i=>`<div class="info-card"><div class="ic-label">${i.label}</div><div class="ic-val">${i.val}</div></div>`).join('');
+  document.getElementById('listingDesc').textContent=j.description||'No description provided.';
+  if(j.requirements){document.getElementById('requirementsSection').style.display='block';document.getElementById('requirementsList').textContent=j.requirements;}
+  if(typeof injectShareButtons==='function') injectShareButtons('shareButtons',j);
+  const sal=j.salary_min?'AED '+Number(j.salary_min).toLocaleString()+(j.salary_max?' – '+Number(j.salary_max).toLocaleString():'')+'<span style="font-size:12px;color:#666;font-weight:400">/month</span>':'Salary Not Disclosed';
+  document.getElementById('salaryDisplay').innerHTML=sal;
+  document.getElementById('jobTypeDisplay').textContent=j.job_type==='fulltime'?'Full-Time Position':j.job_type==='parttime'?'Part-Time Position':'Freelance / Contract';
+  const phone=j.contact_phone||j.contact_whatsapp||'';
+  const email=j.contact_email||'';
+  document.getElementById('btnApply').onclick=()=>{trackCall();if(email)window.location.href='mailto:'+email+'?subject=Application: '+j.title;else if(phone)window.location.href='tel:'+phone;};
+  document.getElementById('btnWhatsapp').onclick=()=>{trackWhatsapp();const msg=`Hi, I am interested in the ${j.title} position at ${j.company} listed on GulfHabibi UAE`;window.open('https://wa.me/'+phone.replace(/\D/g,'')+'?text='+encodeURIComponent(msg),'_blank');};
+  document.getElementById('posterName').textContent=j.user_name||j.company||'Employer';
+  if(j.created_at) document.getElementById('posterDate').textContent='Posted '+new Date(j.created_at).toLocaleDateString('en-AE',{day:'numeric',month:'short',year:'numeric'});
+}
+async function loadSimilar(j){
+  try{
+    let url=`${SUPA_URL}/rest/v1/jobs?id=neq.${j.id}&status=eq.active&limit=4&select=id,title,company,emirate,salary_min,salary_max,job_type&order=plan.desc,created_at.desc`;
+    if(j.category) url+=`&category=eq.${encodeURIComponent(j.category)}`;
+    else url+=`&emirate=eq.${encodeURIComponent(j.emirate||'Dubai')}`;
+    const res=await fetch(url,{headers:{apikey:SUPA_KEY,Authorization:'Bearer '+SUPA_KEY}});
+    const items=await res.json();
+    const grid=document.getElementById('similarGrid');
+    if(!items||items.length===0){grid.innerHTML='<div style="color:#555;font-size:13px">No similar jobs found.</div>';return;}
+    grid.innerHTML=items.map(item=>`
+      <div class="similar-card" onclick="window.location.href='listing.html?id=${item.id}'">
+        <div style="font-size:13px;font-weight:600;color:#111;margin-bottom:4px">${item.title}</div>
+        <div style="font-size:12px;color:#C9A84C;margin-bottom:4px">${item.company||''}</div>
+        <div style="font-size:11px;color:#555">${item.emirate||'UAE'} · ${item.job_type==='fulltime'?'Full Time':'Part Time'}</div>
+        ${item.salary_min?`<div style="font-size:12px;color:#888;margin-top:4px">AED ${Number(item.salary_min).toLocaleString()}/mo</div>`:''}
+      </div>`).join('');
+  }catch(e){document.getElementById('similarGrid').innerHTML='';}
+}
+async function trackCall(){if(!currentJob)return;try{await fetch(`${SUPA_URL}/rest/v1/jobs?id=eq.${currentJob.id}`,{method:'PATCH',headers:{'Content-Type':'application/json',apikey:SUPA_KEY,Authorization:'Bearer '+SUPA_KEY},body:JSON.stringify({call_count:(currentJob.call_count||0)+1})});}catch(e){}}
+async function trackWhatsapp(){if(!currentJob)return;try{await fetch(`${SUPA_URL}/rest/v1/jobs?id=eq.${currentJob.id}`,{method:'PATCH',headers:{'Content-Type':'application/json',apikey:SUPA_KEY,Authorization:'Bearer '+SUPA_KEY},body:JSON.stringify({whatsapp_count:(currentJob.whatsapp_count||0)+1})});}catch(e){}}
+function showError(){document.getElementById('loadingState').style.display='none';document.getElementById('errorState').style.display='block';}
+function copyLink(){navigator.clipboard.writeText(window.location.href).then(()=>alert('Link copied!')).catch(()=>prompt('Copy:',window.location.href));}
+function reportListing(){const reason=prompt('Reason for report:\n1. Fake job\n2. Scam\n3. Spam\n4. Wrong category\n\nEnter reason:');if(reason&&currentJob){fetch(`${SUPA_URL}/rest/v1/reports`,{method:'POST',headers:{'Content-Type':'application/json',apikey:SUPA_KEY,Authorization:'Bearer '+SUPA_KEY},body:JSON.stringify({listing_id:currentJob.id,listing_type:'job',reason,status:'pending'})}).then(()=>alert('Reported. Thank you.')).catch(()=>{});}}
+document.addEventListener('DOMContentLoaded',loadListing);
+</script>
+<script src="../shared/theme.js"></script>
+<script>
+(function(){
+  function checkAuthState(){
+    var user=localStorage.getItem('gb_user');
+    var guest=document.getElementById('navGuest');
+    var navUser=document.getElementById('navUser');
+    var nameEl=document.getElementById('navUserName');
+    if(user){try{
+      var u=JSON.parse(user);
+      var name=(u.user_metadata&&u.user_metadata.full_name)||u.email.split('@')[0]||'Account';
+      if(nameEl)nameEl.textContent='Hi, '+name.split(' ')[0];
+      if(guest)guest.style.display='none';
+      if(navUser)navUser.style.display='flex';
+    }catch(e){}}
+    else{if(guest)guest.style.display='flex';if(navUser)navUser.style.display='none';}
+  }
+  function doSignout(){localStorage.removeItem('gb_token');localStorage.removeItem('gb_user');checkAuthState();}
+  window.doSignout=doSignout;
+  document.addEventListener('DOMContentLoaded',checkAuthState);
+})();
+</script>
+
+
+</body>
+</html>

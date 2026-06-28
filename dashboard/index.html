@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/shared/preview-guard.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>My Dashboard — GulfHabibi UAE</title>
+<link rel="stylesheet" href="../shared/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+body{background:#ffffff;min-height:100vh}
+.dash-wrap{max-width:1100px;margin:0 auto;padding:24px 20px 60px}
+/* TOP SUMMARY CARDS */
+.summary-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-bottom:28px}
+.sum-card{background:#ffffff;border:1px solid #e5e5e5;border-radius:12px;padding:16px 18px}
+.sum-card .s-num{font-size:28px;font-weight:700;color:#C9A84C;margin-bottom:4px}
+.sum-card .s-lbl{font-size:11px;color:#444;text-transform:uppercase;letter-spacing:.8px}
+/* PLAN BANNER */
+.plan-banner{border-radius:12px;padding:16px 20px;margin-bottom:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.plan-banner.free{background:#ffffff;border:1px solid #e5e5e5}
+.plan-banner.featured{background:rgba(201,168,76,.07);border:1px solid rgba(201,168,76,.25)}
+.plan-banner.premium{background:rgba(232,201,122,.08);border:1px solid rgba(232,201,122,.3)}
+.plan-name{font-size:16px;font-weight:700}
+.plan-free .plan-name{color:#888}
+.plan-featured .plan-name{color:#C9A84C}
+.plan-premium .plan-name{color:#E8C97A}
+.upgrade-btn{background:#C9A84C;color:#000;border:none;border-radius:8px;padding:9px 18px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit}
+/* SECTION */
+.section-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.section-title{font-size:16px;font-weight:700;color:#111}
+/* LISTING CARD */
+.dash-card{background:#ffffff;border:1px solid #e5e5e5;border-radius:12px;padding:16px 18px;margin-bottom:10px;display:flex;gap:14px;align-items:flex-start;transition:border-color .2s}
+.dash-card:hover{border-color:rgba(201,168,76,.2)}
+.dash-card.featured{border-color:rgba(201,168,76,.3);background:rgba(201,168,76,.03)}
+.dash-card.premium{border-color:rgba(232,201,122,.35);background:rgba(232,201,122,.03)}
+.dc-thumb{width:72px;height:56px;border-radius:8px;background:#f0f0f0;object-fit:cover;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:24px;overflow:hidden}
+.dc-thumb img{width:100%;height:100%;object-fit:cover}
+.dc-info{flex:1;min-width:0}
+.dc-title{font-size:13px;font-weight:600;color:#111;margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dc-meta{font-size:11px;color:#444;margin-bottom:8px}
+/* STATUS BADGES */
+.status-badge{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;margin-right:6px}
+.sb-active{background:rgba(34,197,94,.12);color:#22c55e;border:1px solid rgba(34,197,94,.2)}
+.sb-expired{background:rgba(239,68,68,.12);color:#ef4444;border:1px solid rgba(239,68,68,.2)}
+.sb-sold{background:rgba(96,165,250,.12);color:#60a5fa;border:1px solid rgba(96,165,250,.2)}
+.sb-featured{background:rgba(201,168,76,.12);color:#C9A84C;border:1px solid rgba(201,168,76,.2)}
+.sb-premium{background:rgba(232,201,122,.12);color:#E8C97A;border:1px solid rgba(232,201,122,.2)}
+/* ANALYTICS ROW — shown for featured/premium */
+.analytics-row{display:flex;gap:16px;flex-wrap:wrap;margin-top:8px;padding-top:8px;border-top:1px solid #111128}
+.an-stat{text-align:center}
+.an-num{font-size:16px;font-weight:700;color:#C9A84C}
+.an-lbl{font-size:10px;color:#333;margin-top:1px}
+/* LOCKED analytics for free users */
+.analytics-locked{background:#f8f8f8;border:1px solid #111128;border-radius:8px;padding:8px 12px;margin-top:8px;font-size:11px;color:#333;display:flex;align-items:center;gap:8px}
+/* ACTIONS */
+.dc-actions{display:flex;flex-direction:column;gap:6px;align-items:flex-end;flex-shrink:0}
+.act-btn{font-size:11px;font-weight:600;padding:5px 12px;border-radius:7px;cursor:pointer;border:none;font-family:inherit;white-space:nowrap}
+.act-edit{background:#f8f8f8;color:#888;border:1px solid #e5e5e5}
+.act-edit:hover{color:#111;border-color:#999}
+.act-sold{background:rgba(96,165,250,.1);color:#60a5fa;border:1px solid rgba(96,165,250,.2)}
+.act-delete{background:rgba(239,68,68,.08);color:#ef4444;border:1px solid rgba(239,68,68,.15)}
+.act-upgrade{background:#C9A84C;color:#000}
+/* EXPIRY WARNING */
+.expiry-warn{font-size:11px;color:#f59e0b;margin-top:4px}
+/* EMPTY STATE */
+.empty-state{text-align:center;padding:60px 20px;color:#444}
+.empty-state .e-icon{font-size:48px;margin-bottom:16px}
+.empty-state .e-title{font-size:16px;font-weight:600;color:#666;margin-bottom:8px}
+.empty-state .e-sub{font-size:13px;color:#333;margin-bottom:20px}
+/* TABS */
+.dash-tabs{display:flex;gap:4px;margin-bottom:20px;background:#f8f8f8;border-radius:10px;padding:4px}
+.dash-tab{flex:1;padding:9px;text-align:center;font-size:13px;font-weight:600;color:#444;cursor:pointer;border-radius:8px;border:none;background:none;font-family:inherit;transition:all .15s}
+.dash-tab.active{background:#ffffff;color:#C9A84C;border:1px solid rgba(201,168,76,.2)}
+/* SIGN IN PROMPT */
+.signin-prompt{text-align:center;padding:80px 20px}
+/* UPGRADE MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.8);display:flex;align-items:center;justify-content:center;z-index:1000;padding:20px}
+.upgrade-modal{background:#ffffff;border:1px solid rgba(201,168,76,.3);border-radius:16px;padding:28px;max-width:480px;width:100%}
+@media(max-width:600px){.dash-card{flex-direction:column}.dc-actions{flex-direction:row;width:100%}.summary-row{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="ad-top"><span class="ad-label">Advertisement</span></div>
+<nav class="navbar">
+  <a href="../home.html" class="nav-logo">
+    <div class="nav-logo-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#0e0e0e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+    </div>
+    <div class="nav-logo-text">Gulf<span>Habibi</span></div>
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="../home.html" class="nav-link">Home</a>
+    <a href="../motors/index.html" class="nav-link"><span style="display:inline-flex;width:14px;height:14px;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></span> Motors</a>
+    <a href="../property/index.html" class="nav-link">Property</a>
+    <a href="../jobs/index.html" class="nav-link">Jobs</a>
+    <a href="../marketplace/index.html" class="nav-link">Classifieds</a>
+    <a href="../services/index.html" class="nav-link">Services</a>
+    <a href="../directory/index.html" class="nav-link">Directory</a>
+  </div>
+  <div class="nav-actions" id="authSection">
+    <button id="themeToggleBtn" onclick="toggleTheme()" title="Toggle Dark/Light" style="background:var(--bg-card,#0d0d1a);border:1px solid var(--border,#1a1828);border-radius:8px;color:var(--gold,#C9A84C);font-size:15px;padding:5px 9px;cursor:pointer;line-height:1">&#9728;&#65039;</button>
+    <div id="navGuest" style="display:flex;gap:8px;align-items:center">
+      <button class="btn btn-ghost btn-sm" onclick="openAuth('signin')">Sign In</button>
+    </div>
+    <div id="navUser" style="display:none;gap:8px;align-items:center">
+      <span id="navUserName" style="font-size:13px;color:#C9A84C;font-weight:600"></span>
+      <a href="../dashboard/index.html" class="btn btn-ghost btn-sm">&#128100; Dashboard</a>
+      <button class="btn btn-outline btn-sm" onclick="doSignout()" style="font-size:12px;padding:5px 12px">Sign Out</button>
+    </div>
+  </div>
+  <button class="nav-hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+</nav>
+
+<!-- MAIN DASHBOARD -->
+<div class="dash-wrap">
+
+  <!-- NOT SIGNED IN STATE -->
+  <div id="signInPrompt" class="signin-prompt" style="display:none">
+    <div style="font-size:48px;margin-bottom:16px">🔐</div>
+    <div style="font-size:18px;font-weight:700;color:#111;margin-bottom:8px">Sign in to your Dashboard</div>
+    <div style="font-size:13px;color:#444;margin-bottom:24px">Manage your listings, track views, and upgrade your plan.</div>
+    <button class="btn btn-gold" onclick="openAuth('signin')" style="padding:12px 28px">Sign In / Create Account</button>
+  </div>
+
+  <!-- DASHBOARD CONTENT (shown when signed in) -->
+  <div id="dashContent" style="display:none">
+
+    <!-- HEADER -->
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:12px">
+      <div>
+        <h1 style="font-size:22px;font-weight:700;color:#111;margin-bottom:4px">My Dashboard</h1>
+        <div style="font-size:13px;color:#444" id="dashSubtitle">Loading your listings...</div>
+      </div>
+      <a href="../home.html" class="btn btn-gold btn-sm" style="padding:10px 18px">+ Post New Listing</a>
+    </div>
+
+    <!-- PLAN BANNER -->
+    <div class="plan-banner free" id="planBanner">
+      <div>
+        <div style="font-size:11px;color:#555;text-transform:uppercase;letter-spacing:.8px;margin-bottom:4px">Your Current Plan</div>
+        <div class="plan-name" id="planName">Free</div>
+        <div style="font-size:12px;color:#444;margin-top:3px" id="planDesc">Max 3 listings · 15-day expiry</div>
+      </div>
+      <button class="upgrade-btn" onclick="showUpgradeModal()">⬆️ Upgrade Plan</button>
+    </div>
+
+    <!-- SUMMARY CARDS -->
+    <div class="summary-row">
+      <div class="sum-card">
+        <div class="s-num" id="statTotal">0</div>
+        <div class="s-lbl">Active Listings</div>
+      </div>
+      <div class="sum-card">
+        <div class="s-num" id="statViews">—</div>
+        <div class="s-lbl">Total Views</div>
+      </div>
+      <div class="sum-card">
+        <div class="s-num" id="statCalls">0</div>
+        <div class="s-lbl">Call Clicks</div>
+      </div>
+      <div class="sum-card">
+        <div class="s-num" id="statWhatsapp">—</div>
+        <div class="s-lbl">WhatsApp Clicks</div>
+      </div>
+    </div>
+
+    <!-- TABS -->
+    <div class="dash-tabs">
+      <button class="dash-tab active" onclick="switchTab('active',this)">Active</button>
+      <button class="dash-tab" onclick="switchTab('expired',this)">Expired</button>
+      <button class="dash-tab" onclick="switchTab('sold',this)">Sold</button>
+      <button class="dash-tab" onclick="switchTab('jobs',this)">My Jobs</button>
+    </div>
+
+    <!-- LISTINGS -->
+    <div class="section-hd">
+      <div class="section-title" id="sectionTitle">Active Listings</div>
+      <div style="font-size:12px;color:#333" id="listingCount"></div>
+    </div>
+    <div id="listingsContainer">
+      <div style="text-align:center;padding:40px;color:#333">Loading...</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- UPGRADE MODAL -->
+<div id="upgradeModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:1000;display:none;align-items:center;justify-content:center;padding:20px">
+  <div style="background:#ffffff;border:1px solid rgba(201,168,76,.3);border-radius:16px;padding:28px;max-width:500px;width:100%">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
+      <div style="font-size:18px;font-weight:700;color:#111">Upgrade Your Plan</div>
+      <button onclick="hideUpgradeModal()" style="background:none;border:none;color:#555;font-size:20px;cursor:pointer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div style="display:grid;gap:10px">
+      <div style="background:#f0f0f0;border:1px solid rgba(201,168,76,.3);border-radius:12px;padding:16px">
+        <div style="font-size:14px;font-weight:700;color:#C9A84C;margin-bottom:4px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Featured — AED 99/month</div>
+        <div style="font-size:12px;color:#555;line-height:1.6">10 listings · 90-day expiry · Top of results · Analytics dashboard (views, calls, WhatsApp) · 8 photos per listing</div>
+        <button onclick="contactUpgrade('featured')" style="margin-top:10px;background:#C9A84C;color:#000;border:none;border-radius:8px;padding:8px 18px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit">Get Featured <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+      </div>
+      <div style="background:#f0f0f0;border:1px solid rgba(232,201,122,.35);border-radius:12px;padding:16px">
+        <div style="font-size:14px;font-weight:700;color:#E8C97A;margin-bottom:4px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Premium — AED 299/month</div>
+        <div style="font-size:12px;color:#555;line-height:1.6">Unlimited listings · 180-day expiry · Always top 3 · Auto-bump every 3 days · Full analytics + competitor pricing · Verified Seller badge · 15 photos</div>
+        <button onclick="contactUpgrade('premium')" style="margin-top:10px;background:linear-gradient(90deg,#C9A84C,#E8C97A);color:#000;border:none;border-radius:8px;padding:8px 18px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit">Get Premium <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+      </div>
+      <div style="background:#f0f0f0;border:1px solid #e5e5e5;border-radius:12px;padding:16px">
+        <div style="font-size:14px;font-weight:700;color:#60a5fa;margin-bottom:4px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M2 20h20"/><path d="M6 20V10l6-7 6 7v10"/><path d="M9 20v-5h6v5"/></svg> Off-Plan Pro — AED 599/month</div>
+        <div style="font-size:12px;color:#555;line-height:1.6">For developers & agents · Unlimited projects · Never expires · Floor plan uploads · Payment plan display · Lead CRM · RERA + DLD badge</div>
+        <button onclick="contactUpgrade('offplan')" style="margin-top:10px;background:#60a5fa;color:#000;border:none;border-radius:8px;padding:8px 18px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit">Get Off-Plan Pro <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+      </div>
+    </div>
+    <div style="font-size:11px;color:#333;text-align:center;margin-top:14px">Our team will contact you on WhatsApp to arrange payment</div>
+  </div>
+</div>
+
+<!-- AUTH MODAL -->
+<div id="authModal" class="modal-overlay" style="display:none">
+  <div class="modal-box"><button class="modal-close" onclick="closeAuth()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <div class="modal-tabs">
+      <button class="modal-tab active" id="tabSignin" onclick="switchAuthTab('signin')">Sign In</button>
+      <button class="modal-tab" id="tabSignup" onclick="switchAuthTab('signup')">Sign Up</button>
+    </div>
+    <div id="formSignin">
+      <div style="margin-bottom:14px"><input class="form-input" type="email" id="siEmail" placeholder="Email"></div>
+      <div style="margin-bottom:16px"><input class="form-input" type="password" id="siPass" placeholder="Password"></div>
+      <button class="btn btn-gold" style="width:100%" onclick="doSignin()">Sign In</button>
+    </div>
+    <div id="formSignup" style="display:none">
+      <div style="margin-bottom:14px"><input class="form-input" type="text" id="suName" placeholder="Full name"></div>
+      <div style="margin-bottom:14px"><input class="form-input" type="email" id="suEmail" placeholder="Email"></div>
+      <div style="margin-bottom:16px"><input class="form-input" type="password" id="suPass" placeholder="Password (min 6 chars)"></div>
+      <button class="btn btn-gold" style="width:100%" onclick="doSignup()">Create Account</button>
+    </div>
+    <div id="authMsg" style="margin-top:12px;font-size:13px;text-align:center;color:#ef4444"></div>
+  </div>
+</div>
+<script src="../shared/config.js"></script>
+<script src="../shared/gb-ref.js"></script>
+<!-- auth handled via module below -->
+<script>
+const SUPA_URL='https://chfkssclmdshdcijfzdr.supabase.co';
+const SUPA_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNoZmtzc2NsbWRzaGRjaWpmemRyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM1ODc2ODUsImV4cCI6MjA4OTE2MzY4NX0.cbJBIgeDRIqFvk3WMmxRoDWo1C73wM44oBDekdcc3sE';
+const H={apikey:SUPA_KEY,Authorization:'Bearer '+SUPA_KEY};
+let currentUser=null;
+let currentPlan='free';
+let allListings=[];
+let allJobs=[];
+let activeTab='active';
+
+// ── AUTH ──────────────────────────────────────────────────────
+function switchAuthTab(tab){  document.getElementById('formSignin').style.display=tab==='signin'?'block':'none';
+  document.getElementById('formSignup').style.display=tab==='signup'?'block':'none';
+  document.getElementById('tabSignin').classList.toggle('active',tab==='signin');
+  document.getElementById('tabSignup').classList.toggle('active',tab==='signup');
+}
+function openAuth(tab){document.getElementById('authModal').style.display='flex';switchAuthTab(tab||'signin');}
+function closeAuth(){document.getElementById('authModal').style.display='none';}
+
+async function doSignin(){
+  const email=document.getElementById('siEmail').value.trim();
+  const pass=document.getElementById('siPass').value;
+  if(!email||!pass){document.getElementById('authMsg').textContent='Please enter email and password.';return;}
+  const r=await fetch(`${SUPA_URL}/auth/v1/token?grant_type=password`,{method:'POST',headers:{'Content-Type':'application/json',apikey:SUPA_KEY},body:JSON.stringify({email,password:pass})});
+  const d=await r.json();
+  if(d.access_token){localStorage.setItem('gb_token',d.access_token);localStorage.setItem('gb_user',JSON.stringify(d.user));closeAuth();initDashboard();}
+  else{document.getElementById('authMsg').textContent=d.error_description||'Sign in failed.';}
+}
+
+async function doSignup(){
+  const name=document.getElementById('suName').value.trim();
+  const email=document.getElementById('suEmail').value.trim();
+  const pass=document.getElementById('suPass').value;
+  if(!name||!email||!pass){document.getElementById('authMsg').textContent='Please fill all fields.';return;}
+  if(pass.length<6){document.getElementById('authMsg').textContent='Password must be at least 6 characters.';return;}
+  const r=await fetch(`${SUPA_URL}/auth/v1/signup`,{method:'POST',headers:{'Content-Type':'application/json',apikey:SUPA_KEY},body:JSON.stringify({email,password:pass,data:{full_name:name}})});
+  const d=await r.json();
+  if(d.user){document.getElementById('authMsg').style.color='#22c55e';document.getElementById('authMsg').textContent='Account created! Please check your email to verify, then sign in.';}
+  else{document.getElementById('authMsg').textContent=d.error_description||'Sign up failed.';}
+}
+
+function doSignout(){localStorage.removeItem('gb_token');localStorage.removeItem('gb_user');location.reload();}
+
+function getStoredUser(){
+  try{const u=localStorage.getItem('gb_user');return u?JSON.parse(u):null;}catch(e){return null;}
+}
+function getToken(){return localStorage.getItem('gb_token')||'';}
+
+// ── INIT DASHBOARD ────────────────────────────────────────────
+async function initDashboard(){
+  currentUser=getStoredUser();
+  if(!currentUser){
+    document.getElementById('signInPrompt').style.display='block';
+    document.getElementById('dashContent').style.display='none';
+    return;
+  }
+  // Show dashboard
+  document.getElementById('signInPrompt').style.display='none';
+  document.getElementById('dashContent').style.display='block';
+  const name=(currentUser.user_metadata&&currentUser.user_metadata.full_name)||currentUser.email.split('@')[0]||'User';
+  // Update navbar
+  const navName=document.getElementById('navUserName');
+  if(navName) navName.textContent='Hi, '+name.split(' ')[0];
+  const navGuest=document.getElementById('navGuest');
+  const navUser=document.getElementById('navUser');
+  if(navGuest) navGuest.style.display='none';
+  if(navUser) navUser.style.display='flex';
+  document.getElementById('dashSubtitle').textContent='Welcome back, '+name;
+  await loadListings();
+  await loadJobs();
+}
+
+// ── LOAD LISTINGS ─────────────────────────────────────────────
+async function loadListings(){
+  const token=getToken();
+  const r=await fetch(`${SUPA_URL}/rest/v1/listings?user_id=eq.${currentUser.id}&select=*&order=created_at.desc`,
+    {headers:{...H,Authorization:'Bearer '+token}});
+  allListings=await r.json();
+  if(!Array.isArray(allListings))allListings=[];
+
+  // Determine plan from highest listing plan
+  if(allListings.some(l=>l.plan==='premium')) currentPlan='premium';
+  else if(allListings.some(l=>l.plan==='featured')) currentPlan='featured';
+  else currentPlan='free';
+
+  updatePlanBanner();
+  updateSummaryCards();
+  renderTab(activeTab);
+}
+
+async function loadJobs(){
+  const token=getToken();
+  const r=await fetch(`${SUPA_URL}/rest/v1/jobs?user_id=eq.${currentUser.id}&select=*&order=created_at.desc`,
+    {headers:{...H,Authorization:'Bearer '+token}});
+  allJobs=await r.json();
+  if(!Array.isArray(allJobs))allJobs=[];
+}
+
+// ── PLAN BANNER ───────────────────────────────────────────────
+function updatePlanBanner(){
+  const banner=document.getElementById('planBanner');
+  banner.className='plan-banner '+currentPlan;
+  const names={free:'Free Plan',featured:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Featured Plan',premium:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Premium Plan'};
+  const descs={
+    free:'Max 3 listings · 15-day expiry · Call count only',
+    featured:'Max 10 listings · 90-day expiry · Views + analytics',
+    premium:'Unlimited listings · 180-day expiry · Full analytics + competitor insights'
+  };
+  document.getElementById('planName').textContent=names[currentPlan];
+  document.getElementById('planDesc').textContent=descs[currentPlan];
+  if(currentPlan==='premium') document.querySelector('.upgrade-btn').textContent='View Benefits';
+}
+
+// ── SUMMARY CARDS ─────────────────────────────────────────────
+function updateSummaryCards(){
+  const active=allListings.filter(l=>l.status==='active');
+  document.getElementById('statTotal').textContent=active.length;
+  const totalCalls=active.reduce((s,l)=>s+(l.call_count||0),0);
+  document.getElementById('statCalls').textContent=totalCalls;
+  if(currentPlan!=='free'){
+    const totalViews=active.reduce((s,l)=>s+(l.view_count||0),0);
+    const totalWA=active.reduce((s,l)=>s+(l.whatsapp_count||0),0);
+    document.getElementById('statViews').textContent=totalViews.toLocaleString();
+    document.getElementById('statWhatsapp').textContent=totalWA;
+  } else {
+    document.getElementById('statViews').textContent='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>';
+    document.getElementById('statWhatsapp').textContent='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>';
+  }
+}
+
+// ── TABS ──────────────────────────────────────────────────────
+function switchTab(tab,btn){
+  activeTab=tab;
+  document.querySelectorAll('.dash-tab').forEach(b=>b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  const titles={active:'Active Listings',expired:'Expired Listings',sold:'Sold Listings',jobs:'My Job Posts'};
+  document.getElementById('sectionTitle').textContent=titles[tab];
+  renderTab(tab);
+}
+
+function renderTab(tab){
+  const container=document.getElementById('listingsContainer');
+  let items=[];
+  if(tab==='jobs'){
+    renderJobCards(allJobs); return;
+  }
+  if(tab==='active') items=allListings.filter(l=>l.status==='active');
+  else if(tab==='expired') items=allListings.filter(l=>l.status==='expired'||isExpired(l));
+  else if(tab==='sold') items=allListings.filter(l=>l.status==='sold');
+  document.getElementById('listingCount').textContent=items.length+' listing'+(items.length!==1?'s':'');
+  if(items.length===0){
+    container.innerHTML=`<div class="empty-state">
+      <div class="e-icon">${tab==='active'?'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>':tab==='expired'?'⏰':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg>'}</div>
+      <div class="e-title">No ${tab} listings yet</div>
+      <div class="e-sub">${tab==='active'?'Start by posting your first listing — it\'s free!':'Your '+tab+' listings will appear here.'}</div>
+      ${tab==='active'?`<a href="../home.html" class="btn btn-gold">+ Post Free Listing</a>`:''}
+    </div>`;
+    return;
+  }
+  container.innerHTML=items.map(l=>renderListingCard(l)).join('');
+}
+
+function isExpired(l){
+  if(!l.expires_at) return false;
+  return new Date(l.expires_at) < new Date();
+}
+
+function daysLeft(l){
+  if(!l.expires_at) return null;
+  const diff=Math.ceil((new Date(l.expires_at)-new Date())/86400000);
+  return diff;
+}
+
+// ── LISTING CARD ──────────────────────────────────────────────
+function renderListingCard(l){
+  const isPrem=l.plan==='premium', isFeat=l.plan==='featured';
+  const tierClass=isPrem?'premium':isFeat?'featured':'';
+  const thumb=l.images&&l.images[0]?`<img src="${l.images[0]}" style="width:100%;height:100%;object-fit:cover">`:`<span>${getCatIcon(l.category)}</span>`;
+  const days=daysLeft(l);
+  const expiryWarn=days!==null&&days<=3&&days>0?`<div class="expiry-warn">⚠️ Expires in ${days} day${days!==1?'s':''} —</div>`:
+    days!==null&&days<=0?`<div class="expiry-warn" style="color:#ef4444"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Listing expired —</div>`:'';
+
+  // Tier badge
+  const tierBadge=isPrem?`<span class="status-badge sb-premium"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Premium</span>`:
+    isFeat?`<span class="status-badge sb-featured"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Featured</span>`:'';
+
+  // Analytics row — shown for featured/premium
+  let analyticsHtml='';
+  if(isPrem||isFeat){
+    analyticsHtml=`<div class="analytics-row">
+      <div class="an-stat"><div class="an-num">${(l.view_count||0).toLocaleString()}</div><div class="an-lbl">Views</div></div>
+      <div class="an-stat"><div class="an-num">${l.call_count||0}</div><div class="an-lbl">Calls</div></div>
+      <div class="an-stat"><div class="an-num">${l.whatsapp_count||0}</div><div class="an-lbl">WhatsApp</div></div>
+      ${isPrem?`<div class="an-stat"><div class="an-num">${l.edit_count||0}</div><div class="an-lbl">Edits</div></div>`:''}
+    </div>`;
+  } else {
+    analyticsHtml=`<div class="analytics-locked"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> <span>Views & WhatsApp analytics —</span></div>`;
+  }
+
+  const viewUrl=getCategoryUrl(l);
+  return `<div class="dash-card ${tierClass}">
+    <div class="dc-thumb">${thumb}</div>
+    <div class="dc-info">
+      <div class="dc-title">${l.title}</div>
+      <div class="dc-meta">
+        ${l.gb_ref&&window.GBRef?GBRef.badge(l.gb_ref,'small'):''}
+        ${tierBadge}
+        <span class="status-badge ${l.status==='active'?'sb-active':l.status==='sold'?'sb-sold':'sb-expired'}">${l.status}</span>
+        <span style="font-size:11px;color:#333">${l.emirate||''}${l.area?' · '+l.area:''}</span>
+        ${l.price?` · <span style="font-size:11px;color:#C9A84C;font-weight:600">AED ${Number(l.price).toLocaleString()}</span>`:''}
+      </div>
+      ${expiryWarn}
+      ${analyticsHtml}
+    </div>
+    <div class="dc-actions">
+      <a href="${viewUrl}?id=${l.id}" target="_blank" class="act-btn act-edit">👁 View</a>
+      <button class="act-btn act-sold" onclick="markSold('${l.id}')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg> Sold</button>
+      <button class="act-btn act-delete" onclick="deleteListing('${l.id}')">🗑 Delete</button>
+      ${!isPrem?`<button class="act-btn act-upgrade" onclick="showUpgradeModal()">⬆ Upgrade</button>`:''}
+    </div>
+  </div>`;
+}
+
+// ── JOB CARDS ─────────────────────────────────────────────────
+function renderJobCards(jobs){
+  const container=document.getElementById('listingsContainer');
+  document.getElementById('listingCount').textContent=jobs.length+' job'+(jobs.length!==1?'s':'');
+  if(jobs.length===0){
+    container.innerHTML=`<div class="empty-state"><div class="e-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div><div class="e-title">No job posts yet</div><div class="e-sub">Post a job opening — it's free!</div><a href="../jobs/post.html" class="btn btn-gold">+ Post a Job Free</a></div>`;
+    return;
+  }
+  container.innerHTML=jobs.map(j=>`
+    <div class="dash-card">
+      <div class="dc-thumb"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></span></div>
+      <div class="dc-info">
+        <div class="dc-title">${j.title}</div>
+        <div class="dc-meta">
+          <span class="status-badge ${j.status==='active'?'sb-active':'sb-expired'}">${j.status}</span>
+          <span style="font-size:11px;color:#333">${j.company||''} · ${j.emirate||''}</span>
+          ${j.salary_min?` · <span style="font-size:11px;color:#C9A84C;font-weight:600">AED ${Number(j.salary_min).toLocaleString()}/mo</span>`:''}
+        </div>
+        <div class="analytics-row">
+          <div class="an-stat"><div class="an-num">${j.call_count||0}</div><div class="an-lbl">Calls</div></div>
+          <div class="an-stat"><div class="an-num">${j.view_count||0}</div><div class="an-lbl">Views</div></div>
+        </div>
+      </div>
+      <div class="dc-actions">
+        <a href="../jobs/listing.html?id=${j.id}" target="_blank" class="act-btn act-edit">👁 View</a>
+        <button class="act-btn act-delete" onclick="deleteJob('${j.id}')">🗑 Delete</button>
+      </div>
+    </div>`).join('');
+}
+
+// ── ACTIONS ───────────────────────────────────────────────────
+async function markSold(id){
+  if(!confirm('Mark this listing as sold?'))return;
+  const token=getToken();
+  await fetch(`${SUPA_URL}/rest/v1/listings?id=eq.${id}`,{method:'PATCH',headers:{...H,'Content-Type':'application/json',Authorization:'Bearer '+token},body:JSON.stringify({status:'sold'})});
+  await loadListings();
+}
+
+async function deleteListing(id){
+  if(!confirm('Delete this listing permanently? This cannot be undone.'))return;
+  const token=getToken();
+  await fetch(`${SUPA_URL}/rest/v1/listings?id=eq.${id}`,{method:'DELETE',headers:{...H,Authorization:'Bearer '+token}});
+  await loadListings();
+}
+
+async function deleteJob(id){
+  if(!confirm('Delete this job post permanently?'))return;
+  const token=getToken();
+  await fetch(`${SUPA_URL}/rest/v1/jobs?id=eq.${id}`,{method:'DELETE',headers:{...H,Authorization:'Bearer '+token}});
+  await loadJobs();
+  renderTab('jobs');
+}
+
+// ── HELPERS ───────────────────────────────────────────────────
+function getCatIcon(cat){
+  const icons={property:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>',vehicles:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>',motors:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>',classifieds:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>',marketplace:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>',services:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>',jobs:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>',directory:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>'};
+  return icons[cat]||'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>';
+}
+
+function getCategoryUrl(l){
+  const map={property:'../property/listing',vehicles:'../motors/listing',motors:'../motors/listing',classifieds:'../marketplace/listing',marketplace:'../marketplace/listing'};
+  return map[l.category]||'../home';
+}
+
+// ── UPGRADE MODAL ─────────────────────────────────────────────
+function showUpgradeModal(){document.getElementById('upgradeModal').style.display='flex';}
+function hideUpgradeModal(){document.getElementById('upgradeModal').style.display='none';}
+
+function contactUpgrade(plan){
+  const planNames={featured:'Featured (AED 99/month)',premium:'Premium (AED 299/month)',offplan:'Off-Plan Pro (AED 599/month)'};
+  const msg=`Hi GulfHabibi, I want to upgrade to ${planNames[plan]}. My account email: ${currentUser?.email||''}`;
+  window.open('https://wa.me/971500000000?text='+encodeURIComponent(msg),'_blank');
+  hideUpgradeModal();
+}
+
+// ── INIT ──────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded',initDashboard);
+</script>
+<script src="../shared/theme.js"></script>
+<script>
+(function(){
+  function checkAuthState(){
+    var user=localStorage.getItem('gb_user');
+    var guest=document.getElementById('navGuest');
+    var navUser=document.getElementById('navUser');
+    var nameEl=document.getElementById('navUserName');
+    if(user){try{
+      var u=JSON.parse(user);
+      var name=(u.user_metadata&&u.user_metadata.full_name)||u.email.split('@')[0]||'Account';
+      if(nameEl)nameEl.textContent='Hi, '+name.split(' ')[0];
+      if(guest)guest.style.display='none';
+      if(navUser)navUser.style.display='flex';
+    }catch(e){}}
+    else{if(guest)guest.style.display='flex';if(navUser)navUser.style.display='none';}
+  }
+  function doSignout(){localStorage.removeItem('gb_token');localStorage.removeItem('gb_user');checkAuthState();}
+  window.doSignout=doSignout;
+  document.addEventListener('DOMContentLoaded',checkAuthState);
+})();
+</script>
+
+
+</body>
+</html>

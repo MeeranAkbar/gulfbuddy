@@ -1,0 +1,410 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans)}
+.gb-wrap{padding:16px 0}
+.section-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px}
+.stab{padding:7px 14px;border-radius:20px;border:0.5px solid var(--color-border-secondary);font-size:13px;cursor:pointer;background:var(--color-background-secondary);color:var(--color-text-secondary);font-weight:400;transition:all .15s}
+.stab.active{background:#C9A84C;color:#000;border-color:#C9A84C;font-weight:500}
+.section{display:none}.section.show{display:block}
+.preview-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.panel{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden}
+.panel-header{padding:10px 14px;border-bottom:0.5px solid var(--color-border-tertiary);font-size:12px;font-weight:500;color:var(--color-text-secondary);display:flex;align-items:center;gap:6px}
+.panel-body{padding:14px}
+.gb-dark{background:#06060e;border-radius:var(--border-radius-lg);padding:14px}
+.form-row{margin-bottom:10px}
+.form-label{font-size:10px;font-weight:500;color:#555;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;display:block}
+.fake-input{background:#0d0d1a;border:1px solid #1a1828;border-radius:6px;padding:8px 10px;font-size:12px;color:#666;width:100%}
+.fake-input.filled{color:#ccc}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.gold-btn{background:#C9A84C;border:none;border-radius:8px;padding:10px;font-size:13px;font-weight:700;color:#000;width:100%;cursor:pointer;margin-top:4px}
+.listing-card{background:#0d0d1a;border:1px solid #1a1828;border-radius:10px;overflow:hidden}
+.card-img{height:120px;background:linear-gradient(135deg,#111128,#1a1a2e);display:flex;align-items:center;justify-content:center;font-size:36px;position:relative}
+.card-badge{position:absolute;top:8px;left:8px;font-size:10px;font-weight:700;padding:2px 7px;border-radius:20px}
+.badge-free{background:#1a1828;color:#555}
+.badge-featured{background:rgba(201,168,76,.2);color:#C9A84C;border:1px solid rgba(201,168,76,.3)}
+.badge-premium{background:rgba(232,201,122,.15);color:#E8C97A;border:1px solid rgba(232,201,122,.3)}
+.card-body{padding:10px 12px}
+.card-price{font-size:16px;font-weight:700;color:#C9A84C;margin-bottom:4px}
+.card-title{font-size:12px;color:#ccc;margin-bottom:4px;font-weight:500}
+.card-meta{font-size:11px;color:#444;margin-bottom:8px}
+.card-ref{font-size:10px;font-family:monospace;color:#C9A84C;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.15);border-radius:4px;padding:2px 7px;display:inline-block;margin-bottom:8px}
+.card-footer{display:flex;gap:6px}
+.btn-call{flex:1;background:#22c55e;border:none;border-radius:6px;padding:7px;font-size:11px;font-weight:700;color:#fff;cursor:pointer}
+.btn-wa{flex:1;background:#25D366;border:none;border-radius:6px;padding:7px;font-size:11px;font-weight:700;color:#fff;cursor:pointer}
+.section-title{font-size:15px;font-weight:500;color:var(--color-text-primary);margin-bottom:12px}
+.deal-card{background:#0d0d1a;border:1px solid #1a1828;border-radius:10px;padding:12px;margin-bottom:10px}
+.deal-flash{border-top:2px solid #ef4444}
+.deal-weekly{border-top:2px solid #C9A84C}
+.slots{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;background:rgba(239,68,68,.12);color:#ef4444;margin-bottom:6px}
+.saving{display:inline-block;font-size:10px;font-weight:700;padding:2px 7px;border-radius:20px;background:rgba(34,197,94,.1);color:#22c55e;margin-left:6px}
+</style>
+
+<div class="gb-wrap">
+<div class="section-tabs">
+  <button class="stab active" onclick="show('motors',this)">🚗 Motors</button>
+  <button class="stab" onclick="show('property',this)">🏠 Property</button>
+  <button class="stab" onclick="show('jobs',this)">💼 Jobs</button>
+  <button class="stab" onclick="show('classifieds',this)">🛒 Classifieds</button>
+  <button class="stab" onclick="show('services',this)">🔧 Services</button>
+  <button class="stab" onclick="show('directory',this)">📒 Directory</button>
+</div>
+
+<!-- MOTORS -->
+<div class="section show" id="s-motors">
+<div class="section-title">🚗 Motors — Post form + How listing appears</div>
+<div class="preview-grid">
+<div class="panel">
+  <div class="panel-header">📝 Post a Vehicle</div>
+  <div class="panel-body"><div class="gb-dark">
+    <div class="two-col">
+      <div class="form-row"><span class="form-label">Brand *</span><div class="fake-input filled">Toyota</div></div>
+      <div class="form-row"><span class="form-label">Model *</span><div class="fake-input filled">Camry</div></div>
+    </div>
+    <div class="two-col">
+      <div class="form-row"><span class="form-label">Year *</span><div class="fake-input filled">2021</div></div>
+      <div class="form-row"><span class="form-label">Mileage (KM)</span><div class="fake-input filled">45,000</div></div>
+    </div>
+    <div class="two-col">
+      <div class="form-row"><span class="form-label">Condition</span><div class="fake-input filled">Excellent</div></div>
+      <div class="form-row"><span class="form-label">Fuel</span><div class="fake-input filled">Petrol</div></div>
+    </div>
+    <div class="form-row"><span class="form-label">Title *</span><div class="fake-input filled">Toyota Camry 2021 — Excellent, Full Service History</div></div>
+    <div class="form-row"><span class="form-label">Price (AED) *</span><div class="fake-input filled">55,000</div></div>
+    <div class="two-col">
+      <div class="form-row"><span class="form-label">Emirate</span><div class="fake-input filled">Dubai</div></div>
+      <div class="form-row"><span class="form-label">Area</span><div class="fake-input filled">Al Quoz</div></div>
+    </div>
+    <div class="form-row"><span class="form-label">Photos</span><div class="fake-input" style="height:36px;display:flex;align-items:center;gap:6px"><span style="font-size:14px">📷</span><span style="font-size:11px">3 photos selected — compressed</span></div></div>
+    <button class="gold-btn">Post Vehicle Free →</button>
+  </div></div>
+</div>
+<div class="panel">
+  <div class="panel-header">🃏 How it appears on browse + listing page</div>
+  <div class="panel-body">
+    <div style="margin-bottom:10px;font-size:11px;color:var(--color-text-secondary)">Browse card (free plan):</div>
+    <div class="listing-card" style="margin-bottom:14px">
+      <div class="card-img">🚗<span class="card-badge badge-free">Free</span></div>
+      <div class="card-body">
+        <div class="card-price">AED 55,000</div>
+        <div class="card-title">Toyota Camry 2021 — Excellent, Full Service History</div>
+        <div class="card-meta">2021 · 45,000 KM · Petrol · Al Quoz, Dubai</div>
+        <div class="card-ref">🔖 GB-MOT-DXB-000001</div>
+        <div class="card-footer"><button class="btn-call">📞 Call</button><button class="btn-wa">💬 WhatsApp</button></div>
+      </div>
+    </div>
+    <div style="margin-bottom:6px;font-size:11px;color:var(--color-text-secondary)">Featured plan card:</div>
+    <div class="listing-card" style="border-color:#C9A84C;box-shadow:0 0 0 1px rgba(201,168,76,.2)">
+      <div class="card-img" style="background:linear-gradient(135deg,#141420,#1a1a28)">🚗<span class="card-badge badge-featured">⭐ Featured</span></div>
+      <div class="card-body">
+        <div class="card-price" style="color:#E8C97A">AED 55,000</div>
+        <div class="card-title">Toyota Camry 2021 — Excellent, Full Service History</div>
+        <div class="card-meta">2021 · 45,000 KM · Petrol · Al Quoz, Dubai</div>
+        <div class="card-ref">🔖 GB-MOT-DXB-000001</div>
+        <div class="card-footer"><button class="btn-call">📞 Call</button><button class="btn-wa">💬 WhatsApp</button></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<!-- PROPERTY -->
+<div class="section" id="s-property">
+<div class="section-title">🏠 Property — Post form + How listing appears</div>
+<div class="preview-grid">
+<div class="panel">
+  <div class="panel-header">📝 Post a Property</div>
+  <div class="panel-body"><div class="gb-dark">
+    <div class="two-col">
+      <div class="form-row"><span class="form-label">Purpose *</span><div class="fake-input filled">For Rent</div></div>
+      <div class="form-row"><span class="form-label">Type *</span><div class="fake-input filled">Apartment</div></div>
+    </div>
+    <div class="two-col">
+      <div class="form-row"><span class="form-label">Bedrooms</span><div class="fake-input filled">2 BR</div></div>
+      <div class="form-row"><span class="form-label">Bathrooms</span><div class="fake-input filled">2</div></div>
+    </div>
+    <div class="form-row"><span class="form-label">Title *</span><div class="fake-input filled">Spacious 2BR in Marina Gate — Sea View</div></div>
+    <div class="form-row"><span class="form-label">Price (AED) *</span><div class="fake-input filled">95,000 / year</div></div>
+    <div class="two-col">
+      <div class="form-row"><span class="form-label">Emirate</span><div class="fake-input filled">Dubai</div></div>
+      <div class="form-row"><span class="form-label">Area</span><div class="fake-input filled">Marina</div></div>
+    </div>
+    <div class="form-row"><span class="form-label">RERA Permit (Required — Dubai)</span><div class="fake-input filled" style="color:#C9A84C">7123456789</div></div>
+    <div class="form-row"><span class="form-label">Posted as</span><div class="fake-input filled">Real Estate Agent</div></div>
+    <div class="form-row"><span class="form-label">Photos (up to 8)</span><div class="fake-input" style="height:36px;display:flex;align-items:center;gap:6px"><span style="font-size:14px">📷</span><span style="font-size:11px">5 photos — first = main image</span></div></div>
+    <button class="gold-btn">Post Property Free →</button>
+  </div></div>
+</div>
+<div class="panel">
+  <div class="panel-header">🃏 How it appears</div>
+  <div class="panel-body">
+    <div class="listing-card" style="margin-bottom:14px">
+      <div class="card-img" style="font-size:28px;flex-direction:column;gap:4px">🏢<div style="font-size:10px;color:#C9A84C;font-weight:700">📋 RERA Verified</div><span class="card-badge badge-free" style="position:static">Free</span></div>
+      <div class="card-body">
+        <div class="card-price">AED 95,000/year</div>
+        <div class="card-title">Spacious 2BR in Marina Gate — Sea View</div>
+        <div class="card-meta">2 BR · 2 Bath · Marina, Dubai · Agent listing</div>
+        <div class="card-ref">🔖 GB-PROP-DXB-000001</div>
+        <div class="card-footer"><button class="btn-call">📞 Call</button><button class="btn-wa">💬 WhatsApp</button></div>
+      </div>
+    </div>
+    <div style="font-size:11px;color:var(--color-text-secondary);margin-bottom:8px">Abu Dhabi listing — shows DARI permit field instead:</div>
+    <div class="fake-input" style="margin-bottom:4px"><span class="form-label" style="display:inline">Madhmoun/DARI Permit (Required)</span></div>
+    <div style="font-size:11px;color:var(--color-text-secondary);margin-top:8px">Sharjah/RAK/Ajman — shows open reference field:</div>
+    <div class="fake-input" style="margin-top:4px;color:#666;font-size:11px">Property Reference / Permit — Optional, enter any ID you have</div>
+  </div>
+</div>
+</div>
+</div>
+
+<!-- JOBS -->
+<div class="section" id="s-jobs">
+<div class="section-title">💼 Jobs — Post form + How listing appears</div>
+<div class="preview-grid">
+<div class="panel">
+  <div class="panel-header">📝 Post a Job</div>
+  <div class="panel-body"><div class="gb-dark">
+    <div class="form-row"><span class="form-label">Job Title *</span><div class="fake-input filled">Senior Accountant</div></div>
+    <div class="two-col">
+      <div class="form-row"><span class="form-label">Company *</span><div class="fake-input filled">Al Futtaim Group</div></div>
+      <div class="form-row"><span class="form-label">Category *</span><div class="fake-input filled">💰 Finance & Banking</div></div>
+    </div>
+    <div class="form-row"><span class="form-label">Description *</span><div class="fake-input filled" style="height:50px;padding-top:6px">Seeking experienced accountant with 5+ years UAE experience, VAT knowledge required...</div></div>
+    <div class="two-col">
+      <div class="form-row"><span class="form-label">Job Type</span><div class="fake-input filled">Full Time</div></div>
+      <div class="form-row"><span class="form-label">Experience</span><div class="fake-input filled">Senior (5+ yrs)</div></div>
+    </div>
+    <div class="two-col">
+      <div class="form-row"><span class="form-label">Salary From</span><div class="fake-input filled">AED 8,000</div></div>
+      <div class="form-row"><span class="form-label">Salary To</span><div class="fake-input filled">AED 12,000</div></div>
+    </div>
+    <div class="two-col">
+      <div class="form-row"><span class="form-label">Emirate *</span><div class="fake-input filled">Dubai</div></div>
+      <div class="form-row"><span class="form-label">Area</span><div class="fake-input filled">DIFC</div></div>
+    </div>
+    <button class="gold-btn">Post Job Free →</button>
+  </div></div>
+</div>
+<div class="panel">
+  <div class="panel-header">🃏 How it appears</div>
+  <div class="panel-body">
+    <div class="listing-card">
+      <div class="card-body" style="padding:14px">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
+          <div>
+            <div style="font-size:10px;font-weight:700;color:#C9A84C;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px">💰 Finance & Banking</div>
+            <div class="card-title" style="font-size:14px;margin-bottom:2px">Senior Accountant</div>
+            <div style="font-size:12px;color:#888">Al Futtaim Group</div>
+          </div>
+          <span class="card-badge badge-free" style="position:static">Free</span>
+        </div>
+        <div class="card-meta">📍 DIFC, Dubai · Full Time · Senior (5+ yrs)</div>
+        <div style="font-size:12px;color:#22c55e;font-weight:600;margin-bottom:8px">AED 8,000 – 12,000/month</div>
+        <div class="card-ref">🔖 GB-JOB-DXB-000001</div>
+        <div style="font-size:11px;color:#555;margin-bottom:10px;line-height:1.6">Seeking experienced accountant with 5+ years UAE experience, VAT knowledge required...</div>
+        <div class="card-footer">
+          <button class="btn-call">📞 Apply / Call</button>
+          <button class="btn-wa">💬 WhatsApp</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<!-- CLASSIFIEDS -->
+<div class="section" id="s-classifieds">
+<div class="section-title">🛒 Classifieds — Post form + How listing appears</div>
+<div class="preview-grid">
+<div class="panel">
+  <div class="panel-header">📝 Post a Classified Item</div>
+  <div class="panel-body"><div class="gb-dark">
+    <div style="margin-bottom:10px">
+      <span class="form-label" style="display:block;margin-bottom:6px">Category (visual cards)</span>
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        <div style="background:rgba(201,168,76,.1);border:1.5px solid #C9A84C;border-radius:8px;padding:7px 10px;font-size:11px;font-weight:600;color:#C9A84C;text-align:center">📱<br>Electronics</div>
+        <div style="background:#0d0d1e;border:1.5px solid #1a1828;border-radius:8px;padding:7px 10px;font-size:11px;font-weight:600;color:#555;text-align:center">🏠<br>Home</div>
+        <div style="background:#0d0d1e;border:1.5px solid #1a1828;border-radius:8px;padding:7px 10px;font-size:11px;font-weight:600;color:#555;text-align:center">👗<br>Fashion</div>
+        <div style="background:#0d0d1e;border:1.5px solid #1a1828;border-radius:8px;padding:7px 10px;font-size:11px;font-weight:600;color:#555;text-align:center">🧸<br>Kids</div>
+      </div>
+    </div>
+    <div class="form-row"><span class="form-label">Sub-category</span><div class="fake-input filled">📱 Mobiles & Tablets</div></div>
+    <div class="form-row"><span class="form-label">Title *</span><div class="fake-input filled">iPhone 14 Pro 256GB Space Black — Excellent Condition</div></div>
+    <div style="margin-bottom:10px">
+      <span class="form-label" style="display:block;margin-bottom:6px">Condition (chips)</span>
+      <div style="display:flex;gap:6px">
+        <div style="background:rgba(201,168,76,.1);border:1.5px solid #C9A84C;border-radius:20px;padding:5px 12px;font-size:11px;font-weight:600;color:#C9A84C">Like New</div>
+        <div style="background:#0d0d1e;border:1.5px solid #1a1828;border-radius:20px;padding:5px 12px;font-size:11px;font-weight:600;color:#555">New</div>
+        <div style="background:#0d0d1e;border:1.5px solid #1a1828;border-radius:20px;padding:5px 12px;font-size:11px;font-weight:600;color:#555">Good</div>
+        <div style="background:#0d0d1e;border:1.5px solid #1a1828;border-radius:20px;padding:5px 12px;font-size:11px;font-weight:600;color:#555">Fair</div>
+      </div>
+    </div>
+    <div class="two-col">
+      <div class="form-row"><span class="form-label">Price Type</span><div class="fake-input filled">Fixed Price</div></div>
+      <div class="form-row"><span class="form-label">Price (AED)</span><div class="fake-input filled">2,800</div></div>
+    </div>
+    <div class="two-col">
+      <div class="form-row"><span class="form-label">Emirate</span><div class="fake-input filled">Dubai</div></div>
+      <div class="form-row"><span class="form-label">Area</span><div class="fake-input filled">Marina</div></div>
+    </div>
+    <button class="gold-btn">Post Free →</button>
+  </div></div>
+</div>
+<div class="panel">
+  <div class="panel-header">🃏 How it appears</div>
+  <div class="panel-body">
+    <div class="listing-card">
+      <div class="card-img" style="font-size:40px">📱<span class="card-badge badge-free">Free</span><div style="position:absolute;top:8px;right:8px;background:rgba(34,197,94,.12);color:#22c55e;border:1px solid rgba(34,197,94,.2);font-size:10px;font-weight:700;padding:2px 7px;border-radius:20px">Like New</div></div>
+      <div class="card-body">
+        <div class="card-price">AED 2,800</div>
+        <div class="card-title">iPhone 14 Pro 256GB Space Black — Excellent Condition</div>
+        <div class="card-meta">📱 Mobiles & Tablets · Marina, Dubai</div>
+        <div class="card-ref">🔖 GB-MKT-DXB-000001</div>
+        <div class="card-footer"><button class="btn-call">📞 Call</button><button class="btn-wa">💬 WhatsApp</button></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<!-- SERVICES -->
+<div class="section" id="s-services">
+<div class="section-title">🔧 Services — Provider posts deal + How it appears + Booking</div>
+<div class="preview-grid">
+<div class="panel">
+  <div class="panel-header">📝 Provider posts a deal (post-deal.html)</div>
+  <div class="panel-body"><div class="gb-dark">
+    <div style="margin-bottom:10px">
+      <span class="form-label" style="display:block;margin-bottom:6px">Deal type</span>
+      <div style="display:flex;gap:6px">
+        <div style="background:rgba(239,68,68,.1);border:2px solid #ef4444;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:700;color:#ef4444;text-align:center">🔥<br>Flash<br>Today only</div>
+        <div style="background:#0d0d1e;border:1.5px solid #1a1828;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:600;color:#555;text-align:center">📅<br>Weekly</div>
+        <div style="background:#0d0d1e;border:1.5px solid #1a1828;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:600;color:#555;text-align:center">🏷️<br>Standard</div>
+      </div>
+    </div>
+    <div class="form-row"><span class="form-label">Title *</span><div class="fake-input filled">AC Service + Gas Check — Summer Special</div></div>
+    <div class="form-row"><span class="form-label">What's included</span><div class="fake-input filled">Gas check, filter clean, leak test, remote check</div></div>
+    <div class="two-col">
+      <div class="form-row"><span class="form-label">Deal Price (AED)</span><div class="fake-input filled" style="color:#C9A84C">149</div></div>
+      <div class="form-row"><span class="form-label">Original Price</span><div class="fake-input filled" style="color:#555;text-decoration:line-through">220</div></div>
+    </div>
+    <div class="two-col">
+      <div class="form-row"><span class="form-label">Slots available</span><div class="fake-input filled">3 slots</div></div>
+      <div class="form-row"><span class="form-label">Valid until</span><div class="fake-input filled">Today 11:59 PM</div></div>
+    </div>
+    <div class="form-row"><span class="form-label">Areas covered</span><div class="fake-input filled">Marina, JLT, JBR, Downtown</div></div>
+    <div style="background:#0a0a18;border:1px solid #1a1828;border-radius:8px;padding:10px 12px;font-size:11px;color:#555;margin-bottom:10px;line-height:1.8">
+      Commission: <span style="color:#C9A84C">10% new → 7% verified → 5% top rated</span><br>Only charged when you complete a job
+    </div>
+    <button class="gold-btn">Post Deal Free →</button>
+  </div></div>
+</div>
+<div class="panel">
+  <div class="panel-header">🃏 How deal appears + booking flow</div>
+  <div class="panel-body">
+    <div class="deal-card deal-flash">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+        <span style="font-size:10px;font-weight:700;color:#ef4444">🔥 Today Only</span>
+        <span class="slots">2 slots left</span>
+      </div>
+      <div style="font-size:32px;margin-bottom:8px;text-align:center">❄️</div>
+      <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px">AC & Cooling</div>
+      <div style="font-size:13px;font-weight:700;color:#eee;margin-bottom:4px">AC Service + Gas Check — Summer Special</div>
+      <div style="font-size:11px;color:#444;margin-bottom:8px">✅ Gas check, filter clean, leak test, remote check</div>
+      <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:4px">
+        <span style="font-size:20px;font-weight:800;color:#C9A84C">AED 149</span>
+        <span style="font-size:11px;color:#333;text-decoration:line-through">AED 220</span>
+        <span class="saving">32% off</span>
+      </div>
+      <div style="font-size:11px;color:#444;margin-bottom:10px">📍 Marina, JLT, JBR, Downtown</div>
+      <div style="display:flex;gap:6px">
+        <button style="flex:1;background:#C9A84C;border:none;border-radius:6px;padding:8px;font-size:12px;font-weight:700;color:#000;cursor:pointer">📅 Book Now</button>
+        <button style="background:#1a1828;border:1px solid rgba(201,168,76,.2);border-radius:6px;padding:8px 10px;font-size:12px;color:#C9A84C;cursor:pointer">↗</button>
+      </div>
+    </div>
+    <div style="font-size:11px;color:var(--color-text-secondary);margin-bottom:8px;margin-top:4px">After "Book Now" — booking modal:</div>
+    <div style="background:#0d0d1a;border:1px solid rgba(201,168,76,.2);border-radius:10px;padding:12px">
+      <div style="font-size:12px;font-weight:500;color:#eee;margin-bottom:4px">Book This Deal</div>
+      <div style="font-size:13px;font-weight:700;color:#C9A84C;margin-bottom:10px">AED 149 — AC Service</div>
+      <div class="fake-input" style="margin-bottom:6px;color:#ccc;font-size:11px">Your name</div>
+      <div class="fake-input" style="margin-bottom:6px;color:#ccc;font-size:11px">+971 50 000 0000</div>
+      <div class="fake-input" style="margin-bottom:6px;color:#ccc;font-size:11px">Building, area, emirate</div>
+      <div style="font-size:10px;color:#333;margin-bottom:8px;line-height:1.6">🛡️ Payment held until you confirm job done</div>
+      <button style="width:100%;background:#C9A84C;border:none;border-radius:6px;padding:8px;font-size:12px;font-weight:700;color:#000;cursor:pointer">Confirm Booking →</button>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<!-- DIRECTORY -->
+<div class="section" id="s-directory">
+<div class="section-title">📒 Business Directory — Post form + How listing appears</div>
+<div class="preview-grid">
+<div class="panel">
+  <div class="panel-header">📝 List a Business</div>
+  <div class="panel-body"><div class="gb-dark">
+    <div class="form-row"><span class="form-label">Business Name *</span><div class="fake-input filled">Fast Jaguar Technical Services LLC</div></div>
+    <div class="two-col">
+      <div class="form-row"><span class="form-label">Category *</span><div class="fake-input filled">🏗️ Renovation & Fit-Out</div></div>
+      <div class="form-row"><span class="form-label">Sub-category</span><div class="fake-input filled">Interior Fit-Out</div></div>
+    </div>
+    <div class="form-row"><span class="form-label">Description</span><div class="fake-input filled" style="height:46px;padding-top:6px">Specialising in villa and apartment renovations, fit-out, and maintenance across UAE...</div></div>
+    <div class="two-col">
+      <div class="form-row"><span class="form-label">Phone *</span><div class="fake-input filled">+971 50 000 0000</div></div>
+      <div class="form-row"><span class="form-label">WhatsApp</span><div class="fake-input filled">+971 50 000 0000</div></div>
+    </div>
+    <div class="two-col">
+      <div class="form-row"><span class="form-label">Emirate</span><div class="fake-input filled">Dubai</div></div>
+      <div class="form-row"><span class="form-label">Area</span><div class="fake-input filled">Al Quoz</div></div>
+    </div>
+    <div class="form-row"><span class="form-label">Website</span><div class="fake-input filled">fastjaguar.com</div></div>
+    <button class="gold-btn">List Business Free →</button>
+  </div></div>
+</div>
+<div class="panel">
+  <div class="panel-header">🃏 How it appears in directory</div>
+  <div class="panel-body">
+    <div class="listing-card">
+      <div class="card-img" style="font-size:36px;background:linear-gradient(135deg,#0a0a18,#141428)">🏗️<span class="card-badge badge-free">Free</span></div>
+      <div class="card-body">
+        <div style="font-size:10px;font-weight:700;color:#C9A84C;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px">Renovation & Fit-Out</div>
+        <div class="card-title" style="font-size:14px;margin-bottom:4px">Fast Jaguar Technical Services LLC</div>
+        <div style="display:flex;gap:4px;align-items:center;margin-bottom:4px">
+          <span style="color:#C9A84C;font-size:12px">★★★★★</span>
+          <span style="font-size:11px;color:#444">4.8 (12 reviews)</span>
+        </div>
+        <div class="card-meta">📍 Al Quoz, Dubai · fastjaguar.com</div>
+        <div style="font-size:11px;color:#444;margin-bottom:8px;line-height:1.6">Specialising in villa and apartment renovations, fit-out, and maintenance across UAE...</div>
+        <div class="card-footer"><button class="btn-call">📞 Call</button><button class="btn-wa">💬 WhatsApp</button></div>
+      </div>
+    </div>
+    <div style="margin-top:12px;font-size:11px;color:var(--color-text-secondary)">Featured directory card (AED 99/month):</div>
+    <div class="listing-card" style="margin-top:8px;border-color:#C9A84C">
+      <div class="card-body" style="padding:12px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+          <div style="font-size:14px;font-weight:500;color:#eee">Fast Jaguar Technical Services</div>
+          <span class="card-badge badge-featured" style="position:static">⭐ Featured</span>
+        </div>
+        <div style="font-size:10px;color:#C9A84C;font-weight:700;margin-bottom:4px">✅ Business Verified</div>
+        <div class="card-meta">📍 Al Quoz, Dubai</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+</div>
+
+<script>
+function show(id,btn){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('show'));
+  document.querySelectorAll('.stab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('s-'+id).classList.add('show');
+  btn.classList.add('active');
+}
+</script>

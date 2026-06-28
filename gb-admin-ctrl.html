@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/shared/preview-guard.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GulfHabibi Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#ffffff;color:#111;font-family:'Inter',sans-serif;min-height:100vh}
+/* ── LOGIN GATE ── */
+#loginGate{position:fixed;inset:0;background:#ffffff;display:flex;align-items:center;justify-content:center;z-index:9999}
+.login-box{background:#ffffff;border:1px solid rgba(201,168,76,.25);border-radius:16px;padding:40px 36px;width:360px;text-align:center}
+.login-box h2{font-size:20px;font-weight:700;margin-bottom:6px}
+.login-box p{font-size:12px;color:#555;margin-bottom:28px}
+.login-input{width:100%;background:#f8f8f8;border:1px solid #e5e5e5;border-radius:9px;color:#111;font-family:inherit;font-size:14px;padding:11px 14px;outline:none;margin-bottom:12px;transition:border-color .2s}
+.login-input:focus{border-color:#C9A84C}
+.login-btn{width:100%;background:#C9A84C;border:none;border-radius:9px;color:#000;font-size:14px;font-weight:700;padding:12px;cursor:pointer;font-family:inherit;transition:background .2s}
+.login-btn:hover{background:#E8C97A}
+.login-err{font-size:12px;color:#ef4444;margin-top:8px;min-height:18px}
+/* ── LAYOUT ── */
+.admin-shell{display:flex;flex-direction:column;min-height:100vh}
+.admin-nav{background:#f8f8f8;border-bottom:1px solid #e5e5e5;padding:0 24px;height:52px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.admin-nav-logo{font-size:16px;font-weight:700;color:#C9A84C}
+.admin-nav-right{display:flex;align-items:center;gap:16px}
+.admin-clock{font-size:12px;color:#333}
+.admin-logout{font-size:12px;color:#444;cursor:pointer;background:none;border:none;font-family:inherit;transition:color .15s}
+.admin-logout:hover{color:#ef4444}
+/* ── TABS ── */
+.admin-tabs{background:#f8f8f8;border-bottom:1px solid #e5e5e5;padding:0 24px;display:flex;gap:2px;overflow-x:auto}
+.admin-tabs::-webkit-scrollbar{height:2px}
+.atab{padding:14px 18px;font-size:12px;font-weight:600;color:#444;cursor:pointer;border:none;background:none;font-family:inherit;border-bottom:2px solid transparent;transition:all .15s;white-space:nowrap}
+.atab:hover{color:#888}
+.atab.on{color:#C9A84C;border-bottom-color:#C9A84C}
+/* ── CONTENT ── */
+.admin-body{flex:1;padding:24px;max-width:1200px;width:100%;margin:0 auto}
+/* ── LAUNCH CONTROLS ── */
+.launch-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:24px}
+.launch-card{background:#ffffff;border:1px solid #e5e5e5;border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:12px;transition:border-color .2s}
+.launch-card.live{border-color:rgba(34,197,94,.25)}
+.launch-card.off{border-color:rgba(239,68,68,.15)}
+.lc-top{display:flex;align-items:center;justify-content:space-between}
+.lc-icon{font-size:26px}
+.lc-status{font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px}
+.lc-status.live{background:rgba(34,197,94,.1);color:#22c55e;border:1px solid rgba(34,197,94,.2)}
+.lc-status.off{background:rgba(239,68,68,.08);color:#ef4444;border:1px solid rgba(239,68,68,.15)}
+.lc-name{font-size:14px;font-weight:700;color:#111}
+.lc-desc{font-size:11px;color:#444;line-height:1.5}
+.lc-toggle{display:flex;align-items:center;justify-content:space-between;padding-top:8px;border-top:1px solid #111128}
+.lc-toggle-label{font-size:11px;color:#555}
+/* ── BIG TOGGLE SWITCH ── */
+.big-sw{position:relative;width:52px;height:28px;flex-shrink:0}
+.big-sw input{opacity:0;width:0;height:0;position:absolute}
+.big-sw .sl{position:absolute;inset:0;background:#f8f8f8;border-radius:28px;cursor:pointer;transition:.3s;border:1px solid #e5e5e5}
+.big-sw .sl:before{content:'';position:absolute;width:20px;height:20px;left:3px;bottom:3px;background:#444;border-radius:50%;transition:.3s}
+.big-sw input:checked+.sl{background:rgba(34,197,94,.15);border-color:#22c55e}
+.big-sw input:checked+.sl:before{transform:translateX(24px);background:#22c55e}
+/* ── STATS ROW ── */
+.stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:24px}
+.stat-box{background:#ffffff;border:1px solid #e5e5e5;border-radius:12px;padding:16px}
+.stat-n{font-size:24px;font-weight:700;color:#C9A84C}
+.stat-l{font-size:10px;color:#444;margin-top:3px;text-transform:uppercase;letter-spacing:.5px}
+/* ── SETTINGS ── */
+.settings-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px}
+.settings-sec{background:#ffffff;border:1px solid #e5e5e5;border-radius:14px;padding:20px}
+.settings-sec h3{font-size:12px;font-weight:700;color:#C9A84C;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid #e5e5e5;text-transform:uppercase;letter-spacing:.6px}
+.t-row{display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid #0f0f1a}
+.t-row:last-child{border-bottom:none}
+.t-label{font-size:12px;color:#888}
+.t-label small{display:block;font-size:10px;color:#333;margin-top:1px}
+.sm-sw{position:relative;width:40px;height:22px;flex-shrink:0}
+.sm-sw input{opacity:0;width:0;height:0;position:absolute}
+.sm-sw .sl{position:absolute;inset:0;background:#f8f8f8;border-radius:22px;cursor:pointer;transition:.3s;border:1px solid #e5e5e5}
+.sm-sw .sl:before{content:'';position:absolute;width:16px;height:16px;left:2px;bottom:2px;background:#444;border-radius:50%;transition:.3s}
+.sm-sw input:checked+.sl{background:rgba(201,168,76,.15);border-color:#C9A84C}
+.sm-sw input:checked+.sl:before{transform:translateX(18px);background:#C9A84C}
+.n-row{display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid #0f0f1a}
+.n-row:last-child{border-bottom:none}
+.n-inp{background:#f0f0f0;border:1px solid #e5e5e5;border-radius:7px;color:#111;font-family:inherit;font-size:12px;font-weight:600;padding:5px 10px;outline:none;width:65px;text-align:center;transition:border-color .15s}
+.n-inp:focus{border-color:#C9A84C}
+.txt-inp{width:100%;background:#f8f8f8;border:1px solid #e5e5e5;border-radius:8px;color:#111;font-family:inherit;font-size:13px;padding:8px 12px;outline:none;transition:border-color .15s;margin-top:4px}
+.txt-inp:focus{border-color:#C9A84C}
+.save-bar{display:flex;align-items:center;gap:12px;margin-top:12px}
+.save-btn{background:#C9A84C;border:none;border-radius:9px;color:#000;font-size:13px;font-weight:700;padding:11px 28px;cursor:pointer;font-family:inherit;transition:background .2s}
+.save-btn:hover{background:#E8C97A}
+.save-btn:disabled{background:#2a2a1a;color:#444;cursor:not-allowed}
+.save-msg{font-size:12px;color:#22c55e;opacity:0;transition:opacity .3s}
+/* ── TABLES ── */
+.tbl-wrap{background:#ffffff;border:1px solid #e5e5e5;border-radius:14px;overflow:hidden;margin-bottom:18px}
+.tbl-head{padding:14px 18px;border-bottom:1px solid #e5e5e5;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.tbl-head h3{font-size:13px;font-weight:700;color:#111}
+table{width:100%;border-collapse:collapse}
+th{background:#f0f0f0;padding:9px 14px;text-align:left;font-size:10px;font-weight:600;color:#555;text-transform:uppercase;letter-spacing:.5px}
+td{padding:9px 14px;font-size:12px;border-bottom:1px solid #0a0a14;color:#888;vertical-align:middle}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:rgba(201,168,76,.02);color:#555}
+.badge{padding:2px 8px;border-radius:20px;font-size:10px;font-weight:700}
+.badge-gold{background:rgba(201,168,76,.1);color:#C9A84C;border:1px solid rgba(201,168,76,.2)}
+.badge-green{background:rgba(34,197,94,.08);color:#22c55e;border:1px solid rgba(34,197,94,.15)}
+.badge-red{background:rgba(239,68,68,.08);color:#ef4444;border:1px solid rgba(239,68,68,.15)}
+.badge-gray{background:#f8f8f8;color:#555;border:1px solid #e5e5e5}
+.ab{font-size:10px;font-weight:600;padding:4px 10px;border-radius:6px;cursor:pointer;border:none;font-family:inherit;transition:all .15s}
+.ab-g{background:rgba(34,197,94,.08);color:#22c55e;border:1px solid rgba(34,197,94,.15)}
+.ab-r{background:rgba(239,68,68,.06);color:#ef4444;border:1px solid rgba(239,68,68,.12)}
+.ab-b{background:#ffffff;color:#666;border:1px solid #e5e5e5}
+.fr{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.fr select,.fr input{background:#ffffff;border:1px solid #e5e5e5;border-radius:8px;color:#888;font-family:inherit;font-size:12px;padding:7px 11px;outline:none}
+.alert-bar{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);border-radius:10px;padding:10px 16px;font-size:12px;color:#ef4444;font-weight:600;margin-bottom:16px;display:none}
+@media(max-width:768px){.settings-grid{grid-template-columns:1fr}.launch-grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<!-- LOGIN GATE -->
+<div id="loginGate">
+  <div class="login-box">
+    <div style="font-size:36px;margin-bottom:12px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+    <h2>Admin Access</h2>
+    <p>GulfHabibi Control Panel — Admins only</p>
+    <input class="login-input" type="email" id="adminEmail" placeholder="Admin email address">
+    <input class="login-input" type="password" id="adminPass" placeholder="Password" onkeydown="if(event.key==='Enter')checkLogin()">
+    <button class="login-btn" onclick="checkLogin()">Sign In to Admin</button>
+    <div class="login-err" id="loginErr"></div>
+  </div>
+</div>
+
+<!-- ADMIN SHELL -->
+<div class="admin-shell" id="adminShell" style="display:none">
+  <nav class="admin-nav">
+    <div class="admin-nav-logo"> GulfHabibi Admin</div>
+    <div class="admin-nav-right">
+      <span class="admin-clock" id="adminClock"></span>
+      <span id="alertDot" style="display:none;width:8px;height:8px;background:#ef4444;border-radius:50%"></span>
+      <button class="admin-logout" onclick="doLogout()">Sign Out</button>
+    </div>
+  </nav>
+  <div class="admin-tabs">
+    <button class="atab on" onclick="showTab('launch',this)">🚀 Launch Control</button>
+    <button class="atab" onclick="showTab('flagged',this)">🚨 Flagged</button>
+    <button class="atab" onclick="showTab('listings',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> Listings</button>
+    <button class="atab" onclick="showTab('settings',this)">⚙️ Settings</button>
+    <button class="atab" onclick="showTab('analytics',this)">📊 Analytics</button>
+  </div>
+  <div class="admin-body">
+    <div class="alert-bar" id="alertBar"></div>
+
+    <!-- ══ TAB: LAUNCH CONTROL ══ -->
+    <div id="tab-launch">
+      <div style="margin-bottom:20px">
+        <div style="font-size:18px;font-weight:700;color:#111;margin-bottom:4px">🚀 Launch Control</div>
+        <div style="font-size:12px;color:#444">Turn each section ON or OFF. When OFF, visitors see a Coming Soon page.</div>
+      </div>
+      <div class="launch-grid" id="launchGrid">
+        <!-- Populated by JS -->
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px">
+        <button onclick="saveLaunchSettings()" class="save-btn">💾 Save Launch Settings</button>
+        <span class="save-msg" id="launchSavedMsg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg> Saved!</span>
+      </div>
+      <!-- Quick stats -->
+      <div class="stats-row">
+        <div class="stat-box"><div class="stat-n" id="stTotal">—</div><div class="stat-l">Total Listings</div></div>
+        <div class="stat-box"><div class="stat-n" id="stPending">—</div><div class="stat-l">Pending Review</div></div>
+        <div class="stat-box"><div class="stat-n" id="stToday">—</div><div class="stat-l">Posted Today</div></div>
+        <div class="stat-box"><div class="stat-n" id="stSections">—</div><div class="stat-l">Sections Live</div></div>
+      </div>
+    </div>
+
+    <!-- ══ TAB: FLAGGED ══ -->
+    <div id="tab-flagged" style="display:none">
+      <div class="tbl-wrap">
+        <div class="tbl-head">
+          <h3>🚨 Pending Review</h3>
+          <button onclick="loadFlagged()" class="ab ab-b">↻ Refresh</button>
+        </div>
+        <table>
+          <thead><tr><th>Ref</th><th>Title</th><th>Category</th><th>Location</th><th>Contact</th><th>Submitted</th><th>Actions</th></tr></thead>
+          <tbody id="flaggedTable"><tr><td colspan="7" style="text-align:center;padding:30px;color:#333">Loading...</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ══ TAB: LISTINGS ══ -->
+    <div id="tab-listings" style="display:none">
+      <div class="fr">
+        <select id="listCat" onchange="loadListings()">
+          <option value="">All Categories</option>
+          <option value="property">Property</option>
+          <option value="vehicles">Motors</option>
+          <option value="classifieds">Classifieds</option>
+          <option value="services">Services</option>
+        </select>
+        <select id="listStatus" onchange="loadListings()">
+          <option value="active">Active</option>
+          <option value="pending">Pending</option>
+          <option value="removed">Removed</option>
+          <option value="">All</option>
+        </select>
+        <select id="listEm" onchange="loadListings()">
+          <option value="">All Emirates</option>
+          <option>Dubai</option><option>Abu Dhabi</option><option>Sharjah</option>
+          <option>Ajman</option><option>RAK</option><option>Fujairah</option>
+        </select>
+      </div>
+      <div class="tbl-wrap">
+        <div class="tbl-head">
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> All Listings</h3>
+          <span style="font-size:11px;color:#444" id="listCount"></span>
+        </div>
+        <table>
+          <thead><tr><th>Ref</th><th>Title</th><th>Category</th><th>Location</th><th>Price</th><th>Status</th><th>Posted</th><th>Actions</th></tr></thead>
+          <tbody id="listTable"><tr><td colspan="8" style="text-align:center;padding:30px;color:#333">Select a filter to load</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ══ TAB: SETTINGS ══ -->
+    <div id="tab-settings" style="display:none">
+      <div id="settingsContainer"></div>
+    </div>
+
+    <!-- ══ TAB: ANALYTICS ══ -->
+    <div id="tab-analytics" style="display:none">
+      <div class="fr">
+        <select id="filterSection" onchange="loadAnalytics()">
+          <option value="">All Sections</option>
+          <option value="motors">Motors</option><option value="property">Property</option>
+          <option value="jobs">Jobs</option><option value="classifieds">Classifieds</option>
+        </select>
+      </div>
+      <div class="tbl-wrap">
+        <div class="tbl-head"><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg> Top Demand Gaps</h3><span style="font-size:11px;color:#444">Searched but not found</span></div>
+        <table>
+          <thead><tr><th>Search Term</th><th>Times</th><th>Section</th><th>Action</th></tr></thead>
+          <tbody id="demandTable"><tr><td colspan="4" style="text-align:center;padding:30px;color:#333">Loading...</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+const SB='https://chfkssclmdshdcijfzdr.supabase.co';
+const SK='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNoZmtzc2NsbWRzaGRjaWpmemRyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM1ODc2ODUsImV4cCI6MjA4OTE2MzY4NX0.cbJBIgeDRIqFvk3WMmxRoDWo1C73wM44oBDekdcc3sE';
+const H={apikey:SK,Authorization:'Bearer '+SK};
+const ADMIN_TOKEN = 'gh_admin_jwt_2026'; // session key — stores JWT not password
+
+// ── SECURE ADMIN AUTH (Supabase JWT + Worker role check) ──
+// No hardcoded passwords. Admin = user with role:'admin' in Supabase.
+// To grant admin: in Supabase Dashboard → Auth → Users → find user → Edit → app_metadata → {"role":"admin"}
+
+async function checkLogin(){
+  const email = document.getElementById('adminEmail').value.trim();
+  const pass  = document.getElementById('adminPass').value;
+  const errEl = document.getElementById('loginErr');
+  errEl.textContent = '';
+  if (!email || !pass) { errEl.textContent = 'Please enter email and password.'; return; }
+
+  // Sign in with Supabase
+  const { createClient } = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm');
+  const sb = createClient(SB, SK);
+  const { data, error } = await sb.auth.signInWithPassword({ email, password: pass });
+  if (error) { errEl.textContent = 'Sign in failed: ' + error.message; return; }
+
+  const token = data.session?.access_token;
+  if (!token) { errEl.textContent = 'No session returned.'; return; }
+
+  // Verify admin role via Cloudflare Worker
+  // PROXY_URL must match what is in shared/config.js
+  const PROXY = typeof PROXY_URL !== 'undefined' ? PROXY_URL : '';
+  if (!PROXY || PROXY.includes('YOUR-NAME')) {
+    // Dev fallback — check app_metadata directly
+    const role = data.user?.app_metadata?.role || data.user?.user_metadata?.role || '';
+    if (role !== 'admin') { errEl.textContent = 'Access denied. Your account does not have admin privileges.'; await sb.auth.signOut(); return; }
+  } else {
+    const verRes = await fetch(`${PROXY}/api/admin/verify`, {
+      headers: { 'Authorization': `Bearer ${token}` }
+    });
+    const verData = await verRes.json();
+    if (!verData.admin) { errEl.textContent = 'Access denied. Your account does not have admin privileges.'; await sb.auth.signOut(); return; }
+  }
+
+  // Store token in sessionStorage (not password)
+  sessionStorage.setItem(ADMIN_TOKEN, token);
+  sessionStorage.setItem('gb_admin_email', data.user.email);
+  document.getElementById('loginGate').style.display = 'none';
+  document.getElementById('adminShell').style.display = 'flex';
+  initAdmin();
+}
+
+function doLogout(){
+  sessionStorage.removeItem(ADMIN_TOKEN);
+  sessionStorage.removeItem('gb_admin_email');
+  location.reload();
+}
+
+// Check if already logged in this session
+window.addEventListener('load',()=>{
+  const token = sessionStorage.getItem(ADMIN_TOKEN);
+  if(token){
+    document.getElementById('loginGate').style.display='none';
+    document.getElementById('adminShell').style.display='flex';
+    initAdmin();
+  }
+  setInterval(()=>{
+    const el=document.getElementById('adminClock');
+    if(el) el.textContent=new Date().toLocaleTimeString('en-AE');
+  },1000);
+});
+
+// ── SECTIONS CONFIG ────────────────────────────────────────────
+const SECTIONS = [
+  {key:'section_property', icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>', name:'Property', desc:'Rent, buy, sell properties', url:'property/index.html'},
+  {key:'section_motors',   icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>', name:'Motors',   desc:'Cars, bikes, trucks', url:'motors/index.html'},
+  {key:'section_jobs',     icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>', name:'Jobs',     desc:'Job listings & seekers', url:'jobs/index.html'},
+  {key:'section_classifieds',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>',name:'Classifieds',desc:'Buy & sell anything', url:'marketplace/index.html'},
+  {key:'section_services', icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>', name:'Services', desc:'AC, cleaning, plumbing', url:'services/index.html'},
+  {key:'section_directory',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>', name:'Directory',desc:'UAE business directory', url:'directory/index.html'},
+];
+
+let settings = {
+  section_property:true, section_motors:false, section_jobs:false,
+  section_classifieds:false, section_services:false, section_directory:false,
+  free_posting:true, photo_scan:true, ai_writer:true,
+  show_ads:true, maintenance_mode:false, require_login_to_post:false,
+  max_free_listings_day:3, max_photos:8, listing_expiry_days:30,
+  featured_duration_days:7, premium_duration_days:30,
+  commission_new:10, commission_verified:7, commission_top:5,
+  site_name:'GulfHabibi UAE', support_email:'support@gulfhabibi.com',
+  support_whatsapp:'', facebook_url:'', instagram_url:'',
+  home_top_ad_enabled:false, home_top_ad_image:'', home_top_ad_link:'',
+  home_top_ad_title:'', home_top_ad_copy:'', home_top_ad_cta:'',
+  home_leaderboard_ad_enabled:false, home_leaderboard_ad_image:'', home_leaderboard_ad_link:'',
+  home_leaderboard_ad_title:'', home_leaderboard_ad_copy:'', home_leaderboard_ad_cta:'',
+  property_paid_packages_enabled:true,
+  property_featured_price:99, property_featured_duration_days:7,
+  property_premium_price:299, property_premium_duration_days:30,
+  property_developer_price:599, property_developer_duration_days:21,
+  property_hero_ad_enabled:false, property_hero_ad_image:'', property_hero_ad_link:'',
+  property_hero_ad_title:'', property_hero_ad_copy:'', property_hero_ad_cta:'',
+  property_side_ad_enabled:false, property_side_ad_image:'', property_side_ad_link:'',
+  property_side_ad_title:'', property_side_ad_copy:'', property_side_ad_cta:'',
+  property_inline_ad_enabled:false, property_inline_ad_image:'', property_inline_ad_link:'',
+  property_inline_ad_title:'', property_inline_ad_copy:'', property_inline_ad_cta:'',
+  motors_hero_ad_enabled:false, motors_hero_ad_image:'', motors_hero_ad_link:'',
+  motors_hero_ad_title:'', motors_hero_ad_copy:'', motors_hero_ad_cta:'',
+  motors_side_ad_enabled:false, motors_side_ad_image:'', motors_side_ad_link:'',
+  motors_side_ad_title:'', motors_side_ad_copy:'', motors_side_ad_cta:'',
+  motors_inline_ad_enabled:false, motors_inline_ad_image:'', motors_inline_ad_link:'',
+  motors_inline_ad_title:'', motors_inline_ad_copy:'', motors_inline_ad_cta:''
+};
+
+// ── INIT ───────────────────────────────────────────────────────
+async function initAdmin(){
+  await loadSettingsFromDB();
+  renderLaunchGrid();
+  loadStats();
+  loadFlagged();
+}
+
+async function loadSettingsFromDB(){
+  try{
+    const r=await fetch(`${SB}/rest/v1/site_settings?select=key,value`,{headers:H});
+    if(r.ok){
+      const rows=await r.json();
+      if(Array.isArray(rows)) rows.forEach(row=>{
+        const v=row.value;
+        if(v==='true') settings[row.key]=true;
+        else if(v==='false') settings[row.key]=false;
+        else if(!isNaN(v)&&v!=='') settings[row.key]=Number(v);
+        else settings[row.key]=v;
+      });
+    }
+  }catch(e){
+    // Fallback: load from localStorage
+    const saved=localStorage.getItem('gb_admin_settings');
+    if(saved) try{ Object.assign(settings,JSON.parse(saved)); }catch(e){}
+  }
+}
+
+// ── TAB SWITCHING ──────────────────────────────────────────────
+function showTab(tab,btn){
+  ['launch','flagged','listings','settings','analytics'].forEach(t=>{
+    const el=document.getElementById('tab-'+t);
+    if(el) el.style.display='none';
+  });
+  document.querySelectorAll('.atab').forEach(b=>b.classList.remove('on'));
+  document.getElementById('tab-'+tab).style.display='block';
+  btn.classList.add('on');
+  if(tab==='flagged') loadFlagged();
+  else if(tab==='listings') loadListings();
+  else if(tab==='settings') renderSettings();
+  else if(tab==='analytics') loadAnalytics();
+}
+
+// ── LAUNCH GRID ────────────────────────────────────────────────
+function renderLaunchGrid(){
+  const grid=document.getElementById('launchGrid');
+  grid.innerHTML=SECTIONS.map(s=>{
+    const live=settings[s.key];
+    return `<div class="launch-card ${live?'live':'off'}" id="lc-${s.key}">
+      <div class="lc-top">
+        <span class="lc-icon">${s.icon}</span>
+        <span class="lc-status ${live?'live':'off'}">${live?'● LIVE':'○ OFF'}</span>
+      </div>
+      <div>
+        <div class="lc-name">${s.name}</div>
+        <div class="lc-desc">${s.desc}</div>
+      </div>
+      <div class="lc-toggle">
+        <span class="lc-toggle-label">${live?'Click to turn OFF':'Click to go LIVE'}</span>
+        <label class="big-sw">
+          <input type="checkbox" id="toggle-${s.key}" ${live?'checked':''} onchange="toggleSection('${s.key}',this.checked)">
+          <span class="sl"></span>
+        </label>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function toggleSection(key, val){
+  settings[key]=val;
+  const card=document.getElementById('lc-'+key);
+  const status=card.querySelector('.lc-status');
+  const toggleLabel=card.querySelector('.lc-toggle-label');
+  if(val){
+    card.className='launch-card live';
+    status.className='lc-status live';
+    status.textContent='● LIVE';
+    toggleLabel.textContent='Click to turn OFF';
+  } else {
+    card.className='launch-card off';
+    status.className='lc-status off';
+    status.textContent='○ OFF';
+    toggleLabel.textContent='Click to go LIVE';
+  }
+}
+
+async function saveLaunchSettings(){
+  const btn=document.querySelector('.save-btn');
+  const msg=document.getElementById('launchSavedMsg');
+  btn.disabled=true; btn.textContent='Saving...';
+  await saveAllSettings();
+  btn.disabled=false; btn.textContent='💾 Save Launch Settings';
+  msg.style.opacity='1';
+  setTimeout(()=>msg.style.opacity='0',2500);
+  // Update live count
+  const live=SECTIONS.filter(s=>settings[s.key]).length;
+  document.getElementById('stSections').textContent=live;
+}
+
+// ── SAVE ALL SETTINGS ──────────────────────────────────────────
+async function saveAllSettings(){
+  const rows=Object.entries(settings).map(([key,value])=>({key,value:String(value)}));
+  try{
+    const r=await fetch(`${SB}/rest/v1/site_settings`,{
+      method:'POST',
+      headers:{...H,'Content-Type':'application/json','Prefer':'resolution=merge-duplicates'},
+      body:JSON.stringify(rows)
+    });
+    if(!r.ok) throw new Error('Supabase error');
+  }catch(e){
+    // Fallback to localStorage
+    localStorage.setItem('gb_admin_settings',JSON.stringify(settings));
+  }
+}
+
+// ── STATS ──────────────────────────────────────────────────────
+async function loadStats(){
+  const live=SECTIONS.filter(s=>settings[s.key]).length;
+  document.getElementById('stSections').textContent=live;
+  try{
+    const [r1,r2,r3]=await Promise.all([
+      fetch(`${SB}/rest/v1/listings?select=count`,{headers:{...H,'Prefer':'count=exact'}}),
+      fetch(`${SB}/rest/v1/listings?status=eq.pending&select=count`,{headers:{...H,'Prefer':'count=exact'}}),
+      fetch(`${SB}/rest/v1/listings?created_at=gte.${new Date().toISOString().split('T')[0]}&select=count`,{headers:{...H,'Prefer':'count=exact'}})
+    ]);
+    document.getElementById('stTotal').textContent=r1.headers.get('content-range')?.split('/')[1]||'0';
+    const pend=r2.headers.get('content-range')?.split('/')[1]||'0';
+    document.getElementById('stPending').textContent=pend;
+    document.getElementById('stToday').textContent=r3.headers.get('content-range')?.split('/')[1]||'0';
+    if(Number(pend)>0){
+      document.getElementById('alertDot').style.display='block';
+      const ab=document.getElementById('alertBar');
+      ab.style.display='block';
+      ab.textContent=`⚠️ ${pend} listing${pend>1?'s':''} waiting for approval`;
+    }
+  }catch(e){}
+}
+
+// ── FLAGGED LISTINGS ───────────────────────────────────────────
+async function loadFlagged(){
+  const tbody=document.getElementById('flaggedTable');
+  tbody.innerHTML=`<tr><td colspan="7" style="text-align:center;padding:24px;color:#333">Loading...</td></tr>`;
+  try{
+    const r=await fetch(`${SB}/rest/v1/listings?status=eq.pending&order=created_at.desc&limit=50`,{headers:H});
+    const data=await r.json();
+    if(!Array.isArray(data)||data.length===0){
+      tbody.innerHTML=`<tr><td colspan="7" style="text-align:center;padding:30px;color:#22c55e"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg> All clear — no pending listings</td></tr>`;
+      return;
+    }
+    tbody.innerHTML=data.map(l=>`<tr>
+      <td style="font-family:monospace;font-size:10px;color:#C9A84C">${l.gb_ref||'—'}</td>
+      <td style="max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#111">${l.title||'—'}</td>
+      <td><span class="badge badge-gray">${l.category||'—'}</span></td>
+      <td style="font-size:11px;color:#555">${[l.area,l.emirate].filter(Boolean).join(', ')}</td>
+      <td style="font-size:11px;color:#555">${l.contact_phone||'—'}</td>
+      <td style="font-size:11px;color:#444">${ago(l.created_at)}</td>
+      <td style="display:flex;gap:4px">
+        <button class="ab ab-g" onclick="approveListing('${l.id}')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg> Approve</button>
+        <button class="ab ab-r" onclick="removeListing('${l.id}')">🗑</button>
+      </td>
+    </tr>`).join('');
+  }catch(e){
+    tbody.innerHTML=`<tr><td colspan="7" style="text-align:center;padding:24px;color:#ef4444">Supabase not connected yet — will work after go-live</td></tr>`;
+  }
+}
+
+async function approveListing(id){
+  await fetch(`${SB}/rest/v1/listings?id=eq.${id}`,{method:'PATCH',headers:{...H,'Content-Type':'application/json'},body:JSON.stringify({status:'active'})});
+  loadFlagged(); loadStats();
+}
+
+async function removeListing(id){
+  if(!confirm('Remove this listing?')) return;
+  await fetch(`${SB}/rest/v1/listings?id=eq.${id}`,{method:'PATCH',headers:{...H,'Content-Type':'application/json'},body:JSON.stringify({status:'removed'})});
+  loadFlagged(); loadStats();
+}
+
+// ── ALL LISTINGS ───────────────────────────────────────────────
+async function loadListings(){
+  const cat=document.getElementById('listCat').value;
+  const status=document.getElementById('listStatus').value;
+  const em=document.getElementById('listEm').value;
+  let url=`${SB}/rest/v1/listings?order=created_at.desc&limit=100`;
+  if(cat) url+=`&category=eq.${cat}`;
+  if(status) url+=`&status=eq.${status}`;
+  if(em) url+=`&emirate=eq.${encodeURIComponent(em)}`;
+  const tbody=document.getElementById('listTable');
+  try{
+    const r=await fetch(url,{headers:H});
+    const data=await r.json();
+    document.getElementById('listCount').textContent=Array.isArray(data)?data.length+' listings':'';
+    if(!Array.isArray(data)||data.length===0){
+      tbody.innerHTML=`<tr><td colspan="8" style="text-align:center;padding:24px;color:#333">No listings found</td></tr>`;
+      return;
+    }
+    tbody.innerHTML=data.map(l=>`<tr>
+      <td style="font-family:monospace;font-size:10px;color:#C9A84C">${l.gb_ref||'—'}</td>
+      <td style="max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#111">${l.title||'—'}</td>
+      <td><span class="badge badge-gray">${l.category||'—'}</span></td>
+      <td style="font-size:11px;color:#555">${[l.area,l.emirate].filter(Boolean).join(', ')}</td>
+      <td style="color:#C9A84C;font-size:12px">${l.price?'AED '+Number(l.price).toLocaleString():'—'}</td>
+      <td><span class="badge ${l.status==='active'?'badge-green':l.status==='pending'?'badge-gold':'badge-red'}">${l.status}</span></td>
+      <td style="font-size:11px;color:#444">${ago(l.created_at)}</td>
+      <td style="display:flex;gap:4px">
+        ${l.status==='pending'?`<button class="ab ab-g" onclick="approveListing('${l.id}')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg></button>`:''}
+        <button class="ab ab-r" onclick="removeListing('${l.id}')">🗑</button>
+      </td>
+    </tr>`).join('');
+  }catch(e){
+    tbody.innerHTML=`<tr><td colspan="8" style="text-align:center;padding:24px;color:#444">Supabase not connected — works after go-live</td></tr>`;
+  }
+}
+
+// ── ANALYTICS ─────────────────────────────────────────────────
+async function loadAnalytics(){
+  const section=document.getElementById('filterSection').value;
+  let url=`${SB}/rest/v1/search_log?results_count=eq.0&order=searched_at.desc&limit=200`;
+  if(section) url+=`&section=eq.${section}`;
+  const tbody=document.getElementById('demandTable');
+  try{
+    const r=await fetch(url,{headers:H});
+    const data=await r.json();
+    if(!Array.isArray(data)||data.length===0){
+      tbody.innerHTML=`<tr><td colspan="4" style="text-align:center;padding:24px;color:#22c55e">No zero-result searches yet</td></tr>`;
+      return;
+    }
+    const g={};
+    data.forEach(r=>{const k=r.query+'|'+r.section;if(!g[k])g[k]={q:r.query,s:r.section,n:0};g[k].n++;});
+    const urls={motors:'motors/post.html',property:'property/post.html',jobs:'jobs/post.html',classifieds:'marketplace/post.html',services:'services/post-deal.html'};
+    tbody.innerHTML=Object.values(g).sort((a,b)=>b.n-a.n).slice(0,20).map(r=>`<tr>
+      <td style="color:#111;font-weight:500">${r.q}</td>
+      <td><span style="color:#ef4444;font-weight:700">${r.n}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td>
+      <td><span class="badge badge-gray">${r.s||'—'}</span></td>
+      <td><a href="${urls[r.s]||'marketplace/post.html'}" style="background:#C9A84C;color:#000;padding:3px 9px;border-radius:6px;font-size:10px;font-weight:700;text-decoration:none">+ Post</a></td>
+    </tr>`).join('');
+  }catch(e){
+    tbody.innerHTML=`<tr><td colspan="4" style="text-align:center;padding:24px;color:#444">Supabase not connected</td></tr>`;
+  }
+}
+
+// ── SETTINGS TAB ───────────────────────────────────────────────
+function renderSettings(){
+  document.getElementById('settingsContainer').innerHTML=`
+  <div class="settings-grid">
+    <div class="settings-sec">
+      <h3>Feature Controls</h3>
+      ${tRow('free_posting','Free Posting','Anyone can post without paying')}
+      ${tRow('require_login_to_post','Require Login to Post','Must sign in before posting')}
+      ${tRow('photo_scan','AI Photo Scanner','Gemini scans for watermarks')}
+      ${tRow('ai_writer','AI Description Writer','AI button on post forms')}
+      ${tRow('show_ads','Show Ad Zones','Show advertisement zones')}
+      ${tRow('maintenance_mode','🚧 Maintenance Mode','Show coming soon to all visitors')}
+    </div>
+    <div class="settings-sec">
+      <h3>Listing Rules</h3>
+      ${nRow('max_free_listings_day','Max free listings/day','posts')}
+      ${nRow('max_photos','Max photos per listing','photos')}
+      ${nRow('listing_expiry_days','Auto-expire after','days')}
+      ${nRow('featured_duration_days','Featured listing','days')}
+      ${nRow('premium_duration_days','Premium listing','days')}
+    </div>
+    <div class="settings-sec">
+      <h3>Commission (Services)</h3>
+      ${nRow('commission_new','New provider','%')}
+      ${nRow('commission_verified','Verified provider','%')}
+      ${nRow('commission_top','Top Rated provider','%')}
+    </div>
+    <div class="settings-sec">
+      <h3>Contact & Branding</h3>
+      ${txtRow('site_name','Site Name')}
+      ${txtRow('support_email','Support Email')}
+      ${txtRow('support_whatsapp','WhatsApp (+971...)')}
+      ${txtRow('instagram_url','Instagram URL')}
+      ${txtRow('facebook_url','Facebook URL')}
+    </div>
+    <div class="settings-sec">
+      <h3>Homepage Ads</h3>
+      <div style="font-size:11px;color:#555;line-height:1.6;margin-bottom:12px">
+        These slots control the top homepage sponsor strip and the main homepage leaderboard. Leave a slot empty to keep that placement hidden.
+      </div>
+      ${tRow('home_top_ad_enabled','Homepage Top Sponsor','Show the slim sponsor banner above the homepage navigation')}
+      ${txtRow('home_top_ad_image','Top Banner Image / GIF URL')}
+      ${txtRow('home_top_ad_link','Top Banner Click URL')}
+      ${txtRow('home_top_ad_title','Top Banner Title')}
+      ${txtRow('home_top_ad_copy','Top Banner Copy')}
+      ${txtRow('home_top_ad_cta','Top Banner Button Label')}
+      <div style="height:1px;background:#eee;margin:12px 0"></div>
+      ${tRow('home_leaderboard_ad_enabled','Homepage Leaderboard','Show the main homepage banner after the stats row')}
+      ${txtRow('home_leaderboard_ad_image','Leaderboard Image / GIF URL')}
+      ${txtRow('home_leaderboard_ad_link','Leaderboard Click URL')}
+      ${txtRow('home_leaderboard_ad_title','Leaderboard Title')}
+      ${txtRow('home_leaderboard_ad_copy','Leaderboard Copy')}
+      ${txtRow('home_leaderboard_ad_cta','Leaderboard Button Label')}
+    </div>
+    <div class="settings-sec">
+      <h3>Property Packages</h3>
+      <div style="font-size:11px;color:#555;line-height:1.6;margin-bottom:12px">
+        Control the paid upgrade prices and activation windows used by the Property posting flow. Paid package requests stay pending until you approve them.
+      </div>
+      ${tRow('property_paid_packages_enabled','Paid Property Packages','Show featured, premium, and developer plans on the Property post form')}
+      ${nRow('property_featured_price','Featured price','AED')}
+      ${nRow('property_featured_duration_days','Featured duration','days')}
+      ${nRow('property_premium_price','Premium price','AED')}
+      ${nRow('property_premium_duration_days','Premium duration','days')}
+      ${nRow('property_developer_price','Developer launch price','AED')}
+      ${nRow('property_developer_duration_days','Developer launch duration','days')}
+    </div>
+    <div class="settings-sec">
+      <h3>Property Ads</h3>
+      <div style="font-size:11px;color:#555;line-height:1.6;margin-bottom:12px">
+        Use these for developer campaigns, off-plan launches, financing offers, luxury property promotions, and sponsored placements inside the Property marketplace.
+      </div>
+      ${tRow('property_hero_ad_enabled','Property Hero Banner','Show a premium sponsor card inside the Property hero area')}
+      ${txtRow('property_hero_ad_image','Hero Image / GIF URL')}
+      ${txtRow('property_hero_ad_link','Hero Click URL')}
+      ${txtRow('property_hero_ad_title','Hero Title')}
+      ${txtRow('property_hero_ad_copy','Hero Copy')}
+      ${txtRow('property_hero_ad_cta','Hero Button Label')}
+      <div style="height:1px;background:#eee;margin:12px 0"></div>
+      ${tRow('property_side_ad_enabled','Property Sidebar Banner','Show a paid banner beside the Property results')}
+      ${txtRow('property_side_ad_image','Sidebar Image / GIF URL')}
+      ${txtRow('property_side_ad_link','Sidebar Click URL')}
+      ${txtRow('property_side_ad_title','Sidebar Title')}
+      ${txtRow('property_side_ad_copy','Sidebar Copy')}
+      ${txtRow('property_side_ad_cta','Sidebar Button Label')}
+      <div style="height:1px;background:#eee;margin:12px 0"></div>
+      ${tRow('property_inline_ad_enabled','Property Inline Banner','Insert a sponsored project or banner inside the Property results stream')}
+      ${txtRow('property_inline_ad_image','Inline Image / GIF URL')}
+      ${txtRow('property_inline_ad_link','Inline Click URL')}
+      ${txtRow('property_inline_ad_title','Inline Title')}
+      ${txtRow('property_inline_ad_copy','Inline Copy')}
+      ${txtRow('property_inline_ad_cta','Inline Button Label')}
+    </div>
+    <div class="settings-sec">
+      <h3>Motors Ads</h3>
+      <div style="font-size:11px;color:#555;line-height:1.6;margin-bottom:12px">
+        Use direct public image, GIF, or WebP URLs for paid campaigns. Leave a slot empty to keep that ad space hidden on the Motors page.
+      </div>
+      ${tRow('motors_hero_ad_enabled','Motors Hero Banner','Show paid sponsor card in the Motors hero')}
+      ${txtRow('motors_hero_ad_image','Hero Image / GIF URL')}
+      ${txtRow('motors_hero_ad_link','Hero Click URL')}
+      ${txtRow('motors_hero_ad_title','Hero Title')}
+      ${txtRow('motors_hero_ad_copy','Hero Copy')}
+      ${txtRow('motors_hero_ad_cta','Hero Button Label')}
+      <div style="height:1px;background:#eee;margin:12px 0"></div>
+      ${tRow('motors_side_ad_enabled','Motors Sidebar Banner','Show paid banner beside the Motors listings')}
+      ${txtRow('motors_side_ad_image','Sidebar Image / GIF URL')}
+      ${txtRow('motors_side_ad_link','Sidebar Click URL')}
+      ${txtRow('motors_side_ad_title','Sidebar Title')}
+      ${txtRow('motors_side_ad_copy','Sidebar Copy')}
+      ${txtRow('motors_side_ad_cta','Sidebar Button Label')}
+      <div style="height:1px;background:#eee;margin:12px 0"></div>
+      ${tRow('motors_inline_ad_enabled','Motors Inline Banner','Insert a sponsored card inside the Motors results stream')}
+      ${txtRow('motors_inline_ad_image','Inline Image / GIF URL')}
+      ${txtRow('motors_inline_ad_link','Inline Click URL')}
+      ${txtRow('motors_inline_ad_title','Inline Title')}
+      ${txtRow('motors_inline_ad_copy','Inline Copy')}
+      ${txtRow('motors_inline_ad_cta','Inline Button Label')}
+    </div>
+  </div>
+  <div class="save-bar">
+    <button class="save-btn" id="settingsSaveBtn" onclick="saveSettingsTab()">💾 Save Settings</button>
+    <span class="save-msg" id="settingsSavedMsg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg> Saved!</span>
+  </div>`;
+  document.querySelectorAll('.s-toggle').forEach(el=>el.addEventListener('change',()=>{settings[el.dataset.key]=el.checked;}));
+}
+
+function tRow(key,label,sub){
+  return `<div class="t-row"><div class="t-label">${label}<small>${sub}</small></div>
+  <label class="sm-sw"><input type="checkbox" class="s-toggle" data-key="${key}" ${settings[key]?'checked':''}><span class="sl"></span></label></div>`;
+}
+function nRow(key,label,unit){
+  return `<div class="n-row"><div class="t-label">${label}</div>
+  <div style="display:flex;align-items:center;gap:5px"><input type="number" class="n-inp s-num" data-key="${key}" value="${settings[key]??0}" min="0"><span style="font-size:10px;color:#333">${unit}</span></div></div>`;
+}
+function txtRow(key,label){
+  return `<div style="margin-bottom:10px"><div style="font-size:10px;color:#444;margin-bottom:3px;text-transform:uppercase;letter-spacing:.4px">${label}</div>
+  <input type="text" class="txt-inp s-txt" data-key="${key}" value="${settings[key]??''}"></div>`;
+}
+
+async function saveSettingsTab(){
+  document.querySelectorAll('.s-toggle').forEach(el=>{settings[el.dataset.key]=el.checked;});
+  document.querySelectorAll('.s-num').forEach(el=>{if(el.value) settings[el.dataset.key]=Number(el.value);});
+  document.querySelectorAll('.s-txt').forEach(el=>{settings[el.dataset.key]=el.value;});
+  const btn=document.getElementById('settingsSaveBtn');
+  btn.disabled=true; btn.textContent='Saving...';
+  await saveAllSettings();
+  btn.disabled=false; btn.textContent='💾 Save Settings';
+  const msg=document.getElementById('settingsSavedMsg');
+  msg.style.opacity='1';
+  setTimeout(()=>msg.style.opacity='0',2500);
+}
+
+// ── UTILS ──────────────────────────────────────────────────────
+function ago(d){
+  const x=Math.floor((Date.now()-new Date(d))/60000);
+  if(x<60) return x+'m ago';
+  if(x<1440) return Math.floor(x/60)+'h ago';
+  return Math.floor(x/1440)+'d ago';
+}
+</script>
+</body>
+</html>

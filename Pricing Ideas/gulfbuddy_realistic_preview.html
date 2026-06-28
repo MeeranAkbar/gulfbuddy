@@ -1,0 +1,513 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans)}
+.wrap{padding:12px 0}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.tab{padding:7px 14px;border-radius:20px;border:0.5px solid var(--color-border-secondary);font-size:12px;cursor:pointer;background:var(--color-background-secondary);color:var(--color-text-secondary);transition:all .15s}
+.tab.on{background:#C9A84C;color:#000;border-color:#C9A84C;font-weight:500}
+.sec{display:none}.sec.show{display:block}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.panel{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden}
+.ph{padding:9px 13px;border-bottom:0.5px solid var(--color-border-tertiary);font-size:11px;font-weight:500;color:var(--color-text-secondary)}
+.pb{padding:12px}
+/* Dark card base */
+.dk{background:#06060e;border-radius:10px;padding:12px}
+.lbl{font-size:9px;font-weight:500;color:#555;text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px;display:block}
+.fi{background:#0d0d1a;border:1px solid #1a1828;border-radius:6px;padding:7px 9px;font-size:11px;color:#aaa;width:100%;margin-bottom:8px}
+.fi.v{color:#ddd}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.gbtn{background:#C9A84C;border:none;border-radius:7px;padding:9px;font-size:12px;font-weight:700;color:#000;width:100%;cursor:pointer;margin-top:4px}
+/* Listing card */
+.card{background:#0d0d1a;border:1px solid #1a1828;border-radius:10px;overflow:hidden;margin-bottom:10px}
+.card.feat{border-color:#C9A84C;box-shadow:0 0 0 1px rgba(201,168,76,.15)}
+.card.prem{border-color:#E8C97A;box-shadow:0 0 0 1px rgba(232,201,122,.2)}
+.cimg{position:relative;height:130px;overflow:hidden;background:#111}
+.cimg img{width:100%;height:100%;object-fit:cover}
+.cbadge{position:absolute;top:7px;left:7px;font-size:9px;font-weight:700;padding:2px 7px;border-radius:20px}
+.bf{background:rgba(85,85,85,.8);color:#aaa;backdrop-filter:blur(4px)}
+.bft{background:rgba(201,168,76,.25);color:#C9A84C;border:1px solid rgba(201,168,76,.4);backdrop-filter:blur(4px)}
+.bp{background:rgba(232,201,122,.2);color:#E8C97A;border:1px solid rgba(232,201,122,.35);backdrop-filter:blur(4px)}
+.cbody{padding:10px 11px}
+.cprice{font-size:15px;font-weight:700;color:#C9A84C;margin-bottom:3px}
+.ctitle{font-size:12px;color:#ccc;margin-bottom:3px;font-weight:500;line-height:1.4}
+.cmeta{font-size:10px;color:#444;margin-bottom:6px}
+.cref{font-size:9px;font-family:monospace;color:#C9A84C;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.12);border-radius:4px;padding:2px 6px;display:inline-block;margin-bottom:7px}
+.cbtns{display:flex;gap:5px}
+.bcall{flex:1;background:#22c55e;border:none;border-radius:5px;padding:6px;font-size:10px;font-weight:700;color:#fff;cursor:pointer}
+.bwa{flex:1;background:#25D366;border:none;border-radius:5px;padding:6px;font-size:10px;font-weight:700;color:#fff;cursor:pointer}
+.stitle{font-size:14px;font-weight:500;color:var(--color-text-primary);margin-bottom:12px}
+/* deal card */
+.deal{background:#0d0d1a;border:1px solid #1a1828;border-radius:10px;overflow:hidden;margin-bottom:10px}
+.deal.flash{border-top:2px solid #ef4444}
+.deal.weekly{border-top:2px solid #C9A84C}
+.dimg{height:100px;overflow:hidden;position:relative}
+.dimg img{width:100%;height:100%;object-fit:cover;filter:brightness(0.5)}
+.dimg .doverlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+.dbody{padding:10px 11px}
+.saving{display:inline-block;font-size:9px;font-weight:700;padding:2px 6px;border-radius:20px;background:rgba(34,197,94,.1);color:#22c55e;margin-left:5px}
+.slots-red{display:inline-block;font-size:9px;font-weight:700;padding:2px 7px;border-radius:20px;background:rgba(239,68,68,.12);color:#ef4444}
+.bbook{width:100%;background:#C9A84C;border:none;border-radius:6px;padding:8px;font-size:11px;font-weight:700;color:#000;cursor:pointer;margin-top:8px}
+@media(max-width:600px){.grid{grid-template-columns:1fr}}
+</style>
+
+<div class="wrap">
+<div class="tabs">
+  <button class="tab on" onclick="sw('motors',this)">🚗 Motors</button>
+  <button class="tab" onclick="sw('property',this)">🏠 Property</button>
+  <button class="tab" onclick="sw('jobs',this)">💼 Jobs</button>
+  <button class="tab" onclick="sw('classifieds',this)">🛒 Classifieds</button>
+  <button class="tab" onclick="sw('services',this)">🔧 Services</button>
+  <button class="tab" onclick="sw('directory',this)">📒 Directory</button>
+</div>
+
+<!-- MOTORS -->
+<div class="sec show" id="s-motors">
+<div class="stitle">🚗 Motors — post form + how cards look (free / featured / premium)</div>
+<div class="grid">
+<div class="panel">
+  <div class="ph">📝 Sell Your Vehicle — post form</div>
+  <div class="pb"><div class="dk">
+    <div class="row2">
+      <div><span class="lbl">Brand *</span><div class="fi v">Toyota</div></div>
+      <div><span class="lbl">Model *</span><div class="fi v">Land Cruiser</div></div>
+    </div>
+    <div class="row2">
+      <div><span class="lbl">Year *</span><div class="fi v">2022</div></div>
+      <div><span class="lbl">Mileage KM</span><div class="fi v">32,000</div></div>
+    </div>
+    <div class="row2">
+      <div><span class="lbl">Condition</span><div class="fi v">Excellent</div></div>
+      <div><span class="lbl">Fuel</span><div class="fi v">Petrol</div></div>
+    </div>
+    <span class="lbl">Title *</span>
+    <div class="fi v">Toyota Land Cruiser 2022 — GXR — Low KM</div>
+    <span class="lbl">Price (AED) *</span>
+    <div class="fi v">285,000 &nbsp;·&nbsp; Negotiable</div>
+    <div class="row2">
+      <div><span class="lbl">Emirate</span><div class="fi v">Dubai</div></div>
+      <div><span class="lbl">Area</span><div class="fi v">Al Quoz</div></div>
+    </div>
+    <span class="lbl">Photos (up to 8)</span>
+    <div class="fi" style="height:34px;display:flex;align-items:center;gap:6px;color:#666">📷 <span style="font-size:10px">5 photos uploaded · first = main image</span></div>
+    <button class="gbtn">Post Vehicle Free →</button>
+  </div></div>
+</div>
+<div class="panel">
+  <div class="ph">🃏 How cards look on browse page</div>
+  <div class="pb">
+    <div style="font-size:10px;color:var(--color-text-secondary);margin-bottom:6px">Free listing:</div>
+    <div class="card">
+      <div class="cimg">
+        <img src="https://images.unsplash.com/photo-1563720223185-11003d516935?w=400&q=70" alt="Toyota Land Cruiser">
+        <span class="cbadge bf">Free</span>
+      </div>
+      <div class="cbody">
+        <div class="cprice">AED 285,000</div>
+        <div class="ctitle">Toyota Land Cruiser 2022 — GXR — Low KM</div>
+        <div class="cmeta">2022 · 32,000 KM · Petrol · Al Quoz, Dubai</div>
+        <div class="cref">🔖 GB-MOT-DXB-000042</div>
+        <div class="cbtns"><button class="bcall">📞 Call</button><button class="bwa">💬 WhatsApp</button></div>
+      </div>
+    </div>
+    <div style="font-size:10px;color:var(--color-text-secondary);margin-bottom:6px">Featured (AED 99/mo) — gold border + badge:</div>
+    <div class="card feat">
+      <div class="cimg">
+        <img src="https://images.unsplash.com/photo-1563720223185-11003d516935?w=400&q=70" alt="Toyota Land Cruiser">
+        <span class="cbadge bft">⭐ Featured</span>
+      </div>
+      <div class="cbody">
+        <div class="cprice" style="color:#E8C97A">AED 285,000</div>
+        <div class="ctitle">Toyota Land Cruiser 2022 — GXR — Low KM</div>
+        <div class="cmeta">2022 · 32,000 KM · Petrol · Al Quoz, Dubai</div>
+        <div class="cref">🔖 GB-MOT-DXB-000042</div>
+        <div class="cbtns"><button class="bcall">📞 Call</button><button class="bwa">💬 WhatsApp</button></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<!-- PROPERTY -->
+<div class="sec" id="s-property">
+<div class="stitle">🏠 Property — post form + how cards look</div>
+<div class="grid">
+<div class="panel">
+  <div class="ph">📝 Post a Property — form</div>
+  <div class="pb"><div class="dk">
+    <div class="row2">
+      <div><span class="lbl">Purpose *</span><div class="fi v">For Rent</div></div>
+      <div><span class="lbl">Type *</span><div class="fi v">Apartment</div></div>
+    </div>
+    <div class="row2">
+      <div><span class="lbl">Bedrooms</span><div class="fi v">2 BR</div></div>
+      <div><span class="lbl">Bathrooms</span><div class="fi v">2</div></div>
+    </div>
+    <div class="row2">
+      <div><span class="lbl">Size (sq ft)</span><div class="fi v">1,250</div></div>
+      <div><span class="lbl">Furnishing</span><div class="fi v">Furnished</div></div>
+    </div>
+    <span class="lbl">Title *</span>
+    <div class="fi v">Spacious 2BR in Marina Gate 1 — Full Sea View</div>
+    <span class="lbl">Price (AED) *</span>
+    <div class="fi v" style="display:flex;justify-content:space-between">AED 95,000 <span style="color:#555">Per Year</span></div>
+    <div class="row2">
+      <div><span class="lbl">Emirate</span><div class="fi v">Dubai</div></div>
+      <div><span class="lbl">Area</span><div class="fi v">Marina</div></div>
+    </div>
+    <span class="lbl" style="color:#ef4444">RERA Permit * (required — Dubai)</span>
+    <div class="fi v" style="color:#C9A84C">7123456789</div>
+    <span class="lbl">Posted as</span>
+    <div class="fi v">🏢 Real Estate Agent</div>
+    <span class="lbl">Photos (up to 8)</span>
+    <div class="fi" style="height:34px;display:flex;align-items:center;gap:6px;color:#666">📷 <span style="font-size:10px">8 photos · first = main listing image</span></div>
+    <button class="gbtn">Post Property Free →</button>
+  </div></div>
+</div>
+<div class="panel">
+  <div class="ph">🃏 How cards appear on browse</div>
+  <div class="pb">
+    <div style="font-size:10px;color:var(--color-text-secondary);margin-bottom:6px">Free listing:</div>
+    <div class="card">
+      <div class="cimg">
+        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=400&q=70" alt="Apartment">
+        <span class="cbadge bf">Free</span>
+        <span style="position:absolute;top:7px;right:7px;font-size:9px;font-weight:700;padding:2px 7px;border-radius:20px;background:rgba(0,0,0,.7);color:#C9A84C;backdrop-filter:blur(4px)">📋 RERA</span>
+      </div>
+      <div class="cbody">
+        <div class="cprice">AED 95,000/yr</div>
+        <div class="ctitle">Spacious 2BR in Marina Gate 1 — Full Sea View</div>
+        <div class="cmeta">2 BR · 2 Bath · 1,250 sqft · Marina, Dubai · Agent</div>
+        <div class="cref">🔖 GB-PROP-DXB-000018</div>
+        <div class="cbtns"><button class="bcall">📞 Call</button><button class="bwa">💬 WhatsApp</button></div>
+      </div>
+    </div>
+    <div style="font-size:10px;color:var(--color-text-secondary);margin-bottom:6px">Premium listing (AED 299/mo):</div>
+    <div class="card prem">
+      <div class="cimg">
+        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=400&q=70" alt="Luxury apartment">
+        <span class="cbadge bp">💎 Premium</span>
+        <span style="position:absolute;bottom:7px;left:7px;font-size:9px;font-weight:700;padding:2px 7px;border-radius:20px;background:rgba(34,197,94,.2);color:#22c55e;backdrop-filter:blur(4px)">✅ Verified Agent</span>
+      </div>
+      <div class="cbody">
+        <div class="cprice" style="color:#E8C97A">AED 220,000/yr</div>
+        <div class="ctitle">Stunning 3BR Penthouse — Palm Jumeirah — Private Pool</div>
+        <div class="cmeta">3 BR · 4 Bath · Palm Jumeirah, Dubai · Agent</div>
+        <div class="cref">🔖 GB-PROP-DXB-000007</div>
+        <div class="cbtns"><button class="bcall">📞 Call</button><button class="bwa">💬 WhatsApp</button></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<!-- JOBS -->
+<div class="sec" id="s-jobs">
+<div class="stitle">💼 Jobs — post form + how listing looks</div>
+<div class="grid">
+<div class="panel">
+  <div class="ph">📝 Post a Job — form</div>
+  <div class="pb"><div class="dk">
+    <span class="lbl">Job Title *</span>
+    <div class="fi v">Senior Accountant</div>
+    <div class="row2">
+      <div><span class="lbl">Company *</span><div class="fi v">Al Futtaim Group</div></div>
+      <div><span class="lbl">Category *</span><div class="fi v">💰 Finance</div></div>
+    </div>
+    <span class="lbl">Description *</span>
+    <div class="fi v" style="height:48px;padding-top:6px">Seeking experienced accountant with 5+ years UAE experience, VAT knowledge required, ACCA preferred...</div>
+    <div class="row2">
+      <div><span class="lbl">Type</span><div class="fi v">Full Time</div></div>
+      <div><span class="lbl">Experience</span><div class="fi v">Senior (5+ yrs)</div></div>
+    </div>
+    <div class="row2">
+      <div><span class="lbl">Salary From</span><div class="fi v">AED 8,000</div></div>
+      <div><span class="lbl">Salary To</span><div class="fi v">AED 12,000</div></div>
+    </div>
+    <div class="row2">
+      <div><span class="lbl">Emirate *</span><div class="fi v">Dubai</div></div>
+      <div><span class="lbl">Area</span><div class="fi v">DIFC</div></div>
+    </div>
+    <div class="row2">
+      <div><span class="lbl">Phone *</span><div class="fi v">+971 4 000 0000</div></div>
+      <div><span class="lbl">Email</span><div class="fi v">hr@alfuttaim.com</div></div>
+    </div>
+    <button class="gbtn">Post Job Free →</button>
+  </div></div>
+</div>
+<div class="panel">
+  <div class="ph">🃏 How job card appears</div>
+  <div class="pb">
+    <div style="font-size:10px;color:var(--color-text-secondary);margin-bottom:8px">Free listing:</div>
+    <div class="card" style="margin-bottom:10px">
+      <div class="cimg" style="height:90px">
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&q=70" alt="Office">
+        <span class="cbadge bf">Free</span>
+        <div style="position:absolute;bottom:7px;left:10px">
+          <span style="font-size:10px;font-weight:700;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.8)">Al Futtaim Group</span>
+        </div>
+      </div>
+      <div class="cbody">
+        <div style="font-size:9px;font-weight:700;color:#C9A84C;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px">💰 Finance & Banking</div>
+        <div class="ctitle" style="font-size:13px;font-weight:600">Senior Accountant</div>
+        <div class="cmeta">📍 DIFC, Dubai · Full Time · Senior 5+ yrs</div>
+        <div style="font-size:12px;color:#22c55e;font-weight:600;margin-bottom:6px">AED 8,000 – 12,000/month</div>
+        <div class="cref">🔖 GB-JOB-DXB-000033</div>
+        <div style="font-size:10px;color:#444;margin-bottom:8px;line-height:1.5">Seeking experienced accountant with 5+ years UAE experience, VAT knowledge...</div>
+        <div class="cbtns"><button class="bcall">📞 Apply / Call</button><button class="bwa">💬 WhatsApp</button></div>
+      </div>
+    </div>
+    <div style="font-size:10px;color:var(--color-text-secondary);margin-bottom:6px">Featured job (AED 99/mo):</div>
+    <div class="card feat">
+      <div class="cbody" style="padding:12px">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px">
+          <div>
+            <div style="font-size:9px;font-weight:700;color:#C9A84C;margin-bottom:3px">💻 IT & Technology</div>
+            <div style="font-size:13px;font-weight:600;color:#eee">React Developer — Senior Level</div>
+            <div style="font-size:11px;color:#888">Noon.com</div>
+          </div>
+          <span class="cbadge bft" style="position:static;margin-top:2px">⭐ Top</span>
+        </div>
+        <div style="font-size:11px;color:#22c55e;font-weight:600;margin-bottom:5px">AED 18,000 – 25,000/month</div>
+        <div class="cmeta">📍 Business Bay, Dubai · Full Time</div>
+        <div class="cref">🔖 GB-JOB-DXB-000012</div>
+        <div class="cbtns"><button class="bcall">📞 Apply</button><button class="bwa">💬 WhatsApp</button></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<!-- CLASSIFIEDS -->
+<div class="sec" id="s-classifieds">
+<div class="stitle">🛒 Classifieds — post form + how cards look</div>
+<div class="grid">
+<div class="panel">
+  <div class="ph">📝 Post a Free Listing — form</div>
+  <div class="pb"><div class="dk">
+    <span class="lbl">Category (visual cards)</span>
+    <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px">
+      <div style="background:rgba(201,168,76,.1);border:1.5px solid #C9A84C;border-radius:7px;padding:6px 9px;font-size:10px;font-weight:600;color:#C9A84C;text-align:center">📱<br>Electronics</div>
+      <div style="background:#0d0d1e;border:1.5px solid #1a1828;border-radius:7px;padding:6px 9px;font-size:10px;color:#444;text-align:center">🏠<br>Home</div>
+      <div style="background:#0d0d1e;border:1.5px solid #1a1828;border-radius:7px;padding:6px 9px;font-size:10px;color:#444;text-align:center">👗<br>Fashion</div>
+      <div style="background:#0d0d1e;border:1.5px solid #1a1828;border-radius:7px;padding:6px 9px;font-size:10px;color:#444;text-align:center">🧸<br>Kids</div>
+    </div>
+    <span class="lbl">Sub-category</span>
+    <div class="fi v">📱 Mobiles & Tablets</div>
+    <span class="lbl">Title *</span>
+    <div class="fi v">iPhone 15 Pro Max 256GB — Natural Titanium</div>
+    <span class="lbl">Condition (tap to select)</span>
+    <div style="display:flex;gap:5px;margin-bottom:8px">
+      <div style="background:#0d0d1e;border:1.5px solid #1a1828;border-radius:20px;padding:4px 10px;font-size:10px;color:#555">New</div>
+      <div style="background:rgba(201,168,76,.1);border:1.5px solid #C9A84C;border-radius:20px;padding:4px 10px;font-size:10px;color:#C9A84C;font-weight:600">Like New</div>
+      <div style="background:#0d0d1e;border:1.5px solid #1a1828;border-radius:20px;padding:4px 10px;font-size:10px;color:#555">Good</div>
+    </div>
+    <div class="row2">
+      <div><span class="lbl">Price Type</span><div class="fi v">Fixed Price</div></div>
+      <div><span class="lbl">Price AED</span><div class="fi v">3,800</div></div>
+    </div>
+    <div class="row2">
+      <div><span class="lbl">Emirate</span><div class="fi v">Dubai</div></div>
+      <div><span class="lbl">Area</span><div class="fi v">JBR</div></div>
+    </div>
+    <button class="gbtn">Post Free →</button>
+  </div></div>
+</div>
+<div class="panel">
+  <div class="ph">🃏 How cards appear — 2 examples</div>
+  <div class="pb">
+    <div class="card" style="margin-bottom:10px">
+      <div class="cimg">
+        <img src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=400&q=70" alt="iPhone">
+        <span class="cbadge bf">Free</span>
+        <span style="position:absolute;top:7px;right:7px;font-size:9px;font-weight:700;padding:2px 7px;border-radius:20px;background:rgba(34,197,94,.2);color:#22c55e;border:1px solid rgba(34,197,94,.3);backdrop-filter:blur(4px)">Like New</span>
+      </div>
+      <div class="cbody">
+        <div class="cprice">AED 3,800</div>
+        <div class="ctitle">iPhone 15 Pro Max 256GB — Natural Titanium</div>
+        <div class="cmeta">📱 Mobiles & Tablets · JBR, Dubai · Fixed Price</div>
+        <div class="cref">🔖 GB-MKT-DXB-000091</div>
+        <div class="cbtns"><button class="bcall">📞 Call</button><button class="bwa">💬 WhatsApp</button></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="cimg">
+        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&q=70" alt="Sofa">
+        <span class="cbadge bf">Free</span>
+        <span style="position:absolute;top:7px;right:7px;font-size:9px;font-weight:700;padding:2px 7px;border-radius:20px;background:rgba(201,168,76,.15);color:#C9A84C;border:1px solid rgba(201,168,76,.25);backdrop-filter:blur(4px)">Good</span>
+      </div>
+      <div class="cbody">
+        <div class="cprice">AED 1,200</div>
+        <div class="ctitle">IKEA L-Shape Corner Sofa — Grey — Excellent Condition</div>
+        <div class="cmeta">🛋️ Furniture · Al Barsha, Dubai · Negotiable</div>
+        <div class="cref">🔖 GB-MKT-DXB-000092</div>
+        <div class="cbtns"><button class="bcall">📞 Call</button><button class="bwa">💬 WhatsApp</button></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<!-- SERVICES -->
+<div class="sec" id="s-services">
+<div class="stitle">🔧 Services — provider posts deal + client booking flow</div>
+<div class="grid">
+<div class="panel">
+  <div class="ph">📝 Post a Service Deal (provider form)</div>
+  <div class="pb"><div class="dk">
+    <span class="lbl">Deal Type</span>
+    <div style="display:flex;gap:6px;margin-bottom:8px">
+      <div style="background:rgba(239,68,68,.1);border:2px solid #ef4444;border-radius:7px;padding:7px 10px;font-size:10px;font-weight:700;color:#ef4444;text-align:center">🔥<br>Flash<br><span style="font-size:9px;font-weight:400;color:#555">Today only</span></div>
+      <div style="background:#0d0d1e;border:1.5px solid #1a1828;border-radius:7px;padding:7px 10px;font-size:10px;color:#444;text-align:center">📅<br>Weekly</div>
+      <div style="background:#0d0d1e;border:1.5px solid #1a1828;border-radius:7px;padding:7px 10px;font-size:10px;color:#444;text-align:center">🏷️<br>Standard</div>
+    </div>
+    <span class="lbl">Service Category</span>
+    <div class="fi v">❄️ AC & Cooling</div>
+    <span class="lbl">Deal Title *</span>
+    <div class="fi v">AC Service + Gas Check — Summer Special</div>
+    <span class="lbl">What's included</span>
+    <div class="fi v">Gas refill, filter clean, leak test, remote check</div>
+    <div class="row2">
+      <div><span class="lbl" style="color:#C9A84C">Your Price AED</span><div class="fi v" style="color:#C9A84C">149</div></div>
+      <div><span class="lbl">Original (was)</span><div class="fi" style="color:#555;text-decoration:line-through">220</div></div>
+    </div>
+    <div class="row2">
+      <div><span class="lbl">Slots today</span><div class="fi v">3 slots</div></div>
+      <div><span class="lbl">Valid until</span><div class="fi v">Today 11:59 PM</div></div>
+    </div>
+    <span class="lbl">Areas covered</span>
+    <div class="fi v">Marina, JLT, JBR, Downtown</div>
+    <div style="background:#0a0a18;border:1px solid #1a1828;border-radius:7px;padding:8px 10px;font-size:10px;color:#444;margin-bottom:8px;line-height:1.7">Commission: <span style="color:#C9A84C">10% new → 7% verified → 5% top rated</span><br>Only when you complete a job — free to post</div>
+    <button class="gbtn">Post Deal Free →</button>
+  </div></div>
+</div>
+<div class="panel">
+  <div class="ph">🃏 How deal card looks + booking modal</div>
+  <div class="pb">
+    <div class="deal flash" style="margin-bottom:10px">
+      <div class="dimg">
+        <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=400&q=70" alt="AC service">
+        <div class="doverlay">
+          <span style="font-size:10px;font-weight:700;color:#ef4444;background:rgba(0,0,0,.7);padding:2px 8px;border-radius:20px">🔥 Today Only</span>
+          <span class="slots-red">2 slots left</span>
+        </div>
+      </div>
+      <div class="dbody">
+        <div style="font-size:9px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px">❄️ AC & Cooling</div>
+        <div style="font-size:12px;font-weight:700;color:#eee;margin-bottom:4px">AC Service + Gas Check — Summer Special</div>
+        <div style="font-size:10px;color:#444;margin-bottom:7px">✅ Gas refill, filter clean, leak test, remote check</div>
+        <div style="display:flex;align-items:baseline;gap:6px;margin-bottom:4px">
+          <span style="font-size:18px;font-weight:800;color:#C9A84C">AED 149</span>
+          <span style="font-size:10px;color:#333;text-decoration:line-through">AED 220</span>
+          <span class="saving">32% off</span>
+        </div>
+        <div style="font-size:10px;color:#444;margin-bottom:8px">📍 Marina, JLT, JBR, Downtown, Dubai</div>
+        <div style="display:flex;gap:6px">
+          <button style="flex:1;background:#C9A84C;border:none;border-radius:6px;padding:7px;font-size:11px;font-weight:700;color:#000;cursor:pointer">📅 Book Now</button>
+          <button style="background:#1a1828;border:1px solid rgba(201,168,76,.2);border-radius:6px;padding:7px 10px;font-size:11px;color:#C9A84C;cursor:pointer">↗</button>
+        </div>
+      </div>
+    </div>
+    <div style="font-size:10px;color:var(--color-text-secondary);margin-bottom:6px">After "Book Now" — booking modal pops up:</div>
+    <div style="background:#0d0d1a;border:1px solid rgba(201,168,76,.25);border-radius:10px;padding:12px">
+      <div style="font-size:12px;font-weight:500;color:#eee;margin-bottom:2px">Book This Deal</div>
+      <div style="font-size:13px;font-weight:700;color:#C9A84C;margin-bottom:10px">AED 149 — AC Service + Gas Check</div>
+      <div class="fi" style="color:#ccc;font-size:11px;margin-bottom:5px">Your name</div>
+      <div class="fi" style="color:#ccc;font-size:11px;margin-bottom:5px">+971 50 000 0000</div>
+      <div class="fi" style="color:#ccc;font-size:11px;margin-bottom:5px">Building, area, emirate</div>
+      <div style="font-size:9px;color:#333;margin-bottom:8px;line-height:1.6">🛡️ Payment held by GulfHabibi until you confirm job done. Full refund if provider cancels.</div>
+      <button style="width:100%;background:#C9A84C;border:none;border-radius:6px;padding:8px;font-size:11px;font-weight:700;color:#000;cursor:pointer">Confirm Booking →</button>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<!-- DIRECTORY -->
+<div class="sec" id="s-directory">
+<div class="stitle">📒 Business Directory — post form + how listing looks</div>
+<div class="grid">
+<div class="panel">
+  <div class="ph">📝 List a Business — form</div>
+  <div class="pb"><div class="dk">
+    <span class="lbl">Business Name *</span>
+    <div class="fi v">Fast Jaguar Technical Services LLC</div>
+    <div class="row2">
+      <div><span class="lbl">Category *</span><div class="fi v">🏗️ Renovation</div></div>
+      <div><span class="lbl">Sub-category</span><div class="fi v">Fit-Out</div></div>
+    </div>
+    <span class="lbl">Description</span>
+    <div class="fi v" style="height:46px;padding-top:6px">Villa & apartment renovations, fit-out and maintenance across UAE. 10+ years experience.</div>
+    <div class="row2">
+      <div><span class="lbl">Phone *</span><div class="fi v">+971 50 000 0000</div></div>
+      <div><span class="lbl">WhatsApp</span><div class="fi v">+971 50 000 0000</div></div>
+    </div>
+    <div class="row2">
+      <div><span class="lbl">Emirate</span><div class="fi v">Dubai</div></div>
+      <div><span class="lbl">Area</span><div class="fi v">Al Quoz</div></div>
+    </div>
+    <span class="lbl">Website</span>
+    <div class="fi v">fastjaguar.com</div>
+    <span class="lbl">Business Photo</span>
+    <div class="fi" style="height:34px;display:flex;align-items:center;gap:6px;color:#666">📷 <span style="font-size:10px">1 photo uploaded</span></div>
+    <button class="gbtn">List Business Free →</button>
+  </div></div>
+</div>
+<div class="panel">
+  <div class="ph">🃏 How directory listing appears</div>
+  <div class="pb">
+    <div style="font-size:10px;color:var(--color-text-secondary);margin-bottom:6px">Free business listing:</div>
+    <div class="card" style="margin-bottom:10px">
+      <div class="cimg" style="height:100px">
+        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400&q=70" alt="Renovation">
+        <span class="cbadge bf">Free</span>
+      </div>
+      <div class="cbody">
+        <div style="font-size:9px;font-weight:700;color:#C9A84C;text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px">🏗️ Renovation & Fit-Out</div>
+        <div class="ctitle" style="font-size:13px;font-weight:600">Fast Jaguar Technical Services LLC</div>
+        <div style="display:flex;align-items:center;gap:4px;margin-bottom:4px">
+          <span style="color:#C9A84C;font-size:11px">★★★★★</span>
+          <span style="font-size:10px;color:#444">4.8 (14 reviews)</span>
+        </div>
+        <div class="cmeta">📍 Al Quoz, Dubai · fastjaguar.com</div>
+        <div style="font-size:10px;color:#444;margin-bottom:7px;line-height:1.5">Villa & apartment renovations, fit-out and maintenance across UAE. 10+ years...</div>
+        <div class="cbtns"><button class="bcall">📞 Call</button><button class="bwa">💬 WhatsApp</button></div>
+      </div>
+    </div>
+    <div style="font-size:10px;color:var(--color-text-secondary);margin-bottom:6px">Featured business (AED 99/mo) — gold border + verified:</div>
+    <div class="card feat">
+      <div class="cimg" style="height:90px">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=70" alt="AC service team">
+        <span class="cbadge bft">⭐ Featured</span>
+        <span style="position:absolute;bottom:7px;left:7px;font-size:9px;font-weight:700;padding:2px 7px;border-radius:20px;background:rgba(34,197,94,.2);color:#22c55e;backdrop-filter:blur(4px)">✅ Business Verified</span>
+      </div>
+      <div class="cbody">
+        <div style="font-size:9px;font-weight:700;color:#C9A84C;margin-bottom:3px">❄️ AC & Cooling</div>
+        <div class="ctitle" style="font-size:13px;font-weight:600">Arctic Cool Technical Services</div>
+        <div style="display:flex;align-items:center;gap:4px;margin-bottom:4px">
+          <span style="color:#E8C97A;font-size:11px">★★★★★</span>
+          <span style="font-size:10px;color:#444">4.9 (67 reviews)</span>
+        </div>
+        <div class="cmeta">📍 Deira, Dubai · All Emirates</div>
+        <div class="cbtns"><button class="bcall">📞 Call</button><button class="bwa">💬 WhatsApp</button></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+</div>
+
+<script>
+function sw(id,btn){
+  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('show'));
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('on'));
+  document.getElementById('s-'+id).classList.add('show');
+  btn.classList.add('on');
+}
+</script>

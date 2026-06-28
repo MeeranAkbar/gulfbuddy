@@ -1,0 +1,45 @@
+# ============================================================
+# GulfHabibi Admin Protection — Add this to cPanel .htaccess
+# Place this in the root of your hosting (public_html)
+# ============================================================
+
+# Protect admin control file — deny all direct access
+<Files "gb-admin-ctrl.html">
+    # Option A: Simple server password (uncomment to use)
+    # AuthType Basic
+    # AuthName "Admin Access"
+    # AuthUserFile /home/qukugdyc/.htpasswd
+    # Require valid-user
+
+    # Option B: IP restriction (replace with your real IP)
+    # Order Deny,Allow
+    # Deny from all
+    # Allow from YOUR.HOME.IP.HERE
+    # Allow from YOUR.MOBILE.IP.HERE
+</Files>
+
+# Block all .sql files from being accessed via browser
+<FilesMatch "\.sql$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# Block .py files
+<FilesMatch "\.py$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# Block direct access to shared JS config (has API keys)
+<Files "config.js">
+    # Note: config.js needs to be readable by browser
+    # Move API keys to Cloudflare Worker before go-live
+</Files>
+
+# Prevent directory listing
+Options -Indexes
+
+# Security headers
+Header always set X-Content-Type-Options nosniff
+Header always set X-Frame-Options SAMEORIGIN
+Header always set X-XSS-Protection "1; mode=block"

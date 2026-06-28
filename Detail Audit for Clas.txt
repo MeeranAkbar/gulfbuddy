@@ -1,0 +1,56 @@
+Here is a whole-site audit you can hand to Claude.
+
+Scope
+This is a source-code audit of the local snapshot dated March 22, 2026. It is not a live penetration test of your Supabase project or hosting.
+
+Priority Findings
+
+P1 Remote staging is not protected site-wide. The preview page was fixed, but it only guards the entry page in [index.html](/D:/Project Try/Codex Gulf/GulfBuddy Platform/index.html#L22). Direct URLs like [home.html](/D:/Project Try/Codex Gulf/GulfBuddy Platform/home.html#L1) are still reachable unless hosting adds real auth. [.htaccess](/D:/Project Try/Codex Gulf/GulfBuddy Platform/.htaccess#L45) sets headers but does not enforce staging access control.
+
+P1 Worker origin validation is too permissive. [cloudflare-worker.js](/D:/Project Try/Codex Gulf/GulfBuddy Platform/cloudflare-worker.js#L74) allows empty origin and substring matches like includes('localhost'). Claude should replace this with an exact allowlist from env and stricter production behavior.
+
+P1 Fresh installs will have broken AI audit logging. The worker writes input_summary and output_preview in [cloudflare-worker.js](/D:/Project Try/Codex Gulf/GulfBuddy Platform/cloudflare-worker.js#L388), but the base schema in [MASTER_SQL.sql](/D:/Project Try/Codex Gulf/GulfBuddy Platform/MASTER_SQL.sql#L407) still defines a different ai_audit_log shape. Existing environments can be corrected by [SECURITY_HARDENING.sql](/D:/Project Try/Codex Gulf/GulfBuddy Platform/SECURITY_HARDENING.sql#L80), but the repo is inconsistent.
+
+P2 Raw provider passthrough routes still exist. They are gated in [cloudflare-worker.js](/D:/Project Try/Codex Gulf/GulfBuddy Platform/cloudflare-worker.js#L276), but if someone enables that env flag, the worker becomes a generic relay to Groq/Gemini/Anthropic. For a secure internal AI system, Claude should remove these or lock them behind a stronger admin-only path.
+
+P2 There is no server-side AI quota or abuse control. AI access is authenticated in [shared/ai-router.js](/D:/Project Try/Codex Gulf/GulfBuddy Platform/shared/ai-router.js#L9), but the worker does not rate-limit per user, IP, or feature in [cloudflare-worker.js](/D:/Project Try/Codex Gulf/GulfBuddy Platform/cloudflare-worker.js#L124). A signed-in user can still run up spend.
+
+P2 Trust and posting rate limits are still browser-side only. [shared/trust.js](/D:/Project Try/Codex Gulf/GulfBuddy Platform/shared/trust.js#L2) uses localStorage for posting throttles. That is easy to bypass and should not be treated as enforcement.
+
+P2 CSP is still permissive. [.htaccess](/D:/Project Try/Codex Gulf/GulfBuddy Platform/.htaccess#L53) keeps script-src 'unsafe-inline' and broad connect-src hosts. Claude should treat this as transitional only and tighten it after moving inline scripts out of pages.
+
+P2 MASTER_SQL.sql claims rerun safety, but that is not fully true. The header says safe reruns in [MASTER_SQL.sql](/D:/Project Try/Codex Gulf/GulfBuddy Platform/MASTER_SQL.sql#L4), yet some policies are created without full idempotent cleanup, such as profile policies in [MASTER_SQL.sql](/D:/Project Try/Codex Gulf/GulfBuddy Platform/MASTER_SQL.sql#L312). Claude should either make it truly idempotent or split it into versioned migrations.
+
+P3 AI audit logging currently stores text summaries, not hashes or redacted forms. That is visible in [cloudflare-worker.js](/D:/Project Try/Codex Gulf/GulfBuddy Platform/cloudflare-worker.js#L143) and [cloudflare-worker.js](/D:/Project Try/Codex Gulf/GulfBuddy Platform/cloudflare-worker.js#L404). For legal or sensitive assistant usage, Claude should define a retention/redaction policy.
+
+P3 Supabase auth is loaded from CDN at runtime in [shared/auth.js](/D:/Project Try/Codex Gulf/GulfBuddy Platform/shared/auth.js#L103). It works, but Claude should consider pinning/self-hosting to reduce supply-chain risk.
+
+P3 The repo still has mojibake/encoding artifacts across multiple pages, for example [home.html](/D:/Project Try/Codex Gulf/GulfBuddy Platform/home.html#L5). Not a security blocker, but it hurts polish and trust.
+
+Already Correct; Do Not Revert
+
+Frontend secrets were removed from browser code and AI now routes through the internal gateway: [shared/config.js](/D:/Project Try/Codex Gulf/GulfBuddy Platform/shared/config.js#L11), [shared/ai-router.js](/D:/Project Try/Codex Gulf/GulfBuddy Platform/shared/ai-router.js#L23), [shared/trust.js](/D:/Project Try/Codex Gulf/GulfBuddy Platform/shared/trust.js#L61), [cloudflare-worker.js](/D:/Project Try/Codex Gulf/GulfBuddy Platform/cloudflare-worker.js#L26).
+Admin is no longer a hardcoded frontend password; it now depends on authenticated users plus admin_users: [gb-admin-ctrl.html](/D:/Project Try/Codex Gulf/GulfBuddy Platform/gb-admin-ctrl.html#L251), [SECURITY_HARDENING.sql](/D:/Project Try/Codex Gulf/GulfBuddy Platform/SECURITY_HARDENING.sql#L8).
+Posting, reporting, partner registration, and service booking now require signed-in users in the frontend and hardened RLS policies.
+Claude Work Order
+
+Add real staging protection at hosting or edge level so every route is blocked outside authorized access.
+Replace worker origin logic with exact allowlisted origins from env. No substring matching.
+Remove raw provider passthrough routes or restrict them to a stronger private admin path.
+Add AI rate limiting and quotas in the worker using KV or Durable Objects.
+Choose one canonical ai_audit_log schema and align [MASTER_SQL.sql](/D:/Project Try/Codex Gulf/GulfBuddy Platform/MASTER_SQL.sql#L407), [SECURITY_HARDENING.sql](/D:/Project Try/Codex Gulf/GulfBuddy Platform/SECURITY_HARDENING.sql#L80), and [cloudflare-worker.js](/D:/Project Try/Codex Gulf/GulfBuddy Platform/cloudflare-worker.js#L388).
+Make MASTER_SQL.sql fully idempotent or replace it with proper migrations.
+Move inline scripts out of HTML, then tighten CSP to remove 'unsafe-inline'.
+Replace client-only rate limits with server-side enforcement for trust-sensitive operations.
+Decide whether AI logs should store hashes, redacted summaries, or encrypted payloads.
+Clean mojibake and consistency issues after security blockers are done.
+Acceptance Criteria For Claude
+
+Remote staging cannot be opened by direct URL without server-side authorization.
+Worker rejects any origin not explicitly allowlisted.
+Raw provider relay routes are removed or strongly restricted.
+AI requests are quota-limited per user and per IP.
+AI audit rows insert successfully on both fresh and existing DBs.
+MASTER_SQL.sql can be rerun safely or is replaced by real migrations.
+CSP no longer relies on 'unsafe-inline' for scripts.
+No frontend page regains a secret key or fake password gate.

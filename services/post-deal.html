@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/shared/preview-guard.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Post a Service Deal — GulfHabibi</title>
+<link rel="stylesheet" href="../shared/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="../shared/theme.js"></script>
+<style>
+body{background:#ffffff}
+.wrap{max-width:680px;margin:0 auto;padding:32px 20px 60px}
+.sec{font-size:11px;font-weight:700;color:#C9A84C;text-transform:uppercase;letter-spacing:1px;margin:24px 0 12px;padding-bottom:8px;border-bottom:1px solid #e5e5e5}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.type-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.tc{background:#f8f8f8;border:2px solid #1a1828;border-radius:12px;padding:14px;cursor:pointer;transition:all .15s;text-align:center}
+.tc:hover{border-color:#999}
+.tc.active{border-color:#C9A84C;background:rgba(201,168,76,.06)}
+.tc-icon{font-size:24px;margin-bottom:6px}
+.tc-label{font-size:12px;font-weight:700;color:#666}
+.tc-desc{font-size:10px;color:#333;margin-top:3px;line-height:1.4}
+.tc.active .tc-label{color:#C9A84C}
+.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.cc{background:#f8f8f8;border:1.5px solid #1a1828;border-radius:10px;padding:10px 6px;text-align:center;cursor:pointer;transition:all .15s}
+.cc:hover{border-color:#999}
+.cc.active{border-color:#C9A84C;background:rgba(201,168,76,.07)}
+.cc-icon{font-size:18px;margin-bottom:3px}
+.cc-label{font-size:10px;font-weight:600;color:#444}
+.cc.active .cc-label{color:#C9A84C}
+.preview-box{background:#ffffff;border:1px solid rgba(201,168,76,.2);border-radius:12px;padding:16px;margin-top:20px}
+</style>
+</head>
+<body>
+<div class="ad-top"><span class="ad-label">Advertisement</span></div>
+<nav class="navbar">
+  <a href="../home.html" class="nav-logo">
+    <div class="nav-logo-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#0e0e0e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+    </div>
+    <div class="nav-logo-text">Gulf<span>Habibi</span></div>
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="../home.html" class="nav-link">Home</a>
+    <a href="deals.html" class="nav-link active">Services</a>
+    <a href="../property/index.html" class="nav-link">Property</a>
+    <a href="../jobs/index.html" class="nav-link">Jobs</a>
+  </div>
+  <div class="nav-actions" id="navActions">
+    <button id="themeToggleBtn" onclick="toggleTheme()" style="background:var(--bg-card,#0d0d1a);border:1px solid var(--border,#1a1828);border-radius:8px;color:var(--gold,#C9A84C);font-size:15px;padding:5px 9px;cursor:pointer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>
+    <div id="navGuest" style="display:flex;gap:8px"><button class="btn btn-ghost btn-sm" onclick="openAuth('signin')">Sign In</button></div>
+    <div id="navUser" style="display:none;gap:8px;align-items:center">
+      <span id="navUserName" style="font-size:13px;color:#C9A84C;font-weight:600"></span>
+      <a href="../dashboard/index.html" class="btn btn-ghost btn-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Dashboard</a>
+      <button class="btn btn-outline btn-sm" onclick="doSignout()">Sign Out</button>
+    </div>
+  </div>
+  <button class="nav-hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+</nav>
+<div class="wrap">
+  <div style="font-size:22px;font-weight:700;color:#111;margin-bottom:4px">Post a Service Deal</div>
+  <div style="font-size:13px;color:#555;margin-bottom:20px">Set your price. Set your slots. Clients book directly. Free to post.</div>
+
+  <!-- DEAL TYPE -->
+  <div class="sec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg> Deal Type</div>
+  <div class="type-cards">
+    <div class="tc active" onclick="selType(this,'flash')">
+      <div class="tc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+      <div class="tc-label">Flash Deal</div>
+      <div class="tc-desc">Today only. Creates urgency. Best for sharing.</div>
+    </div>
+    <div class="tc" onclick="selType(this,'weekly')">
+      <div class="tc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+      <div class="tc-label">Weekly Offer</div>
+      <div class="tc-desc">Valid 7 days. Clients book any day.</div>
+    </div>
+    <div class="tc" onclick="selType(this,'standard')">
+      <div class="tc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg></div>
+      <div class="tc-label">Standard</div>
+      <div class="tc-desc">Always live. Call for details.</div>
+    </div>
+  </div>
+  <input type="hidden" id="dealType" value="flash">
+
+  <!-- CATEGORY -->
+  <div class="sec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> Your Service</div>
+  <div class="cat-grid">
+    <div class="cc" onclick="selCat(this,'ac')"><div class="cc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"/><path d="M9.6 4.6A2 2 0 1 1 11 8H2"/><path d="M12.6 19.4A2 2 0 1 0 14 16H2"/></svg></div><div class="cc-label">AC & Cooling</div></div>
+    <div class="cc" onclick="selCat(this,'cleaning')"><div class="cc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275Z"/></svg></div><div class="cc-label">Cleaning</div></div>
+    <div class="cc" onclick="selCat(this,'plumbing')"><div class="cc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg></div><div class="cc-label">Plumbing</div></div>
+    <div class="cc" onclick="selCat(this,'electrical')"><div class="cc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><div class="cc-label">Electrical</div></div>
+    <div class="cc" onclick="selCat(this,'carpentry')"><div class="cc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="m14.5 12.5-8 8a2.119 2.119 0 0 1-3-3l8-8"/><path d="m16 16 6-6"/><path d="m8 8 6-6"/><path d="m9 7 8 8"/><path d="m21 11-8-8"/></svg></div><div class="cc-label">Carpentry</div></div>
+    <div class="cc" onclick="selCat(this,'painting')"><div class="cc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M18.37 2.63 14 7l-1.59-1.59a2 2 0 0 0-2.82 0L8 7l9 9 1.59-1.59a2 2 0 0 0 0-2.82L17 10l4.37-4.37a2.12 2.12 0 1 0-3-3Z"/><path d="M9 8c-2 3-4 3.5-7 4l8 10c2-1 6-5 6-7"/></svg></div><div class="cc-label">Painting</div></div>
+    <div class="cc" onclick="selCat(this,'moving')"><div class="cc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div><div class="cc-label">Moving</div></div>
+    <div class="cc" onclick="selCat(this,'pest')"><div class="cc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="m8 2 1.88 1.88"/><path d="M14.12 3.88 16 2"/><path d="M9 7.13v-1a3.003 3.003 0 1 1 6 0v1"/><path d="M12 20c-3.3 0-6-2.7-6-6v-3a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v3c0 3.3-2.7 6-6 6"/><path d="M12 20v-9"/><path d="M6.53 9C4.6 8.8 3 7.1 3 5"/><path d="M6 13H2"/><path d="M3 21c0-2.1 1.7-3.9 3.8-4"/><path d="M20.97 5c0 2.1-1.6 3.8-3.5 4"/><path d="M22 13h-4"/><path d="M17.2 17c2.1.1 3.8 1.9 3.8 4"/></svg></div><div class="cc-label">Pest Control</div></div>
+    <div class="cc" onclick="selCat(this,'handyman')"><div class="cc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><div class="cc-label">Handyman</div></div>
+    <div class="cc" onclick="selCat(this,'it')"><div class="cc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg></div><div class="cc-label">IT Support</div></div>
+    <div class="cc" onclick="selCat(this,'gardening')"><div class="cc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></div><div class="cc-label">Gardening</div></div>
+    <div class="cc" onclick="selCat(this,'other')"><div class="cc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><div class="cc-label">Other</div></div>
+  </div>
+  <input type="hidden" id="dealCat" value="">
+
+  <!-- DEAL DETAILS -->
+  <div class="sec">📝 Deal Details</div>
+  <div class="form-group">
+    <label class="form-label">Deal Title *</label>
+    <input class="form-input" type="text" id="dealTitle" placeholder="e.g. AC Service + Gas Check — Summer Special" oninput="updatePreview()">
+  </div>
+  <div class="form-group">
+    <label class="form-label">What's Included *</label>
+    <input class="form-input" type="text" id="whatIncluded" placeholder="e.g. Gas check, filter clean, leak test, remote check" oninput="updatePreview()">
+  </div>
+  <div class="form-group">
+    <label class="form-label">Description (optional)</label>
+    <textarea class="form-input" id="dealDesc" rows="3" placeholder="Any extra details about the service, your experience, certifications..."></textarea>
+  </div>
+
+  <!-- PRICING -->
+  <div class="sec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg> Pricing</div>
+  <div class="two">
+    <div class="form-group">
+      <label class="form-label">Your Deal Price (AED) *</label>
+      <input class="form-input" type="number" id="dealPrice" placeholder="e.g. 149" oninput="updatePreview()">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Original Price (AED) — optional</label>
+      <input class="form-input" type="number" id="originalPrice" placeholder="e.g. 220" oninput="updatePreview()">
+      <div style="font-size:10px;color:#333;margin-top:3px">Shows "was AED 220" to highlight saving</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="form-label">Price Note (optional)</label>
+    <input class="form-input" type="text" id="priceNote" placeholder="e.g. Per unit / Per visit / Up to 3 rooms / Includes labour">
+  </div>
+
+  <!-- SLOTS & VALIDITY -->
+  <div class="sec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Slots & Availability</div>
+  <div class="two">
+    <div class="form-group">
+      <label class="form-label">Slots Available *</label>
+      <select class="form-input" id="slotsTotal">
+        <option value="2">2 slots</option>
+        <option value="3" selected>3 slots</option>
+        <option value="5">5 slots</option>
+        <option value="10">10 slots</option>
+        <option value="20">20 slots (open)</option>
+      </select>
+    </div>
+    <div class="form-group" id="validityWrap">
+      <label class="form-label">Valid Until</label>
+      <input class="form-input" type="datetime-local" id="validUntil">
+    </div>
+  </div>
+
+  <!-- LOCATION -->
+  <div class="sec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Coverage Area</div>
+  <div class="two">
+    <div class="form-group">
+      <label class="form-label">Emirate *</label>
+      <select class="form-input" id="dealEmirate">
+        <option value="">Select...</option>
+        <option>Dubai</option><option>Abu Dhabi</option><option>Sharjah</option>
+        <option>Ajman</option><option>RAK</option><option>Fujairah</option><option>UAQ</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Areas Covered</label>
+      <input class="form-input" type="text" id="areasCovered" placeholder="Marina, JLT, JBR, Downtown">
+    </div>
+  </div>
+
+  <!-- PROVIDER CONTACT -->
+  <div class="sec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Your Details</div>
+  <div class="two">
+    <div class="form-group">
+      <label class="form-label">Your Name / Business *</label>
+      <input class="form-input" type="text" id="provName" placeholder="Name or company name">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Phone / WhatsApp *</label>
+      <input class="form-input" type="tel" id="provPhone" placeholder="+971 50 000 0000">
+    </div>
+  </div>
+
+  <!-- LIVE PREVIEW -->
+  <div class="sec">👁️ Preview</div>
+  <div class="preview-box" id="livePreview">
+    <div style="font-size:11px;color:#333">Fill in details above to see a preview of your deal card</div>
+  </div>
+
+  <!-- COMMISSION NOTE -->
+  <div style="background:#f8f8f8;border:1px solid #e5e5e5;border-radius:10px;padding:14px 16px;margin:20px 0;font-size:12px;color:#444;line-height:1.8">
+    <div style="color:#888;font-weight:600;margin-bottom:6px">💡 How GulfHabibi Commission Works:</div>
+    • Free to post your deal — always<br>
+    • Client books and pays through GulfHabibi<br>
+    • You get paid after job is confirmed complete<br>
+    • <span style="color:#C9A84C">Commission: 10% (new) <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> 7% (verified 10+ jobs) <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> 5% (top rated 50+ jobs)</span><br>
+    • Commission is only charged when you WIN and COMPLETE a job
+  </div>
+
+  <button class="btn btn-gold" style="width:100%;padding:14px;font-size:15px" id="submitBtn" onclick="submitDeal()">Post Deal Free <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+  <div id="postMsg" style="text-align:center;font-size:13px;padding:8px;margin-top:6px"></div>
+</div>
+<div class="ad-bottom"><span class="ad-label">Advertisement</span></div>
+<script src="../shared/config.js"></script>
+<!-- auth handled via module below -->
+<script src="../shared/sanitise.js"></script>
+<script>
+const SB='https://chfkssclmdshdcijfzdr.supabase.co';
+const SK='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNoZmtzc2NsbWRzaGRjaWpmemRyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM1ODc2ODUsImV4cCI6MjA4OTE2MzY4NX0.cbJBIgeDRIqFvk3WMmxRoDWo1C73wM44oBDekdcc3sE';
+const H={'Content-Type':'application/json',apikey:SK,Authorization:'Bearer '+SK};
+const CAT_ICONS={ac:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"/><path d="M9.6 4.6A2 2 0 1 1 11 8H2"/><path d="M12.6 19.4A2 2 0 1 0 14 16H2"/></svg>',cleaning:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275Z"/></svg>',plumbing:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg>',electrical:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>',carpentry:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="m14.5 12.5-8 8a2.119 2.119 0 0 1-3-3l8-8"/><path d="m16 16 6-6"/><path d="m8 8 6-6"/><path d="m9 7 8 8"/><path d="m21 11-8-8"/></svg>',painting:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M18.37 2.63 14 7l-1.59-1.59a2 2 0 0 0-2.82 0L8 7l9 9 1.59-1.59a2 2 0 0 0 0-2.82L17 10l4.37-4.37a2.12 2.12 0 1 0-3-3Z"/><path d="M9 8c-2 3-4 3.5-7 4l8 10c2-1 6-5 6-7"/></svg>',moving:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>',pest:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="m8 2 1.88 1.88"/><path d="M14.12 3.88 16 2"/><path d="M9 7.13v-1a3.003 3.003 0 1 1 6 0v1"/><path d="M12 20c-3.3 0-6-2.7-6-6v-3a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v3c0 3.3-2.7 6-6 6"/><path d="M12 20v-9"/><path d="M6.53 9C4.6 8.8 3 7.1 3 5"/><path d="M6 13H2"/><path d="M3 21c0-2.1 1.7-3.9 3.8-4"/><path d="M20.97 5c0 2.1-1.6 3.8-3.5 4"/><path d="M22 13h-4"/><path d="M17.2 17c2.1.1 3.8 1.9 3.8 4"/></svg>',handyman:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>',it:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>',gardening:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>',other:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>'};
+
+function selType(el,type){
+  document.querySelectorAll('.tc').forEach(c=>c.classList.remove('active'));
+  el.classList.add('active'); document.getElementById('dealType').value=type;
+  // Set default validity for flash = end of today
+  if(type==='flash'){
+    const eod=new Date(); eod.setHours(23,59,0,0);
+    document.getElementById('validUntil').value=eod.toISOString().slice(0,16);
+  } else if(type==='weekly'){
+    const w=new Date(); w.setDate(w.getDate()+7);
+    document.getElementById('validUntil').value=w.toISOString().slice(0,16);
+  } else {
+    document.getElementById('validUntil').value='';
+  }
+}
+
+function selCat(el,cat){
+  document.querySelectorAll('.cc').forEach(c=>c.classList.remove('active'));
+  el.classList.add('active'); document.getElementById('dealCat').value=cat;
+  updatePreview();
+}
+
+function updatePreview(){
+  const title=document.getElementById('dealTitle').value;
+  const price=document.getElementById('dealPrice').value;
+  const orig=document.getElementById('originalPrice').value;
+  const inc=document.getElementById('whatIncluded').value;
+  const cat=document.getElementById('dealCat').value;
+  const icon=CAT_ICONS[cat]||'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>';
+  const type=document.getElementById('dealType').value;
+  if(!title&&!price){document.getElementById('livePreview').innerHTML='<div style="font-size:11px;color:#333">Fill in details above to preview</div>';return;}
+  const saving=orig&&parseFloat(orig)>parseFloat(price)?Math.round((1-parseFloat(price)/parseFloat(orig))*100)+'% off':'';
+  document.getElementById('livePreview').innerHTML=`
+    <div style="font-size:10px;font-weight:700;color:${type==='flash'?'#ef4444':'#C9A84C'};margin-bottom:6px">${type==='flash'?'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg> Today Only':type==='weekly'?'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> This Week':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg> Standard'}</div>
+    <div style="font-size:32px;margin-bottom:8px">${icon}</div>
+    <div style="font-size:13px;font-weight:700;color:#111;margin-bottom:6px">${title||'Deal Title'}</div>
+    ${inc?`<div style="font-size:11px;color:#555;margin-bottom:8px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg> ${inc}</div>`:''}
+    <div style="display:flex;align-items:baseline;gap:8px">
+      <span style="font-size:20px;font-weight:800;color:#C9A84C">AED ${price||'—'}</span>
+      ${orig?`<span style="font-size:12px;color:#333;text-decoration:line-through">AED ${orig}</span>`:''}
+      ${saving?`<span style="font-size:11px;font-weight:700;color:#22c55e;background:rgba(34,197,94,.1);padding:2px 7px;border-radius:20px">${saving}</span>`:''}
+    </div>`;
+}
+
+async function submitDeal(){
+  const title=document.getElementById('dealTitle').value.trim();
+  const cat=document.getElementById('dealCat').value;
+  const price=document.getElementById('dealPrice').value;
+  const name=document.getElementById('provName').value.trim();
+  const phone=document.getElementById('provPhone').value.trim();
+  const emirate=document.getElementById('dealEmirate').value;
+  if(!cat){setMsg('Please select a service category','e');return;}
+  if(!title){setMsg('Please add a deal title','e');return;}
+  if(!price){setMsg('Please add your price','e');return;}
+  if(!name||!phone){setMsg('Please add your name and phone','e');return;}
+  if(!emirate){setMsg('Please select your emirate','e');return;}
+  if(window.GBSanitise){const ph=GBSanitise.phone(phone);if(!ph.valid){setMsg(ph.error,'e');return;}}
+  const btn=document.getElementById('submitBtn');
+  btn.textContent='Posting...';btn.disabled=true;
+  const deal={
+    category:cat, title:window.GBSanitise?GBSanitise.text(title,120):title,
+    description:document.getElementById('dealDesc').value||null,
+    what_included:document.getElementById('whatIncluded').value||null,
+    price:parseFloat(price),
+    original_price:document.getElementById('originalPrice').value||null,
+    price_note:document.getElementById('priceNote').value||null,
+    deal_type:document.getElementById('dealType').value,
+    slots_total:parseInt(document.getElementById('slotsTotal').value)||3,
+    valid_until:document.getElementById('validUntil').value||null,
+    emirate, areas_covered:document.getElementById('areasCovered').value||null,
+    provider_name:name, provider_phone:phone, status:'active'
+  };
+  const r=await fetch(`${SB}/rest/v1/service_deals`,{method:'POST',headers:{...H,'Prefer':'return=representation'},body:JSON.stringify(deal)});
+  if(r.ok||r.status===201){
+    let ref='';try{const d=await r.json();ref=d?.[0]?.gb_ref||'';}catch(e){}
+    setMsg(`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg> Deal posted!${ref?' Ref: <strong style="color:#C9A84C">'+ref+'</strong>':''} Clients can book now.`,'s');
+    btn.textContent='Deal Posted!';
+    setTimeout(()=>window.location.href='deals.html',3000);
+  } else {
+    setMsg('Error posting. Please try again.','e');
+    btn.textContent='Post Deal Free <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';btn.disabled=false;
+  }
+}
+
+function setMsg(m,t){const el=document.getElementById('postMsg');el.style.color=t==='s'?'#22c55e':'#ef4444';el.innerHTML=m;}
+
+// Set default flash validity to end of today
+const eod=new Date();eod.setHours(23,59,0,0);
+document.getElementById('validUntil').value=eod.toISOString().slice(0,16);
+
+function checkAuthState(){
+  const u=localStorage.getItem('gb_user'),g=document.getElementById('navGuest'),nu=document.getElementById('navUser'),ne=document.getElementById('navUserName');
+  if(u){try{const p=JSON.parse(u);const n=(p.user_metadata&&p.user_metadata.full_name)||p.email.split('@')[0];if(ne)ne.textContent='Hi, '+n.split(' ')[0];if(g)g.style.display='none';if(nu)nu.style.display='flex';}catch(e){}}
+  else{if(g)g.style.display='flex';if(nu)nu.style.display='none';}
+}
+function doSignout(){localStorage.removeItem('gb_token');localStorage.removeItem('gb_user');checkAuthState();}
+document.addEventListener('DOMContentLoaded',checkAuthState);
+</script>
+
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/shared/preview-guard.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Post a Service Deal — GulfHabibi</title>
+<link rel="stylesheet" href="../shared/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="../shared/theme.js"></script>
+<style>
+body{background:#ffffff}
+.post-wrap{max-width:660px;margin:0 auto;padding:32px 20px 60px}
+.sec-title{font-size:11px;font-weight:700;color:#C9A84C;text-transform:uppercase;letter-spacing:1px;margin:24px 0 12px;padding-bottom:8px;border-bottom:1px solid #e5e5e5}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.cat-chip{background:#f8f8f8;border:1.5px solid #1a1828;border-radius:10px;padding:10px 6px;text-align:center;cursor:pointer;transition:all .15s}
+.cat-chip:hover{border-color:#999}
+.cat-chip.active{border-color:#C9A84C;background:rgba(201,168,76,.08)}
+.cat-chip-icon{font-size:22px;margin-bottom:4px}
+.cat-chip-label{font-size:10px;font-weight:600;color:#555}
+.cat-chip.active .cat-chip-label{color:#C9A84C}
+.area-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.area-tag{background:#f8f8f8;border:1px solid #e5e5e5;border-radius:20px;padding:4px 10px;font-size:11px;color:#666;cursor:pointer;transition:all .15s}
+.area-tag:hover,.area-tag.active{background:rgba(201,168,76,.1);border-color:#C9A84C;color:#C9A84C}
+.commission-box{background:#080812;border:1px solid rgba(201,168,76,.12);border-radius:12px;padding:16px;margin:20px 0}
+.preview-box{background:#ffffff;border:1px solid rgba(201,168,76,.2);border-radius:12px;padding:16px;margin:20px 0;display:none}
+</style>
+</head>
+<body>
+<div class="ad-top"><span class="ad-label">Advertisement</span></div>
+<nav class="navbar">
+  <a href="../home.html" class="nav-logo">
+    <div class="nav-logo-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#0e0e0e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+    </div>
+    <div class="nav-logo-text">Gulf<span>Habibi</span></div>
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="../home.html" class="nav-link">Home</a>
+    <a href="index.html" class="nav-link active">Services</a>
+  </div>
+  <div class="nav-actions" id="navActions">
+    <button id="themeToggleBtn" onclick="toggleTheme()" style="background:var(--bg-card,#0d0d1a);border:1px solid var(--border,#1a1828);border-radius:8px;color:var(--gold,#C9A84C);font-size:15px;padding:5px 9px;cursor:pointer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>
+    <div id="navGuest" style="display:flex;gap:8px"><button class="btn btn-ghost btn-sm" onclick="openAuth('signin')">Sign In</button></div>
+    <div id="navUser" style="display:none;gap:8px;align-items:center">
+      <span id="navUserName" style="font-size:13px;color:#C9A84C;font-weight:600"></span>
+      <button class="btn btn-outline btn-sm" onclick="doSignout()">Sign Out</button>
+    </div>
+  </div>
+  <button class="nav-hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+</nav>
+<div class="post-wrap">
+  <div style="font-size:22px;font-weight:700;color:#111;margin-bottom:4px">Post Today's Deal</div>
+  <div style="font-size:13px;color:#555;margin-bottom:6px">Set your price, your slots, your area. Clients book instantly. Free to post.</div>
+
+  <div class="sec-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> Service Category</div>
+  <div class="cat-grid">
+    <div class="cat-chip" onclick="selCat(this,'ac')"><div class="cat-chip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"/><path d="M9.6 4.6A2 2 0 1 1 11 8H2"/><path d="M12.6 19.4A2 2 0 1 0 14 16H2"/></svg></div><div class="cat-chip-label">AC & Cooling</div></div>
+    <div class="cat-chip" onclick="selCat(this,'cleaning')"><div class="cat-chip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275Z"/></svg></div><div class="cat-chip-label">Cleaning</div></div>
+    <div class="cat-chip" onclick="selCat(this,'plumbing')"><div class="cat-chip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg></div><div class="cat-chip-label">Plumbing</div></div>
+    <div class="cat-chip" onclick="selCat(this,'electrical')"><div class="cat-chip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><div class="cat-chip-label">Electrical</div></div>
+    <div class="cat-chip" onclick="selCat(this,'carpentry')"><div class="cat-chip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="m14.5 12.5-8 8a2.119 2.119 0 0 1-3-3l8-8"/><path d="m16 16 6-6"/><path d="m8 8 6-6"/><path d="m9 7 8 8"/><path d="m21 11-8-8"/></svg></div><div class="cat-chip-label">Carpentry</div></div>
+    <div class="cat-chip" onclick="selCat(this,'painting')"><div class="cat-chip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M18.37 2.63 14 7l-1.59-1.59a2 2 0 0 0-2.82 0L8 7l9 9 1.59-1.59a2 2 0 0 0 0-2.82L17 10l4.37-4.37a2.12 2.12 0 1 0-3-3Z"/><path d="M9 8c-2 3-4 3.5-7 4l8 10c2-1 6-5 6-7"/></svg></div><div class="cat-chip-label">Painting</div></div>
+    <div class="cat-chip" onclick="selCat(this,'moving')"><div class="cat-chip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div><div class="cat-chip-label">Moving</div></div>
+    <div class="cat-chip" onclick="selCat(this,'pest')"><div class="cat-chip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="m8 2 1.88 1.88"/><path d="M14.12 3.88 16 2"/><path d="M9 7.13v-1a3.003 3.003 0 1 1 6 0v1"/><path d="M12 20c-3.3 0-6-2.7-6-6v-3a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v3c0 3.3-2.7 6-6 6"/><path d="M12 20v-9"/><path d="M6.53 9C4.6 8.8 3 7.1 3 5"/><path d="M6 13H2"/><path d="M3 21c0-2.1 1.7-3.9 3.8-4"/><path d="M20.97 5c0 2.1-1.6 3.8-3.5 4"/><path d="M22 13h-4"/><path d="M17.2 17c2.1.1 3.8 1.9 3.8 4"/></svg></div><div class="cat-chip-label">Pest Control</div></div>
+    <div class="cat-chip" onclick="selCat(this,'handyman')"><div class="cat-chip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><div class="cat-chip-label">Handyman</div></div>
+    <div class="cat-chip" onclick="selCat(this,'it')"><div class="cat-chip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg></div><div class="cat-chip-label">IT Support</div></div>
+    <div class="cat-chip" onclick="selCat(this,'gardening')"><div class="cat-chip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></div><div class="cat-chip-label">Gardening</div></div>
+    <div class="cat-chip" onclick="selCat(this,'other')"><div class="cat-chip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><div class="cat-chip-label">Other</div></div>
+  </div>
+  <input type="hidden" id="dealCat" value="">
+
+  <div class="sec-title">📝 Deal Details</div>
+  <div class="form-group">
+    <label class="form-label">Deal Title *</label>
+    <input class="form-input" type="text" id="dealTitle" placeholder="e.g. AC Service + Gas Check + Filter Clean" oninput="updatePreview()">
+  </div>
+  <div class="form-group">
+    <label class="form-label">What's Included (shown to clients)</label>
+    <input class="form-input" type="text" id="dealIncludes" placeholder="e.g. Filter clean, gas top-up, full inspection" oninput="updatePreview()">
+  </div>
+  <div class="form-group">
+    <label class="form-label">Description / Notes</label>
+    <textarea class="form-input" id="dealDesc" rows="2" placeholder="Any extra details clients should know..."></textarea>
+  </div>
+
+  <div class="sec-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg> Your Price & Slots</div>
+  <div class="two-col">
+    <div class="form-group">
+      <label class="form-label">Price (AED) *</label>
+      <input class="form-input" type="number" id="dealPrice" placeholder="e.g. 180" oninput="updateCommission()">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Available Slots Today *</label>
+      <select class="form-input" id="dealSlots">
+        <option value="1">1 slot</option>
+        <option value="2">2 slots</option>
+        <option value="3" selected>3 slots</option>
+        <option value="4">4 slots</option>
+        <option value="5">5 slots</option>
+        <option value="10">10 slots</option>
+      </select>
+    </div>
+  </div>
+  <div class="two-col">
+    <div class="form-group">
+      <label class="form-label">Valid Until</label>
+      <select class="form-input" id="dealValidity">
+        <option value="today">Today only</option>
+        <option value="tomorrow">Tomorrow</option>
+        <option value="weekend">This Weekend</option>
+        <option value="week">This Week</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Available Hours</label>
+      <input class="form-input" type="text" id="dealHours" placeholder="e.g. 9am – 6pm">
+    </div>
+  </div>
+
+  <div class="commission-box">
+    <div style="font-size:12px;font-weight:600;color:#C9A84C;margin-bottom:10px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg> Your Earnings Breakdown</div>
+    <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px">
+      <span style="color:#666">Client pays:</span><span style="color:#111;font-weight:600" id="previewClientPays">AED —</span>
+    </div>
+    <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px">
+      <span style="color:#666">GulfHabibi commission (<span id="commPctLabel">10%</span>):</span><span style="color:#ef4444" id="previewComm">— AED —</span>
+    </div>
+    <div style="display:flex;justify-content:space-between;font-size:14px;font-weight:700;padding-top:8px;border-top:1px solid #e5e5e5">
+      <span style="color:#888">You receive per job:</span><span style="color:#22c55e" id="previewPayout">AED —</span>
+    </div>
+    <div style="font-size:11px;color:#333;margin-top:8px">Commission drops to 7% after 10 completed jobs (4★+) and 5% after 50 jobs (4.5★+)</div>
+  </div>
+
+  <div class="sec-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Emirate & Areas You Cover</div>
+  <div class="form-group">
+    <label class="form-label">Emirate *</label>
+    <select class="form-input" id="dealEmirate" onchange="loadAreaTags()">
+      <option value="">Select...</option>
+      <option>Dubai</option><option>Abu Dhabi</option><option>Sharjah</option>
+      <option>Ajman</option><option>RAK</option><option>Fujairah</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label class="form-label">Areas You Cover (tap to select)</label>
+    <div class="area-tags" id="areaTags"><div style="font-size:12px;color:#333">Select emirate first</div></div>
+    <input type="hidden" id="selectedAreas" value="[]">
+  </div>
+
+  <div class="sec-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Your Contact</div>
+  <div class="two-col">
+    <div class="form-group">
+      <label class="form-label">Your Name / Business *</label>
+      <input class="form-input" type="text" id="providerName" placeholder="Name or business name">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Phone / WhatsApp *</label>
+      <input class="form-input" type="tel" id="providerPhone" placeholder="+971 50 000 0000">
+    </div>
+  </div>
+
+  <!-- LIVE PREVIEW -->
+  <div class="preview-box" id="previewBox">
+    <div style="font-size:11px;color:#C9A84C;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px">👁 Live Preview</div>
+    <div style="font-size:24px;margin-bottom:6px" id="pvIcon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+    <div style="font-size:14px;font-weight:700;color:#111;margin-bottom:4px" id="pvTitle">—</div>
+    <div style="font-size:11px;color:#555;margin-bottom:8px" id="pvIncludes"></div>
+    <div style="font-size:22px;font-weight:800;color:#C9A84C;margin-bottom:4px" id="pvPrice">AED —</div>
+    <div style="font-size:11px;color:#444" id="pvAreas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> —</div>
+  </div>
+
+  <button class="btn btn-gold" style="width:100%;padding:14px;font-size:15px;margin-top:8px" id="submitBtn" onclick="submitDeal()">Post Deal Free <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+  <div id="postMsg" style="text-align:center;font-size:13px;padding:8px"></div>
+  <p style="font-size:11px;color:#333;text-align:center;margin-top:6px">Free to post. GulfHabibi only charges commission when you get paid.</p>
+</div>
+<div class="ad-bottom"><span class="ad-label">Advertisement</span></div>
+<script src="../shared/config.js"></script>
+<!-- auth handled via module below -->
+<script>
+const SB='https://chfkssclmdshdcijfzdr.supabase.co';
+const SK='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNoZmtzc2NsbWRzaGRjaWpmemRyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM1ODc2ODUsImV4cCI6MjA4OTE2MzY4NX0.cbJBIgeDRIqFvk3WMmxRoDWo1C73wM44oBDekdcc3sE';
+const H={'Content-Type':'application/json',apikey:SK,Authorization:'Bearer '+SK};
+const CAT_ICONS={ac:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"/><path d="M9.6 4.6A2 2 0 1 1 11 8H2"/><path d="M12.6 19.4A2 2 0 1 0 14 16H2"/></svg>',cleaning:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275Z"/></svg>',plumbing:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg>',electrical:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>',carpentry:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="m14.5 12.5-8 8a2.119 2.119 0 0 1-3-3l8-8"/><path d="m16 16 6-6"/><path d="m8 8 6-6"/><path d="m9 7 8 8"/><path d="m21 11-8-8"/></svg>',painting:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M18.37 2.63 14 7l-1.59-1.59a2 2 0 0 0-2.82 0L8 7l9 9 1.59-1.59a2 2 0 0 0 0-2.82L17 10l4.37-4.37a2.12 2.12 0 1 0-3-3Z"/><path d="M9 8c-2 3-4 3.5-7 4l8 10c2-1 6-5 6-7"/></svg>',moving:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>',pest:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="m8 2 1.88 1.88"/><path d="M14.12 3.88 16 2"/><path d="M9 7.13v-1a3.003 3.003 0 1 1 6 0v1"/><path d="M12 20c-3.3 0-6-2.7-6-6v-3a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v3c0 3.3-2.7 6-6 6"/><path d="M12 20v-9"/><path d="M6.53 9C4.6 8.8 3 7.1 3 5"/><path d="M6 13H2"/><path d="M3 21c0-2.1 1.7-3.9 3.8-4"/><path d="M20.97 5c0 2.1-1.6 3.8-3.5 4"/><path d="M22 13h-4"/><path d="M17.2 17c2.1.1 3.8 1.9 3.8 4"/></svg>',handyman:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>',it:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>',gardening:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>',other:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>'};
+const AREAS_MAP={Dubai:['Downtown','Marina','JLT','JBR','Jumeirah','Al Barsha','Deira','Bur Dubai','Business Bay','Karama','Mirdif','Al Quoz','DIFC','Satwa','Sports City','Palm Jumeirah'],'Abu Dhabi':['Corniche','Khalidiyah','Al Reem Island','Saadiyat','Mussafah','Khalifa City','Yas Island'],'Sharjah':['Al Nahda','Al Majaz','Al Qasba','Industrial Area','Al Khan'],'Ajman':['Al Nuaimiya','Al Rashidiya','Al Jurf'],'RAK':['Al Nakheel','Al Hamra','Al Dhait'],'Fujairah':['City Centre','Faseel']};
+let activeCat='', selectedAreasList=[];
+
+function selCat(el,cat){
+  document.querySelectorAll('.cat-chip').forEach(c=>c.classList.remove('active'));
+  el.classList.add('active'); activeCat=cat;
+  document.getElementById('dealCat').value=cat;
+  document.getElementById('pvIcon').textContent=CAT_ICONS[cat]||'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>';
+  updatePreview();
+}
+
+function loadAreaTags(){
+  const em=document.getElementById('dealEmirate').value;
+  selectedAreasList=[];
+  document.getElementById('selectedAreas').value='[]';
+  const container=document.getElementById('areaTags');
+  if(!em){container.innerHTML='<div style="font-size:12px;color:#333">Select emirate first</div>';return;}
+  const areas=AREAS_MAP[em]||[];
+  container.innerHTML=areas.map(a=>`<div class="area-tag" onclick="toggleArea(this,'${a}')">${a}</div>`).join('');
+}
+
+function toggleArea(el,area){
+  el.classList.toggle('active');
+  if(el.classList.contains('active')){if(!selectedAreasList.includes(area))selectedAreasList.push(area);}
+  else{selectedAreasList=selectedAreasList.filter(a=>a!==area);}
+  document.getElementById('selectedAreas').value=JSON.stringify(selectedAreasList);
+  updatePreview();
+}
+
+function updateCommission(){
+  const price=parseFloat(document.getElementById('dealPrice').value)||0;
+  const comm=Math.round(price*0.10*100)/100;
+  const payout=Math.round((price-comm)*100)/100;
+  document.getElementById('previewClientPays').textContent='AED '+price.toLocaleString();
+  document.getElementById('previewComm').textContent='− AED '+comm.toFixed(2);
+  document.getElementById('previewPayout').textContent='AED '+payout.toFixed(2);
+  document.getElementById('pvPrice').textContent='AED '+price.toLocaleString();
+  updatePreview();
+}
+
+function updatePreview(){
+  const title=document.getElementById('dealTitle').value;
+  const includes=document.getElementById('dealIncludes').value;
+  if(title||includes){document.getElementById('previewBox').style.display='block';}
+  document.getElementById('pvTitle').textContent=title||'Your deal title';
+  document.getElementById('pvIncludes').textContent=includes?'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg> '+includes:'';
+  const areas=selectedAreasList.length?'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> '+selectedAreasList.slice(0,3).join(' · ')+(selectedAreasList.length>3?' +more':''):'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> —';
+  document.getElementById('pvAreas').textContent=areas;
+}
+
+function getValidUntilDate(v){
+  const d=new Date();
+  if(v==='tomorrow'){d.setDate(d.getDate()+1);}
+  else if(v==='weekend'){const day=d.getDay();d.setDate(d.getDate()+(6-day));}
+  else if(v==='week'){d.setDate(d.getDate()+7);}
+  return d.toISOString().split('T')[0];
+}
+
+async function submitDeal(){
+  const title=document.getElementById('dealTitle').value.trim();
+  const price=document.getElementById('dealPrice').value;
+  const emirate=document.getElementById('dealEmirate').value;
+  const name=document.getElementById('providerName').value.trim();
+  const phone=document.getElementById('providerPhone').value.trim();
+  if(!activeCat){setMsg('Please select a service category','error');return;}
+  if(!title){setMsg('Please add a deal title','error');return;}
+  if(!price||parseFloat(price)<=0){setMsg('Please add your price','error');return;}
+  if(!emirate){setMsg('Please select your emirate','error');return;}
+  if(!name){setMsg('Please add your name','error');return;}
+  if(!phone){setMsg('Please add your phone number','error');return;}
+  const btn=document.getElementById('submitBtn');
+  btn.textContent='Posting deal...';btn.disabled=true;
+  const validity=document.getElementById('dealValidity').value;
+  const deal={
+    category:activeCat, title,
+    description:document.getElementById('dealDesc').value||null,
+    price_includes:document.getElementById('dealIncludes').value||null,
+    price:parseFloat(price),
+    slots_total:parseInt(document.getElementById('dealSlots').value),
+    slots_booked:0,
+    valid_from:new Date().toISOString().split('T')[0],
+    valid_until:getValidUntilDate(validity),
+    available_time:document.getElementById('dealHours').value||null,
+    emirate,
+    areas_covered:selectedAreasList.length?selectedAreasList:[emirate],
+    provider_name:name, provider_phone:phone,
+    commission_pct:10,
+    status:'active'
+  };
+  const r=await fetch(`${SB}/rest/v1/service_deals`,{method:'POST',headers:{...H,'Prefer':'return=representation'},body:JSON.stringify(deal)});
+  if(r.ok||r.status===201){
+    let ref='';try{const d=await r.json();ref=d?.[0]?.gb_ref||'';}catch(e){}
+    setMsg('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg> Deal posted!'+(ref?' Ref: <strong style="color:#C9A84C">'+ref+'</strong>':'')+'<br>Redirecting to deals page...','success');
+    btn.textContent='Posted!';
+    setTimeout(()=>window.location.href='deals.html',2500);
+  } else {
+    setMsg('Error posting deal. Please try again.','error');
+    btn.textContent='Post Deal Free <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';btn.disabled=false;
+  }
+}
+
+function setMsg(msg,type){const el=document.getElementById('postMsg');el.style.color=type==='success'?'#22c55e':'#ef4444';el.innerHTML=msg;}
+function checkAuthState(){const u=localStorage.getItem('gb_user'),g=document.getElementById('navGuest'),nu=document.getElementById('navUser'),ne=document.getElementById('navUserName');if(u){try{const p=JSON.parse(u);const n=(p.user_metadata&&p.user_metadata.full_name)||p.email.split('@')[0];if(ne)ne.textContent='Hi, '+n.split(' ')[0];if(g)g.style.display='none';if(nu)nu.style.display='flex';}catch(e){}}else{if(g)g.style.display='flex';if(nu)nu.style.display='none';}}
+function doSignout(){localStorage.removeItem('gb_token');localStorage.removeItem('gb_user');checkAuthState();}
+document.addEventListener('DOMContentLoaded',checkAuthState);
+</script>
+</body>
+</html>

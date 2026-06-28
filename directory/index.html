@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- SEO META -->
+  <title>UAE Business Directory — Find Trusted Businesses | GulfHabibi</title>
+  <meta name="description" content="Find trusted businesses across UAE. Reviews, contact details, working hours. Free business listing on GulfHabibi.">
+  <meta name="keywords" content="UAE business directory, Dubai companies, Sharjah businesses, Abu Dhabi companies">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="GulfHabibi UAE">
+  <meta property="og:title" content="UAE Business Directory — Find Trusted Businesses | GulfHabibi">
+  <meta property="og:description" content="Find trusted businesses across UAE. Reviews, contact details, working hours. Free business listing on GulfHabibi.">
+  <meta property="og:url" content="https://gulfhabibi.com/directory/">
+  <meta property="og:image" content="https://gulfhabibi.com/shared/og-image.svg">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="GulfHabibi UAE">
+  <meta property="og:locale" content="en_AE">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="UAE Business Directory — Find Trusted Businesses | GulfHabibi">
+  <meta name="twitter:description" content="Find trusted businesses across UAE. Reviews, contact details, working hours. Free business listing on GulfHabibi.">
+  <meta name="twitter:image" content="https://gulfhabibi.com/shared/og-image.svg">
+  <meta name="geo.region" content="AE">
+  <meta name="theme-color" content="#06060e">
+  <link rel="canonical" href="https://gulfhabibi.com/directory/">
+  <link rel="icon" href="../shared/favicon.svg" type="image/svg+xml"><link rel="icon" href="../shared/favicon.png" type="image/png">
+  <script src="../shared/seo.js"></script>
+  <!-- SECTION GATE — runs before page renders -->
+  <script>
+  (function(){
+    try{
+      var saved=localStorage.getItem('gb_admin_settings');
+      if(saved){
+        var s=JSON.parse(saved);
+        if(s.section_directory===false||s.section_directory==='false'){
+          window.location.replace('../coming-soon.html?section=directory');
+        }
+      }
+    }catch(e){}
+  })();
+  </script>
+  <!-- END SEO META -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="/shared/preview-guard.js"></script>
+
+<link rel="stylesheet" href="../shared/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+.dir-layout { display:flex; gap:20px; max-width:1400px; margin:0 auto; padding:20px; }
+.cat-sidebar { width:200px; flex-shrink:0; }
+.cat-sidebar h3 { font-size:11px; text-transform:uppercase; letter-spacing:1px; color:var(--text-muted); margin-bottom:12px; }
+.cat-item { display:flex; align-items:center; gap:8px; padding:9px 12px; border-radius:10px; cursor:pointer; font-size:13px; color:var(--text-dim); margin-bottom:4px; transition:all .2s; }
+.cat-item:hover { background:var(--bg3); color:var(--text); }
+.cat-item.active { background:var(--gold); color:#000; font-weight:600; }
+.cat-icon { font-size:16px; }
+.dir-main { flex:1; min-width:0; }
+.search-bar { display:flex; gap:10px; margin-bottom:16px; }
+.search-input { flex:1; background:var(--bg2); border:1px solid var(--border); border-radius:10px; padding:11px 16px; color:var(--text); font-size:14px; outline:none; font-family:inherit; }
+.search-input:focus { border-color:var(--gold); }
+.filter-row { display:flex; gap:10px; margin-bottom:20px; }
+.filter-select { background:var(--bg2); border:1px solid var(--border); border-radius:10px; padding:9px 14px; color:var(--text); font-size:13px; outline:none; cursor:pointer; }
+.dir-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:16px; }
+.dir-card { background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius-lg); padding:18px; cursor:pointer; transition:all .2s; }
+.dir-card:hover { border-color:var(--gold); transform:translateY(-2px); }
+.dir-card.premium { border-color:#C9A84C55; }
+.dir-card.featured { border-color:#22c55e33; }
+.card-badge { font-size:11px; font-weight:600; padding:3px 8px; border-radius:20px; }
+.badge-premium { background:#C9A84C22; color:var(--gold); }
+.badge-featured { background:#22c55e22; color:var(--green); }
+.dir-name { font-size:15px; font-weight:600; margin:8px 0 4px; }
+.dir-cat { font-size:12px; color:var(--text-muted); margin-bottom:8px; }
+.dir-desc { font-size:12px; color:var(--text-dim); line-height:1.5; margin-bottom:12px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+.dir-footer { display:flex; gap:12px; flex-wrap:wrap; font-size:12px; color:var(--text-muted); }
+.results-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; }
+.results-title { font-size:16px; font-weight:600; }
+@media(max-width:768px){ .cat-sidebar{display:none;} .dir-layout{padding:12px;} }
+</style>
+</head>
+<body>
+
+
+<div class="ad-top"><span class="ad-label">Advertisement — Google AdSense</span></div>
+<nav class="navbar">
+  <a href="../home.html" class="nav-logo">
+    <div class="nav-logo-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#0e0e0e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+    </div>
+    <div class="nav-logo-text">Gulf<span>Habibi</span></div>
+  </a>
+      <div class="nav-links" id="navLinks">
+    <a href="../home.html" class="nav-link">Home</a>
+    <a href="../motors/index.html" class="nav-link"><span style="display:inline-flex;width:14px;height:14px;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></span> Motors</a>
+    <a href="../property/index.html" class="nav-link">Property</a>
+    <a href="../jobs/index.html" class="nav-link">Jobs</a>
+    <a href="../marketplace/index.html" class="nav-link">Classifieds</a>
+    <a href="../services/index.html" class="nav-link">Services</a>
+    <a href="../directory/index.html" class="nav-link active">Directory</a>
+    <a href="../about.html" class="nav-link">About Us</a>
+  </div>
+  <div class="nav-actions" id="authSection">
+    <button id="themeToggleBtn" onclick="toggleTheme()" title="Toggle Dark/Light" style="background:var(--bg-card,#0d0d1a);border:1px solid var(--border,#1a1828);border-radius:8px;color:var(--gold,#C9A84C);font-size:15px;padding:5px 9px;cursor:pointer;line-height:1">&#9728;&#65039;</button>
+    <div id="navGuest" style="display:flex;gap:8px;align-items:center">
+      <button class="btn btn-ghost btn-sm" onclick="openAuth('signin')">Sign In</button>
+    </div>
+    <div id="navUser" style="display:none;gap:8px;align-items:center">
+      <span id="navUserName" style="font-size:13px;color:#C9A84C;font-weight:600"></span>
+      <a href="../dashboard/index.html" class="btn btn-ghost btn-sm">&#128100; Dashboard</a>
+      <button class="btn btn-outline btn-sm" onclick="doSignout()" style="font-size:12px;padding:5px 12px">Sign Out</button>
+    </div>
+  </div>
+</nav>
+
+<div class="dir-layout">
+  <!-- LEFT SIDEBAR -->
+  <div class="cat-sidebar">
+    <h3>Industries</h3>
+    <div id="catList"></div>
+  </div>
+  <!-- MAIN CONTENT -->
+  <div class="dir-main">
+    <div class="search-bar">
+      <input type="text" class="search-input" id="searchInput" autocomplete="off" placeholder="Search businesses in UAE...">
+      <button class="btn btn-gold" onclick="loadDir()">Search</button>
+    </div>
+    <div class="filter-row">
+      <select class="filter-select" id="emirateFilter" onchange="loadDir()">
+        <option value="">All Emirates</option>
+      </select>
+      <select class="filter-select" id="areaFilter" onchange="loadDir()">
+        <option value="">All Areas</option>
+      </select>
+    </div>
+    <div class="results-header">
+      <div class="results-title" id="resultsTitle">All Businesses</div>
+    </div>
+    <div class="dir-grid" id="dirGrid">
+      <div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text-muted)">Loading businesses...</div>
+    </div>
+  </div>
+  <!-- RIGHT ADS -->
+  <div class="ad-sidebar">
+    <div class="ad-box"><span class="ad-label">AD</span></div>
+    <div class="ad-box" style="margin-top:16px"><span class="ad-label">AD</span></div>
+  </div>
+</div>
+<div class="ad-bottom"><span class="ad-label">Advertisement — Google AdSense</span></div>
+
+<script type="module">
+import { sb, initNavAuth, openAuth } from '../shared/auth.js';
+initNavAuth('../marketplace/my-listings.html');
+window.openAuth = openAuth;
+
+const CATS = [
+  {id:'',label:'All Businesses',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></svg>'},
+  {id:'interior',label:'Interior Design',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>'},
+  {id:'construction',label:'Construction',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M2 20h20"/><path d="M6 20V10l6-7 6 7v10"/><path d="M9 20v-5h6v5"/></svg>'},
+  {id:'medical',label:'Medical & Health',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>'},
+  {id:'legal',label:'Legal Services',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>'},
+  {id:'food',label:'Food & Restaurant',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>'},
+  {id:'beauty',label:'Beauty & Salon',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>'},
+  {id:'education',label:'Education',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>'},
+  {id:'it',label:'IT & Technology',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>'},
+  {id:'realestate',label:'Real Estate',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></svg>'},
+  {id:'cleaning',label:'Cleaning',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275Z"/></svg>'},
+  {id:'transport',label:'Transport',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>'},
+  {id:'finance',label:'Finance',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>'},
+  {id:'retail',label:'Retail & Shopping',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>'},
+  {id:'other',label:'Other',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>'}
+];
+
+const EMIRATES = {
+  'Dubai': ['Downtown','Business Bay','Marina','JLT','JBR','DIFC','Deira','Bur Dubai','Jumeirah','Al Barsha','Al Quoz','Karama','Garhoud','Al Safa','Mirdif','Silicon Oasis'],
+  'Abu Dhabi': ['Corniche','Khalidiyah','Al Reem','Saadiyat','Yas Island','Mussafah','Hamdan Street','Khalifa City'],
+  'Sharjah': ['Al Nahda','Al Majaz','Al Qasba','Industrial Area'],
+  'Ajman': ['Al Nuaimia','Al Rashidiya'],
+  'Ras Al Khaimah': ['Al Nakheel','Al Qurm'],
+  'Fujairah': ['Fujairah City','Dibba'],
+  'Umm Al Quwain': ['Umm Al Quwain City']
+};
+
+let activeCat = '';
+
+// Build category sidebar
+const catList = document.getElementById('catList');
+CATS.forEach(c => {
+  const el = document.createElement('div');
+  el.className = 'cat-item' + (c.id === '' ? ' active' : '');
+  el.innerHTML = `<span class="cat-icon">${c.icon}</span><span>${c.label}</span>`;
+  el.onclick = () => {
+    activeCat = c.id;
+    document.getElementById('searchInput').value = '';
+    document.querySelectorAll('.cat-item').forEach(x => x.classList.remove('active'));
+    el.classList.add('active');
+    loadDir();
+  };
+  catList.appendChild(el);
+});
+
+// Build emirate filter
+const emEl = document.getElementById('emirateFilter');
+Object.keys(EMIRATES).forEach(e => {
+  const o = document.createElement('option');
+  o.value = e; o.textContent = e;
+  emEl.appendChild(o);
+});
+
+// Update area filter when emirate changes
+emEl.addEventListener('change', () => {
+  const em = emEl.value;
+  const areaEl = document.getElementById('areaFilter');
+  areaEl.innerHTML = '<option value="">All Areas</option>';
+  if (em && EMIRATES[em]) {
+    EMIRATES[em].forEach(a => {
+      const o = document.createElement('option');
+      o.value = a; o.textContent = a;
+      areaEl.appendChild(o);
+    });
+  }
+  loadDir();
+});
+
+async function loadDir() {
+  const q = document.getElementById('searchInput').value.trim();
+  const em = document.getElementById('emirateFilter').value;
+  const area = document.getElementById('areaFilter').value;
+  let query = sb.from('directory').select('*').eq('status','active')
+    .order('tier', {ascending:false})
+    .order('rating', {ascending:false});
+  if (activeCat) query = query.eq('category', activeCat);
+  if (em) query = query.eq('emirate', em);
+  if (area) query = query.eq('area', area);
+  if (q) query = query.ilike('business_name', `%${q}%`);
+  const { data, error } = await query;
+  const grid = document.getElementById('dirGrid');
+  if (error || !data?.length) {
+    grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:50px;color:var(--text-muted)">
+      No businesses found. <a href="list.html" style="color:var(--gold)">List yours free!</a></div>`;
+    return;
+  }
+  grid.innerHTML = data.map(b => `
+    <div class="dir-card ${b.tier}">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <div>${b.tier==='premium' ? '<span class="card-badge badge-premium"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg> Premium</span>' : b.tier==='featured' ? '<span class="card-badge badge-featured"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Featured</span>' : ''}</div>
+        <span style="font-size:22px">${getCatIcon(b.category)}</span>
+      </div>
+      <div class="dir-name">${b.business_name}</div>
+      <div class="dir-cat">${b.category ? b.category.charAt(0).toUpperCase()+b.category.slice(1) : ''} • ${b.emirate || ''}${b.area ? ' • '+b.area : ''}</div>
+      <div class="dir-desc">${b.description || 'Contact for more information'}</div>
+      <div class="dir-footer">
+        ${b.phone ? `<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> ${b.phone}</span>` : ''}
+        ${b.area ? `<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> ${b.area}</span>` : ''}
+        ${b.rating > 0 ? `<span style="color:var(--gold)">★ ${b.rating}</span>` : ''}
+      </div>
+    </div>`).join('');
+  const catLabel = activeCat ? CATS.find(c => c.id === activeCat)?.label : 'All Businesses';
+  const locLabel = em ? ` in ${em}${area ? ' › '+area : ''}` : '';
+  document.getElementById('resultsTitle').textContent = catLabel + locLabel + ` (${data.length})`;
+}
+
+window.loadDir = loadDir;
+window.goList = async () => {
+  const { data: { session } } = await sb.auth.getSession();
+  if (!session) { openAuth(); return; }
+  window.location.href = 'list.html';
+};
+
+function getCatIcon(c) {
+  return {interior:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>',construction:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M2 20h20"/><path d="M6 20V10l6-7 6 7v10"/><path d="M9 20v-5h6v5"/></svg>',medical:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>',legal:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',food:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>',
+    beauty:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>',education:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>',it:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>',realestate:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></svg>',cleaning:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275Z"/></svg>',
+    transport:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>',finance:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>',retail:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>'}[c] || '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>';
+}
+
+loadDir();
+</script>
+<script src="../shared/theme.js"></script>
+<script>
+(function(){
+  function checkAuthState(){
+    var user=localStorage.getItem('gb_user');
+    var guest=document.getElementById('navGuest');
+    var navUser=document.getElementById('navUser');
+    var nameEl=document.getElementById('navUserName');
+    if(user){try{
+      var u=JSON.parse(user);
+      var name=(u.user_metadata&&u.user_metadata.full_name)||u.email.split('@')[0]||'Account';
+      if(nameEl)nameEl.textContent='Hi, '+name.split(' ')[0];
+      if(guest)guest.style.display='none';
+      if(navUser)navUser.style.display='flex';
+    }catch(e){}}
+    else{if(guest)guest.style.display='flex';if(navUser)navUser.style.display='none';}
+  }
+  function doSignout(){localStorage.removeItem('gb_token');localStorage.removeItem('gb_user');checkAuthState();}
+  window.doSignout=doSignout;
+  document.addEventListener('DOMContentLoaded',checkAuthState);
+})();
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,1347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/shared/preview-guard.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Property Marketplace UAE | GulfHabibi</title>
+<meta name="description" content="Browse premium UAE property listings, rentals, projects, offices and investment inventory on a cleaner marketplace built for agents, developers and serious buyers.">
+<meta name="theme-color" content="#0f172a">
+<link rel="icon" href="../shared/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../shared/favicon.png" type="image/png">
+<link rel="stylesheet" href="../shared/style.css">
+<script src="../shared/seo.js"></script>
+<script src="../shared/portal-control.js"></script>
+<style>
+body{margin:0;background:linear-gradient(180deg,#f6f1e4 0%,#fbfaf8 18%,#ffffff 100%);color:#0f172a}
+.page{width:min(1320px,calc(100% - 32px));margin:0 auto;padding:18px 0 42px}
+.nav-shell{width:100%;max-width:1320px;margin:0 auto;height:56px;display:flex;align-items:center;gap:12px}
+.navbar{padding:0 12px}
+.hero{display:grid;grid-template-columns:minmax(0,1.2fr) 320px;gap:14px;padding:18px 20px;border:1px solid rgba(201,168,76,.16);border-radius:24px;background:linear-gradient(120deg,rgba(9,12,22,.96),rgba(30,37,55,.9)),url('https://images.unsplash.com/photo-1460317442991-0ec209397118?auto=format&fit=crop&w=1600&q=80') center/cover;box-shadow:0 18px 34px rgba(15,23,42,.12)}
+.hero.compact{grid-template-columns:1fr;gap:8px;padding:14px 18px}
+.hero.compact .hero-copy{gap:8px}
+.hero.compact .hero-copy h1{max-width:860px}
+.hero.compact .hero-copy p{max-width:860px}
+.hero.compact .hero-points{display:none}
+.hero-copy{display:grid;align-content:center;gap:10px}
+.hero-kicker{display:inline-flex;width:max-content;align-items:center;padding:7px 12px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);color:#f0d27f;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+.hero-copy h1{margin:0;color:#fff;font-size:clamp(24px,2.7vw,36px);line-height:1.04;letter-spacing:-.05em;max-width:680px}
+.hero-copy p{margin:0;max-width:700px;color:rgba(255,255,255,.8);font-size:13px;line-height:1.62}
+.hero-points{display:flex;flex-wrap:wrap;gap:8px;margin-top:2px}
+.hero-points span{padding:7px 11px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:#fff;font-size:11px;font-weight:700}
+.hero-panel{display:grid;gap:12px;padding:16px;border-radius:20px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(12px);align-content:start}
+.hero-panel .tag{display:inline-flex;width:max-content;padding:6px 10px;border-radius:999px;background:#fff7e1;color:#8a6a15;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+.hero-panel h3{margin:0;color:#fff;font-size:19px;line-height:1.12;letter-spacing:-.04em}
+.hero-panel p{margin:0;color:rgba(255,255,255,.78);font-size:12px;line-height:1.65}
+.hero-panel-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.hero-panel-metrics div{padding:10px;border-radius:16px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1)}
+.hero-panel-metrics strong{display:block;color:#fff;font-size:16px;letter-spacing:-.04em}
+.hero-panel-metrics span{display:block;margin-top:3px;color:rgba(255,255,255,.68);font-size:10px;line-height:1.45}
+.hero-panel-actions{display:flex;gap:10px;flex-wrap:wrap}
+.hero-panel-actions a{min-height:40px;padding:0 15px;border-radius:12px;text-decoration:none;font-size:12px;font-weight:800;display:inline-flex;align-items:center;justify-content:center}
+.hero-primary{background:#C9A84C;color:#0f172a}
+.hero-secondary{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);color:#fff}
+.hero-ad-image{display:block;min-height:136px;border-radius:16px;overflow:hidden;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08)}
+.hero-ad-image img{display:block;width:100%;height:100%;object-fit:cover}
+.search-card{margin-top:14px;padding:12px;border-radius:22px;background:#fff;border:1px solid rgba(15,23,42,.08);box-shadow:0 14px 30px rgba(15,23,42,.07)}
+.mode-tabs,.subtype-tabs{display:flex;gap:8px;flex-wrap:wrap}
+.mode-tabs{margin-bottom:10px}
+.subtype-tabs{padding:10px 0 12px;border-top:1px solid #edf1f6;border-bottom:1px solid #edf1f6;margin-bottom:12px}
+.mode-tab,.subtype-chip{appearance:none;border:1px solid #d8dee7;background:#fff;color:#334155;font:inherit;font-size:13px;font-weight:800;cursor:pointer;transition:.18s ease}
+.mode-tab{min-height:38px;padding:0 14px;border-radius:999px;display:inline-flex;align-items:center;gap:8px}
+.mode-tab b,.subtype-chip b{display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px;padding:0 7px;border-radius:999px;background:#f8fafc;color:#475569;font-size:10px}
+.mode-tab:hover,.subtype-chip:hover{border-color:#C9A84C;color:#8a6a15}
+.mode-tab.on,.subtype-chip.on{background:#fff9eb;border-color:rgba(201,168,76,.26);color:#8a6a15}
+.mode-tab.on b,.subtype-chip.on b{background:#C9A84C;color:#0f172a}
+.search-grid{display:grid;grid-template-columns:170px minmax(240px,1fr) 190px 220px 145px 190px;gap:0}
+.search-seg{padding:8px 14px;border-right:1px solid #e5e7eb;display:grid;gap:7px}
+.search-seg:last-child{border-right:none}
+.search-seg label,.fg label{font-size:11px;font-weight:800;color:#0f172a;text-transform:uppercase;letter-spacing:.08em}
+.paired,.dual{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.select,.field,.mini{width:100%;min-height:40px;border:1px solid #d7dde6;border-radius:12px;background:#fff;color:#0f172a;font:inherit;font-size:13px;padding:0 13px;outline:none;box-sizing:border-box}
+.field::placeholder,.mini::placeholder{color:#94a3b8}
+.select:focus,.field:focus,.mini:focus{border-color:#C9A84C;box-shadow:0 0 0 4px rgba(201,168,76,.14)}
+.search-actions{display:grid;gap:8px;align-content:center}
+.search-actions .btn,.results-actions .btn{min-height:40px;padding:0 15px;border-radius:12px;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;font-size:12px;font-weight:800}
+.search-note{margin-top:10px;padding:10px 12px;border-radius:14px;background:#f8fafc;border:1px solid #e2e8f0;color:#64748b;font-size:12px;line-height:1.55;display:flex;align-items:center}
+.btn-solid{background:#111827;color:#fff;border:none}
+.btn-soft{background:#fff9eb;border:1px solid rgba(201,168,76,.22);color:#8a6a15}
+.btn-line{background:#fff;border:1px solid #d8dee7;color:#334155}
+.market-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:18px}
+.market-card{padding:18px 20px;border-radius:22px;background:#fff;border:1px solid rgba(15,23,42,.08);box-shadow:0 10px 24px rgba(15,23,42,.05)}
+.market-card strong{display:block;color:#0f172a;font-size:28px;font-weight:800;letter-spacing:-.05em}
+.market-card span{display:block;margin-top:6px;color:#64748b;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+.market-card p{margin:8px 0 0;color:#64748b;font-size:13px;line-height:1.65}
+.spotlight{display:grid;gap:16px;margin-top:18px;padding:22px;border-radius:24px;background:#fff;border:1px solid rgba(15,23,42,.08);box-shadow:0 14px 34px rgba(15,23,42,.05)}
+.spotlight-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-end;flex-wrap:wrap}
+.spotlight-head h2{margin:0;color:#0f172a;font-size:24px;letter-spacing:-.05em}
+.spotlight-head p{margin:6px 0 0;color:#64748b;font-size:14px;line-height:1.7}
+.spotlight-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.spotlight-card{display:grid;gap:0;border:1px solid rgba(15,23,42,.08);border-radius:22px;background:#fff;overflow:hidden;cursor:pointer;transition:.18s}
+.spotlight-card:hover{transform:translateY(-2px);border-color:rgba(201,168,76,.32);box-shadow:0 16px 32px rgba(15,23,42,.08)}
+.spotlight-media{position:relative;min-height:176px;background:#e2e8f0}
+.spotlight-media img{display:block;width:100%;height:100%;object-fit:cover}
+.spotlight-badges,.badges{position:absolute;left:12px;top:12px;display:flex;gap:8px;flex-wrap:wrap}
+.badge{padding:6px 9px;border-radius:999px;background:rgba(15,23,42,.78);color:#fff;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+.badge.gold{background:rgba(201,168,76,.95);color:#0f172a}
+.badge.green{background:rgba(34,197,94,.92);color:#04150b}
+.badge.blue{background:rgba(96,165,250,.95);color:#03142b}
+.spotlight-body{padding:16px;display:grid;gap:8px}
+.spotlight-price{color:#0f172a;font-size:18px;font-weight:800;letter-spacing:-.04em}
+.spotlight-title{margin:0;color:#0f172a;font-size:17px;line-height:1.25;letter-spacing:-.04em}
+.spotlight-meta{color:#64748b;font-size:13px;line-height:1.6}
+.layout{display:block;margin-top:16px}
+.layout.with-side-ad{display:grid;grid-template-columns:minmax(0,1fr) 292px;gap:18px;align-items:start}
+.panel{border:1px solid rgba(15,23,42,.08);border-radius:24px;background:rgba(255,255,255,.96);box-shadow:0 14px 34px rgba(15,23,42,.05)}
+.results{padding:20px}
+.filters{display:none;padding:14px;border-radius:20px;background:#f8fafc;border:1px solid #e2e8f0;margin-bottom:18px}
+.filters.open{display:block}
+.filters-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-end;flex-wrap:wrap;margin-bottom:12px}
+.filters-head h2{margin:0;font-size:18px;letter-spacing:-.03em}
+.filters-head p{margin:6px 0 0;color:#64748b;font-size:13px}
+.filter-grid{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:10px}
+.span-2{grid-column:span 2}
+.toggle-line{display:flex;align-items:center;justify-content:space-between;min-height:42px;padding:0 14px;border:1px solid #d7dde6;border-radius:14px;background:#fff}
+.toggle-line label{color:#475569;font-size:13px;font-weight:700}
+.toggle-line input{width:18px;height:18px}
+.results-top{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:16px}
+.count{font-size:26px;font-weight:800;letter-spacing:-.05em}
+.sub{margin-top:6px;color:#64748b;font-size:14px;line-height:1.7;max-width:720px}
+.results-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.grid{display:grid;gap:14px}
+.property-card,.stream-ad{border:1px solid rgba(15,23,42,.08);border-radius:24px;background:#fff;box-shadow:0 12px 26px rgba(15,23,42,.05);overflow:hidden}
+.property-card{display:grid;grid-template-columns:260px minmax(0,1fr);cursor:pointer;transition:.18s ease}
+.property-card:hover{transform:translateY(-1px);border-color:rgba(201,168,76,.34);box-shadow:0 18px 32px rgba(15,23,42,.09)}
+.property-media{position:relative;min-height:214px;background:#e2e8f0}
+.property-media img{width:100%;height:100%;object-fit:cover}
+.ph{width:100%;height:100%;display:grid;place-items:center;background:linear-gradient(160deg,#0f172a,#334155);color:#fff;font-size:14px;font-weight:700}
+.media-count{position:absolute;right:12px;bottom:12px;padding:7px 10px;border-radius:999px;background:rgba(15,23,42,.78);backdrop-filter:blur(6px);color:#fff;font-size:11px;font-weight:800;letter-spacing:.02em}
+.media-thumbs{position:absolute;left:12px;bottom:12px;display:flex;gap:6px}
+.media-thumb{width:34px;height:34px;border-radius:10px;overflow:hidden;border:2px solid rgba(255,255,255,.76);background:rgba(255,255,255,.22)}
+.media-thumb img{display:block;width:100%;height:100%;object-fit:cover}
+.media-thumb.more{display:grid;place-items:center;background:rgba(15,23,42,.82);color:#fff;font-size:11px;font-weight:800}
+.property-body{padding:16px;display:grid;gap:10px}
+.price-line{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.listing-price{color:#111827;font-size:25px;font-weight:800;letter-spacing:-.05em}
+.price-caption{display:block;margin-top:4px;color:#64748b;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+.listing-title{margin:0;color:#111827;font-size:22px;line-height:1.16;letter-spacing:-.04em}
+.listing-tags{display:flex;gap:8px;flex-wrap:wrap}
+.mini-badge{display:inline-flex;align-items:center;gap:6px;padding:7px 10px;border-radius:999px;background:#f8fafc;border:1px solid #e2e8f0;color:#334155;font-size:11px;font-weight:800}
+.mini-badge.verified{background:#ecfdf5;border-color:#bbf7d0;color:#166534}
+.mini-badge.plan{background:#fff9eb;border-color:rgba(201,168,76,.22);color:#8a6a15}
+.listing-meta{display:flex;flex-wrap:wrap;gap:10px;color:#475569;font-size:13px;font-weight:700}
+.listing-location{color:#475569;font-size:13px;font-weight:700}
+.seller-strip{display:flex;justify-content:space-between;gap:12px;align-items:center;padding-top:12px;border-top:1px solid #eef2f7}
+.seller-mini{display:flex;align-items:center;gap:10px;min-width:0}
+.seller-logo{width:42px;height:42px;border-radius:14px;background:#f8fafc;border:1px solid #e2e8f0;display:grid;place-items:center;overflow:hidden;flex-shrink:0;color:#0f172a;font-size:12px;font-weight:800;text-transform:uppercase}
+.seller-logo img{width:100%;height:100%;object-fit:cover}
+.seller-copy{min-width:0}
+.seller-copy strong{display:block;color:#111827;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.seller-copy span{display:block;margin-top:3px;color:#64748b;font-size:11px}
+.listing-actions{display:flex;gap:10px;flex-wrap:wrap}
+.link-btn{min-height:42px;padding:0 16px;border-radius:12px;display:inline-flex;justify-content:center;align-items:center;border:1px solid #d8dee7;text-decoration:none;font-size:13px;font-weight:800;background:#fff}
+.wa{background:#22c55e;border-color:#22c55e;color:#fff}
+.call{background:#fff9eb;border-color:rgba(201,168,76,.22);color:#8a6a15}
+.stream-ad{display:grid;grid-template-columns:minmax(220px,320px) minmax(0,1fr) auto;align-items:center}
+.stream-ad-media{min-height:188px;background:linear-gradient(180deg,#dfe9f3,#c6d5e5);display:grid;place-items:center;color:#0f172a;font-size:22px;font-weight:800}
+.stream-ad-media img{display:block;width:100%;height:100%;object-fit:cover}
+.stream-ad-body{padding:20px}
+.stream-ad-tag{display:inline-flex;padding:7px 10px;border-radius:999px;background:#eff6ff;color:#1d4ed8;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+.stream-ad h3{margin:12px 0 8px;font-size:28px;line-height:1.08;letter-spacing:-.04em}
+.stream-ad p{margin:0;color:#475569;font-size:14px;line-height:1.75}
+.stream-ad ul{margin:14px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:16px}
+.stream-ad li{display:flex;align-items:center;gap:8px;color:#475569;font-size:13px;font-weight:700}
+.stream-ad li:before{content:"";width:8px;height:8px;border-radius:999px;background:#C9A84C}
+.stream-ad-cta{padding:20px;display:grid;align-content:center;justify-items:center;gap:12px}
+.stream-ad-cta a{min-width:150px;min-height:46px;padding:0 18px;border-radius:14px;background:#C9A84C;color:#0f172a;text-decoration:none;font-size:14px;font-weight:800;display:inline-flex;align-items:center;justify-content:center}
+.ad-rail{display:none;padding:16px;position:sticky;top:86px}
+.ad-rail.has-ad{display:grid;gap:16px}
+.side-ad{padding:18px;border-radius:20px;background:#fff;border:1px solid #e5e7eb}
+.side-ad .tag{display:inline-flex;padding:6px 10px;border-radius:999px;background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+.side-ad-media{display:block;margin-top:12px;min-height:160px;border-radius:18px;overflow:hidden;background:#f8fafc}
+.side-ad-media img{display:block;width:100%;height:100%;object-fit:cover}
+.side-ad h3{margin:14px 0 8px;font-size:24px;line-height:1.12;letter-spacing:-.03em}
+.side-ad p{margin:0;color:#64748b;font-size:13px;line-height:1.7}
+.side-ad a{margin-top:14px;min-height:42px;padding:0 16px;border-radius:14px;background:#C9A84C;color:#0f172a;text-decoration:none;font-size:13px;font-weight:800;display:inline-flex;align-items:center;justify-content:center}
+.empty{padding:58px 24px;border-radius:24px;border:1px dashed rgba(201,168,76,.38);background:#fffaf0;text-align:center}
+.empty h3{margin:14px 0 8px;font-size:24px;letter-spacing:-.03em}
+.empty p{margin:0 auto 18px;max-width:520px;color:#64748b;font-size:14px;line-height:1.7}
+.empty-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+@media(max-width:1180px){
+  .hero,.stream-ad,.property-card{grid-template-columns:1fr}
+  .layout.with-side-ad{grid-template-columns:1fr}
+  .ad-rail{position:static}
+  .spotlight-grid,.market-strip{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .search-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .filter-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+@media(max-width:900px){
+  .search-grid,.filter-grid,.spotlight-grid,.hero-panel-metrics{grid-template-columns:1fr}
+  .span-2{grid-column:auto}
+  .search-seg{border-right:none;border-bottom:1px solid #e5e7eb}
+  .search-seg:last-child{border-bottom:none}
+  .results-actions{width:100%}
+}
+@media(max-width:720px){
+  .page{width:min(100% - 20px,1320px);padding:18px 0 34px}
+  .hero{padding:16px}
+  .market-strip,.spotlight-grid{grid-template-columns:1fr}
+  .listing-actions{display:grid}
+}
+[data-theme="dark"] body{background:linear-gradient(180deg,#070912 0%,#0b1020 22%,#05070d 100%);color:#ececec}
+[data-theme="dark"] .search-card,[data-theme="dark"] .market-card,[data-theme="dark"] .spotlight,[data-theme="dark"] .panel,[data-theme="dark"] .property-card,[data-theme="dark"] .stream-ad,[data-theme="dark"] .side-ad,[data-theme="dark"] .mode-tab,[data-theme="dark"] .subtype-chip,[data-theme="dark"] .select,[data-theme="dark"] .field,[data-theme="dark"] .mini,[data-theme="dark"] .toggle-line,[data-theme="dark"] .search-note{background:#0d1220;border-color:#1f2937;box-shadow:0 16px 32px rgba(0,0,0,.25)}
+[data-theme="dark"] .search-seg{border-color:#1f2937}
+[data-theme="dark"] .search-seg label,[data-theme="dark"] .fg label,[data-theme="dark"] .count,[data-theme="dark"] .spotlight-head h2,[data-theme="dark"] .spotlight-price,[data-theme="dark"] .spotlight-title,[data-theme="dark"] .listing-price,[data-theme="dark"] .listing-title,[data-theme="dark"] .market-card strong,[data-theme="dark"] .filters-head h2,[data-theme="dark"] .toggle-line label,[data-theme="dark"] .side-ad h3{color:#f8fafc}
+[data-theme="dark"] .field::placeholder,[data-theme="dark"] .mini::placeholder{color:#64748b}
+[data-theme="dark"] .select,[data-theme="dark"] .field,[data-theme="dark"] .mini,[data-theme="dark"] .listing-meta,[data-theme="dark"] .listing-location,[data-theme="dark"] .market-card p,[data-theme="dark"] .market-card span,[data-theme="dark"] .spotlight-meta,[data-theme="dark"] .sub,[data-theme="dark"] .filters-head p,[data-theme="dark"] .seller-copy span,[data-theme="dark"] .side-ad p,[data-theme="dark"] .stream-ad p,[data-theme="dark"] .stream-ad li{color:#94a3b8}
+[data-theme="dark"] .select option{background:#0d1220;color:#f8fafc}
+[data-theme="dark"] .mode-tab b,[data-theme="dark"] .subtype-chip b,[data-theme="dark"] .seller-logo,[data-theme="dark"] .mini-badge{background:#111827;border-color:#1f2937;color:#f8fafc}
+[data-theme="dark"] .mode-tab,[data-theme="dark"] .subtype-chip,[data-theme="dark"] .search-note{color:#cbd5e1}
+[data-theme="dark"] .mode-tab.on,[data-theme="dark"] .subtype-chip.on{background:#2b1f09;border-color:#6b5320;color:#f0d27f}
+[data-theme="dark"] .mini-badge.verified{background:#052e1b;border-color:#166534;color:#bbf7d0}
+[data-theme="dark"] .mini-badge.plan{background:#2b1f09;border-color:#6b5320;color:#f0d27f}
+[data-theme="dark"] .empty{background:#111827;border-color:rgba(201,168,76,.28)}
+[data-theme="dark"] .empty h3{color:#f8fafc}
+[data-theme="dark"] .empty p{color:#cbd5e1}
+[data-theme="dark"] .stream-ad-tag,[data-theme="dark"] .side-ad .tag{background:#172554;color:#bfdbfe}
+</style>
+</head>
+<body>
+<script>
+var gbAdminSettings = window.GBPortalControl ? GBPortalControl.getCachedSettings() : {};
+if(window.GBPortalControl){
+  if(!GBPortalControl.applyMaintenanceMode(gbAdminSettings,'../coming-soon.html?section=maintenance') && !GBPortalControl.isSectionLive('section_property',gbAdminSettings)){
+    window.location.replace('../coming-soon.html?section=property');
+  }
+}
+</script>
+<nav class="navbar">
+  <div class="nav-shell">
+    <a href="../home.html" class="nav-logo">
+      <div class="nav-logo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#0e0e0e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <div class="nav-logo-text">Gulf<span>Habibi</span></div>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="../home.html" class="nav-link">Home</a>
+      <a href="../motors/index.html" class="nav-link">Motors</a>
+      <a href="index.html" class="nav-link active">Property</a>
+      <a href="../jobs/index.html" class="nav-link">Jobs</a>
+      <a href="../marketplace/index.html" class="nav-link">Classifieds</a>
+      <a href="../services/index.html" class="nav-link">Services</a>
+      <a href="../directory/index.html" class="nav-link">Directory</a>
+      <a href="../about.html" class="nav-link">About Us</a>
+    </div>
+    <div class="nav-actions" id="authSection">
+      <button id="themeToggleBtn" onclick="toggleTheme()" title="Toggle Dark/Light" style="background:var(--bg-card,#0d0d1a);border:1px solid var(--border,#1a1828);border-radius:8px;color:var(--gold,#C9A84C);font-size:15px;padding:5px 9px;cursor:pointer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>
+      <div id="navGuest" style="display:flex;gap:8px;align-items:center">
+        <button class="btn btn-ghost btn-sm" onclick="openAuth('signin')">Sign In</button>
+        <button class="btn btn-gold btn-sm" onclick="openAuth('signup')">Sign Up Free</button>
+      </div>
+      <div id="navUser" style="display:none;gap:8px;align-items:center">
+        <span id="navUserName" style="font-size:13px;color:#C9A84C;font-weight:600"></span>
+        <a href="../dashboard/index.html" class="btn btn-ghost btn-sm">&#128100; Dashboard</a>
+        <button class="btn btn-outline btn-sm" onclick="if(window.signOut){signOut();}" style="font-size:12px;padding:5px 12px">Sign Out</button>
+      </div>
+    </div>
+    <button class="nav-hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+  </div>
+</nav>
+
+<main class="page">
+  <section class="hero" id="heroBanner">
+    <div class="hero-copy">
+      <span class="hero-kicker">UAE property marketplace</span>
+      <h1 id="heroTitle">Find homes, rentals, short stays and launches across the UAE.</h1>
+      <p id="heroText">Move between sale, rent, off-plan and new projects without losing the main property flow. Search by emirate, community, agency, developer or building from one clearer property command center.</p>
+      <div class="hero-points" id="heroSignals">
+        <span>Sale, rent, off-plan and new projects</span>
+        <span>Daily and short-term rental ready</span>
+        <span>Search by community, agency or developer</span>
+      </div>
+    </div>
+    <aside class="hero-panel" id="heroPanel"></aside>
+  </section>
+
+  <section class="search-card">
+    <input type="hidden" id="pPurpose" value="sale">
+    <div class="mode-tabs" id="modeTabs"></div>
+    <div class="subtype-tabs" id="subtypeTabs"></div>
+    <div class="search-grid">
+      <div class="search-seg">
+        <label for="pEmirate">Emirates</label>
+        <select class="select" id="pEmirate" onchange="updateAreaOptions();queueLoad()">
+          <option value="">All emirates</option>
+          <option>Dubai</option>
+          <option>Abu Dhabi</option>
+          <option>Sharjah</option>
+          <option>Ajman</option>
+          <option>RAK</option>
+          <option>Fujairah</option>
+          <option>UAQ</option>
+        </select>
+      </div>
+      <div class="search-seg">
+        <label for="pArea">Location or building</label>
+        <div class="paired">
+          <select class="select" id="pArea" onchange="queueLoad()">
+            <option value="">All areas</option>
+          </select>
+          <input class="field" id="pKeyword" placeholder="Community, building or tower" oninput="queueLoad()">
+        </div>
+      </div>
+      <div class="search-seg">
+        <label for="pType">Property type</label>
+        <select class="select" id="pType" onchange="queueLoad()">
+          <option value="">All property types</option>
+          <option>Apartment</option>
+          <option>Villa</option>
+          <option>Townhouse</option>
+          <option>Studio</option>
+          <option>Penthouse</option>
+          <option>Office</option>
+          <option>Shop</option>
+          <option>Warehouse</option>
+          <option>Land</option>
+          <option>Room</option>
+          <option>Hotel Apartment</option>
+          <option>Whole Building</option>
+          <option>Compound</option>
+        </select>
+      </div>
+      <div class="search-seg">
+        <label>Price range</label>
+        <div class="dual">
+          <input class="field" id="pPriceMin" type="number" min="0" placeholder="From AED" oninput="queueLoad()">
+          <input class="field" id="pPriceMax" type="number" min="0" placeholder="To AED" oninput="queueLoad()">
+        </div>
+      </div>
+      <div class="search-seg">
+        <label for="pBeds">Beds</label>
+        <select class="select" id="pBeds" onchange="queueLoad()">
+          <option value="">Any beds</option>
+          <option value="studio">Studio</option>
+          <option value="1">1+ bed</option>
+          <option value="2">2+ beds</option>
+          <option value="3">3+ beds</option>
+          <option value="4">4+ beds</option>
+          <option value="5">5+ beds</option>
+        </select>
+      </div>
+      <div class="search-seg">
+        <label>Actions</label>
+        <div class="search-actions">
+          <button class="btn btn-solid" type="button" onclick="loadProperties()">Search properties</button>
+          <div style="display:flex;gap:10px">
+            <button class="btn btn-soft" type="button" onclick="toggleFilters()">More filters</button>
+            <a class="btn btn-line" href="post.html">List property</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="search-note" id="searchHint">Use the main search first, then open More filters for seller type, agencies, developers and deeper trust controls.</div>
+  </section>
+
+  <section class="layout" id="resultsLayout">
+    <section class="panel results">
+      <div class="filters" id="advancedFilters">
+        <div class="filters-head">
+          <div>
+            <h2>Advanced property filters</h2>
+            <p>Use the core search for speed, then refine the shortlist with commercial and trust signals only when needed.</p>
+          </div>
+          <a class="btn btn-line" href="../directory/index.html">Browse agencies</a>
+        </div>
+        <div class="filter-grid">
+          <div class="fg">
+            <label for="fBaths">Bathrooms</label>
+            <select class="mini" id="fBaths" onchange="queueLoad()">
+              <option value="">Any baths</option>
+              <option value="1">1+ bath</option>
+              <option value="2">2+ baths</option>
+              <option value="3">3+ baths</option>
+              <option value="4">4+ baths</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label for="fFurnish">Furnishing</label>
+            <select class="mini" id="fFurnish" onchange="queueLoad()">
+              <option value="">Any furnishing</option>
+              <option>Furnished</option>
+              <option>Semi-Furnished</option>
+              <option>Unfurnished</option>
+            </select>
+          </div>
+          <div class="fg span-2">
+            <label for="pSearchScope">Search source</label>
+            <div class="paired">
+              <select class="mini" id="pSearchScope" onchange="queueLoad()">
+                <option value="">Any listing source</option>
+                <option value="landlord">Owners only</option>
+                <option value="agent">Agencies only</option>
+                <option value="developer">Developers only</option>
+              </select>
+              <input class="mini" id="pSourceName" placeholder="Agency or developer name" oninput="queueLoad()">
+            </div>
+          </div>
+          <div class="fg span-2">
+            <label>Size range</label>
+            <div class="dual">
+              <input class="mini" id="fSizeMin" type="number" min="0" placeholder="From sqft" oninput="queueLoad()">
+              <input class="mini" id="fSizeMax" type="number" min="0" placeholder="To sqft" oninput="queueLoad()">
+            </div>
+          </div>
+          <div class="fg">
+            <label for="pSort">Sort order</label>
+            <select class="mini" id="pSort" onchange="loadProperties()">
+              <option value="default">Platform ranking</option>
+              <option value="newest">Newest first</option>
+              <option value="price_low">Price low to high</option>
+              <option value="price_high">Price high to low</option>
+              <option value="size_high">Largest size first</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label>Trust controls</label>
+            <div class="toggle-line">
+              <label for="fPermitOnly">Permit only</label>
+              <input id="fPermitOnly" type="checkbox" onchange="loadProperties()">
+            </div>
+          </div>
+        </div>
+        <div style="display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap;margin-top:14px">
+          <button class="btn btn-line" type="button" onclick="clearAll()">Clear all filters</button>
+          <a class="btn btn-soft" href="../pricing.html">Feature a listing</a>
+        </div>
+      </div>
+
+      <div class="results-top">
+        <div>
+          <div class="count" id="pCount">Loading property inventory...</div>
+          <div class="sub" id="pSub">Pulling the live property inventory for this section.</div>
+        </div>
+        <div class="results-actions">
+          <button class="btn btn-line" type="button" onclick="toggleFilters()">Refine search</button>
+          <a class="btn btn-soft" href="post.html">List property</a>
+        </div>
+      </div>
+
+      <div class="grid" id="pGrid"></div>
+    </section>
+
+    <aside class="panel ad-rail" id="sideAds" hidden></aside>
+  </section>
+
+  <section class="spotlight" id="spotlightWrap" hidden>
+    <div class="spotlight-head">
+      <div>
+        <h2>Featured property picks</h2>
+        <p>Priority homes, trusted agencies, and developer-led inventory that deserve faster attention without crowding the main search.</p>
+      </div>
+      <a class="btn btn-line" href="post.html">Post priority inventory</a>
+    </div>
+    <div class="spotlight-grid" id="spotlightGrid"></div>
+  </section>
+
+  <section class="market-strip">
+    <article class="market-card">
+      <strong id="statSale">0</strong>
+      <span>Sale inventory</span>
+      <p>Homes, investments, land and ready stock available to buy across the UAE.</p>
+    </article>
+    <article class="market-card">
+      <strong id="statRent">0</strong>
+      <span>Rental inventory</span>
+      <p>Yearly rentals, short stays, rooms, and flexible living options currently live.</p>
+    </article>
+    <article class="market-card">
+      <strong id="statLaunch">0</strong>
+      <span>Off-plan and projects</span>
+      <p>Developer-led launches, payment-plan inventory, and branded project visibility.</p>
+    </article>
+    <article class="market-card">
+      <strong id="statVerified">0</strong>
+      <span>Permit-backed</span>
+      <p>Listings carrying permit or compliance signals that improve trust with buyers and renters.</p>
+    </article>
+  </section>
+</main>
+
+<script src="../shared/gb-ref.js"></script>
+<script src="../shared/auth.js"></script>
+<script src="../shared/theme.js"></script>
+<script>
+const SB = (window.GBPortalControl && GBPortalControl.SUPABASE_URL) || 'https://chfkssclmdshdcijfzdr.supabase.co';
+const SK = (window.GBPortalControl && GBPortalControl.SUPABASE_KEY) || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNoZmtzc2NsbWRzaGRjaWpmemRyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM1ODc2ODUsImV4cCI6MjA4OTE2MzY4NX0.cbJBIgeDRIqFvk3WMmxRoDWo1C73wM44oBDekdcc3sE';
+const H = (window.GBPortalControl && GBPortalControl.HEADERS) || { apikey: SK, Authorization: 'Bearer ' + SK };
+const AREAS = {
+  Dubai:['Downtown','Marina','JLT','JBR','Jumeirah','Al Barsha','Deira','Bur Dubai','Karama','Business Bay','DIFC','Satwa','Palm Jumeirah','Mirdif','Al Quoz','Dubai Hills','Arabian Ranches','Sports City'],
+  'Abu Dhabi':['Corniche','Khalidiyah','Al Reem Island','Saadiyat','Yas Island','Mussafah','Khalifa City','Al Ain','Al Raha'],
+  Sharjah:['Al Nahda','Al Majaz','Al Qasba','Industrial Area','Al Khan','Al Taawun'],
+  Ajman:['Al Nuaimiya','Al Rashidiya','Al Jurf','Al Hamidiyah'],
+  RAK:['Al Nakheel','Al Dhait','Dafan Al Nakheel','Al Hamra'],
+  Fujairah:['City Centre','Faseel','Qidfa'],
+  UAQ:['Al Salamah','Al Maidan']
+};
+const MODE_PRESETS = [
+  { key:'sale', label:'Sale', purpose:'sale', heroTitle:'Buy homes, land, investments and branded residences across the UAE.', heroText:'Search residential and commercial stock by emirate, building, agency or developer without leaving the main property flow.', heroSignals:['Residential and commercial stock','Land, villas, apartments and multiple units','Search by community, agency or developer'], hint:'Use Sale for resale inventory, completed homes, investment units and commercial stock.' },
+  { key:'rent', label:'Rent', purpose:'rent', heroTitle:'Find yearly, monthly, daily and short-term rentals across the UAE.', heroText:'Switch between standard rentals, rooms, monthly short stays and daily short-term options from the same property search command center.', heroSignals:['Yearly, monthly and daily rental ready','Rooms, serviced stays and short-term supply','Designed for residents, relocations and Airbnb-style demand'], hint:'Use Rent for long-term homes, flexible stays, serviced apartments, rooms, and short-term rental inventory.' },
+  { key:'offplan', label:'Off-Plan', purpose:'sale', heroTitle:'Track off-plan launches, payment plans and developer-led inventory.', heroText:'Focus on under-construction and handover-driven stock while still filtering by community, developer, payment logic and price range.', heroSignals:['Developer-led off-plan launches','Payment-plan and handover focused search','Built for launch campaigns and project discovery'], hint:'Use Off-Plan for under-construction launches, payment plans, and developer inventory that has not fully handed over yet.' },
+  { key:'projects', label:'New Projects', purpose:'sale', heroTitle:'Explore new projects, master communities and developer collections.', heroText:'Browse project-led inventory when buyers want a specific developer, branded residence, launch campaign or newly announced address.', heroSignals:['Developer and project-led browsing','Master communities and branded residences','Search directly by developer or agency brand'], hint:'Use New Projects when the buyer cares about the project brand, developer reputation or launch campaign first.' }
+];
+const SUBTYPE_PRESETS = {
+  sale:[
+    { key:'all', label:'All sale stock' },
+    { key:'residential', label:'Residential' },
+    { key:'commercial', label:'Commercial' },
+    { key:'land', label:'Land' },
+    { key:'multiple', label:'Multiple units' }
+  ],
+  rent:[
+    { key:'all', label:'All rentals' },
+    { key:'residential', label:'Residential' },
+    { key:'commercial', label:'Commercial' },
+    { key:'rooms', label:'Rooms for rent' },
+    { key:'shortterm', label:'Monthly short term' },
+    { key:'daily', label:'Daily short term' }
+  ],
+  offplan:[
+    { key:'all', label:'All launches' },
+    { key:'apartments', label:'Apartments' },
+    { key:'villas', label:'Villas' },
+    { key:'branded', label:'Branded residences' },
+    { key:'paymentplans', label:'Payment plan' }
+  ],
+  projects:[
+    { key:'all', label:'All projects' },
+    { key:'launches', label:'New launches' },
+    { key:'readysoon', label:'Ready soon' },
+    { key:'masterplan', label:'Master communities' },
+    { key:'verified', label:'Verified developers' }
+  ]
+};
+
+let allItems = [];
+let activeMode = 'sale';
+let activeSubtype = 'all';
+let inlineAdConfig = null;
+let publicSettingsLoaded = false;
+let searchTimer = null;
+
+function esc(value){
+  return String(value || '')
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;')
+    .replace(/'/g,'&#39;');
+}
+
+function num(value){
+  if(value === null || value === undefined) return null;
+  const clean = String(value).trim().replace(/,/g,'');
+  if(clean === '') return null;
+  const parsed = Number(clean);
+  return Number.isFinite(parsed) ? parsed : null;
+}
+
+function norm(value){
+  return String(value || '').toLowerCase().replace(/[^a-z0-9]/g,'');
+}
+
+function toText(value){
+  return String(value || '').trim();
+}
+
+function parseBool(value){
+  return value === true || value === 'true' || value === 1 || value === '1';
+}
+
+function normalizePurpose(value){
+  const source = String(value || '').toLowerCase();
+  if(source.includes('rent')) return 'rent';
+  if(source.includes('sale') || source.includes('buy')) return 'sale';
+  return '';
+}
+
+function normalizePostedBy(value){
+  const source = String(value || '').toLowerCase().trim();
+  if(source.includes('developer')) return 'developer';
+  if(source.includes('agent')) return 'agent';
+  if(source.includes('owner') || source.includes('landlord')) return 'landlord';
+  return source;
+}
+
+function normalizeBeds(value){
+  const source = String(value || '').toLowerCase().trim();
+  if(!source) return '';
+  if(source.includes('studio')) return 'studio';
+  const match = source.match(/\d+/);
+  return match ? match[0] : source;
+}
+
+function normalizeBaths(value){
+  const source = String(value || '').toLowerCase().trim();
+  if(!source) return '';
+  const match = source.match(/\d+/);
+  return match ? match[0] : source;
+}
+
+function toImageList(value){
+  if(Array.isArray(value)) return value.filter(Boolean);
+  if(typeof value === 'string' && value.trim()){
+    try{
+      const parsed = JSON.parse(value);
+      if(Array.isArray(parsed)) return parsed.filter(Boolean);
+    }catch(e){}
+    return value.split(',').map(function(item){ return item.trim(); }).filter(Boolean);
+  }
+  return [];
+}
+
+function normalizeListing(item){
+  return Object.assign({}, item, {
+    images: toImageList(item.images),
+    _purpose: normalizePurpose(item.property_purpose || item.purpose),
+    _type: toText(item.property_type || item.type),
+    _postedBy: normalizePostedBy(item.posted_by),
+    _price: num(item.price),
+    _size: num(item.size_sqft || item.property_size),
+    _beds: normalizeBeds(item.beds || item.property_beds),
+    _baths: normalizeBaths(item.baths || item.property_baths),
+    _furnishing: toText(item.furnishing || item.property_furnish),
+    _verified: !!toText(item.rera_number),
+    _plan: String(item.plan || item.package_type || item.listing_tier || '').toLowerCase()
+  });
+}
+
+function settingText(key){
+  return window.GBPortalControl ? GBPortalControl.settingText(gbAdminSettings, key, '') : String(gbAdminSettings[key] || '').trim();
+}
+
+function buildAdConfig(prefix, defaults){
+  defaults = defaults || {};
+  if(window.GBPortalControl){
+    return GBPortalControl.getAdConfig(gbAdminSettings, prefix, defaults);
+  }
+  return {
+    enabled: parseBool(gbAdminSettings[prefix + '_enabled']),
+    image: settingText(prefix + '_image') || defaults.image || '',
+    link: settingText(prefix + '_link') || defaults.link || '',
+    title: settingText(prefix + '_title') || defaults.title || '',
+    copy: settingText(prefix + '_copy') || defaults.copy || '',
+    cta: settingText(prefix + '_cta') || defaults.cta || ''
+  };
+}
+
+function hasAdContent(config){
+  return window.GBPortalControl ? GBPortalControl.hasAdContent(config) : !!(config && config.enabled && (config.image || config.title || config.copy || config.link));
+}
+
+async function loadPublicSettings(){
+  if(publicSettingsLoaded) return gbAdminSettings;
+  publicSettingsLoaded = true;
+  if(window.GBPortalControl){
+    gbAdminSettings = await GBPortalControl.loadSettings({ base: gbAdminSettings });
+    if(GBPortalControl.applyMaintenanceMode(gbAdminSettings,'../coming-soon.html?section=maintenance')) return gbAdminSettings;
+    if(!GBPortalControl.isSectionLive('section_property', gbAdminSettings)){
+      window.location.replace('../coming-soon.html?section=property');
+    }
+  }
+  return gbAdminSettings;
+}
+
+function queueLoad(){
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(loadProperties, 220);
+}
+
+function toggleFilters(){
+  document.getElementById('advancedFilters').classList.toggle('open');
+}
+
+function updateAreaOptions(){
+  const emirate = document.getElementById('pEmirate').value;
+  const area = document.getElementById('pArea');
+  const list = AREAS[emirate] || [];
+  area.innerHTML = '<option value="">All areas</option>' + list.map(function(item){
+    return '<option>' + esc(item) + '</option>';
+  }).join('');
+  area.disabled = !emirate;
+}
+
+function clampRange(minValue, maxValue){
+  return { min: num(minValue), max: num(maxValue) };
+}
+
+function getModeConfig(key){
+  return MODE_PRESETS.find(function(mode){ return mode.key === key; }) || MODE_PRESETS[0];
+}
+
+function getSubtypes(mode){
+  return SUBTYPE_PRESETS[mode] || SUBTYPE_PRESETS.sale;
+}
+
+function listingSearchText(item){
+  return [item.title,item.description,item.property_building,item.company_name,item.developer_name,item.dealer_name,item.user_name,item.area,item.emirate,item._type,item.price_type,item.plan].join(' ').toLowerCase();
+}
+
+function isCommercialItem(item){
+  return /(office|shop|warehouse|commercial|retail|labour|building)/.test(listingSearchText(item));
+}
+
+function isLandItem(item){
+  return /land|plot/.test(listingSearchText(item));
+}
+
+function isMultipleUnitItem(item){
+  return /multiple|compound|whole building|building|tower|block/.test(listingSearchText(item));
+}
+
+function isRoomItem(item){
+  return /room|bed space|partition/.test(listingSearchText(item));
+}
+
+function isShortTermItem(item){
+  const priceType = String(item.price_type || '').toLowerCase();
+  return /short[\s-]*term|monthly short term|holiday|serviced|vacation/.test(listingSearchText(item)) || priceType === 'monthly';
+}
+
+function isDailyItem(item){
+  const priceType = String(item.price_type || '').toLowerCase();
+  return /daily|per day|nightly|airbnb|hotel apartment/.test(listingSearchText(item)) || priceType === 'daily';
+}
+
+function isOffplanItem(item){
+  return item._postedBy === 'developer' || item._plan === 'developer' || /off[\s-]*plan|handover|under construction|payment plan|launch|new project/.test(listingSearchText(item));
+}
+
+function isProjectItem(item){
+  return item._postedBy === 'developer' || item._plan === 'developer' || /project|residences|development|master community|launch/.test(listingSearchText(item));
+}
+
+function matchesMode(item, mode){
+  if(mode === 'rent') return item._purpose === 'rent';
+  if(mode === 'sale') return item._purpose === 'sale' && !isOffplanItem(item) && !isProjectItem(item);
+  if(mode === 'offplan') return isOffplanItem(item);
+  if(mode === 'projects') return isProjectItem(item);
+  return true;
+}
+
+function matchesSubtype(item, mode, subtype){
+  if(!subtype || subtype === 'all') return true;
+  if(mode === 'sale'){
+    if(subtype === 'residential') return !isCommercialItem(item) && !isLandItem(item);
+    if(subtype === 'commercial') return isCommercialItem(item);
+    if(subtype === 'land') return isLandItem(item);
+    if(subtype === 'multiple') return isMultipleUnitItem(item);
+  }
+  if(mode === 'rent'){
+    if(subtype === 'residential') return !isCommercialItem(item) && !isRoomItem(item);
+    if(subtype === 'commercial') return isCommercialItem(item);
+    if(subtype === 'rooms') return isRoomItem(item);
+    if(subtype === 'shortterm') return isShortTermItem(item);
+    if(subtype === 'daily') return isDailyItem(item);
+  }
+  if(mode === 'offplan'){
+    if(subtype === 'apartments') return /apartment|studio|penthouse/.test(listingSearchText(item));
+    if(subtype === 'villas') return /villa|townhouse/.test(listingSearchText(item));
+    if(subtype === 'branded') return /branded|residence|collection/.test(listingSearchText(item));
+    if(subtype === 'paymentplans') return /payment plan|handover/.test(listingSearchText(item));
+  }
+  if(mode === 'projects'){
+    if(subtype === 'launches') return /launch|new project/.test(listingSearchText(item));
+    if(subtype === 'readysoon') return /q[1-4]\s?20|handover|delivery/.test(listingSearchText(item));
+    if(subtype === 'masterplan') return /community|district|master/.test(listingSearchText(item));
+    if(subtype === 'verified') return item._postedBy === 'developer' && item._verified;
+  }
+  return true;
+}
+
+function getModeCount(mode){
+  return allItems.filter(function(item){ return matchesMode(item, mode); }).length;
+}
+
+function getSubtypeCount(mode, subtype){
+  return allItems.filter(function(item){
+    return matchesMode(item, mode) && matchesSubtype(item, mode, subtype);
+  }).length;
+}
+
+function updateHeroCopy(){
+  const config = getModeConfig(activeMode);
+  document.getElementById('heroTitle').textContent = config.heroTitle;
+  document.getElementById('heroText').textContent = config.heroText;
+  document.getElementById('heroSignals').innerHTML = (config.heroSignals || []).map(function(signal){
+    return '<span>' + esc(signal) + '</span>';
+  }).join('');
+}
+
+function renderModeTabs(){
+  document.getElementById('modeTabs').innerHTML = MODE_PRESETS.map(function(mode){
+    return '<button class="mode-tab' + (activeMode === mode.key ? ' on' : '') + '" type="button" onclick="setMode(\'' + esc(mode.key) + '\')">' +
+      '<span>' + esc(mode.label) + '</span><b>' + getModeCount(mode.key) + '</b></button>';
+  }).join('');
+}
+
+function renderSubtypeTabs(){
+  document.getElementById('subtypeTabs').innerHTML = getSubtypes(activeMode).map(function(preset){
+    return '<button class="subtype-chip' + (activeSubtype === preset.key ? ' on' : '') + '" type="button" onclick="setSubtype(\'' + esc(preset.key) + '\')">' +
+      '<span>' + esc(preset.label) + '</span><b>' + getSubtypeCount(activeMode, preset.key) + '</b></button>';
+  }).join('');
+}
+
+function updateSearchHint(){
+  const mode = getModeConfig(activeMode);
+  const subtype = getSubtypes(activeMode).find(function(item){ return item.key === activeSubtype; });
+  document.getElementById('searchHint').textContent = subtype && subtype.key !== 'all'
+    ? mode.hint + ' Current view: ' + subtype.label + '. Use More filters for agency, developer and trust controls.'
+    : mode.hint + ' Use More filters for agency, developer and trust controls.';
+}
+
+function updateUrlState(){
+  const params = new URLSearchParams(window.location.search);
+  params.set('mode', activeMode);
+  if(activeSubtype && activeSubtype !== 'all') params.set('subtype', activeSubtype);
+  else params.delete('subtype');
+  history.replaceState({}, '', window.location.pathname + '?' + params.toString());
+}
+
+function syncModeState(options){
+  options = options || {};
+  document.getElementById('pPurpose').value = getModeConfig(activeMode).purpose || '';
+  updateHeroCopy();
+  renderModeTabs();
+  renderSubtypeTabs();
+  updateSearchHint();
+  if(options.updateUrl !== false) updateUrlState();
+}
+
+function setMode(mode){
+  activeMode = MODE_PRESETS.some(function(item){ return item.key === mode; }) ? mode : 'sale';
+  activeSubtype = 'all';
+  syncModeState();
+  loadProperties();
+}
+
+function setSubtype(subtype){
+  activeSubtype = getSubtypes(activeMode).some(function(item){ return item.key === subtype; }) ? subtype : 'all';
+  syncModeState();
+  loadProperties();
+}
+
+function updateMarketStats(){
+  document.getElementById('statSale').textContent = allItems.filter(function(item){ return matchesMode(item, 'sale'); }).length;
+  document.getElementById('statRent').textContent = allItems.filter(function(item){ return matchesMode(item, 'rent'); }).length;
+  document.getElementById('statLaunch').textContent = allItems.filter(function(item){ return matchesMode(item, 'offplan') || matchesMode(item, 'projects'); }).length;
+  document.getElementById('statVerified').textContent = allItems.filter(function(item){ return item._verified; }).length;
+}
+
+function renderHeroPanel(config, showAds){
+  const banner = document.getElementById('heroBanner');
+  const panel = document.getElementById('heroPanel');
+  if(showAds && hasAdContent(config)){
+    banner.classList.remove('compact');
+    panel.hidden = false;
+    panel.innerHTML =
+      '<span class="tag">Paid sponsor</span>' +
+      (config.image ? '<span class="hero-ad-image"><img src="' + esc(config.image) + '" alt="' + esc(config.title) + '" loading="lazy"></span>' : '') +
+      '<h3>' + esc(config.title) + '</h3>' +
+      '<p>' + esc(config.copy) + '</p>' +
+      '<div class="hero-panel-actions"><a class="hero-primary" href="' + esc(config.link) + '" target="_blank" rel="noopener">' + esc(config.cta || 'Open campaign') + '</a></div>';
+    return;
+  }
+  banner.classList.add('compact');
+  panel.hidden = true;
+  panel.innerHTML = '';
+}
+
+function renderSideAd(config, showAds){
+  const rail = document.getElementById('sideAds');
+  const layout = document.getElementById('resultsLayout');
+  if(!(showAds && hasAdContent(config))){
+    rail.hidden = true;
+    rail.classList.remove('has-ad');
+    rail.innerHTML = '';
+    layout.classList.remove('with-side-ad');
+    return;
+  }
+  rail.hidden = false;
+  rail.classList.add('has-ad');
+  layout.classList.add('with-side-ad');
+  rail.innerHTML =
+    '<article class="side-ad">' +
+      '<span class="tag">Sidebar sponsor</span>' +
+      (config.image ? '<span class="side-ad-media"><img src="' + esc(config.image) + '" alt="' + esc(config.title) + '" loading="lazy"></span>' : '') +
+      '<h3>' + esc(config.title) + '</h3>' +
+      '<p>' + esc(config.copy) + '</p>' +
+      '<a href="' + esc(config.link) + '" target="_blank" rel="noopener">' + esc(config.cta || 'Learn more') + '</a>' +
+    '</article>';
+}
+
+function renderStreamAd(config){
+  return '<article class="stream-ad">' +
+    (config.image ? '<a class="stream-ad-media" href="' + esc(config.link) + '" target="_blank" rel="noopener"><img src="' + esc(config.image) + '" alt="' + esc(config.title) + '" loading="lazy"></a>' : '<div class="stream-ad-media">Sponsored</div>') +
+    '<div class="stream-ad-body">' +
+      '<span class="stream-ad-tag">Sponsored property</span>' +
+      '<h3>' + esc(config.title) + '</h3>' +
+      '<p>' + esc(config.copy) + '</p>' +
+      '<ul><li>Timed campaign</li><li>Approved client creative</li><li>Separate from organic listings</li></ul>' +
+    '</div>' +
+    '<div class="stream-ad-cta"><a href="' + esc(config.link) + '" target="_blank" rel="noopener">' + esc(config.cta || 'Open campaign') + '</a></div>' +
+  '</article>';
+}
+
+function applyAdminDecor(){
+  const showAds = window.GBPortalControl ? GBPortalControl.shouldShowAds(gbAdminSettings) : !(gbAdminSettings.show_ads === false || gbAdminSettings.show_ads === 'false');
+  const heroConfig = buildAdConfig('property_hero_ad', {
+    link:'../pricing.html',
+    title:'Property hero campaigns for premium launches',
+    copy:'Animated hero creatives, project launches and high-value property campaigns can sit in the top slot once approved.',
+    cta:'Open campaign'
+  });
+  const sideConfig = buildAdConfig('property_side_ad', {
+    link:'../pricing.html',
+    title:'Sidebar sponsor beside the live property results',
+    copy:'Keep banner inventory separate from the listings while still staying visible to serious property buyers.',
+    cta:'Book banner'
+  });
+  const inlineConfig = buildAdConfig('property_inline_ad', {
+    link:'../pricing.html',
+    title:'Insert a sponsored project card directly into the property stream',
+    copy:'Use this slot for launches, branded developments, seasonal campaigns or premium cross-sell inventory.',
+    cta:'Open banner'
+  });
+  renderHeroPanel(heroConfig, showAds);
+  renderSideAd(sideConfig, showAds);
+  inlineAdConfig = showAds && hasAdContent(inlineConfig) ? inlineConfig : null;
+}
+
+function sellerIdentity(item){
+  const label = item.company_name || item.developer_name || item.dealer_name || item.user_name || item.contact_name || 'Private seller';
+  const logo = item.company_logo || item.developer_logo || item.dealer_logo || item.logo_url || '';
+  const initials = String(label).split(/\s+/).filter(Boolean).slice(0,2).map(function(part){ return part[0]; }).join('').toUpperCase() || 'GH';
+  const isCompany = !!(logo || item.company_name || item.developer_name || item.dealer_name || item._postedBy === 'agent' || item._postedBy === 'developer');
+  return {
+    label: label,
+    logo: logo,
+    initials: initials,
+    caption: isCompany ? (item._postedBy === 'developer' ? 'Developer profile' : 'Agency or professional seller') : 'Private owner listing'
+  };
+}
+
+function priceSuffix(item){
+  if(item._purpose === 'rent'){
+    const priceType = String(item.price_type || '').toLowerCase();
+    if(priceType.includes('daily') || priceType.includes('day')) return 'Daily';
+    if(priceType.includes('month')) return 'Monthly';
+    if(priceType.includes('week')) return 'Weekly';
+    if(priceType.includes('short')) return 'Short term';
+    return 'Yearly';
+  }
+  return 'Sale price';
+}
+
+function rankPriority(item){
+  const now = new Date();
+  const placement = String(item.placement || item.priority_level || '').toLowerCase();
+  const score = num(item.priority_score) || num(item.sort_priority) || 0;
+  const timedBoost = ['featured_until','promoted_until','priority_until','boosted_until','top_until'].some(function(key){
+    return item[key] && new Date(item[key]) > now;
+  });
+  const tier = item._plan === 'premium' || item._plan === 'top' || item._plan === 'developer' || placement === 'top' ? 3 : (item._plan === 'featured' || item._plan === 'boosted' || placement === 'boosted' ? 2 : 0);
+  const flag = item.is_featured || item.is_promoted || item.is_boosted || item.top_spot ? 2 : 0;
+  return Math.max(tier, timedBoost ? 3 : 0, flag, score);
+}
+
+function sortList(items, sort){
+  return items.slice().sort(function(a, b){
+    const pa = rankPriority(a);
+    const pb = rankPriority(b);
+    if(sort === 'price_low'){
+      if(a._price === null && b._price !== null) return 1;
+      if(a._price !== null && b._price === null) return -1;
+      if(a._price !== null && b._price !== null && a._price !== b._price) return a._price - b._price;
+    }
+    if(sort === 'price_high'){
+      if(a._price === null && b._price !== null) return 1;
+      if(a._price !== null && b._price === null) return -1;
+      if(a._price !== null && b._price !== null && a._price !== b._price) return b._price - a._price;
+    }
+    if(sort === 'size_high'){
+      const sizeA = a._size || 0;
+      const sizeB = b._size || 0;
+      if(sizeB !== sizeA) return sizeB - sizeA;
+    }
+    if(sort === 'newest') return new Date(b.created_at || 0) - new Date(a.created_at || 0);
+    if(pb !== pa) return pb - pa;
+    return new Date(b.created_at || 0) - new Date(a.created_at || 0);
+  });
+}
+
+async function fetchInventory(){
+  const size = 1000;
+  let offset = 0;
+  let rows = [];
+  try{
+    while(true){
+      const response = await fetch(SB + '/rest/v1/listings?select=*&category=eq.property&status=eq.active&order=created_at.desc&limit=' + size + '&offset=' + offset, { headers: H });
+      const data = await response.json();
+      if(!Array.isArray(data) || !data.length) break;
+      rows = rows.concat(data);
+      if(data.length < size) break;
+      offset += data.length;
+      if(offset >= 20000) break;
+    }
+  }catch(e){
+    rows = [];
+  }
+  allItems = rows.map(normalizeListing);
+}
+
+function applyIncomingQuery(query){
+  const q = String(query || '').trim();
+  if(!q) return;
+  document.getElementById('pKeyword').value = q;
+  if(/rent/i.test(q)) activeMode = 'rent';
+  if(/sale|buy/i.test(q)) activeMode = 'sale';
+  if(/off[\s-]*plan|launch|project/i.test(q)) activeMode = 'offplan';
+  ['Apartment','Villa','Townhouse','Studio','Penthouse','Office','Shop','Warehouse','Land','Room','Hotel Apartment','Whole Building','Compound'].forEach(function(type){
+    if(document.getElementById('pType').value) return;
+    if(q.toLowerCase().includes(type.toLowerCase())) document.getElementById('pType').value = type;
+  });
+}
+
+function matchesBeds(item, value){
+  if(!value) return true;
+  if(value === 'studio') return item._beds === 'studio';
+  if(item._beds === 'studio') return false;
+  const beds = num(item._beds);
+  return beds !== null && beds >= Number(value);
+}
+
+function matchesBaths(item, value){
+  if(!value) return true;
+  const baths = num(item._baths);
+  return baths !== null && baths >= Number(value);
+}
+
+function includesNormalized(source, query){
+  if(!query) return true;
+  return norm(source).includes(norm(query));
+}
+
+function applyFilters(items){
+  const purpose = document.getElementById('pPurpose').value;
+  const type = document.getElementById('pType').value;
+  const emirate = document.getElementById('pEmirate').value;
+  const area = document.getElementById('pArea').value;
+  const keyword = document.getElementById('pKeyword').value.trim();
+  const sourceScope = document.getElementById('pSearchScope').value;
+  const sourceName = document.getElementById('pSourceName').value.trim();
+  const priceRange = clampRange(document.getElementById('pPriceMin').value, document.getElementById('pPriceMax').value);
+  const beds = document.getElementById('pBeds').value;
+  const baths = document.getElementById('fBaths').value;
+  const furnish = document.getElementById('fFurnish').value;
+  const postedBy = sourceScope;
+  const sizeRange = clampRange(document.getElementById('fSizeMin').value, document.getElementById('fSizeMax').value);
+  const permitOnly = document.getElementById('fPermitOnly').checked;
+
+  return items.filter(function(item){
+    const haystack = [item.title,item.description,item.property_building,item.company_name,item.developer_name,item.dealer_name,item.user_name,item.area,item.emirate,item._type].join(' ');
+    const sellerStack = [item.company_name,item.developer_name,item.dealer_name,item.user_name,item.contact_name].join(' ');
+    if(!matchesMode(item, activeMode)) return false;
+    if(!matchesSubtype(item, activeMode, activeSubtype)) return false;
+    if(purpose && item._purpose !== purpose) return false;
+    if(type && norm(item._type) !== norm(type)) return false;
+    if(emirate && item.emirate !== emirate) return false;
+    if(area && item.area !== area) return false;
+    if(!includesNormalized(haystack, keyword)) return false;
+    if(sourceName && !includesNormalized(sellerStack, sourceName)) return false;
+    if(priceRange.min !== null && (item._price === null || item._price < priceRange.min)) return false;
+    if(priceRange.max !== null && (item._price === null || item._price > priceRange.max)) return false;
+    if(!matchesBeds(item, beds)) return false;
+    if(!matchesBaths(item, baths)) return false;
+    if(furnish && norm(item._furnishing) !== norm(furnish)) return false;
+    if(postedBy && item._postedBy !== postedBy) return false;
+    if(sizeRange.min !== null && (item._size === null || item._size < sizeRange.min)) return false;
+    if(sizeRange.max !== null && (item._size === null || item._size > sizeRange.max)) return false;
+    if(permitOnly && !item._verified) return false;
+    return true;
+  });
+}
+
+function getItemById(id){
+  return allItems.find(function(item){ return String(item.id) === String(id); }) || null;
+}
+
+function listingUrl(id){
+  return 'listing.html?id=' + encodeURIComponent(id);
+}
+
+function money(value){
+  const amount = num(value);
+  if(amount === null) return 'Price on request';
+  return 'AED ' + amount.toLocaleString();
+}
+
+function metricLabel(item){
+  const bits = [];
+  if(item._type) bits.push(item._type);
+  bits.push(item._purpose === 'rent' ? 'For rent' : 'For sale');
+  if(item._beds === 'studio') bits.push('Studio');
+  else if(item._beds) bits.push(item._beds + ' bed');
+  if(item._baths) bits.push(item._baths + ' bath');
+  if(item._size) bits.push(item._size.toLocaleString() + ' sq ft');
+  if(item._furnishing) bits.push(item._furnishing);
+  return bits;
+}
+
+function listingLocation(item){
+  return [item.property_building || item.building || '', item.area || '', item.emirate || ''].filter(Boolean).join(', ');
+}
+
+function planBadge(item){
+  if(item._plan === 'developer') return '<span class="badge gold">Developer launch</span>';
+  if(item._plan === 'premium' || rankPriority(item) >= 3) return '<span class="badge gold">Premium</span>';
+  if(item._plan === 'featured' || rankPriority(item) >= 2) return '<span class="badge blue">Featured</span>';
+  return '';
+}
+
+function renderSpotlight(){
+  const wrap = document.getElementById('spotlightWrap');
+  const grid = document.getElementById('spotlightGrid');
+  const shortlist = sortList(allItems.filter(function(item){
+    return rankPriority(item) >= 2 || item._verified || item._postedBy === 'developer';
+  }), 'default').slice(0, 4);
+
+  if(!shortlist.length){
+    wrap.hidden = true;
+    grid.innerHTML = '';
+    return;
+  }
+
+  wrap.hidden = false;
+  grid.innerHTML = shortlist.map(function(item){
+    const image = item.images && item.images[0];
+    const tags = metricLabel(item).slice(0, 3).join(' · ');
+    const url = listingUrl(item.id);
+    return '<article class="spotlight-card" onclick="location.href=\'' + esc(url) + '\'">' +
+      '<div class="spotlight-media">' +
+        (image ? '<img src="' + esc(image) + '" alt="' + esc(item.title || 'Property listing') + '" loading="lazy">' : '<div class="ph">Property</div>') +
+        '<div class="spotlight-badges">' +
+          planBadge(item) +
+          (item._verified ? '<span class="badge green">Permit checked</span>' : '') +
+        '</div>' +
+      '</div>' +
+      '<div class="spotlight-body">' +
+        '<div class="spotlight-price">' + esc(money(item._price)) + (item._purpose === 'rent' ? ' <span style="font-size:12px;font-weight:700;color:#64748b">/ ' + esc(String(item.price_type || 'yearly').toLowerCase()) + '</span>' : '') + '</div>' +
+        '<h3 class="spotlight-title">' + esc(item.title || item._type || 'Property listing') + '</h3>' +
+        '<div class="spotlight-meta">' + esc(tags || listingLocation(item) || 'Premium property visibility') + '</div>' +
+      '</div>' +
+    '</article>';
+  }).join('');
+}
+
+function renderCard(item){
+  const seller = sellerIdentity(item);
+  const image = item.images && item.images[0];
+  const gallery = item.images || [];
+  const photoCount = gallery.length;
+  const thumbStrip = gallery.slice(1, 4).map(function(src){
+    return '<span class="media-thumb"><img src="' + esc(src) + '" alt="' + esc(item.title || 'Property image') + '" loading="lazy"></span>';
+  }).join('') + (photoCount > 4 ? '<span class="media-thumb more">+' + (photoCount - 3) + '</span>' : '');
+  const meta = metricLabel(item);
+  const tags = [];
+  const url = listingUrl(item.id);
+  const safeId = String(item.id).replace(/'/g, '');
+  if(item._verified) tags.push('<span class="mini-badge verified">Permit signal</span>');
+  if(item._plan) tags.push('<span class="mini-badge plan">' + esc(item._plan.charAt(0).toUpperCase() + item._plan.slice(1)) + '</span>');
+  if(item._postedBy) tags.push('<span class="mini-badge">' + esc(item._postedBy === 'landlord' ? 'Owner / landlord' : item._postedBy) + '</span>');
+  return '<article class="property-card" onclick="location.href=\'' + esc(url) + '\'">' +
+    '<div class="property-media">' +
+      (image ? '<img src="' + esc(image) + '" alt="' + esc(item.title || 'Property listing') + '" loading="lazy">' : '<div class="ph">Property listing</div>') +
+      '<div class="badges">' + planBadge(item) + '</div>' +
+      (photoCount ? '<div class="media-count">' + photoCount + ' photos</div>' : '') +
+      (photoCount > 1 ? '<div class="media-thumbs">' + thumbStrip + '</div>' : '') +
+    '</div>' +
+    '<div class="property-body">' +
+      '<div class="price-line">' +
+        '<div><div class="listing-price">' + esc(money(item._price)) + '</div><span class="price-caption">' + esc(priceSuffix(item)) + '</span></div>' +
+        '<div class="listing-tags">' + tags.join('') + '</div>' +
+      '</div>' +
+      '<h3 class="listing-title">' + esc(item.title || item._type || 'Property listing') + '</h3>' +
+      '<div class="listing-meta">' + meta.map(function(bit){ return '<span>' + esc(bit) + '</span>'; }).join('<span>•</span>') + '</div>' +
+      '<div class="listing-location">' + esc(listingLocation(item) || 'UAE property listing') + '</div>' +
+      '<div class="seller-strip">' +
+        '<div class="seller-mini">' +
+          '<div class="seller-logo">' + (seller.logo ? '<img src="' + esc(seller.logo) + '" alt="' + esc(seller.label) + '" loading="lazy">' : esc(seller.initials)) + '</div>' +
+          '<div class="seller-copy"><strong>' + esc(seller.label) + '</strong><span>' + esc(seller.caption) + '</span></div>' +
+        '</div>' +
+        '<div class="listing-actions">' +
+          '<a href="#" class="link-btn wa" onclick="event.stopPropagation();openWhatsapp(\'' + safeId + '\');return false;">WhatsApp</a>' +
+          '<a href="#" class="link-btn call" onclick="event.stopPropagation();openCall(\'' + safeId + '\');return false;">Call now</a>' +
+        '</div>' +
+      '</div>' +
+    '</div>' +
+  '</article>';
+}
+
+async function bumpMetric(id, field, current){
+  const item = getItemById(id);
+  if(item) item[field] = (num(item[field]) || 0) + 1;
+  try{
+    await fetch(SB + '/rest/v1/listings?id=eq.' + encodeURIComponent(id), {
+      method:'PATCH',
+      headers:Object.assign({}, H, { 'Content-Type':'application/json' }),
+      body:JSON.stringify((function(){
+        var payload = {};
+        payload[field] = (num(current) || 0) + 1;
+        return payload;
+      })())
+    });
+  }catch(e){}
+}
+
+function openCall(id){
+  const item = getItemById(id);
+  if(!item || !item.contact_phone) return;
+  bumpMetric(item.id, 'call_count', item.call_count);
+  window.location.href = 'tel:' + String(item.contact_phone).replace(/[^\d+]/g, '');
+}
+
+function openWhatsapp(id){
+  const item = getItemById(id);
+  if(!item || !item.contact_phone) return;
+  bumpMetric(item.id, 'whatsapp_count', item.whatsapp_count);
+  const phone = String(item.contact_phone).replace(/[^\d]/g, '');
+  const text = encodeURIComponent('Hi, I found your property listing on GulfHabibi: ' + (item.title || 'Property listing'));
+  window.open('https://wa.me/' + phone + '?text=' + text, '_blank', 'noopener');
+}
+
+function clearAll(){
+  document.getElementById('pPurpose').value = getModeConfig(activeMode).purpose;
+  document.getElementById('pType').value = '';
+  document.getElementById('pEmirate').value = '';
+  updateAreaOptions();
+  document.getElementById('pArea').value = '';
+  document.getElementById('pKeyword').value = '';
+  document.getElementById('pSearchScope').value = '';
+  document.getElementById('pSourceName').value = '';
+  document.getElementById('pPriceMin').value = '';
+  document.getElementById('pPriceMax').value = '';
+  document.getElementById('pBeds').value = '';
+  document.getElementById('fBaths').value = '';
+  document.getElementById('fFurnish').value = '';
+  document.getElementById('fSizeMin').value = '';
+  document.getElementById('fSizeMax').value = '';
+  document.getElementById('fPermitOnly').checked = false;
+  document.getElementById('pSort').value = 'default';
+  activeSubtype = 'all';
+  syncModeState({ updateUrl:false });
+  loadProperties();
+}
+
+function describeFilters(items){
+  const bits = [];
+  const purpose = document.getElementById('pPurpose').value;
+  const type = document.getElementById('pType').value;
+  const emirate = document.getElementById('pEmirate').value;
+  const area = document.getElementById('pArea').value;
+  const keyword = document.getElementById('pKeyword').value.trim();
+  const sourceScope = document.getElementById('pSearchScope').value;
+  const sourceName = document.getElementById('pSourceName').value.trim();
+  const beds = document.getElementById('pBeds').value;
+  const mode = getModeConfig(activeMode);
+  const subtype = getSubtypes(activeMode).find(function(item){ return item.key === activeSubtype; });
+  if(mode) bits.push(mode.label);
+  if(subtype && subtype.key !== 'all') bits.push(subtype.label);
+  if(purpose === 'rent' && !bits.includes('Rent')) bits.push('rentals');
+  if(type) bits.push(type);
+  if(emirate) bits.push(emirate);
+  if(area) bits.push(area);
+  if(beds) bits.push(beds === 'studio' ? 'studio' : beds + '+ beds');
+  if(keyword) bits.push('matching "' + keyword + '"');
+  if(sourceName) bits.push((sourceScope === 'developer' ? 'developer' : sourceScope === 'agent' ? 'agency' : 'seller') + ' "' + sourceName + '"');
+  if(!bits.length){
+    return items.length ? 'Showing the live UAE property inventory for buyers, renters, owners, agencies and developers.' : 'No property matched the current selection yet.';
+  }
+  return 'Showing ' + bits.join(' · ') + '.';
+}
+
+function loadProperties(){
+  const sort = document.getElementById('pSort').value || 'default';
+  const filtered = sortList(applyFilters(allItems), sort);
+  document.getElementById('pCount').textContent = filtered.length.toLocaleString() + ' ' + (filtered.length === 1 ? 'property found' : 'properties found');
+  document.getElementById('pSub').textContent = describeFilters(filtered);
+
+  const grid = document.getElementById('pGrid');
+  if(!filtered.length){
+    grid.innerHTML = '<div class="empty"><h3>No property matched this search</h3><p>Try another emirate, building, seller name or tab. You can also clear the filters and start again from a wider property view.</p><div class="empty-actions"><a class="btn btn-soft" href="post.html">Post property</a><button class="btn btn-line" type="button" onclick="clearAll()">Clear filters</button></div></div>';
+    return;
+  }
+
+  const chunks = [];
+  filtered.forEach(function(item, index){
+    chunks.push(renderCard(item));
+    if(inlineAdConfig && index === 3){
+      chunks.push(renderStreamAd(inlineAdConfig));
+    }
+  });
+  grid.innerHTML = chunks.join('');
+}
+
+function applySearchParams(){
+  const params = new URLSearchParams(window.location.search);
+  const emirate = params.get('emirate');
+  const area = params.get('area');
+  const purpose = params.get('purpose');
+  const type = params.get('type');
+  const keyword = params.get('q') || params.get('keyword');
+  const focus = params.get('focus');
+  const mode = params.get('mode');
+  const subtype = params.get('subtype');
+  const scope = params.get('scope');
+  const seller = params.get('seller');
+
+  if(mode && MODE_PRESETS.some(function(item){ return item.key === mode; })) activeMode = mode;
+  if(purpose){
+    document.getElementById('pPurpose').value = purpose.toLowerCase();
+    if(!mode && /rent/i.test(purpose)) activeMode = 'rent';
+    if(!mode && /sale|buy/i.test(purpose)) activeMode = 'sale';
+  }
+  if(type) document.getElementById('pType').value = type;
+  if(emirate) document.getElementById('pEmirate').value = emirate;
+  updateAreaOptions();
+  if(area) document.getElementById('pArea').value = area;
+  if(scope) document.getElementById('pSearchScope').value = scope;
+  if(seller) document.getElementById('pSourceName').value = seller;
+  if(keyword) applyIncomingQuery(keyword);
+  if(subtype && getSubtypes(activeMode).some(function(item){ return item.key === subtype; })){
+    activeSubtype = subtype;
+  }
+  if(focus){
+    if(MODE_PRESETS.some(function(item){ return item.key === focus; })) activeMode = focus;
+    if(getSubtypes(activeMode).some(function(item){ return item.key === focus; })) activeSubtype = focus;
+    if(focus === 'commercial') activeSubtype = 'commercial';
+  }
+  syncModeState({ updateUrl:false });
+}
+
+async function init(){
+  await loadPublicSettings();
+  updateAreaOptions();
+  await fetchInventory();
+  applySearchParams();
+  applyAdminDecor();
+  updateMarketStats();
+  renderSpotlight();
+  loadProperties();
+}
+
+document.addEventListener('DOMContentLoaded', function(){
+  if(window.initNavAuth) window.initNavAuth('post.html');
+  init();
+});
+</script>
+</body>
+</html>

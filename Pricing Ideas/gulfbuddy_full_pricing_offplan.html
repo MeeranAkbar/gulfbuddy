@@ -1,0 +1,247 @@
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.w{font-family:sans-serif;padding:8px 0}
+.sec{margin-bottom:22px}
+.sec-t{font-size:10px;font-weight:700;color:#C9A84C;text-transform:uppercase;letter-spacing:1.2px;padding-bottom:7px;border-bottom:1px solid #1a1828;margin-bottom:12px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid #1a1828;border-radius:12px;overflow:hidden}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.col{border-right:1px solid #1a1828}
+.col:last-child{border-right:none}
+.col-head{padding:14px 12px;border-bottom:1px solid #1a1828;text-align:center}
+.col-name{font-size:13px;font-weight:700;margin-bottom:4px}
+.col-price{font-size:11px;padding:3px 10px;border-radius:20px;display:inline-block;font-weight:700}
+.c-free .col-name{color:#555}
+.c-free .col-price{background:#1a1828;color:#444}
+.c-feat .col-head{background:rgba(201,168,76,.04)}
+.c-feat .col-name{color:#C9A84C}
+.c-feat .col-price{background:rgba(201,168,76,.15);color:#C9A84C}
+.c-prem .col-head{background:rgba(201,168,76,.07)}
+.c-prem .col-name{color:#E8C97A}
+.c-prem .col-price{background:rgba(201,168,76,.25);color:#E8C97A}
+.c-offplan .col-head{background:rgba(59,130,246,.05)}
+.c-offplan .col-name{color:#60a5fa}
+.c-offplan .col-price{background:rgba(59,130,246,.15);color:#60a5fa}
+.row{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid #1a1828}
+.row:last-child{border-bottom:none}
+.cell{padding:8px 12px;font-size:11px;border-right:1px solid #1a1828}
+.cell:last-child{border-right:none}
+.cell-label{color:#3a3a5a;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;background:#090910;padding:7px 12px;grid-column:1/-1;border-bottom:1px solid #1a1828}
+.t{color:#22c55e;font-weight:700}
+.x{color:#252535}
+.s{color:#C9A84C;font-weight:600}
+.b{color:#60a5fa;font-weight:600}
+
+/* Off-plan cards */
+.op-card{border-radius:10px;padding:14px;background:#080818;border:1px solid #1a2040}
+.op-card.hot{border-color:rgba(59,130,246,.5);background:rgba(59,130,246,.04)}
+.op-title{font-size:12px;font-weight:700;color:#60a5fa;margin-bottom:6px}
+.op-price{font-size:14px;font-weight:700;color:#E8C97A;margin-bottom:6px}
+.op-sub{font-size:11px;color:#3a3a5a;line-height:1.6}
+.op-badge{display:inline-block;font-size:9px;font-weight:700;padding:2px 8px;border-radius:20px;margin-bottom:6px;background:rgba(59,130,246,.15);color:#60a5fa;border:1px solid rgba(59,130,246,.3)}
+
+/* Lifecycle */
+.lc{display:flex;align-items:stretch;gap:0;border:1px solid #1a1828;border-radius:10px;overflow:hidden}
+.lc-step{flex:1;padding:10px 8px;text-align:center;border-right:1px solid #1a1828;font-size:10px}
+.lc-step:last-child{border-right:none}
+.lc-day{font-size:12px;font-weight:700;margin-bottom:3px}
+.lc-desc{color:#3a3a5a;line-height:1.4}
+.lc-free .lc-day{color:#555}
+.lc-warn .lc-day{color:#f59e0b}
+.lc-warn{background:#100f00}
+.lc-dead .lc-day{color:#ef4444}
+.lc-dead{background:#100505}
+.lc-feat .lc-day{color:#C9A84C}
+.lc-feat{background:rgba(201,168,76,.03)}
+.lc-prem .lc-day{color:#22c55e}
+.lc-prem{background:rgba(34,197,94,.03)}
+</style>
+<div class="w">
+
+<!-- MAIN PRICING TABLE -->
+<div class="sec">
+<div class="sec-t">💰 Full Pricing Comparison — All 4 Tiers</div>
+<div class="g4">
+  <div class="col c-free">
+    <div class="col-head"><div class="col-name">Free</div><div class="col-price">AED 0</div></div>
+  </div>
+  <div class="col c-feat">
+    <div class="col-head"><div class="col-name">⭐ Featured</div><div class="col-price">AED 99/mo</div></div>
+  </div>
+  <div class="col c-prem">
+    <div class="col-head"><div class="col-name">💎 Premium</div><div class="col-price">AED 299/mo</div></div>
+  </div>
+  <div class="col c-offplan">
+    <div class="col-head"><div class="col-name">🏗️ Off-Plan Pro</div><div class="col-price">AED 599/mo</div></div>
+  </div>
+
+  <!-- LISTINGS -->
+  <div class="row"><div class="cell-label">Listings</div></div>
+  <div class="row">
+    <div class="cell" style="color:#3a3a5a">Active listings</div>
+    <div class="cell" style="color:#555">Max 3</div>
+    <div class="cell" style="color:#C9A84C">Max 10</div>
+    <div class="cell" style="color:#E8C97A">Unlimited</div>
+    <div class="cell" style="color:#60a5fa">Unlimited</div>
+  </div>
+  <div class="row">
+    <div class="cell" style="color:#3a3a5a">Listing duration</div>
+    <div class="cell" style="color:#555">15 days</div>
+    <div class="cell" style="color:#C9A84C">90 days</div>
+    <div class="cell" style="color:#E8C97A">180 days</div>
+    <div class="cell" style="color:#60a5fa">Until sold/completed</div>
+  </div>
+  <div class="row">
+    <div class="cell" style="color:#3a3a5a">Edit listing</div>
+    <div class="cell" style="color:#555">2× only</div>
+    <div class="cell class t">Unlimited</div>
+    <div class="cell t">Unlimited</div>
+    <div class="cell t">Unlimited</div>
+  </div>
+  <div class="row">
+    <div class="cell" style="color:#3a3a5a">Photos</div>
+    <div class="cell" style="color:#555">3 photos</div>
+    <div class="cell" style="color:#C9A84C">8 photos</div>
+    <div class="cell" style="color:#E8C97A">15 photos</div>
+    <div class="cell" style="color:#60a5fa">20 photos + floor plans</div>
+  </div>
+  <div class="row">
+    <div class="cell" style="color:#3a3a5a">Position in results</div>
+    <div class="cell" style="color:#555">Normal</div>
+    <div class="cell s">Top results</div>
+    <div class="cell s">Always top 3</div>
+    <div class="cell b">Dedicated section</div>
+  </div>
+  <div class="row">
+    <div class="cell" style="color:#3a3a5a">Auto-bump</div>
+    <div class="cell x">✗</div>
+    <div class="cell x">✗</div>
+    <div class="cell s">Every 3 days</div>
+    <div class="cell b">Every day</div>
+  </div>
+
+  <!-- ANALYTICS -->
+  <div class="row"><div class="cell-label">Analytics Dashboard</div></div>
+  <div class="row">
+    <div class="cell" style="color:#3a3a5a">Call click count</div>
+    <div class="cell t">✓</div><div class="cell t">✓</div><div class="cell t">✓</div><div class="cell t">✓</div>
+  </div>
+  <div class="row">
+    <div class="cell" style="color:#3a3a5a">Views per listing</div>
+    <div class="cell x">✗</div><div class="cell t">✓</div><div class="cell t">✓</div><div class="cell t">✓</div>
+  </div>
+  <div class="row">
+    <div class="cell" style="color:#3a3a5a">Viewer emirate map</div>
+    <div class="cell x">✗</div><div class="cell t">✓</div><div class="cell t">✓</div><div class="cell t">✓</div>
+  </div>
+  <div class="row">
+    <div class="cell" style="color:#3a3a5a">Competitor pricing</div>
+    <div class="cell x">✗</div><div class="cell x">✗</div><div class="cell t">✓</div><div class="cell t">✓</div>
+  </div>
+  <div class="row">
+    <div class="cell" style="color:#3a3a5a">Enquiry lead capture</div>
+    <div class="cell x">✗</div><div class="cell x">✗</div><div class="cell x">✗</div><div class="cell b">✓ Full leads CRM</div>
+  </div>
+  <div class="row">
+    <div class="cell" style="color:#3a3a5a">Payment plan tracker</div>
+    <div class="cell x">✗</div><div class="cell x">✗</div><div class="cell x">✗</div><div class="cell b">✓</div>
+  </div>
+
+  <!-- OFF-PLAN SPECIFIC -->
+  <div class="row"><div class="cell-label">Off-Plan Specific Features</div></div>
+  <div class="row">
+    <div class="cell" style="color:#3a3a5a">Floor plan upload</div>
+    <div class="cell x">✗</div><div class="cell x">✗</div><div class="cell x">✗</div><div class="cell b">✓</div>
+  </div>
+  <div class="row">
+    <div class="cell" style="color:#3a3a5a">Payment plan display</div>
+    <div class="cell x">✗</div><div class="cell x">✗</div><div class="cell x">✗</div><div class="cell b">✓ With % breakdown</div>
+  </div>
+  <div class="row">
+    <div class="cell" style="color:#3a3a5a">Developer profile page</div>
+    <div class="cell x">✗</div><div class="cell x">✗</div><div class="cell x">✗</div><div class="cell b">✓</div>
+  </div>
+  <div class="row">
+    <div class="cell" style="color:#3a3a5a">Register interest form</div>
+    <div class="cell x">✗</div><div class="cell x">✗</div><div class="cell x">✗</div><div class="cell b">✓ Leads go to you</div>
+  </div>
+  <div class="row">
+    <div class="cell" style="color:#3a3a5a">Dedicated Off-Plan page</div>
+    <div class="cell x">✗</div><div class="cell x">✗</div><div class="cell x">✗</div><div class="cell b">✓ Featured banner</div>
+  </div>
+</div>
+</div>
+
+<!-- OFF-PLAN PACKAGES -->
+<div class="sec">
+<div class="sec-t">🏗️ Off-Plan Packages — Developers & Agents</div>
+<div class="g3">
+  <div class="op-card">
+    <span class="op-badge">Agent / Broker</span>
+    <div class="op-title">Single Project Listing</div>
+    <div class="op-price">AED 299 / month</div>
+    <div class="op-sub">• 1 off-plan project<br>• 20 photos + floor plans<br>• Payment plan breakdown<br>• Register interest form<br>• 90-day listing duration<br>• Never auto-deleted</div>
+  </div>
+  <div class="op-card hot">
+    <span class="op-badge">Developer — Small</span>
+    <div class="op-title">Developer Starter</div>
+    <div class="op-price">AED 599 / month</div>
+    <div class="op-sub">• Up to 3 projects<br>• Developer profile page<br>• All agent features<br>• Leads CRM dashboard<br>• Priority placement<br>• RERA badge + DLD verified<br>• Auto-bump every 24hrs</div>
+  </div>
+  <div class="op-card">
+    <span class="op-badge">Developer — Large</span>
+    <div class="op-title">Developer Pro</div>
+    <div class="op-price">AED 1,499 / month</div>
+    <div class="op-sub">• Unlimited projects<br>• Homepage feature banner<br>• Dedicated developer page<br>• Full analytics + leads export<br>• Payment plan calculator<br>• Virtual tour link<br>• Account manager support</div>
+  </div>
+</div>
+</div>
+
+<!-- LISTING LIFECYCLE -->
+<div class="sec">
+<div class="sec-t">⏱️ Listing Lifecycle by Plan</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+  <div style="display:flex;align-items:center;gap:8px">
+    <div style="font-size:10px;font-weight:700;color:#555;width:80px;flex-shrink:0">FREE</div>
+    <div class="lc" style="flex:1">
+      <div class="lc-step lc-free"><div class="lc-day">Day 0</div><div class="lc-desc">Posted live</div></div>
+      <div class="lc-step lc-free"><div class="lc-day">Day 1–12</div><div class="lc-desc">Active</div></div>
+      <div class="lc-step lc-warn"><div class="lc-day">Day 13</div><div class="lc-desc">⚠ Warning email</div></div>
+      <div class="lc-step lc-dead"><div class="lc-day">Day 15</div><div class="lc-desc">Hidden / archived</div></div>
+      <div class="lc-step lc-free"><div class="lc-day">After</div><div class="lc-desc">Repost or upgrade</div></div>
+    </div>
+  </div>
+  <div style="display:flex;align-items:center;gap:8px">
+    <div style="font-size:10px;font-weight:700;color:#C9A84C;width:80px;flex-shrink:0">FEATURED</div>
+    <div class="lc" style="flex:1">
+      <div class="lc-step lc-feat"><div class="lc-day">Day 0</div><div class="lc-desc">Top results</div></div>
+      <div class="lc-step lc-feat"><div class="lc-day">Day 1–80</div><div class="lc-desc">Active</div></div>
+      <div class="lc-step lc-warn"><div class="lc-day">Day 85</div><div class="lc-desc">⚠ Renewal email</div></div>
+      <div class="lc-step lc-dead"><div class="lc-day">Day 90</div><div class="lc-desc">Expires — renew?</div></div>
+      <div class="lc-step lc-feat"><div class="lc-day">After</div><div class="lc-desc">Renew AED 99</div></div>
+    </div>
+  </div>
+  <div style="display:flex;align-items:center;gap:8px">
+    <div style="font-size:10px;font-weight:700;color:#E8C97A;width:80px;flex-shrink:0">PREMIUM</div>
+    <div class="lc" style="flex:1">
+      <div class="lc-step lc-prem"><div class="lc-day">Day 0</div><div class="lc-desc">Always top 3</div></div>
+      <div class="lc-step lc-prem"><div class="lc-day">Day 1–170</div><div class="lc-desc">Auto-bumped</div></div>
+      <div class="lc-step lc-warn"><div class="lc-day">Day 175</div><div class="lc-desc">⚠ Renewal email</div></div>
+      <div class="lc-step lc-dead"><div class="lc-day">Day 180</div><div class="lc-desc">Expires — renew?</div></div>
+      <div class="lc-step lc-prem"><div class="lc-day">After</div><div class="lc-desc">Renew AED 299</div></div>
+    </div>
+  </div>
+  <div style="display:flex;align-items:center;gap:8px">
+    <div style="font-size:10px;font-weight:700;color:#60a5fa;width:80px;flex-shrink:0">OFF-PLAN</div>
+    <div class="lc" style="flex:1">
+      <div class="lc-step" style="background:rgba(59,130,246,.05)"><div class="lc-day" style="color:#60a5fa">Posted</div><div class="lc-desc">Dedicated section</div></div>
+      <div class="lc-step" style="background:rgba(59,130,246,.05)"><div class="lc-day" style="color:#60a5fa">Active</div><div class="lc-desc">Daily auto-bump</div></div>
+      <div class="lc-step" style="background:rgba(59,130,246,.05)"><div class="lc-day" style="color:#60a5fa">Ongoing</div><div class="lc-desc">Never expires</div></div>
+      <div class="lc-step" style="background:rgba(59,130,246,.05)"><div class="lc-day" style="color:#60a5fa">Completed</div><div class="lc-desc">Mark as handed over</div></div>
+      <div class="lc-step" style="background:rgba(59,130,246,.05)"><div class="lc-day" style="color:#60a5fa">Archived</div><div class="lc-desc">Stays in history</div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+</div>

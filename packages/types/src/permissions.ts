@@ -1,0 +1,122 @@
+import type { CompanyRole, PermissionCode } from './enums';
+
+export const companyRolePermissionTemplates: Record<CompanyRole, PermissionCode[]> = {
+  company_owner: [
+    'create_listing',
+    'edit_company_listing',
+    'submit_for_review',
+    'manage_company_users',
+    'manage_company_profile',
+    'manage_company_inventory',
+    'manage_branch',
+    'upload_creatives',
+    'buy_package',
+    'assign_leads',
+    'view_company_reports',
+    'export_reports',
+    'manage_campaigns',
+    'manage_billing',
+    'view_compliance_status'
+  ],
+  company_admin: [
+    'create_listing',
+    'edit_company_listing',
+    'submit_for_review',
+    'manage_company_users',
+    'manage_company_profile',
+    'manage_company_inventory',
+    'manage_branch',
+    'upload_creatives',
+    'buy_package',
+    'assign_leads',
+    'view_company_reports',
+    'export_reports',
+    'manage_campaigns',
+    'view_compliance_status'
+  ],
+  manager: [
+    'create_listing',
+    'edit_company_listing',
+    'submit_for_review',
+    'manage_company_inventory',
+    'assign_leads',
+    'view_company_reports',
+    'view_compliance_status'
+  ],
+  publisher: ['create_listing', 'edit_company_listing', 'submit_for_review', 'manage_company_inventory', 'upload_creatives'],
+  analyst: ['view_company_reports', 'view_compliance_status'],
+  billing_admin: ['buy_package', 'manage_billing', 'view_company_reports'],
+  viewer: ['view_company_reports'],
+  agency_owner: [
+    'create_listing',
+    'edit_company_listing',
+    'submit_for_review',
+    'manage_company_users',
+    'manage_company_profile',
+    'manage_company_inventory',
+    'manage_branch',
+    'upload_creatives',
+    'buy_package',
+    'assign_leads',
+    'view_company_reports',
+    'export_reports',
+    'manage_campaigns',
+    'manage_billing',
+    'view_compliance_status'
+  ],
+  agency_admin: [
+    'create_listing',
+    'edit_company_listing',
+    'submit_for_review',
+    'manage_company_users',
+    'manage_company_profile',
+    'manage_company_inventory',
+    'manage_branch',
+    'upload_creatives',
+    'assign_leads',
+    'view_company_reports',
+    'export_reports',
+    'manage_campaigns',
+    'view_compliance_status'
+  ],
+  branch_manager: ['create_listing', 'edit_company_listing', 'submit_for_review', 'manage_company_inventory', 'manage_branch', 'assign_leads', 'view_company_reports'],
+  broker: ['create_listing', 'edit_company_listing', 'submit_for_review', 'view_compliance_status'],
+  listing_coordinator: ['create_listing', 'edit_company_listing', 'submit_for_review', 'manage_company_inventory', 'upload_creatives'],
+  marketing_user: ['upload_creatives', 'manage_campaigns', 'view_company_reports'],
+  dealer_owner: [
+    'create_listing',
+    'edit_company_listing',
+    'submit_for_review',
+    'manage_company_users',
+    'manage_company_profile',
+    'manage_company_inventory',
+    'manage_branch',
+    'upload_creatives',
+    'buy_package',
+    'assign_leads',
+    'view_company_reports',
+    'export_reports',
+    'manage_campaigns',
+    'manage_billing',
+    'view_compliance_status'
+  ],
+  dealer_admin: [
+    'create_listing',
+    'edit_company_listing',
+    'submit_for_review',
+    'manage_company_profile',
+    'manage_company_inventory',
+    'manage_branch',
+    'upload_creatives',
+    'assign_leads',
+    'view_company_reports',
+    'manage_campaigns',
+    'view_compliance_status'
+  ],
+  inventory_manager: ['create_listing', 'edit_company_listing', 'submit_for_review', 'manage_company_inventory', 'upload_creatives'],
+  sales_user: ['assign_leads', 'view_company_reports']
+};
+
+export function getRolePermissions(role: CompanyRole): PermissionCode[] {
+  return companyRolePermissionTemplates[role] ?? [];
+}

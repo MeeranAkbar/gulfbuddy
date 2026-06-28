@@ -1,0 +1,190 @@
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.w{font-family:sans-serif;padding:6px 0}
+.sec{margin-bottom:22px}
+.sec-t{font-size:10px;font-weight:700;color:#C9A84C;text-transform:uppercase;letter-spacing:1.2px;padding-bottom:7px;border-bottom:1px solid #1a1828;margin-bottom:12px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.card{border-radius:10px;padding:12px 14px;background:#0d0d1a;border:1px solid #1a1828}
+.card.gold{border-color:rgba(201,168,76,.4);background:#0f0f1c}
+.card.blue{border-color:rgba(96,165,250,.3);background:#08080f}
+.card.green{border-color:rgba(34,197,94,.3);background:#080f08}
+.card.red{border-color:rgba(239,68,68,.3);background:#130808}
+.ct{font-size:12px;font-weight:700;margin-bottom:8px}
+.card .ct{color:#888}
+.card.gold .ct{color:#C9A84C}
+.card.blue .ct{color:#60a5fa}
+.card.green .ct{color:#22c55e}
+.card.red .ct{color:#ef4444}
+.cb{font-size:11px;color:#555;line-height:1.7}
+.cb li{margin-left:14px}
+.badge{display:inline-block;font-size:9px;font-weight:700;padding:2px 8px;border-radius:20px;margin-bottom:7px}
+.b-now{background:rgba(34,197,94,.12);color:#22c55e;border:1px solid rgba(34,197,94,.2)}
+.b-build{background:rgba(201,168,76,.12);color:#C9A84C;border:1px solid rgba(201,168,76,.2)}
+.b-no{background:rgba(239,68,68,.12);color:#ef4444;border:1px solid rgba(239,68,68,.2)}
+.b-plan{background:#111128;color:#3a3a5a;border:1px solid #1a1828}
+
+/* Rotation diagram */
+.rot{background:#080810;border:1px solid #1a1828;border-radius:10px;padding:12px;margin-top:8px}
+.rot-title{font-size:10px;font-weight:700;color:#3a3a5a;text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px}
+.slot{display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid #0d0d0d;font-size:11px}
+.slot:last-child{border-bottom:none}
+.slot-n{font-size:10px;font-weight:700;width:20px;flex-shrink:0;text-align:center}
+.slot-badge{font-size:9px;font-weight:700;padding:1px 7px;border-radius:10px;flex-shrink:0}
+.sb-prem{background:rgba(232,201,122,.2);color:#E8C97A}
+.sb-feat{background:rgba(201,168,76,.15);color:#C9A84C}
+.sb-free{background:#1a1828;color:#333}
+.slot-text{flex:1;color:#666}
+.slot-time{font-size:9px;color:#3a3a5a;flex-shrink:0}
+</style>
+<div class="w">
+
+<!-- Q1: HOW 10 FEATURED + 10 PREMIUM WORKS -->
+<div class="sec">
+<div class="sec-t">Q1: 10 Featured + 10 Premium — How Rotation Works</div>
+<div class="g2">
+  <div class="card gold">
+    <span class="badge b-build">To Build</span>
+    <div class="ct">The Rotation System</div>
+    <div class="cb">
+      Premium listings rotate among themselves — always occupy top 3 slots.<br><br>
+      If 10 premium listings exist, each one gets "top 3" time on a rotating schedule.<br><br>
+      Featured listings always appear below premium — same rotation among themselves.<br><br>
+      Free listings always at bottom — newest first, no rotation.
+    </div>
+  </div>
+  <div>
+    <div class="rot">
+      <div class="rot-title">Results page at any given moment</div>
+      <div class="slot"><span class="slot-n" style="color:#E8C97A">1</span><span class="slot-badge sb-prem">💎 PREM</span><span class="slot-text">Villa Palm Jumeirah</span><span class="slot-time">Bumped 2hrs ago</span></div>
+      <div class="slot"><span class="slot-n" style="color:#E8C97A">2</span><span class="slot-badge sb-prem">💎 PREM</span><span class="slot-text">3BR Downtown</span><span class="slot-time">Bumped 5hrs ago</span></div>
+      <div class="slot"><span class="slot-n" style="color:#E8C97A">3</span><span class="slot-badge sb-prem">💎 PREM</span><span class="slot-text">Penthouse JBR</span><span class="slot-time">Bumped 8hrs ago</span></div>
+      <div style="border-top:1px dashed #1a3a1a;margin:4px 0;font-size:9px;color:#1a3a1a;padding:2px 0">7 more premium listings rotate through these 3 slots</div>
+      <div class="slot"><span class="slot-n" style="color:#C9A84C">4</span><span class="slot-badge sb-feat">⭐ FEAT</span><span class="slot-text">2BR Marina</span><span class="slot-time">Bumped today</span></div>
+      <div class="slot"><span class="slot-n" style="color:#C9A84C">5</span><span class="slot-badge sb-feat">⭐ FEAT</span><span class="slot-text">Studio JLT</span><span class="slot-time">Bumped today</span></div>
+      <div style="border-top:1px dashed #1a1828;margin:4px 0;font-size:9px;color:#1a1828;padding:2px 0">8 more featured listings rotate here</div>
+      <div class="slot"><span class="slot-n" style="color:#333">6</span><span class="slot-badge sb-free">FREE</span><span class="slot-text">1BR Al Nahda</span><span class="slot-time">3 days ago</span></div>
+      <div class="slot"><span class="slot-n" style="color:#333">7</span><span class="slot-badge sb-free">FREE</span><span class="slot-text">2BR Sharjah</span><span class="slot-time">5 days ago</span></div>
+    </div>
+    <div style="font-size:10px;color:#3a3a5a;margin-top:6px;line-height:1.5">Premium: auto-bumped every 3 days (180-day plan)<br>Featured: appears top — user bumps manually or every 7 days<br>Fair rotation = every premium seller gets exposure</div>
+  </div>
+</div>
+</div>
+
+<!-- Q2: SHORT TERM + NEW PROJECTS -->
+<div class="sec">
+<div class="sec-t">Q2: Short-Term Property + New Projects — Do We Need Them?</div>
+<div class="g3">
+  <div class="card green">
+    <span class="badge b-now">Yes — Add It</span>
+    <div class="ct">Short-Term Rentals</div>
+    <div class="cb"><ul>
+      <li>Holiday homes, Airbnb-style</li>
+      <li>Monthly furnished rentals</li>
+      <li>Huge in Dubai — DTCM licence required</li>
+      <li>Add "Short Term" as option in Purpose toggle alongside Rent/Sale</li>
+      <li>Extra filter: Minimum stay (1 night / 1 week / 1 month)</li>
+      <li>Price shown per night/week/month</li>
+    </ul></div>
+  </div>
+  <div class="card green">
+    <span class="badge b-now">Yes — Add It</span>
+    <div class="ct">New Projects / Off-Plan</div>
+    <div class="cb"><ul>
+      <li>Already designed as "Off-Plan Pro" tier</li>
+      <li>Needs dedicated Off-Plan landing page</li>
+      <li>Project cards different from regular listings</li>
+      <li>Show: Developer, Handover date, Payment plan %, Units available</li>
+      <li>Register Interest button (lead capture)</li>
+      <li>Separate section on homepage</li>
+    </ul></div>
+  </div>
+  <div class="card">
+    <span class="badge b-plan">Consider Later</span>
+    <div class="ct">Commercial Only Section</div>
+    <div class="cb"><ul>
+      <li>Offices, shops, warehouses as separate tab</li>
+      <li>Different filters (fit-out status, parking, floor level)</li>
+      <li>B2B market — companies searching</li>
+      <li>Could be Phase 2 after residential is established</li>
+    </ul></div>
+  </div>
+</div>
+</div>
+
+<!-- Q3: SEO -->
+<div class="sec">
+<div class="sec-t">Q3: SEO — Current Status + What to Build</div>
+<div class="g2">
+  <div class="card red">
+    <span class="badge b-no">Not Built Yet</span>
+    <div class="ct">Current SEO Status = Zero</div>
+    <div class="cb"><ul>
+      <li>No meta descriptions on any page</li>
+      <li>No Open Graph tags (WhatsApp/social sharing)</li>
+      <li>No structured data (Google doesn't understand the listings)</li>
+      <li>No sitemap.xml</li>
+      <li>No robots.txt</li>
+      <li>All pages have same generic title</li>
+      <li>No canonical URLs</li>
+    </ul></div>
+  </div>
+  <div class="card gold">
+    <span class="badge b-build">Build This</span>
+    <div class="ct">Auto-SEO System</div>
+    <div class="cb"><ul>
+      <li>Auto-generate title: "2BR Apartment for Rent in Marina Dubai | GulfHabibi"</li>
+      <li>Auto meta description from listing data</li>
+      <li>Each listing gets own URL: /property/2br-marina-dubai-123</li>
+      <li>JSON-LD structured data on every listing (Google Rich Results)</li>
+      <li>sitemap.xml auto-generated from all active listings</li>
+      <li>Open Graph tags for WhatsApp/Facebook preview</li>
+      <li>robots.txt to guide Google crawlers</li>
+      <li>Page speed optimisation (Core Web Vitals)</li>
+    </ul></div>
+  </div>
+</div>
+</div>
+
+<!-- Q4: REPORTS -->
+<div class="sec">
+<div class="sec-t">Q4: Weekly/Monthly/Yearly Reports for Subscribers</div>
+<div class="g3">
+  <div class="card">
+    <span class="badge b-plan">Free Users</span>
+    <div class="ct">No Reports</div>
+    <div class="cb">Dashboard only shows:<br><ul>
+      <li>Listings active/expired</li>
+      <li>Call clicks total</li>
+      <li>Days until expiry</li>
+    </ul><br>No email reports — upgrade prompt only.</div>
+  </div>
+  <div class="card gold">
+    <span class="badge b-build">Featured (AED 99)</span>
+    <div class="ct">Weekly Email Report</div>
+    <div class="cb">Auto-sent every Monday:<br><ul>
+      <li>Views this week vs last week</li>
+      <li>Call + WhatsApp clicks</li>
+      <li>Which listing performed best</li>
+      <li>Tip: "Your listing gets most views Tuesday 8pm"</li>
+      <li>Upgrade prompt at bottom</li>
+    </ul></div>
+  </div>
+  <div class="card gold">
+    <span class="badge b-build">Premium (AED 299)</span>
+    <div class="ct">Weekly + Monthly + Yearly</div>
+    <div class="cb">Weekly: same as Featured<br><br>Monthly (1st of month):<ul>
+      <li>Full analytics breakdown</li>
+      <li>Competitor price comparison</li>
+      <li>Best performing listing</li>
+      <li>Market trend in your area</li>
+    </ul>Yearly (Jan 1st):<ul>
+      <li>Full year performance</li>
+      <li>ROI calculation</li>
+      <li>Renewal recommendation</li>
+    </ul></div>
+  </div>
+</div>
+</div>
+
+</div>

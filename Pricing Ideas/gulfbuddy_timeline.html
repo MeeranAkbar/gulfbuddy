@@ -1,0 +1,164 @@
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.w{font-family:sans-serif;padding:6px 0}
+.phase{margin-bottom:20px;border-radius:12px;overflow:hidden;border:1px solid #1a1828}
+.phase-head{padding:12px 16px;display:flex;align-items:center;justify-content:space-between}
+.ph-done{background:rgba(34,197,94,.08);border-bottom:1px solid rgba(34,197,94,.2)}
+.ph-now{background:rgba(201,168,76,.08);border-bottom:1px solid rgba(201,168,76,.3)}
+.ph-next{background:rgba(96,165,250,.06);border-bottom:1px solid rgba(96,165,250,.2)}
+.ph-future{background:#0d0d1a;border-bottom:1px solid #1a1828}
+.phase-title{font-size:13px;font-weight:700}
+.ph-done .phase-title{color:#22c55e}
+.ph-now .phase-title{color:#C9A84C}
+.ph-next .phase-title{color:#60a5fa}
+.ph-future .phase-title{color:#3a3a5a}
+.phase-date{font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px}
+.ph-done .phase-date{background:rgba(34,197,94,.15);color:#22c55e}
+.ph-now .phase-date{background:rgba(201,168,76,.15);color:#C9A84C}
+.ph-next .phase-date{background:rgba(96,165,250,.12);color:#60a5fa}
+.ph-future .phase-date{background:#111128;color:#3a3a5a}
+.tasks{padding:10px 16px 14px}
+.task{display:flex;align-items:flex-start;gap:10px;padding:6px 0;border-bottom:1px solid #0a0a12;font-size:11px}
+.task:last-child{border-bottom:none}
+.task-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:3px}
+.td-done{background:#22c55e}
+.td-build{background:#C9A84C}
+.td-soon{background:#60a5fa}
+.td-future{background:#2a2a3a}
+.task-label{flex:1;color:#888;line-height:1.5}
+.task-label strong{color:#ececec;font-weight:600}
+.task-days{font-size:9px;font-weight:700;padding:1px 7px;border-radius:10px;flex-shrink:0;white-space:nowrap}
+.dy-done{background:rgba(34,197,94,.1);color:#22c55e}
+.dy-quick{background:rgba(201,168,76,.1);color:#C9A84C}
+.dy-med{background:rgba(96,165,250,.1);color:#60a5fa}
+.dy-long{background:#111128;color:#3a3a5a}
+/* Revenue chart */
+.rev-row{display:flex;align-items:center;gap:10px;padding:5px 0;font-size:11px}
+.rev-label{width:100px;color:#555;flex-shrink:0;font-size:10px}
+.rev-bar-wrap{flex:1;background:#0a0a12;border-radius:4px;height:14px;overflow:hidden}
+.rev-bar{height:100%;border-radius:4px;display:flex;align-items:center;padding-left:6px;font-size:9px;font-weight:700}
+.rb-0{width:0%}
+.rb-10{width:10%;background:#1a1828;color:#333}
+.rb-30{width:30%;background:rgba(201,168,76,.4);color:#000}
+.rb-60{width:60%;background:rgba(201,168,76,.7);color:#000}
+.rb-100{width:100%;background:#C9A84C;color:#000}
+.rev-val{width:80px;text-align:right;font-size:10px;font-weight:700;color:#555;flex-shrink:0}
+.sec-t{font-size:10px;font-weight:700;color:#C9A84C;text-transform:uppercase;letter-spacing:1.2px;padding-bottom:7px;border-bottom:1px solid #1a1828;margin-bottom:10px}
+.summary-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px}
+.sum-card{background:#0d0d1a;border:1px solid #1a1828;border-radius:9px;padding:10px;text-align:center}
+.sum-n{font-size:20px;font-weight:700;margin-bottom:2px}
+.sum-l{font-size:10px;color:#555}
+</style>
+<div class="w">
+
+<!-- SUMMARY -->
+<div class="summary-grid">
+  <div class="sum-card"><div class="sum-n" style="color:#22c55e">72%</div><div class="sum-l">Frontend built</div></div>
+  <div class="sum-card"><div class="sum-n" style="color:#C9A84C">3–4</div><div class="sum-l">Weeks to launch</div></div>
+  <div class="sum-card"><div class="sum-n" style="color:#60a5fa">19</div><div class="sum-l">Sessions done</div></div>
+  <div class="sum-card"><div class="sum-n" style="color:#E8C97A">~8</div><div class="sum-l">Sessions left to launch</div></div>
+</div>
+
+<!-- PHASE 0 — DONE -->
+<div class="phase">
+<div class="phase-head ph-done">
+  <div class="phase-title">✅ Phase 0 — Foundation (DONE)</div>
+  <span class="phase-date">March 18, 2026 — Today</span>
+</div>
+<div class="tasks">
+  <div class="task"><div class="task-dot td-done"></div><div class="task-label"><strong>All 6 browse pages</strong> — Motors, Property, Jobs, Classifieds, Services, Directory with sidebars + filter bars</div><span class="task-days dy-done">Done</span></div>
+  <div class="task"><div class="task-dot td-done"></div><div class="task-label"><strong>3 post forms</strong> — Motors, Jobs, Classifieds with image compression + sub-categories</div><span class="task-days dy-done">Done</span></div>
+  <div class="task"><div class="task-dot td-done"></div><div class="task-label"><strong>Full SEO system</strong> — seo.js, robots.txt, sitemap.xml, .htaccess, all 9 pages optimised</div><span class="task-days dy-done">Done</span></div>
+  <div class="task"><div class="task-dot td-done"></div><div class="task-label"><strong>Tier system</strong> — Free/Featured/Premium visual cards, sort order, crown badges across all browse pages</div><span class="task-days dy-done">Done</span></div>
+  <div class="task"><div class="task-dot td-done"></div><div class="task-label"><strong>Admin dashboard</strong> — search analytics, demand gaps, zero-result tracking</div><span class="task-days dy-done">Done</span></div>
+  <div class="task"><div class="task-dot td-done"></div><div class="task-label"><strong>Business strategy locked</strong> — pricing, rotation, policies, off-plan, OTP, security plan</div><span class="task-days dy-done">Done</span></div>
+</div>
+</div>
+
+<!-- PHASE 1 — DATABASE + BACKEND (Week 1) -->
+<div class="phase">
+<div class="phase-head ph-now">
+  <div class="phase-title">🔧 Phase 1 — Database + Core Backend</div>
+  <span class="phase-date">Week 1 — ~3 sessions</span>
+</div>
+<div class="tasks">
+  <div class="task"><div class="task-dot td-build"></div><div class="task-label"><strong>Run ALL pending SQL</strong> — 25+ columns across listings, profiles, jobs, services, search_log tables in Supabase</div><span class="task-days dy-quick">1 session</span></div>
+  <div class="task"><div class="task-dot td-build"></div><div class="task-label"><strong>Supabase RLS</strong> — Row Level Security on all tables. Critical security fix. users edit own rows only.</div><span class="task-days dy-quick">1 session</span></div>
+  <div class="task"><div class="task-dot td-build"></div><div class="task-label"><strong>property/post.html + services/post.html</strong> — add images.js compression, fix form fields</div><span class="task-days dy-quick">1 session</span></div>
+  <div class="task"><div class="task-dot td-build"></div><div class="task-label"><strong>shared/sanitise.js</strong> — input sanitisation, strip HTML/JS from all form inputs</div><span class="task-days dy-quick">Half session</span></div>
+  <div class="task"><div class="task-dot td-build"></div><div class="task-label"><strong>Test full post flow</strong> — post listing end-to-end on all 5 categories, verify DB saves correctly</div><span class="task-days dy-quick">1 session</span></div>
+</div>
+</div>
+
+<!-- PHASE 2 — DASHBOARD + AUTH (Week 2) -->
+<div class="phase">
+<div class="phase-head ph-now">
+  <div class="phase-title">📊 Phase 2 — User Dashboard + Auth + OTP</div>
+  <span class="phase-date">Week 2 — ~3 sessions</span>
+</div>
+<div class="tasks">
+  <div class="task"><div class="task-dot td-build"></div><div class="task-label"><strong>dashboard/index.html</strong> — my listings page. Free: basic list. Featured: views + WhatsApp chart. Premium: full analytics.</div><span class="task-days dy-quick">2 sessions</span></div>
+  <div class="task"><div class="task-dot td-build"></div><div class="task-label"><strong>Phone OTP verification</strong> — Supabase Auth phone OTP, zero-storage hash, block posting without verify</div><span class="task-days dy-quick">1 session</span></div>
+  <div class="task"><div class="task-dot td-build"></div><div class="task-label"><strong>Update pricing.html</strong> — show all 4 tiers: Free / Featured / Premium / Off-Plan Pro with full feature comparison</div><span class="task-days dy-quick">Half session</span></div>
+  <div class="task"><div class="task-dot td-build"></div><div class="task-label"><strong>Listing expiry system</strong> — expires_at column, auto-hide after 15/90/180 days, warning email Day 13/85/175</div><span class="task-days dy-quick">1 session</span></div>
+</div>
+</div>
+
+<!-- PHASE 3 — LISTING DETAILS + TRUST (Week 3) -->
+<div class="phase">
+<div class="phase-head ph-next">
+  <div class="phase-title">🔍 Phase 3 — Listing Detail Pages + AI Trust</div>
+  <span class="phase-date">Week 3 — ~3 sessions</span>
+</div>
+<div class="tasks">
+  <div class="task"><div class="task-dot td-soon"></div><div class="task-label"><strong>Individual listing pages</strong> — property/listing.html, motors/listing.html, jobs/listing.html with dynamic SEO. Critical for Google indexing.</div><span class="task-days dy-med">2 sessions</span></div>
+  <div class="task"><div class="task-dot td-soon"></div><div class="task-label"><strong>shared/trust.js</strong> — Layer 1 spam detection + Groq AI content scoring (0–100) on every post submit</div><span class="task-days dy-med">1 session</span></div>
+  <div class="task"><div class="task-dot td-soon"></div><div class="task-label"><strong>Report button</strong> — on every listing card. 3 reports = hidden. 5 = deleted. Admin review queue.</div><span class="task-days dy-med">Half session</span></div>
+  <div class="task"><div class="task-dot td-soon"></div><div class="task-label"><strong>Short-term rentals</strong> — add Short Term to property Purpose toggle, min-stay filter, per-night price label</div><span class="task-days dy-med">Half session</span></div>
+  <div class="task"><div class="task-dot td-soon"></div><div class="task-label"><strong>OG image + favicon</strong> — design in Canva 1200×630px, upload as og-image.jpg. Needed for social sharing previews.</div><span class="task-days dy-med">1 hour</span></div>
+</div>
+</div>
+
+<!-- PHASE 4 — LAUNCH PREP (Week 4) -->
+<div class="phase">
+<div class="phase-head ph-next">
+  <div class="phase-title">🚀 Phase 4 — Launch Prep + Upload</div>
+  <span class="phase-date">Week 4 — ~2 sessions</span>
+</div>
+<div class="tasks">
+  <div class="task"><div class="task-dot td-soon"></div><div class="task-label"><strong>Full mobile test</strong> — every page on iPhone 12 Pro view in Chrome DevTools, fix any layout breaks</div><span class="task-days dy-med">1 session</span></div>
+  <div class="task"><div class="task-dot td-soon"></div><div class="task-label"><strong>Upload to Milesweb cPanel</strong> — transfer all files, point gulfhabibi.com, enable SSL via Let's Encrypt</div><span class="task-days dy-med">1 session</span></div>
+  <div class="task"><div class="task-dot td-soon"></div><div class="task-label"><strong>Cloudflare setup</strong> — change nameservers, enable DDoS protection, rate limiting, CDN. Takes 5 mins.</div><span class="task-days dy-med">30 mins</span></div>
+  <div class="task"><div class="task-dot td-soon"></div><div class="task-label"><strong>Google Search Console</strong> — submit sitemap.xml, verify domain ownership</div><span class="task-days dy-med">30 mins</span></div>
+  <div class="task"><div class="task-dot td-soon"></div><div class="task-label"><strong>Google AdSense apply</strong> — privacy.html ✅ terms.html ✅ — ready to apply, approval takes 2–4 weeks</div><span class="task-days dy-med">30 mins</span></div>
+  <div class="task"><div class="task-dot td-soon"></div><div class="task-label"><strong>🎉 LIVE on gulfhabibi.com</strong></div><span class="task-days dy-med">Target</span></div>
+</div>
+</div>
+
+<!-- PHASE 5 — AFTER LAUNCH -->
+<div class="phase">
+<div class="phase-head ph-future">
+  <div class="phase-title">💰 Phase 5 — After Launch (Revenue Activation)</div>
+  <span class="phase-date">Month 2–3</span>
+</div>
+<div class="tasks">
+  <div class="task"><div class="task-dot td-future"></div><div class="task-label"><strong>PayTabs payment integration</strong> — Featured/Premium upgrade flow. First paid subscribers.</div><span class="task-days dy-long">Month 2</span></div>
+  <div class="task"><div class="task-dot td-future"></div><div class="task-label"><strong>Google Auth</strong> — Sign in with Google button via Supabase. Reduces signup friction massively.</div><span class="task-days dy-long">Month 2</span></div>
+  <div class="task"><div class="task-dot td-future"></div><div class="task-label"><strong>Weekly reports system</strong> — Resend.com email integration. Auto Monday reports for Featured/Premium.</div><span class="task-days dy-long">Month 2</span></div>
+  <div class="task"><div class="task-dot td-future"></div><div class="task-label"><strong>AED 2 refundable deposit</strong> — introduce after 500+ users. Reduces fake listings without killing growth.</div><span class="task-days dy-long">Month 3</span></div>
+  <div class="task"><div class="task-dot td-future"></div><div class="task-label"><strong>GulfHabibi AI Guide activation</strong> — connect Model 1, launch AI legal guide, free 5 questions/day</div><span class="task-days dy-long">Month 3</span></div>
+  <div class="task"><div class="task-dot td-future"></div><div class="task-label"><strong>Off-Plan Pro live</strong> — approach Dubai agents + developers. AED 599/mo. Biggest revenue source.</div><span class="task-days dy-long">Month 3</span></div>
+</div>
+</div>
+
+<!-- REVENUE PROJECTION -->
+<div style="background:#0d0d1a;border:1px solid #1a1828;border-radius:12px;padding:14px;margin-top:4px">
+<div class="sec-t">💰 Revenue Projection</div>
+<div class="rev-row"><div class="rev-label">Month 1 (launch)</div><div class="rev-bar-wrap"><div class="rev-bar rb-10">AED 0</div></div><div class="rev-val" style="color:#333">AED 0</div></div>
+<div class="rev-row"><div class="rev-label">Month 2</div><div class="rev-bar-wrap"><div class="rev-bar rb-10">AdSense</div></div><div class="rev-val" style="color:#555">AED 200–500</div></div>
+<div class="rev-row"><div class="rev-label">Month 3</div><div class="rev-bar-wrap"><div class="rev-bar rb-30">AdSense+Paid</div></div><div class="rev-val" style="color:#C9A84C">AED 1,500–3K</div></div>
+<div class="rev-row"><div class="rev-label">Month 6</div><div class="rev-bar-wrap"><div class="rev-bar rb-60">All streams</div></div><div class="rev-val" style="color:#C9A84C">AED 5K–15K</div></div>
+<div class="rev-row"><div class="rev-label">Month 12</div><div class="rev-bar-wrap"><div class="rev-bar rb-100">Off-Plan+Subs</div></div><div class="rev-val" style="color:#E8C97A">AED 20K–50K</div></div>
+</div>
+
+</div>

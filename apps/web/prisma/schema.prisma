@@ -1,0 +1,38 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  name      String?
+  plan      String   @default("FREE") // FREE, PRO, PREMIUM, ELITE
+  createdAt DateTime @default(now())
+  ads       Ad[]
+}
+
+model Ad {
+  id          String   @id @default(uuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  category    String   // property, motors, jobs, classifieds, services, directory
+  title       String
+  price       Float
+  description String
+  status      String   @default("ACTIVE") // ACTIVE, UNDER_REVIEW, SOLD, EXPIRED
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  metadata    AdMetadata?
+}
+
+model AdMetadata {
+  id      String @id @default(uuid())
+  adId    String @unique
+  ad      Ad     @relation(fields: [adId], references: [id], onDelete: Cascade)
+  details String // JSON string to store dynamic fields (motorFeatures, jobBenefits, etc)
+}

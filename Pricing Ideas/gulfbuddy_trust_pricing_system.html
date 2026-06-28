@@ -1,0 +1,192 @@
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.wrap{font-family:sans-serif;padding:8px 0;color:#ececec}
+.section{margin-bottom:20px}
+.sec-title{font-size:10px;font-weight:700;color:#C9A84C;text-transform:uppercase;letter-spacing:1.2px;padding-bottom:7px;border-bottom:1px solid #1a1828;margin-bottom:10px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.card{border-radius:9px;padding:12px 13px}
+.c-dark{background:#0d0d1a;border:1px solid #1a1828}
+.c-warn{background:#150a0a;border:1px solid rgba(239,68,68,.25)}
+.c-gold{background:#0f0f1a;border:1px solid rgba(201,168,76,.35)}
+.c-green{background:#0a150a;border:1px solid rgba(34,197,94,.25)}
+.card-title{font-size:12px;font-weight:700;margin-bottom:6px}
+.c-dark .card-title{color:#888}
+.c-warn .card-title{color:#ef4444}
+.c-gold .card-title{color:#C9A84C}
+.c-green .card-title{color:#22c55e}
+.card-body{font-size:11px;color:#555;line-height:1.6}
+.card-body li{margin-left:14px;margin-bottom:2px}
+.badge{display:inline-block;font-size:9px;font-weight:700;padding:2px 8px;border-radius:20px;margin-bottom:6px}
+.b-auto{background:rgba(59,130,246,.12);color:#60a5fa;border:1px solid rgba(59,130,246,.2)}
+.b-ai{background:rgba(168,85,247,.12);color:#c084fc;border:1px solid rgba(168,85,247,.2)}
+.b-manual{background:rgba(201,168,76,.12);color:#C9A84C;border:1px solid rgba(201,168,76,.2)}
+
+/* PRICING TABLE */
+.price-table{width:100%;border-collapse:collapse}
+.price-table th{background:#0d0d1a;padding:10px 12px;text-align:left;font-size:10px;font-weight:700;color:#C9A84C;text-transform:uppercase;letter-spacing:.8px;border-bottom:1px solid #1a1828}
+.price-table td{padding:9px 12px;font-size:11px;border-bottom:1px solid #1a1828;vertical-align:top}
+.price-table tr:last-child td{border-bottom:none}
+.price-table tr:hover td{background:rgba(201,168,76,.03)}
+.p-free{color:#555}
+.p-feat{color:#C9A84C}
+.p-prem{color:#E8C97A}
+.tick{color:#22c55e;font-weight:700}
+.cross{color:#2a2a2a}
+.star{color:#C9A84C}
+.pill{display:inline-block;font-size:9px;padding:1px 7px;border-radius:20px;font-weight:700}
+.pill-free{background:#1a1828;color:#444}
+.pill-feat{background:rgba(201,168,76,.15);color:#C9A84C}
+.pill-prem{background:rgba(201,168,76,.3);color:#E8C97A}
+</style>
+<div class="wrap">
+
+<!-- AI TRUST SYSTEM -->
+<div class="section">
+<div class="sec-title">🤖 AI Trust & Safety System</div>
+<div class="grid3">
+  <div class="card c-dark">
+    <span class="badge b-auto">Auto — On Post</span>
+    <div class="card-title">Spam Detection</div>
+    <div class="card-body"><ul>
+      <li>Same phone → 3+ listings = flagged</li>
+      <li>Same title posted twice = blocked</li>
+      <li>Price AED 0 on non-free cat = flagged</li>
+      <li>Numbers in title (99999999) = review</li>
+      <li>ALL CAPS title = warning</li>
+    </ul></div>
+  </div>
+  <div class="card c-dark">
+    <span class="badge b-auto">Auto — Ongoing</span>
+    <div class="card-title">Fake Profile Detection</div>
+    <div class="card-body"><ul>
+      <li>New account + 3 posts same day = hold</li>
+      <li>Same IP + multiple accounts = flag</li>
+      <li>Phone number format check (UAE +971)</li>
+      <li>Email disposable domain = block</li>
+      <li>Profile photo reverse search (Phase 2)</li>
+    </ul></div>
+  </div>
+  <div class="card c-warn">
+    <span class="badge b-ai">AI — Groq/LLM</span>
+    <div class="card-title">Content Moderation</div>
+    <div class="card-body"><ul>
+      <li>Prohibited items detection (drugs, weapons)</li>
+      <li>Scam phrases ("send deposit first")</li>
+      <li>Adult content filter</li>
+      <li>Price too good — scam flag</li>
+      <li>Description vs category mismatch</li>
+    </ul></div>
+  </div>
+  <div class="card c-dark">
+    <span class="badge b-auto">Auto — Scheduled</span>
+    <div class="card-title">Auto-Delete Rules</div>
+    <div class="card-body"><ul>
+      <li>Free listings → delete after 15 days</li>
+      <li>Warning email sent on day 13</li>
+      <li>Featured → 90 days then renewal prompt</li>
+      <li>Premium → never expires</li>
+      <li>Expired → archived (not deleted from DB)</li>
+    </ul></div>
+  </div>
+  <div class="card c-dark">
+    <span class="badge b-manual">Manual Review Queue</span>
+    <div class="card-title">Report System</div>
+    <div class="card-body"><ul>
+      <li>Report button on every listing</li>
+      <li>Reasons: Scam / Fake / Wrong cat / Spam</li>
+      <li>3 reports = auto-hidden pending review</li>
+      <li>5 reports = auto-deleted</li>
+      <li>Reported user: 3 strikes = banned</li>
+    </ul></div>
+  </div>
+  <div class="card c-green">
+    <span class="badge b-auto">Trust Badges</span>
+    <div class="card-title">Verified Signals</div>
+    <div class="card-body"><ul>
+      <li>✅ Phone Verified (OTP on post)</li>
+      <li>🏢 Business Verified (trade licence)</li>
+      <li>⭐ Premium Member badge</li>
+      <li>📋 RERA Verified (property only)</li>
+      <li>👍 Good Seller (reviews)</li>
+    </ul></div>
+  </div>
+</div>
+</div>
+
+<!-- PRICING COMPARISON -->
+<div class="section">
+<div class="sec-title">💰 Pricing — Full Feature Comparison</div>
+<table class="price-table">
+  <thead><tr>
+    <th style="width:36%">Feature</th>
+    <th><span class="pill pill-free">Free</span> AED 0</th>
+    <th><span class="pill pill-feat">⭐ Featured</span> AED 99/mo</th>
+    <th><span class="pill pill-prem">💎 Premium</span> AED 299/mo</th>
+  </tr></thead>
+  <tbody>
+    <tr><td style="color:#3a3a5a;font-weight:600;font-size:10px;text-transform:uppercase;letter-spacing:.6px" colspan="4">Listings</td></tr>
+    <tr><td class="p-free">Active listings</td><td class="p-free">Max 3</td><td class="p-feat">Max 10</td><td class="p-prem">Unlimited</td></tr>
+    <tr><td class="p-free">Listing duration</td><td class="p-free">15 days</td><td class="p-feat">90 days</td><td class="p-prem">Never expires</td></tr>
+    <tr><td class="p-free">Edit listing</td><td class="p-free">2× only</td><td class="p-feat">Unlimited</td><td class="p-prem">Unlimited</td></tr>
+    <tr><td class="p-free">Photos per listing</td><td class="p-free">3 photos</td><td class="p-feat">8 photos</td><td class="p-prem">15 photos</td></tr>
+    <tr><td class="p-free">Position in results</td><td class="p-free">Normal order</td><td class="p-feat"><span class="tick">✓</span> Top results</td><td class="p-prem"><span class="tick">✓</span> Always top 3</td></tr>
+    <tr><td class="p-free">Featured badge</td><td class="cross">✗</td><td class="tick">✓</td><td class="tick">✓</td></tr>
+    <tr><td class="p-free">Auto-bump (back to top)</td><td class="cross">✗</td><td class="cross">✗</td><td><span class="tick">✓</span> Every 3 days</td></tr>
+    <tr><td style="color:#3a3a5a;font-weight:600;font-size:10px;text-transform:uppercase;letter-spacing:.6px" colspan="4">Analytics Dashboard</td></tr>
+    <tr><td class="p-free">My listings overview</td><td class="tick">✓</td><td class="tick">✓</td><td class="tick">✓</td></tr>
+    <tr><td class="p-free">Call click count</td><td class="tick">✓</td><td class="tick">✓</td><td class="tick">✓</td></tr>
+    <tr><td class="p-free">Views per listing</td><td class="cross">✗</td><td class="tick">✓</td><td class="tick">✓</td></tr>
+    <tr><td class="p-free">Views by emirate</td><td class="cross">✗</td><td class="tick">✓</td><td class="tick">✓</td></tr>
+    <tr><td class="p-free">WhatsApp click count</td><td class="cross">✗</td><td class="tick">✓</td><td class="tick">✓</td></tr>
+    <tr><td class="p-free">7-day views chart</td><td class="cross">✗</td><td class="tick">✓</td><td class="tick">✓</td></tr>
+    <tr><td class="p-free">Competitor price insight</td><td class="cross">✗</td><td class="cross">✗</td><td class="tick">✓</td></tr>
+    <tr><td class="p-free">Best time to post tip</td><td class="cross">✗</td><td class="cross">✗</td><td class="tick">✓</td></tr>
+    <tr><td class="p-free">30-day report</td><td class="cross">✗</td><td class="cross">✗</td><td class="tick">✓</td></tr>
+    <tr><td style="color:#3a3a5a;font-weight:600;font-size:10px;text-transform:uppercase;letter-spacing:.6px" colspan="4">Trust & Verification</td></tr>
+    <tr><td class="p-free">Phone verified badge</td><td class="tick">✓</td><td class="tick">✓</td><td class="tick">✓</td></tr>
+    <tr><td class="p-free">Verified Seller badge</td><td class="cross">✗</td><td class="cross">✗</td><td class="tick">✓</td></tr>
+    <tr><td class="p-free">Priority report review</td><td class="cross">✗</td><td class="cross">✗</td><td class="tick">✓</td></tr>
+    <tr><td style="color:#3a3a5a;font-weight:600;font-size:10px;text-transform:uppercase;letter-spacing:.6px" colspan="4">Support</td></tr>
+    <tr><td class="p-free">Support</td><td class="p-free">Email only</td><td class="p-feat">Email + chat</td><td class="p-prem">Priority 24hr</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- FREE ADS LIFECYCLE -->
+<div class="section">
+<div class="sec-title">⏱️ Free Listing Lifecycle</div>
+<div style="display:flex;align-items:center;gap:0;flex-wrap:nowrap;overflow-x:auto">
+  <div class="card c-dark" style="flex-shrink:0;min-width:110px;text-align:center;padding:10px 8px">
+    <div style="font-size:18px;margin-bottom:4px">📝</div>
+    <div style="font-size:11px;font-weight:700;color:#ececec">Day 0</div>
+    <div style="font-size:10px;color:#555">Posted live</div>
+  </div>
+  <div style="font-size:16px;color:#1a1828;padding:0 4px;flex-shrink:0">→</div>
+  <div class="card c-dark" style="flex-shrink:0;min-width:110px;text-align:center;padding:10px 8px">
+    <div style="font-size:18px;margin-bottom:4px">📊</div>
+    <div style="font-size:11px;font-weight:700;color:#ececec">Days 1–12</div>
+    <div style="font-size:10px;color:#555">Active — call clicks tracked</div>
+  </div>
+  <div style="font-size:16px;color:#1a1828;padding:0 4px;flex-shrink:0">→</div>
+  <div class="card c-warn" style="flex-shrink:0;min-width:110px;text-align:center;padding:10px 8px">
+    <div style="font-size:18px;margin-bottom:4px">⚠️</div>
+    <div style="font-size:11px;font-weight:700;color:#ef4444">Day 13</div>
+    <div style="font-size:10px;color:#666">Email warning sent — "2 days left"</div>
+  </div>
+  <div style="font-size:16px;color:#1a1828;padding:0 4px;flex-shrink:0">→</div>
+  <div class="card c-warn" style="flex-shrink:0;min-width:110px;text-align:center;padding:10px 8px">
+    <div style="font-size:18px;margin-bottom:4px">🔕</div>
+    <div style="font-size:11px;font-weight:700;color:#ef4444">Day 15</div>
+    <div style="font-size:10px;color:#666">Hidden from search — archived in DB</div>
+  </div>
+  <div style="font-size:16px;color:#1a1828;padding:0 4px;flex-shrink:0">→</div>
+  <div class="card c-gold" style="flex-shrink:0;min-width:120px;text-align:center;padding:10px 8px">
+    <div style="font-size:18px;margin-bottom:4px">🔄</div>
+    <div style="font-size:11px;font-weight:700;color:#C9A84C">Repost Option</div>
+    <div style="font-size:10px;color:#666">Free: repost manually / Upgrade to extend</div>
+  </div>
+</div>
+</div>
+
+</div>

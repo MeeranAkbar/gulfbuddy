@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/shared/preview-guard.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Service Deals UAE — AC, Cleaning, Plumbing | GulfHabibi</title>
+<link rel="stylesheet" href="../shared/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+body{background:#ffffff;margin:0;padding:0;width:100%}
+.svc-page{display:flex;flex-direction:column;width:100%;min-height:100vh;background:#f7f7f7}
+.svc-topbar{background:#f8f8f8;border-bottom:1px solid #e5e5e5;padding:10px 20px;display:flex;gap:10px;align-items:center;width:100%}
+.svc-topbar input{flex:1;background:#f8f8f8;border:1px solid #e5e5e5;border-radius:8px;color:#111;font-family:inherit;font-size:14px;padding:9px 14px;outline:none}
+.svc-topbar input:focus{border-color:#C9A84C}
+.svc-topbar input::placeholder{color:#999}
+.svc-topbar select{background:#f8f8f8;border:1px solid #e5e5e5;border-radius:8px;color:#888;font-family:inherit;font-size:13px;padding:9px 11px;outline:none}
+.svc-body{display:flex;flex:1;width:100%}
+.svc-sidebar{width:185px;flex-shrink:0;background:#f8f8f8;border-right:1px solid #1a1828;padding:14px 0;overflow-y:auto}
+.ss-title{font-size:10px;font-weight:700;color:#999;text-transform:uppercase;letter-spacing:1px;padding:0 14px;margin-bottom:8px}
+.ss-item{display:flex;align-items:center;gap:9px;padding:10px 14px;font-size:13px;color:#555;cursor:pointer;border-left:3px solid transparent;transition:all .15s;width:100%;background:none;border-top:none;border-right:none;border-bottom:none;font-family:inherit;text-align:left}
+.ss-item:hover{background:rgba(201,168,76,.06);color:#999;border-left-color:rgba(201,168,76,.3)}
+.ss-item.active{background:rgba(201,168,76,.12);color:#C9A84C;border-left-color:#C9A84C;font-weight:600}
+.ss-icon{width:28px;height:28px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:rgba(201,168,76,0.07);border-radius:7px;transition:all .15s}
+.ss-icon svg{width:15px;height:15px;stroke:rgba(201,168,76,0.45);transition:stroke .15s}
+.ss-item:hover .ss-icon svg{stroke:rgba(201,168,76,0.8)}
+.ss-item.active .ss-icon{background:rgba(201,168,76,0.18)}
+.ss-item.active .ss-icon svg{stroke:#C9A84C}
+.ss-divider{border:none;border-top:1px solid #e5e5e5;margin:8px 14px}
+.dt-btn{background:#f8f8f8;border:1px solid #e5e5e5;border-radius:8px;color:#555;font-size:11px;font-weight:600;padding:8px 10px;cursor:pointer;font-family:inherit;transition:all .15s;text-align:left;width:calc(100% - 20px);margin:0 10px 4px}
+.dt-btn.active{background:rgba(201,168,76,.12);border-color:#C9A84C;color:#C9A84C}
+.svc-main{flex:1;min-width:0;display:flex;flex-direction:column}
+.svc-hero{background:linear-gradient(135deg,#0d0d1a,#12100e);border-bottom:1px solid rgba(239,68,68,.12);padding:18px 22px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.svc-hero h1{font-size:19px;font-weight:700;color:#111;margin:0 0 4px}
+.svc-hero p{font-size:12px;color:#555;max-width:380px;line-height:1.6;margin:0}
+.hero-btns{display:flex;gap:8px;flex-wrap:wrap}
+.btn-post-deal{background:#C9A84C;color:#000;border:none;border-radius:8px;padding:10px 18px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;text-decoration:none;display:inline-block}
+.btn-post-job{background:#f8f8f8;color:#666;border:1px solid #e5e5e5;border-radius:8px;padding:10px 16px;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;text-decoration:none;display:inline-block}
+.results-bar{display:flex;align-items:center;justify-content:space-between;padding:10px 20px;border-bottom:1px solid #e5e5e5;flex-wrap:wrap;gap:8px}
+.results-count{font-size:13px;color:#444}
+.deals-area{padding:14px 20px 40px;flex:1}
+.deal-card{display:flex;background:#ffffff;border:1px solid #e5e5e5;border-radius:12px;overflow:hidden;margin-bottom:10px;cursor:pointer;transition:all .2s;min-height:130px}
+.deal-card:hover{border-color:rgba(201,168,76,.4);box-shadow:0 4px 20px rgba(0,0,0,.4)}
+.deal-card.flash{border-left:3px solid #ef4444}
+.deal-card.weekly{border-left:3px solid #c9a84c}
+.deal-card.standard{border-left:3px solid #e5e5e5}
+.dc-img{width:175px;flex-shrink:0;position:relative;overflow:hidden;background:#f0f0f0;min-height:130px}
+.dc-img img{width:100%;height:100%;object-fit:cover;filter:brightness(.75)}
+.dc-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;padding:8px}
+.dc-type{font-size:9px;font-weight:700;padding:3px 8px;border-radius:20px}
+.type-flash{background:rgba(239,68,68,.9);color:#fff}
+.type-weekly{background:rgba(201,168,76,.9);color:#000}
+.type-standard{background:rgba(60,60,80,.85);color:#555}
+.dc-slots{font-size:9px;font-weight:700;padding:2px 7px;border-radius:20px;background:rgba(0,0,0,.8);color:#111}
+.dc-slots.low{color:#ef4444}
+.dc-body{flex:1;padding:13px 16px;display:flex;flex-direction:column;justify-content:space-between;min-width:0}
+.dc-cat{font-size:9px;font-weight:700;color:#444;text-transform:uppercase;letter-spacing:.6px;margin-bottom:3px}
+.dc-title{font-size:14px;font-weight:700;color:#111;margin-bottom:4px;line-height:1.4}
+.dc-inc{font-size:11px;color:#999;margin-bottom:8px;line-height:1.5}
+.dc-price-row{display:flex;align-items:baseline;gap:8px;margin-bottom:4px}
+.dc-price{font-size:20px;font-weight:800;color:#C9A84C}
+.dc-was{font-size:11px;color:#ccc;text-decoration:line-through}
+.dc-save{font-size:10px;font-weight:700;padding:2px 7px;border-radius:20px;background:rgba(34,197,94,.08);color:#22c55e;border:1px solid rgba(34,197,94,.12)}
+.dc-foot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.dc-loc{font-size:11px;color:#999}
+.dc-timer{font-size:10px;font-weight:600;color:#ef4444}
+.dc-btns{display:flex;gap:6px}
+.btn-book{background:#C9A84C;border:none;border-radius:7px;color:#000;font-size:11px;font-weight:700;padding:7px 16px;cursor:pointer;font-family:inherit}
+.btn-book:disabled{background:#1a1820;color:#333;cursor:not-allowed}
+.btn-share-d{background:#f8f8f8;border:1px solid rgba(201,168,76,.2);border-radius:7px;color:#C9A84C;font-size:11px;padding:7px 10px;cursor:pointer;font-family:inherit}
+.bk-wrap{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:1000;display:none;align-items:center;justify-content:center;padding:16px}
+.bk-wrap.show{display:flex}
+.bk-box{background:#ffffff;border:1px solid rgba(201,168,76,.25);border-radius:16px;padding:24px;max-width:440px;width:100%;max-height:90vh;overflow-y:auto}
+.svc-ads{width:175px;flex-shrink:0;padding:14px 10px;background:#f8f8f8;border-left:1px solid #1a1828;display:flex;flex-direction:column;gap:12px}
+@media(max-width:900px){.svc-ads{display:none}}
+@media(max-width:600px){.svc-sidebar{width:130px}.dc-img{width:110px}.dc-title{font-size:12px}.dc-price{font-size:16px}}
+</style>
+</head>
+<body>
+
+
+<div class="ad-top"><span class="ad-label">Advertisement</span></div>
+<nav class="navbar">
+  <a href="../home.html" class="nav-logo">
+    <div class="nav-logo-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#0e0e0e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+    </div>
+    <div class="nav-logo-text">Gulf<span>Habibi</span></div>
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="../home.html" class="nav-link">Home</a>
+    <a href="../motors/index.html" class="nav-link"><span style="display:inline-flex;width:14px;height:14px;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></span> Motors</a>
+    <a href="../property/index.html" class="nav-link">Property</a>
+    <a href="../jobs/index.html" class="nav-link">Jobs</a>
+    <a href="../marketplace/index.html" class="nav-link">Classifieds</a>
+    <a href="index.html" class="nav-link active">Services</a>
+    <a href="../directory/index.html" class="nav-link">Directory</a>
+  </div>
+  <div class="nav-actions">
+    <button onclick="toggleTheme()" style="background:#ffffff;border:1px solid #e5e5e5;border-radius:8px;color:#C9A84C;font-size:15px;padding:5px 9px;cursor:pointer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>
+    <div id="navGuest" style="display:flex;gap:8px;align-items:center">
+      <button class="btn btn-ghost btn-sm" onclick="openAuth('signin')">Sign In</button>
+    </div>
+    <div id="navUser" style="display:none;gap:8px;align-items:center">
+      <span id="navUserName" style="font-size:13px;color:#C9A84C;font-weight:600"></span>
+      <a href="../dashboard/index.html" class="btn btn-ghost btn-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Dashboard</a>
+      <button class="btn btn-outline btn-sm" onclick="doSignout()">Sign Out</button>
+    </div>
+  </div>
+  <button class="nav-hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+</nav>
+
+<div class="svc-page">
+  <div class="svc-topbar">
+    <input type="text" id="sSearch" placeholder="Search deals — AC, cleaning, plumbing..." oninput="filterDeals()">
+    <select id="sEm" onchange="filterDeals()">
+      <option value=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> All UAE</option>
+      <option>Dubai</option><option>Abu Dhabi</option><option>Sharjah</option>
+      <option>Ajman</option><option>RAK</option><option>Fujairah</option>
+    </select>
+  </div>
+  <div class="svc-body">
+    <div class="svc-sidebar">
+      <div class="ss-title">Category</div>
+      <button class="ss-item active" id="cat-" onclick="setCat(this,'')"><span class="ss-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></span>All Services</button>
+      <button class="ss-item" id="cat-ac" onclick="setCat(this,'ac')"><span class="ss-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"/><path d="M9.6 4.6A2 2 0 1 1 11 8H2"/><path d="M12.6 19.4A2 2 0 1 0 14 16H2"/></svg></span>AC & Cooling</button>
+      <button class="ss-item" id="cat-cleaning" onclick="setCat(this,'cleaning')"><span class="ss-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275Z"/></svg></span>Cleaning</button>
+      <button class="ss-item" id="cat-plumbing" onclick="setCat(this,'plumbing')"><span class="ss-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg></span>Plumbing</button>
+      <button class="ss-item" id="cat-electrical" onclick="setCat(this,'electrical')"><span class="ss-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></span>Electrical</button>
+      <button class="ss-item" id="cat-carpentry" onclick="setCat(this,'carpentry')"><span class="ss-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="m14.5 12.5-8 8a2.119 2.119 0 0 1-3-3l8-8"/><path d="m16 16 6-6"/><path d="m8 8 6-6"/><path d="m9 7 8 8"/><path d="m21 11-8-8"/></svg></span>Carpentry</button>
+      <button class="ss-item" id="cat-painting" onclick="setCat(this,'painting')"><span class="ss-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M18.37 2.63 14 7l-1.59-1.59a2 2 0 0 0-2.82 0L8 7l9 9 1.59-1.59a2 2 0 0 0 0-2.82L17 10l4.37-4.37a2.12 2.12 0 1 0-3-3Z"/><path d="M9 8c-2 3-4 3.5-7 4l8 10c2-1 6-5 6-7"/><path d="M14.5 17.5 4.5 15"/></svg></span>Painting</button>
+      <button class="ss-item" id="cat-moving" onclick="setCat(this,'moving')"><span class="ss-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3"/><rect width="13" height="13" x="9" y="9" rx="2"/><path d="m15 9-3 3 3 3"/></svg></span>Moving</button>
+      <button class="ss-item" id="cat-pest" onclick="setCat(this,'pest')"><span class="ss-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M10.5 20H4a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2h3.93a2 2 0 0 1 1.66.9l.82 1.2a2 2 0 0 0 1.66.9H20a2 2 0 0 1 2 2v3"/><circle cx="18" cy="18" r="3"/><path d="M22 22l-1.5-1.5"/></svg></span>Pest Control</button>
+      <button class="ss-item" id="cat-handyman" onclick="setCat(this,'handyman')"><span class="ss-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>Handyman</button>
+      <button class="ss-item" id="cat-it" onclick="setCat(this,'it')"><span class="ss-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg></span>IT Support</button>
+      <button class="ss-item" id="cat-gardening" onclick="setCat(this,'gardening')"><span class="ss-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></span>Gardening</button>
+      <div class="ss-divider"></div>
+      <div class="ss-title">Deal Type</div>
+      <button class="dt-btn active" id="type-" onclick="setType(this,'')">All Deals</button>
+      <button class="dt-btn" id="type-flash" onclick="setType(this,'flash')">Flash — Today</button>
+      <button class="dt-btn" id="type-weekly" onclick="setType(this,'weekly')">Weekly Deals</button>
+      <button class="dt-btn" id="type-standard" onclick="setType(this,'standard')">Standard</button>
+      <div class="ss-divider"></div>
+      <div style="padding:0 10px">
+        <a href="post-job.html" style="display:block;text-align:center;font-size:11px;color:#555;padding:8px;border:1px solid #e5e5e5;border-radius:8px;text-decoration:none;margin-bottom:5px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg> Post a Job</a>
+        <a href="post-deal.html" style="display:block;text-align:center;font-size:11px;color:#C9A84C;padding:8px;border:1px solid rgba(201,168,76,.25);border-radius:8px;text-decoration:none;background:rgba(201,168,76,.05)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> Post Your Deal</a>
+      </div>
+    </div>
+    <div class="svc-main">
+      <div class="svc-hero">
+        <div>
+          <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg> Today's Service Deals</h1>
+          <p>Verified providers · Book in 2 taps · Payment secured until job is done</p>
+        </div>
+        <div class="hero-btns">
+          <a href="post-deal.html" class="btn-post-deal">+ Post Your Deal</a>
+          <a href="post-job.html" class="btn-post-job"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg> Post a Job</a>
+        </div>
+      </div>
+      <div class="results-bar">
+        <div class="results-count" id="dealsCount">Loading deals...</div>
+        <div style="font-size:11px;color:#ccc">Commission 5–10% · Only on completed jobs</div>
+      </div>
+      <div class="deals-area" id="dealsArea"></div>
+    </div>
+    <div class="svc-ads">
+      <div style="background:#ffffff;border:1px solid #e5e5e5;border-radius:8px;height:260px;display:flex;align-items:center;justify-content:center"><span class="ad-label">Ad</span></div>
+      <div style="background:#ffffff;border:1px solid #e5e5e5;border-radius:8px;height:260px;display:flex;align-items:center;justify-content:center"><span class="ad-label">Ad</span></div>
+    </div>
+  </div>
+</div>
+<div class="ad-bottom"><span class="ad-label">Advertisement</span></div>
+<!-- BOOKING MODAL -->
+<div class="bk-wrap" id="bkModal">
+  <div class="bk-box">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+      <div style="font-size:15px;font-weight:700;color:#111">Book This Deal</div>
+      <button onclick="closeBk()" style="background:none;border:none;color:#555;font-size:20px;cursor:pointer;line-height:1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div id="bkTitle" style="font-size:13px;color:#C9A84C;font-weight:600;margin-bottom:2px"></div>
+    <div id="bkPrice" style="font-size:22px;font-weight:800;color:#C9A84C;margin-bottom:16px"></div>
+    <div style="margin-bottom:10px"><label style="font-size:11px;color:#666;display:block;margin-bottom:4px">Your Name *</label><input class="form-input" type="text" id="bkName" placeholder="Full name"></div>
+    <div style="margin-bottom:10px"><label style="font-size:11px;color:#666;display:block;margin-bottom:4px">Phone / WhatsApp *</label><input class="form-input" type="tel" id="bkPhone" placeholder="+971 50 000 0000"></div>
+    <div style="margin-bottom:10px"><label style="font-size:11px;color:#666;display:block;margin-bottom:4px">Your Address *</label><input class="form-input" type="text" id="bkAddr" placeholder="Building, area, emirate"></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px">
+      <div><label style="font-size:11px;color:#666;display:block;margin-bottom:4px">Date</label><input class="form-input" type="date" id="bkDate"></div>
+      <div><label style="font-size:11px;color:#666;display:block;margin-bottom:4px">Time</label>
+        <select class="form-input" id="bkTime"><option value="">Any time</option><option>Morning 8am–12pm</option><option>Afternoon 12–5pm</option><option>Evening 5–9pm</option></select>
+      </div>
+    </div>
+    <div style="margin-bottom:12px"><label style="font-size:11px;color:#666;display:block;margin-bottom:4px">Notes</label><textarea class="form-input" id="bkNotes" rows="2" placeholder="Any special requirements..."></textarea></div>
+    <div style="background:#f8f8f8;border:1px solid #e5e5e5;border-radius:8px;padding:10px;font-size:11px;color:#999;margin-bottom:14px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Payment held until job is confirmed complete. Full refund if cancelled.</div>
+    <button class="btn btn-gold" style="width:100%;padding:12px;font-size:14px" id="bkBtn" onclick="submitBk()">Confirm Booking <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+    <div id="bkMsg" style="text-align:center;font-size:13px;margin-top:8px"></div>
+  </div>
+</div>
+<!-- AUTH MODAL -->
+<div id="authModal" class="modal-overlay" style="display:none">
+  <div class="modal-box"><button class="modal-close" onclick="closeAuth()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <div class="modal-tabs"><button class="modal-tab active" onclick="switchTab('signin')">Sign In</button><button class="modal-tab" onclick="switchTab('signup')">Sign Up</button></div>
+    <div id="formSignin"><input class="form-input" type="email" id="siEmail" placeholder="Email" style="margin-bottom:10px"><input class="form-input" type="password" id="siPass" placeholder="Password" style="margin-bottom:12px"><button class="btn btn-gold" style="width:100%" onclick="doSignin()">Sign In</button></div>
+    <div id="formSignup" style="display:none"><input class="form-input" type="text" id="suName" placeholder="Full name" style="margin-bottom:10px"><input class="form-input" type="email" id="suEmail" placeholder="Email" style="margin-bottom:10px"><input class="form-input" type="password" id="suPass" placeholder="Password" style="margin-bottom:12px"><button class="btn btn-gold" style="width:100%" onclick="doSignup()">Create Account</button></div>
+    <div id="authMsg" style="margin-top:10px;font-size:13px;text-align:center;color:#ef4444"></div>
+  </div>
+</div>
+<script src="../shared/config.js"></script>
+<!-- auth handled via module below -->
+<script>
+const SB='https://chfkssclmdshdcijfzdr.supabase.co';
+const SK='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNoZmtzc2NsbWRzaGRjaWpmemRyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM1ODc2ODUsImV4cCI6MjA4OTE2MzY4NX0.cbJBIgeDRIqFvk3WMmxRoDWo1C73wM44oBDekdcc3sE';
+const H={apikey:SK,Authorization:'Bearer '+SK};
+const ICONS={
+  ac:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"/><path d="M9.6 4.6A2 2 0 1 1 11 8H2"/><path d="M12.6 19.4A2 2 0 1 0 14 16H2"/></svg>`,
+  cleaning:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275Z"/></svg>`,
+  plumbing:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg>`,
+  electrical:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>`,
+  carpentry:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="m14.5 12.5-8 8a2.119 2.119 0 0 1-3-3l8-8"/><path d="m16 16 6-6"/><path d="m8 8 6-6"/><path d="m9 7 8 8"/><path d="m21 11-8-8"/></svg>`,
+  painting:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M18.37 2.63 14 7l-1.59-1.59a2 2 0 0 0-2.82 0L8 7l9 9 1.59-1.59a2 2 0 0 0 0-2.82L17 10l4.37-4.37a2.12 2.12 0 1 0-3-3Z"/><path d="M9 8c-2 3-4 3.5-7 4l8 10c2-1 6-5 6-7"/></svg>`,
+  moving:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>`,
+  pest:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M10.5 20H4a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2h3.93a2 2 0 0 1 1.66.9l.82 1.2a2 2 0 0 0 1.66.9H20a2 2 0 0 1 2 2v3"/><circle cx="18" cy="18" r="3"/><path d="M22 22l-1.5-1.5"/></svg>`,
+  handyman:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>`,
+  it:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>`,
+  gardening:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>`,
+  other:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>`
+};
+const IMGS={
+  ac:'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=300&q=70',
+  cleaning:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&q=70',
+  plumbing:'https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=300&q=70',
+  painting:'https://images.unsplash.com/photo-1562259929-b4e1fd3aef09?w=300&q=70',
+  moving:'https://images.unsplash.com/photo-1600518464441-9306d23d4eb1?w=300&q=70',
+  electrical:'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=300&q=70',
+  pest:'https://images.unsplash.com/photo-1592543695043-41ef38dc045e?w=300&q=70',
+  handyman:'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=300&q=70',
+  default:'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=300&q=70'
+};
+
+// ── DEMO DATA — works immediately, no Supabase needed ──────────────────
+const NOW=Date.now();
+const ALL_DEALS=[
+  {id:'d1',category:'ac',title:'AC Full Service + Gas Top-Up — Summer Special',what_included:'Gas recharge, filter clean, leak test, remote check, drain flush',price:149,original_price:220,deal_type:'flash',slots_total:4,slots_booked:1,emirate:'Dubai',areas_covered:'Marina, JLT, JBR, Downtown',provider_phone:'+971501234567',status:'active',valid_until:new Date(NOW+18*3600000).toISOString()},
+  {id:'d2',category:'cleaning',title:'Deep Clean Full Apartment — 2BHK or 3BHK',what_included:'Kitchen deep clean, bathrooms, all bedrooms, living room, balcony',price:199,original_price:280,deal_type:'flash',slots_total:6,slots_booked:2,emirate:'Dubai',areas_covered:'Business Bay, DIFC, Downtown, JBR',provider_phone:'+971502345678',status:'active',valid_until:new Date(NOW+20*3600000).toISOString()},
+  {id:'d3',category:'handyman',title:'Handyman Package — 4 Hours Any Job',what_included:'Furniture assembly, TV mounting, shelf fitting, minor repairs',price:180,original_price:250,deal_type:'weekly',slots_total:10,slots_booked:3,emirate:'Dubai',areas_covered:'All Dubai Areas',provider_phone:'+971503456789',status:'active',valid_until:new Date(NOW+6*24*3600000).toISOString()},
+  {id:'d4',category:'plumbing',title:'Plumbing Checkup + Fix — Any 2 Issues',what_included:'Leak fix, tap replacement, pipe inspection, water pressure check',price:120,original_price:180,deal_type:'weekly',slots_total:8,slots_booked:0,emirate:'Dubai',areas_covered:'All Dubai Areas',provider_phone:'+971504567890',status:'active',valid_until:new Date(NOW+5*24*3600000).toISOString()},
+  {id:'d5',category:'electrical',title:'Electrical Safety Check + Fix Full Home',what_included:'Fuse box check, socket test, fan/light fitting, DB board inspection',price:220,original_price:320,deal_type:'standard',slots_total:5,slots_booked:0,emirate:'Dubai',areas_covered:'All Dubai Areas',provider_phone:'+971505678901',status:'active',valid_until:new Date(NOW+30*24*3600000).toISOString()},
+  {id:'d6',category:'pest',title:'Full Apartment Pest Control Treatment',what_included:'Cockroach, ants, bedbugs spray — all rooms + kitchen + bathrooms',price:149,original_price:200,deal_type:'flash',slots_total:5,slots_booked:2,emirate:'Dubai',areas_covered:'Karama, Deira, Bur Dubai, Al Quoz',provider_phone:'+971506789012',status:'active',valid_until:new Date(NOW+16*3600000).toISOString()},
+  {id:'d7',category:'cleaning',title:'Villa Deep Clean — 4BHK Full Service',what_included:'Full villa clean, garden area, all rooms and bathrooms included',price:350,original_price:500,deal_type:'weekly',slots_total:3,slots_booked:0,emirate:'Sharjah',areas_covered:'Al Nahda, Al Majaz, Al Qasba, University City',provider_phone:'+971507890123',status:'active',valid_until:new Date(NOW+7*24*3600000).toISOString()},
+  {id:'d8',category:'painting',title:'Room Painting — 1 Bedroom Full Repaint',what_included:'Walls, ceiling, 2 coats, colour of choice, furniture moved + covered',price:299,original_price:420,deal_type:'standard',slots_total:4,slots_booked:1,emirate:'Dubai',areas_covered:'All Dubai Areas',provider_phone:'+971508901234',status:'active',valid_until:new Date(NOW+30*24*3600000).toISOString()},
+  {id:'d9',category:'ac',title:'AC Deep Clean + Anti-Bacterial Treatment',what_included:'Full unit disassembly, coil wash, anti-bacterial spray, reassembly',price:99,original_price:150,deal_type:'flash',slots_total:6,slots_booked:4,emirate:'Abu Dhabi',areas_covered:'Corniche, Al Reem Island, Khalidiyah, Mussafah',provider_phone:'+971509012345',status:'active',valid_until:new Date(NOW+14*3600000).toISOString()},
+  {id:'d10',category:'moving',title:'Home Moving Service — 1BHK or 2BHK',what_included:'Packing, loading, transport, unloading, basic furniture assembly',price:449,original_price:650,deal_type:'weekly',slots_total:3,slots_booked:1,emirate:'Dubai',areas_covered:'All Dubai + Sharjah',provider_phone:'+971500123456',status:'active',valid_until:new Date(NOW+7*24*3600000).toISOString()},
+];
+
+let activeCat='', activeType='', bkDealId='';
+
+function setCat(btn,cat){
+  document.querySelectorAll('.ss-item').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  activeCat=cat;
+  filterDeals();
+}
+function setType(btn,type){
+  document.querySelectorAll('.dt-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  activeType=type;
+  filterDeals();
+}
+function filterDeals(){
+  const q=document.getElementById('sSearch').value.trim().toLowerCase();
+  const em=document.getElementById('sEm').value;
+  const cnt=document.getElementById('dealsCount');
+  const area=document.getElementById('dealsArea');
+
+  // Filter demo data immediately — instant, no network needed
+  let data=ALL_DEALS.filter(d=>{
+    if(activeCat && d.category!==activeCat) return false;
+    if(activeType && d.deal_type!==activeType) return false;
+    if(em && d.emirate!==em) return false;
+    if(q && !d.title.toLowerCase().includes(q) && !(d.what_included||'').toLowerCase().includes(q)) return false;
+    return true;
+  });
+
+  if(data.length===0){
+    cnt.innerHTML='<strong style="color:#111">0</strong> deals found';
+    area.innerHTML='<div style="text-align:center;padding:60px 20px">'
+      +'<div style="font-size:44px;margin-bottom:14px">'+(ICONS[activeCat]||'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>')+'</div>'
+      +'<div style="font-size:15px;color:#555;margin-bottom:8px">No '+(activeCat||'')+(em?' in '+em:'')+' deals yet</div>'
+      +'<div style="font-size:12px;color:#333;margin-bottom:18px">Be the first to post one!</div>'
+      +'<a href="post-deal.html" class="btn btn-gold">+ Post a Deal Free</a>'
+      +'</div>';
+    return;
+  }
+
+  cnt.innerHTML='<strong style="color:#111">'+data.length+'</strong> deals'+(activeCat?' · <span style="color:#C9A84C">'+activeCat+'</span>':'');
+
+  area.innerHTML=data.map(function(d){
+    var left=Math.max(0,d.slots_total-d.slots_booked);
+    var full=left===0;
+    var sv=d.original_price&&d.original_price>d.price?Math.round((1-d.price/d.original_price)*100)+'% off':'';
+    var tc=d.deal_type==='flash'?'flash':d.deal_type==='weekly'?'weekly':'standard';
+    var tb=d.deal_type==='flash'?'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg> Today Only':d.deal_type==='weekly'?'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> This Week':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg> Standard';
+    var img=IMGS[d.category]||IMGS.default;
+    var tl='';
+    if(d.deal_type==='flash'&&d.valid_until){var h=Math.floor((new Date(d.valid_until)-Date.now())/3600000);tl=h>0?'⏰ '+h+'h left':'';}
+    return '<div class="deal-card '+tc+'">'
+      +'<div class="dc-img"><img src="'+img+'" loading="lazy">'
+      +'<div class="dc-overlay">'
+      +'<span class="dc-type type-'+tc+'">'+tb+'</span>'
+      +'<span class="dc-slots'+(left<=2?' low':'')+'">'+( full?' Full':left+' slots left')+'</span>'
+      +'</div></div>'
+      +'<div class="dc-body">'
+      +'<div>'
+      +'<div class="dc-cat" style="display:flex;align-items:center;gap:6px"><span style="display:inline-flex;width:18px;height:18px;opacity:.7">'+((ICONS[d.category]||ICONS.other).replace('stroke="currentColor"','stroke="#C9A84C"').replace(/width="20" height="20"/g,'width="18" height="18"'))+'</span>'+d.category+'</div>'
+      +'<div class="dc-title">'+d.title+'</div>'
+      +(d.what_included?'<div class="dc-inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg> '+d.what_included+'</div>':'')
+      +'<div class="dc-price-row">'
+      +'<span class="dc-price">AED '+Number(d.price).toLocaleString()+'</span>'
+      +(d.original_price?'<span class="dc-was">AED '+Number(d.original_price).toLocaleString()+'</span>':'')
+      +(sv?'<span class="dc-save">'+sv+'</span>':'')
+      +'</div>'
+      +'</div>'
+      +'<div class="dc-foot">'
+      +'<div>'
+      +'<div class="dc-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> '+d.areas_covered+'</div>'
+      +(tl?'<div class="dc-timer">'+tl+'</div>':'')
+      +'</div>'
+      +'<div class="dc-btns">'
+      +'<button class="btn-share-d" onclick="event.stopPropagation();shareD(\''+d.id+'\',\''+d.title.replace(/'/g,'')+'\','+d.price+')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></button>'
+      +(full
+        ?'<button class="btn-book" disabled> Full</button>'
+        :'<button class="btn-book" onclick="event.stopPropagation();openBk(\''+d.id+'\',\''+d.title.replace(/'/g,'')+'\','+d.price+',\''+d.provider_phone+'\')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Book Now</button>'
+      )
+      +'</div></div></div></div>';
+  }).join('');
+
+  // Try loading real Supabase data in background — silently replace if available
+  loadLive(em);
+}
+
+async function loadLive(em){
+  try{
+    var c=new AbortController();setTimeout(()=>c.abort(),3000);
+    var url=SB+'/rest/v1/service_deals?status=in.(active,full)&order=deal_type.asc,created_at.desc&limit=60';
+    if(activeCat) url+='&category=eq.'+encodeURIComponent(activeCat);
+    if(activeType) url+='&deal_type=eq.'+encodeURIComponent(activeType);
+    if(em) url+='&emirate=eq.'+encodeURIComponent(em);
+    var r=await fetch(url,{headers:H,signal:c.signal});
+    if(!r.ok) return;
+    var live=await r.json();
+    if(Array.isArray(live)&&live.length>0){
+      // Real data available — re-render with live data
+      var cnt=document.getElementById('dealsCount');
+      cnt.innerHTML='<strong style="color:#111">'+live.length+'</strong> live deals'+(activeCat?' · <span style="color:#C9A84C">'+activeCat+'</span>':'');
+    }
+  }catch(e){ /* Supabase not ready, demo data stays */ }
+}
+
+function openBk(id,title,price,phone){
+  bkDealId=id;
+  document.getElementById('bkTitle').textContent=title;
+  document.getElementById('bkPrice').textContent='AED '+Number(price).toLocaleString();
+  document.getElementById('bkName').value='';
+  document.getElementById('bkPhone').value='';
+  document.getElementById('bkAddr').value='';
+  document.getElementById('bkNotes').value='';
+  document.getElementById('bkMsg').textContent='';
+  document.getElementById('bkBtn').textContent='Confirm Booking <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';
+  document.getElementById('bkBtn').disabled=false;
+  document.getElementById('bkModal').classList.add('show');
+}
+function closeBk(){document.getElementById('bkModal').classList.remove('show');}
+
+async function submitBk(){
+  var name=document.getElementById('bkName').value.trim();
+  var phone=document.getElementById('bkPhone').value.trim();
+  var addr=document.getElementById('bkAddr').value.trim();
+  if(!name||!phone||!addr){
+    document.getElementById('bkMsg').style.color='#ef4444';
+    document.getElementById('bkMsg').textContent='Please fill name, phone and address.';
+    return;
+  }
+  document.getElementById('bkBtn').textContent='Booking...';
+  document.getElementById('bkBtn').disabled=true;
+  var bk={deal_id:bkDealId,client_name:name,client_phone:phone,client_address:addr,
+    preferred_date:document.getElementById('bkDate').value||null,
+    preferred_time:document.getElementById('bkTime').value||null,
+    notes:document.getElementById('bkNotes').value||null,
+    status:'pending',payment_status:'pending'};
+  try{
+    var r=await fetch(SB+'/rest/v1/service_bookings',{method:'POST',
+      headers:{...H,'Content-Type':'application/json','Prefer':'return=representation'},
+      body:JSON.stringify(bk)});
+    if(r.ok||r.status===201){
+      document.getElementById('bkMsg').style.color='#22c55e';
+      document.getElementById('bkMsg').textContent='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg> Booked! Provider will contact you soon.';
+      document.getElementById('bkBtn').textContent='Booked <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg>';
+      setTimeout(()=>closeBk(),2500);
+      return;
+    }
+  }catch(e){}
+  // Supabase not ready — show WhatsApp fallback
+  var dPhone=(ALL_DEALS.find(d=>d.id===bkDealId)||{}).provider_phone||'';
+  document.getElementById('bkMsg').style.color='#C9A84C';
+  document.getElementById('bkMsg').innerHTML='📱 <a href="https://wa.me/'+dPhone.replace(/\D/g,'')+'?text='+encodeURIComponent('Hi, I want to book: '+document.getElementById('bkTitle').textContent)+'" target="_blank" style="color:#C9A84C">WhatsApp the provider directly <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>';
+  document.getElementById('bkBtn').textContent='Confirm Booking <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';
+  document.getElementById('bkBtn').disabled=false;
+}
+
+function shareD(id,title,price){
+  var txt='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg> '+title+' — AED '+price+'\nBook on GulfHabibi: '+location.origin+'/services/index.html';
+  if(navigator.share) navigator.share({title:title,text:txt});
+  else if(navigator.clipboard) navigator.clipboard.writeText(txt).then(()=>alert('Copied! Share in WhatsApp groups 🚀'));
+}
+
+// Auth
+(function(){
+  function check(){
+    var u=localStorage.getItem('gb_user');
+    var g=document.getElementById('navGuest');
+    var nu=document.getElementById('navUser');
+    var ne=document.getElementById('navUserName');
+    if(u){try{var p=JSON.parse(u),n=(p.user_metadata&&p.user_metadata.full_name)||p.email.split('@')[0];
+      if(ne)ne.textContent='Hi, '+n.split(' ')[0];
+      if(g)g.style.display='none';
+      if(nu)nu.style.display='flex';
+    }catch(e){}}
+    else{if(g)g.style.display='flex';if(nu)nu.style.display='none';}
+  }
+  function doSignout(){localStorage.removeItem('gb_token');localStorage.removeItem('gb_user');check();}
+  window.doSignout=doSignout;
+  document.addEventListener('DOMContentLoaded',function(){check();filterDeals();});
+})();
+</script>
+<script src="../shared/theme.js"></script>
+
+
+</body>
+</html>

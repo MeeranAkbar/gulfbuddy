@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/shared/preview-guard.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Property Listing — GulfHabibi UAE</title>
+<link rel="stylesheet" href="../shared/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+body{background:#ffffff}
+/* ── DUBIZZLE-STYLE GALLERY ── */
+.gb-gallery{display:grid;grid-template-columns:2fr 1fr;gap:6px;border-radius:14px;overflow:hidden;margin-bottom:20px;max-height:420px}
+.gb-gallery .main-photo{position:relative;height:420px}
+.gb-gallery .main-photo img{width:100%;height:100%;object-fit:cover}
+.gb-gallery .thumb-col{display:grid;grid-template-rows:1fr 1fr;gap:6px}
+.gb-gallery .thumb-col img{width:100%;height:100%;object-fit:cover;cursor:pointer;transition:opacity .2s}
+.gb-gallery .thumb-col img:hover{opacity:.85}
+.more-badge{position:absolute;bottom:10px;right:10px;background:rgba(0,0,0,.75);color:#fff;font-size:12px;font-weight:600;padding:5px 12px;border-radius:20px;cursor:pointer;backdrop-filter:blur(4px)}
+.plan-overlay{position:absolute;top:10px;left:10px;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px}
+.po-featured{background:rgba(201,168,76,.85);color:#000}
+.po-premium{background:rgba(232,201,122,.9);color:#000}
+.verified-overlay{position:absolute;top:10px;right:10px;background:rgba(34,197,94,.85);color:#fff;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;backdrop-filter:blur(4px)}
+/* ── KEY SPECS ROW (Dubizzle style) ── */
+.specs-row{display:flex;gap:20px;flex-wrap:wrap;margin:12px 0;padding:14px 0;border-top:1px solid #e5e5e5;border-bottom:1px solid #e5e5e5}
+.spec-item{display:flex;align-items:center;gap:6px;font-size:13px;color:#888}
+.spec-icon{font-size:16px}
+.spec-val{font-weight:600;color:#111}
+/* ── DESCRIPTION ── */
+.desc-box{font-size:13px;color:#888;line-height:1.8;margin:16px 0}
+.desc-box.collapsed{display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.read-more{color:#C9A84C;font-size:12px;cursor:pointer;margin-top:6px;display:inline-block}
+/* ── SECTION TITLES ── */
+.sec{font-size:15px;font-weight:700;color:#111;margin:22px 0 12px;padding-bottom:8px;border-bottom:1px solid #e5e5e5}
+/* ── AMENITIES ── */
+.amenity-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;margin-bottom:16px}
+.am-item{display:flex;align-items:center;gap:8px;font-size:12px;color:#888;padding:8px 10px;background:#ffffff;border:1px solid #e5e5e5;border-radius:8px}
+/* ── DETAILS TABLE ── */
+.details-table{width:100%;border-collapse:collapse}
+.details-table tr{border-bottom:1px solid #e5e5e5}
+.details-table td{padding:10px 12px;font-size:13px}
+.details-table td:first-child{color:#555;width:40%}
+.details-table td:last-child{color:#111;font-weight:500}
+/* ── CONTACT BOX (right sticky) ── */
+.contact-box{background:#ffffff;border:1px solid rgba(201,168,76,.2);border-radius:14px;padding:20px;position:sticky;top:76px}
+.price-big{font-size:26px;font-weight:800;color:#C9A84C;margin-bottom:2px}
+.price-per{font-size:12px;color:#555;margin-bottom:16px}
+.btn-call{background:#22c55e;color:#fff;border:none;width:100%;padding:12px;border-radius:9px;font-size:14px;font-weight:700;cursor:pointer;margin-bottom:7px;font-family:inherit}
+.btn-whatsapp{background:#25D366;color:#fff;border:none;width:100%;padding:12px;border-radius:9px;font-size:14px;font-weight:700;cursor:pointer;margin-bottom:7px;font-family:inherit}
+.btn-email{background:#f8f8f8;color:#666;border:1px solid #e5e5e5;width:100%;padding:11px;border-radius:9px;font-size:13px;font-weight:600;cursor:pointer;margin-bottom:12px;font-family:inherit}
+/* ── AGENT CARD ── */
+.agent-card{display:flex;align-items:center;gap:12px;background:#f0f0f0;border:1px solid #e5e5e5;border-radius:10px;padding:12px;margin-top:14px}
+.agent-av{width:42px;height:42px;border-radius:50%;background:#f8f8f8;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+/* ── SIMILAR CARDS — Dubizzle-style horizontal ── */
+.sim-card{display:flex;gap:12px;background:#ffffff;border:1px solid #e5e5e5;border-radius:12px;overflow:hidden;cursor:pointer;transition:border-color .2s;margin-bottom:10px}
+.sim-card:hover{border-color:rgba(201,168,76,.3)}
+.sim-card img{width:110px;height:84px;object-fit:cover;flex-shrink:0}
+.sim-body{padding:10px 12px 10px 0;flex:1;min-width:0}
+.sim-price{font-size:14px;font-weight:700;color:#C9A84C;margin-bottom:3px}
+.sim-title{font-size:12px;color:#555;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:3px}
+.sim-meta{font-size:11px;color:#444}
+@media(max-width:768px){
+  .two-col-layout{flex-direction:column!important}
+  .contact-box{position:static;margin-top:20px}
+  .gb-gallery{grid-template-columns:1fr}
+  .gb-gallery .main-photo{height:220px}
+  .gb-gallery .thumb-col{display:none}
+}
+</style>
+</head>
+<body>
+<div class="ad-top"><span class="ad-label">Advertisement</span></div>
+<nav class="navbar">
+  <a href="../home.html" class="nav-logo">
+    <div class="nav-logo-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#0e0e0e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+    </div>
+    <div class="nav-logo-text">Gulf<span>Habibi</span></div>
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="../home.html" class="nav-link">Home</a>
+    <a href="../motors/index.html" class="nav-link"><span style="display:inline-flex;width:14px;height:14px;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></span> Motors</a>
+    <a href="index.html" class="nav-link active">Property</a>
+    <a href="../jobs/index.html" class="nav-link">Jobs</a>
+    <a href="../marketplace/index.html" class="nav-link">Classifieds</a>
+    <a href="../services/index.html" class="nav-link">Services</a>
+    <a href="../directory/index.html" class="nav-link">Directory</a>
+  </div>
+  <div class="nav-actions" id="authSection">
+    <button id="themeToggleBtn" onclick="toggleTheme()" style="background:var(--bg-card,#0d0d1a);border:1px solid var(--border,#1a1828);border-radius:8px;color:var(--gold,#C9A84C);font-size:15px;padding:5px 9px;cursor:pointer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>
+    <div id="navGuest" style="display:flex;gap:8px;align-items:center">
+      <button class="btn btn-ghost btn-sm" onclick="openAuth('signin')">Sign In</button>
+    </div>
+    <div id="navUser" style="display:none;gap:8px;align-items:center">
+      <span id="navUserName" style="font-size:13px;color:#C9A84C;font-weight:600"></span>
+      <a href="../dashboard/index.html" class="btn btn-ghost btn-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Dashboard</a>
+      <button class="btn btn-outline btn-sm" onclick="doSignout()">Sign Out</button>
+    </div>
+  </div>
+  <button class="nav-hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+</nav>
+
+<!-- BREADCRUMB -->
+<div style="max-width:1100px;margin:0 auto;padding:12px 20px 0">
+  <div style="font-size:12px;color:#555">
+    <a href="../home.html" style="color:#666;text-decoration:none">Home</a> ›
+    <a href="index.html" style="color:#666;text-decoration:none;margin:0 5px">Property</a> ›
+    <span id="breadArea" style="color:#666;margin-right:5px"></span>›
+    <span id="breadTitle" style="color:#888;margin-left:5px">Loading...</span>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div style="max-width:1100px;margin:0 auto;padding:16px 20px 50px;display:flex;gap:22px;align-items:flex-start" class="two-col-layout">
+
+  <!-- LEFT -->
+  <div style="flex:1;min-width:0">
+    <div id="loadingState" style="text-align:center;padding:60px 20px;color:#555"><div style="font-size:32px;margin-bottom:10px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><div>Loading...</div></div>
+    <div id="errorState" style="display:none;text-align:center;padding:60px 20px"><div style="font-size:32px;margin-bottom:10px">😕</div><div style="color:#ef4444;margin-bottom:14px">Listing not found.</div><a href="index.html" class="btn btn-gold">Browse Properties</a></div>
+
+    <div id="listingContent" style="display:none">
+
+      <!-- GALLERY (Dubizzle style: big left + 2 thumbs right) -->
+      <div class="gb-gallery" id="gallery">
+        <div class="main-photo" id="mainPhotoWrap">
+          <div id="noImg" style="height:100%;background:#f0f0f0;display:flex;align-items:center;justify-content:center;font-size:56px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+          <img id="heroImg" style="display:none;width:100%;height:100%;object-fit:cover" src="" alt="Property">
+          <div id="planOverlay"></div>
+          <div id="verifiedOverlay"></div>
+          <div id="moreBadge" class="more-badge" style="display:none" onclick="openAllPhotos()"></div>
+        </div>
+        <div class="thumb-col" id="thumbCol"></div>
+      </div>
+
+      <!-- TITLE ROW -->
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px">
+        <div>
+          <h1 id="listingTitle" style="font-size:20px;font-weight:700;color:#111;margin-bottom:4px"></h1>
+          <div id="listingLocation" style="font-size:13px;color:#666"></div>
+        </div>
+        <div style="text-align:right;flex-shrink:0">
+          <div id="gbRefBadge"></div>
+          <button id="favBtn" style="background:none;border:none;color:#444;font-size:18px;cursor:pointer;margin-top:4px" title="Save">♡</button>
+          <button onclick="copyLink()" style="background:none;border:none;color:#444;font-size:14px;cursor:pointer;margin-left:8px" title="Share"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> Share</button>
+        </div>
+      </div>
+
+      <!-- SPECS ROW (Dubizzle-style icons) -->
+      <div class="specs-row" id="specsRow"></div>
+
+      <!-- PRICE (mobile only — desktop shown in contact box) -->
+      <div id="mobilePriceRow" style="display:none;margin-bottom:14px">
+        <div style="font-size:22px;font-weight:800;color:#C9A84C" id="mobilePriceBig"></div>
+        <div style="font-size:11px;color:#555" id="mobilePricePer"></div>
+      </div>
+
+      <!-- RERA + POSTED BY -->
+      <div id="metaBadges" style="margin-bottom:14px;display:flex;gap:8px;flex-wrap:wrap"></div>
+
+      <!-- DESCRIPTION -->
+      <div class="sec">Description</div>
+      <div class="desc-box collapsed" id="descBox"></div>
+      <span class="read-more" id="readMoreBtn" onclick="expandDesc()">Read More ▾</span>
+
+      <!-- PROPERTY DETAILS TABLE -->
+      <div class="sec">Property Details</div>
+      <table class="details-table" id="detailsTable"></table>
+
+      <!-- AMENITIES -->
+      <div id="amenitiesWrap" style="display:none">
+        <div class="sec">Amenities</div>
+        <div class="amenity-grid" id="amenityGrid"></div>
+      </div>
+
+      <!-- MAP -->
+      <div id="mapWrap" style="display:none">
+        <div class="sec">Map View</div>
+        <div id="map" style="height:260px;border-radius:12px;border:1px solid #e5e5e5"></div>
+        <div style="font-size:11px;color:#444;margin-top:6px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Approximate location shown for privacy</div>
+      </div>
+
+      <!-- REPORT -->
+      <div style="margin-top:20px;padding-top:14px;border-top:1px solid #e5e5e5">
+        <button onclick="reportListing()" style="background:none;border:none;color:#333;font-size:12px;cursor:pointer">🚩 Report this listing</button>
+        <span style="font-size:11px;color:#2a2a3a;margin-left:12px" id="postedDate"></span>
+      </div>
+
+      <!-- SIMILAR -->
+      <div class="sec">Similar Properties</div>
+      <div id="similarGrid"><div style="color:#555;font-size:13px">Loading...</div></div>
+
+    </div>
+  </div>
+
+  <!-- RIGHT — CONTACT BOX -->
+  <div style="width:295px;flex-shrink:0">
+    <div class="contact-box" id="contactBox" style="display:none">
+      <div class="price-big" id="cPrice">AED —</div>
+      <div class="price-per" id="cPricePer"></div>
+      <button class="btn-call" id="btnCall"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Call Now</button>
+      <button class="btn-whatsapp" id="btnWa">💬 WhatsApp</button>
+      <button class="btn-email" onclick="copyLink()">🔗 Copy Link</button>
+      <div style="font-size:10px;color:#333;margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px">Listed By</div>
+      <div class="agent-card">
+        <div class="agent-av" id="agentAv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+        <div>
+          <div id="agentName" style="font-size:13px;font-weight:600;color:#111"></div>
+          <div id="agentType" style="font-size:11px;color:#555;margin-top:2px"></div>
+          <div id="agentVerified" style="font-size:10px;color:#22c55e;margin-top:3px"></div>
+        </div>
+      </div>
+      <div style="font-size:10px;color:#2a2a3a;text-align:center;margin-top:12px" id="cDate"></div>
+    </div>
+    <div class="ad-right" style="margin-top:14px"><span class="ad-label">Advertisement</span></div>
+  </div>
+</div>
+
+<div class="ad-bottom"><span class="ad-label">Advertisement</span></div>
+<div id="authModal" class="modal-overlay" style="display:none">
+  <div class="modal-box"><button class="modal-close" onclick="closeAuth()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <div class="modal-tabs"><button class="modal-tab active" onclick="switchTab('signin')">Sign In</button><button class="modal-tab" onclick="switchTab('signup')">Sign Up</button></div>
+    <div id="formSignin"><input class="form-input" type="email" id="siEmail" placeholder="Email" style="margin-bottom:10px"><input class="form-input" type="password" id="siPass" placeholder="Password" style="margin-bottom:12px"><button class="btn btn-gold" style="width:100%" onclick="doSignin()">Sign In</button></div>
+    <div id="formSignup" style="display:none"><input class="form-input" type="text" id="suName" placeholder="Full name" style="margin-bottom:10px"><input class="form-input" type="email" id="suEmail" placeholder="Email" style="margin-bottom:10px"><input class="form-input" type="password" id="suPass" placeholder="Password" style="margin-bottom:12px"><button class="btn btn-gold" style="width:100%" onclick="doSignup()">Create Account</button></div>
+    <div id="authMsg" style="margin-top:10px;font-size:13px;text-align:center;color:#ef4444"></div>
+  </div>
+</div>
+<script src="../shared/config.js"></script>
+<!-- auth handled via module below -->
+<script src="../shared/gb-ref.js"></script>
+<script>
+const SB='https://chfkssclmdshdcijfzdr.supabase.co';
+const SK='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNoZmtzc2NsbWRzaGRjaWpmemRyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM1ODc2ODUsImV4cCI6MjA4OTE2MzY4NX0.cbJBIgeDRIqFvk3WMmxRoDWo1C73wM44oBDekdcc3sE';
+const H={apikey:SK,Authorization:'Bearer '+SK};
+let listing=null,allImages=[];
+
+function getId(){return new URLSearchParams(location.search).get('id');}
+
+async function load(){
+  const id=getId();if(!id){err();return;}
+  try{
+    const r=await fetch(`${SB}/rest/v1/listings?id=eq.${id}&select=*`,{headers:H});
+    const d=await r.json();
+    if(!d||!d.length){err();return;}
+    listing=d[0];render(listing);
+    fetch(`${SB}/rest/v1/listings?id=eq.${id}`,{method:'PATCH',headers:{...H,'Content-Type':'application/json'},body:JSON.stringify({view_count:(listing.view_count||0)+1})});
+    loadSimilar(listing);
+  }catch(e){err();}
+}
+
+function render(p){
+  document.getElementById('loadingState').style.display='none';
+  document.getElementById('listingContent').style.display='block';
+  document.getElementById('contactBox').style.display='block';
+  document.title=(p.title||'Property')+' — GulfHabibi UAE';
+
+  // Breadcrumb
+  document.getElementById('breadArea').textContent=(p.area||p.emirate||'');
+  document.getElementById('breadTitle').textContent=p.title||'Property';
+
+  // Gallery — Dubizzle style
+  allImages=p.images||[];
+  if(allImages.length>0){
+    document.getElementById('noImg').style.display='none';
+    const hero=document.getElementById('heroImg');
+    hero.style.display='block';hero.src=allImages[0];
+    // 2 thumbs on right column
+    const tc=document.getElementById('thumbCol');
+    [1,2].forEach(i=>{
+      if(allImages[i]){
+        const img=document.createElement('img');
+        img.src=allImages[i];img.alt='Photo '+(i+1);
+        img.onclick=()=>{hero.src=allImages[i];};
+        tc.appendChild(img);
+      }
+    });
+    // More badge
+    if(allImages.length>3){
+      const mb=document.getElementById('moreBadge');
+      mb.style.display='block';
+      mb.textContent='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg> +'+( allImages.length-3)+' photos';
+    }
+  }
+
+  // Plan overlay
+  if(p.plan==='premium') document.getElementById('planOverlay').innerHTML='<span class="plan-overlay po-premium"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Premium</span>';
+  else if(p.plan==='featured') document.getElementById('planOverlay').innerHTML='<span class="plan-overlay po-featured"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Featured</span>';
+
+  // Verified overlay
+  if(p.rera_number) document.getElementById('verifiedOverlay').innerHTML='<span class="verified-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg> Verified</span>';
+
+  // Title + location
+  document.getElementById('listingTitle').textContent=p.title||'';
+  document.getElementById('listingLocation').innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> '+[p.building,p.area,p.emirate].filter(Boolean).join(', ');
+
+  // GulfHabibi ref
+  if(p.gb_ref&&window.GBRef) document.getElementById('gbRefBadge').innerHTML=GBRef.badge(p.gb_ref);
+
+  // Specs row (Dubizzle-style)
+  const specs=[];
+  if(p.beds) specs.push(`<div class="spec-item"><span class="spec-icon">🛏️</span><span class="spec-val">${p.beds}</span> <span>Beds</span></div>`);
+  if(p.baths) specs.push(`<div class="spec-item"><span class="spec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg></span><span class="spec-val">${p.baths}</span> <span>Baths</span></div>`);
+  if(p.size_sqft||p.property_size) specs.push(`<div class="spec-item"><span class="spec-icon">📐</span><span class="spec-val">${(p.size_sqft||p.property_size).toLocaleString()}</span> <span>sq ft</span></div>`);
+  if(p.furnishing||p.property_furnish) specs.push(`<div class="spec-item"><span class="spec-icon">🛋️</span><span class="spec-val">${p.furnishing||p.property_furnish}</span></div>`);
+  if(p.property_type) specs.push(`<div class="spec-item"><span class="spec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></svg></span><span class="spec-val">${p.property_type}</span></div>`);
+  document.getElementById('specsRow').innerHTML=specs.join('');
+
+  // Meta badges
+  const badges=[];
+  if(p.rera_number) badges.push(`<span style="font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;background:rgba(59,130,246,.1);color:#60a5fa;border:1px solid rgba(59,130,246,.2)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg> RERA: ${p.rera_number}</span>`);
+  const pbm={landlord:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Owner/Landlord',agent:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></svg> Real Estate Agent',developer:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M2 20h20"/><path d="M6 20V10l6-7 6 7v10"/><path d="M9 20v-5h6v5"/></svg> Developer'};
+  if(p.posted_by) badges.push(`<span style="font-size:11px;color:#555;padding:3px 10px;border-radius:20px;background:#ffffff;border:1px solid #e5e5e5">${pbm[p.posted_by]||p.posted_by}</span>`);
+  document.getElementById('metaBadges').innerHTML=badges.join('');
+
+  // Description
+  document.getElementById('descBox').textContent=p.description||'No description provided.';
+
+  // Details table
+  const rows=[
+    ['Type',p.property_type],['Purpose',p.purpose==='rent'?'For Rent':'For Sale'],
+    ['Furnishing',p.furnishing||p.property_furnish],['Size',(p.size_sqft||p.property_size)?((p.size_sqft||p.property_size)+' sq ft'):null],
+    ['Floor',p.floor||null],['Building',p.building||null],
+    ['Area / Community',p.area],['Emirate',p.emirate],
+  ].filter(r=>r[1]);
+  document.getElementById('detailsTable').innerHTML=rows.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td></tr>`).join('');
+
+  // Amenities
+  if(p.property_amenities&&p.property_amenities.length){
+    document.getElementById('amenitiesWrap').style.display='block';
+    const icons={Pool:'🏊',Gym:'🏋️',Parking:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>',Security:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>','Kids Area':'🧒',Balcony:'🌇',Elevator:'🛗',Concierge:'🤵'};
+    document.getElementById('amenityGrid').innerHTML=p.property_amenities.map(a=>`<div class="am-item"><span>${icons[a]||'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg>'}</span><span>${a}</span></div>`).join('');
+  }
+
+  // Map
+  if(p.lat&&p.lng){
+    document.getElementById('mapWrap').style.display='block';
+    setTimeout(()=>{
+      const m=L.map('map').setView([p.lat,p.lng],15);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(m);
+      L.circle([p.lat,p.lng],{radius:200,color:'#C9A84C',fillColor:'#C9A84C',fillOpacity:.15}).addTo(m);
+    },150);
+  }
+
+  // Price
+  const ptype={yearly:'/year',monthly:'/month',total:'total price'};
+  const priceStr=p.price?'AED '+Number(p.price).toLocaleString():'Price on Request';
+  const perStr=ptype[p.price_type]||(p.purpose==='rent'?'/year':'');
+  document.getElementById('cPrice').textContent=priceStr;
+  document.getElementById('cPricePer').textContent=perStr;
+
+  // Contact buttons
+  const phone=p.contact_phone||'';
+  document.getElementById('btnCall').onclick=()=>{
+    fetch(`${SB}/rest/v1/listings?id=eq.${p.id}`,{method:'PATCH',headers:{...H,'Content-Type':'application/json'},body:JSON.stringify({call_count:(p.call_count||0)+1})});
+    window.location.href='tel:'+phone;
+  };
+  document.getElementById('btnWa').onclick=()=>{
+    fetch(`${SB}/rest/v1/listings?id=eq.${p.id}`,{method:'PATCH',headers:{...H,'Content-Type':'application/json'},body:JSON.stringify({whatsapp_count:(p.whatsapp_count||0)+1})});
+    const msg=`Hi, I found your listing on GulfHabibi: ${p.title}`;
+    window.open('https://wa.me/'+phone.replace(/\D/g,'')+'?text='+encodeURIComponent(msg),'_blank');
+  };
+
+  // Agent
+  document.getElementById('agentAv').textContent=p.posted_by==='agent'?'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></svg>':p.posted_by==='developer'?'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M2 20h20"/><path d="M6 20V10l6-7 6 7v10"/><path d="M9 20v-5h6v5"/></svg>':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>';
+  document.getElementById('agentName').textContent=p.contact_name||p.user_name||'Private Seller';
+  document.getElementById('agentType').textContent=pbm[p.posted_by]||'Owner';
+  if(p.rera_number) document.getElementById('agentVerified').textContent='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg> RERA Verified';
+
+  // Date
+  if(p.created_at){
+    const d=new Date(p.created_at);
+    document.getElementById('cDate').textContent='Posted '+d.toLocaleDateString('en-AE',{day:'numeric',month:'short',year:'numeric'});
+    document.getElementById('postedDate').textContent='Posted: '+d.toLocaleDateString('en-AE',{day:'numeric',month:'long',year:'numeric'});
+  }
+}
+
+async function loadSimilar(p){
+  try{
+    const r=await fetch(`${SB}/rest/v1/listings?category=eq.property&emirate=eq.${encodeURIComponent(p.emirate||'Dubai')}&id=neq.${p.id}&status=eq.active&limit=4&select=id,title,price,price_type,images,area,emirate,beds,baths,property_type&order=plan.desc,created_at.desc`,{headers:H});
+    const items=await r.json();
+    const grid=document.getElementById('similarGrid');
+    if(!items||!items.length){grid.innerHTML='<div style="color:#555;font-size:13px">No similar listings yet.</div>';return;}
+    grid.innerHTML=items.map(it=>`
+      <div class="sim-card" onclick="location.href='listing.html?id=${it.id}'">
+        ${it.images&&it.images[0]?`<img src="${it.images[0]}" alt="${it.title}" loading="lazy">`:`<div style="width:110px;height:84px;background:#f0f0f0;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>`}
+        <div class="sim-body">
+          <div class="sim-price">${it.price?'AED '+Number(it.price).toLocaleString():'Call'}</div>
+          <div class="sim-title">${it.title||''}</div>
+          <div class="sim-meta">${[it.beds&&(it.beds+' Beds'),it.property_type,it.area,it.emirate].filter(Boolean).join(' · ')}</div>
+        </div>
+      </div>`).join('');
+  }catch(e){}
+}
+
+function expandDesc(){
+  const box=document.getElementById('descBox');
+  const btn=document.getElementById('readMoreBtn');
+  box.classList.remove('collapsed');
+  btn.style.display='none';
+}
+
+function openAllPhotos(){
+  if(!allImages.length) return;
+  const w=window.open('','_blank');
+  w.document.write('<html><body style="background:#000;margin:0;padding:10px">'+allImages.map(s=>`<img src="${s}" style="width:100%;max-width:900px;display:block;margin:6px auto;border-radius:8px">`).join('')+'
+
+</body></html>');
+}
+
+function copyLink(){navigator.clipboard.writeText(location.href).then(()=>alert('Link copied!')).catch(()=>prompt('Copy:',location.href));}
+
+function reportListing(){
+  const r=prompt('Reason for reporting:\n1. Scam\n2. Fake listing\n3. Wrong category\n4. Spam\n5. Prohibited');
+  if(r&&listing){
+    fetch(`${SB}/rest/v1/reports`,{method:'POST',headers:{...H,'Content-Type':'application/json'},body:JSON.stringify({listing_id:listing.id,listing_type:'property',reason:r,status:'pending'})}).then(()=>alert('Reported. Thank you.')).catch(()=>{});
+  }
+}
+
+function err(){document.getElementById('loadingState').style.display='none';document.getElementById('errorState').style.display='block';}
+
+// Auth
+(function(){
+  function check(){
+    const u=localStorage.getItem('gb_user'),g=document.getElementById('navGuest'),nu=document.getElementById('navUser'),ne=document.getElementById('navUserName');
+    if(u){try{const p=JSON.parse(u),n=(p.user_metadata&&p.user_metadata.full_name)||p.email.split('@')[0];if(ne)ne.textContent='Hi, '+n.split(' ')[0];if(g)g.style.display='none';if(nu)nu.style.display='flex';}catch(e){}}
+    else{if(g)g.style.display='flex';if(nu)nu.style.display='none';}
+  }
+  function doSignout(){localStorage.removeItem('gb_token');localStorage.removeItem('gb_user');check();}
+  window.doSignout=doSignout;
+  document.addEventListener('DOMContentLoaded',()=>{check();load();});
+})();
+</script>
+<script src="../shared/theme.js"></script>
+</body>
+</html>

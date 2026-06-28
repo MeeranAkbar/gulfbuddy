@@ -1,0 +1,17 @@
+{
+  "name": "@gulfbuddy/worker",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "build": "echo build worker skeleton",
+    "dev": "echo dev worker skeleton",
+    "typecheck": "tsc --project tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@gulfbuddy/config": "file:../../packages/config",
+    "@gulfbuddy/types": "file:../../packages/types"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.2"
+  }
+}

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/shared/preview-guard.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Motors Marketplace UAE | GulfHabibi</title>
+<meta name="description" content="Browse UAE motors listings with a cleaner corporate layout. Search cars, SUVs, trucks, bikes, boats and number plates in one focused marketplace.">
+<meta name="theme-color" content="#0f172a">
+<link rel="icon" href="../shared/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../shared/favicon.png" type="image/png">
+<link rel="stylesheet" href="../shared/style.css">
+<script src="../shared/seo.js"></script>
+<script src="../shared/portal-control.js"></script>
+<style>
+body{margin:0;background:linear-gradient(180deg,#f6f2e8 0%,#fbfbfd 20%,#fff 100%);color:#0f172a}
+.navbar{padding:0 12px}
+.page{width:min(1320px,calc(100% - 32px));margin:0 auto;padding:18px 0 42px}
+.nav-shell{width:100%;max-width:1320px;margin:0 auto;height:56px;display:flex;align-items:center;gap:12px}
+.hero-banner{display:grid;grid-template-columns:1fr;gap:16px;padding:20px 22px;border:1px solid rgba(201,168,76,.16);border-radius:24px;background:linear-gradient(120deg,rgba(10,12,24,.98),rgba(27,35,58,.92)),url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1600&q=80') center/cover;box-shadow:0 18px 34px rgba(15,23,42,.12)}
+.hero-banner.has-sponsored{grid-template-columns:minmax(0,1.15fr) 340px}
+.hero-copy{display:grid;align-content:center}
+.hero-kicker{display:inline-flex;align-items:center;padding:6px 11px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);color:#f0d27f;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+.hero-copy h1{margin:10px 0 8px;color:#fff;font-size:clamp(26px,3vw,36px);line-height:1.05;letter-spacing:-.05em;max-width:720px}
+.hero-copy p{margin:0;max-width:720px;color:rgba(255,255,255,.8);font-size:13px;line-height:1.65}
+.hero-points{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.hero-points span{padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:#fff;font-size:12px;font-weight:700}
+.hero-sponsored{display:grid;gap:12px;padding:18px;border-radius:22px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(10px);color:#fff;text-decoration:none}
+.hero-sponsored .tag{display:inline-flex;width:max-content;padding:6px 10px;border-radius:999px;background:#fff7e1;color:#8a6a15;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+.hero-sponsored h3{margin:0;color:#fff;font-size:20px;line-height:1.15;letter-spacing:-.03em}
+.hero-sponsored p{margin:0;color:rgba(255,255,255,.78);font-size:13px;line-height:1.7}
+.hero-sponsored a{min-height:44px;padding:0 16px;border-radius:14px;background:#C9A84C;color:#0f172a;text-decoration:none;font-size:14px;font-weight:800;display:inline-flex;align-items:center;justify-content:center}
+.hero-ad-image{display:block;min-height:154px;border-radius:18px;overflow:hidden;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08)}
+.hero-ad-image img{display:block;width:100%;height:100%;object-fit:cover}
+.search-shell{margin-top:18px}
+.search-card{display:grid;grid-template-columns:230px minmax(0,1.55fr) 220px 190px 220px 150px;gap:0;padding:10px 12px;border-radius:22px;background:#fff;border:1px solid rgba(15,23,42,.08);box-shadow:0 12px 28px rgba(15,23,42,.08)}
+.search-seg{padding:8px 18px;border-right:1px solid #e5e7eb;display:grid;gap:6px}
+.search-seg:last-child{border-right:none}
+.search-seg label{font-size:11px;font-weight:800;color:#0f172a;text-transform:uppercase;letter-spacing:.08em}
+.search-seg .field,.search-seg .select{min-height:34px;border:none;border-radius:0;padding:0;background:transparent;box-shadow:none;font-size:13px}
+.search-seg .field:focus,.search-seg .select:focus{box-shadow:none;border:none}
+.make-model-grid,.dual-range,.paired-selects{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.range-input,.smart-input{min-height:34px;border:none;border-radius:0;padding:0;background:transparent;box-shadow:none;font:inherit;font-size:13px;color:#0f172a}
+.range-input:focus,.smart-input:focus{outline:none}
+.filter-toggle{min-height:64px;border:none;border-radius:16px;background:#fff;color:#0f172a;font:inherit;font-size:14px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:space-between;padding:0 18px}
+.layout{display:block;margin-top:18px}
+.panel{border:1px solid rgba(15,23,42,.08);border-radius:24px;background:rgba(255,255,255,.96);box-shadow:0 14px 34px rgba(15,23,42,.05)}
+.results{padding:20px;margin-top:18px}
+.layout.with-side-ad{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:18px;align-items:start}
+.ad-rail{display:none;padding:16px;position:sticky;top:86px}
+.ad-rail.has-ad{display:grid;gap:16px}
+.side-ad{padding:18px;border-radius:20px;background:#fff;border:1px solid #e5e7eb}
+.side-ad .tag{display:inline-flex;padding:6px 10px;border-radius:999px;background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+.side-ad h3{margin:12px 0 8px;font-size:22px;line-height:1.12;letter-spacing:-.03em}
+.side-ad p{margin:0;color:#64748b;font-size:13px;line-height:1.7}
+.side-ad a{margin-top:14px;min-height:42px;padding:0 16px;border-radius:14px;background:#C9A84C;color:#0f172a;text-decoration:none;font-size:13px;font-weight:800;display:inline-flex;align-items:center;justify-content:center}
+.filters{display:none;padding:16px;border-radius:20px;background:#f8fafc;border:1px solid #e2e8f0;margin-bottom:18px}
+.filters.open{display:block}
+.filters-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-end;flex-wrap:wrap;margin-bottom:12px}
+.filters h2{margin:0;font-size:18px;letter-spacing:-.03em}
+.filters p{margin:6px 0 0;color:#64748b;font-size:13px}
+.bar{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.fg{display:grid;gap:6px}
+.fg label{color:#64748b;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+.mini,.field,.select{width:100%;min-height:46px;border:1px solid #d8dee7;border-radius:14px;background:#fff;color:#0f172a;font:inherit;font-size:14px;padding:0 14px;outline:none;box-sizing:border-box}
+.mini:focus,.field:focus,.select:focus{border-color:#C9A84C;box-shadow:0 0 0 4px rgba(201,168,76,.14)}
+.results-top{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:flex-start;margin-bottom:16px}
+.count{font-size:25px;font-weight:800;letter-spacing:-.05em}
+.sub{margin-top:6px;color:#64748b;font-size:14px;line-height:1.6}
+.results-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.chip{display:inline-flex;align-items:center;padding:10px 14px;border-radius:999px;background:#fff9eb;border:1px solid rgba(201,168,76,.22);color:#8a6a15;font-size:12px;font-weight:700}
+.sort-select{min-width:170px}
+.grid{display:grid;gap:14px}
+.listing-row,.stream-ad{border:1px solid rgba(15,23,42,.08);border-radius:24px;background:#fff;box-shadow:0 12px 26px rgba(15,23,42,.05);overflow:hidden}
+.listing-row{display:grid;grid-template-columns:232px minmax(0,1fr);cursor:pointer;transition:.18s ease}
+.listing-row:hover{transform:translateY(-1px);border-color:rgba(201,168,76,.34);box-shadow:0 18px 32px rgba(15,23,42,.09)}
+.listing-media{position:relative;min-height:172px;background:#e2e8f0}
+.listing-media img{width:100%;height:100%;object-fit:cover}
+.ph{width:100%;height:100%;display:grid;place-items:center;background:linear-gradient(160deg,#0f172a,#334155);color:#fff;font-size:14px;font-weight:700}
+.badges{position:absolute;left:12px;top:12px;display:flex;gap:8px;flex-wrap:wrap}
+.badge{padding:6px 9px;border-radius:999px;background:rgba(15,23,42,.78);color:#fff;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+.badge.gold{background:rgba(201,168,76,.95);color:#0f172a}
+.listing-body{padding:14px 16px;display:grid;gap:10px}
+.listing-price{color:#1f2937;font-size:17px;font-weight:800;letter-spacing:-.03em}
+.listing-title{margin:0;color:#111827;font-size:20px;line-height:1.2;letter-spacing:-.04em}
+.listing-meta{display:flex;flex-wrap:wrap;gap:10px;color:#475569;font-size:13px;font-weight:600}
+.listing-meta span{display:inline-flex;align-items:center;gap:6px}
+.listing-location{color:#475569;font-size:13px;font-weight:600}
+.seller-strip{display:flex;justify-content:space-between;gap:12px;align-items:center;padding-top:10px;border-top:1px solid #eef2f7}
+.seller-mini{display:flex;align-items:center;gap:10px;min-width:0}
+.seller-logo{width:38px;height:38px;border-radius:12px;background:#f8fafc;border:1px solid #e2e8f0;display:grid;place-items:center;overflow:hidden;flex-shrink:0;color:#0f172a;font-size:12px;font-weight:800;text-transform:uppercase}
+.seller-logo img{width:100%;height:100%;object-fit:cover}
+.seller-copy{min-width:0}
+.seller-copy strong{display:block;color:#111827;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.seller-copy span{display:block;margin-top:3px;color:#64748b;font-size:11px}
+.listing-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto}
+.link{min-height:40px;padding:0 16px;border-radius:12px;display:inline-flex;justify-content:center;align-items:center;border:1px solid #d8dee7;text-decoration:none;font-size:13px;font-weight:800}
+.wa{background:#22c55e;border-color:#22c55e;color:#fff}
+.call{background:#fff9eb;border-color:rgba(201,168,76,.22);color:#8a6a15}
+.stream-ad{display:grid;grid-template-columns:minmax(220px,320px) minmax(0,1fr) auto;align-items:center;gap:0}
+.stream-ad-media{min-height:180px;background:linear-gradient(180deg,#eadfc2,#d7c09a);display:grid;place-items:center;color:#5f4a1d;font-size:22px;font-weight:800}
+.stream-ad-media img{display:block;width:100%;height:100%;object-fit:cover}
+.stream-ad-body{padding:20px}
+.stream-ad-tag{display:inline-flex;padding:7px 10px;border-radius:999px;background:#eff6ff;color:#1d4ed8;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+.stream-ad h3{margin:12px 0 8px;font-size:26px;line-height:1.1;letter-spacing:-.04em}
+.stream-ad p{margin:0;color:#475569;font-size:14px;line-height:1.7}
+.stream-ad ul{margin:14px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:16px}
+.stream-ad li{display:flex;align-items:center;gap:8px;color:#475569;font-size:13px;font-weight:700}
+.stream-ad li:before{content:"";width:8px;height:8px;border-radius:999px;background:#C9A84C}
+.stream-ad-cta{padding:20px;display:grid;align-content:center;justify-items:center;gap:12px}
+.stream-ad-cta a{min-width:150px;min-height:46px;padding:0 18px;border-radius:14px;background:#C9A84C;color:#0f172a;text-decoration:none;font-size:14px;font-weight:800;display:inline-flex;align-items:center;justify-content:center}
+.empty{padding:50px 20px;border-radius:24px;border:1px dashed rgba(201,168,76,.38);background:#fffaf0;text-align:center}
+.empty h3{margin:16px 0 8px;font-size:22px;letter-spacing:-.03em}
+.empty p{margin:0 auto 18px;max-width:460px;color:#64748b;font-size:14px;line-height:1.7}
+body:not(.ads-on) .hero-banner{grid-template-columns:1fr}
+@media(max-width:1160px){.search-card{grid-template-columns:repeat(3,minmax(0,1fr))}.listing-row,.stream-ad{grid-template-columns:1fr}}
+@media(max-width:1160px){.hero-banner,.hero-banner.has-sponsored{grid-template-columns:1fr}.layout.with-side-ad{grid-template-columns:1fr}.ad-rail{position:static}}
+@media(max-width:860px){.search-card,.bar{grid-template-columns:1fr}.search-card{display:grid}.search-seg{border-right:none;border-bottom:1px solid #e5e7eb}.search-seg:last-child{border-bottom:none}.results-actions{width:100%}.sort-select{width:100%;min-width:0}.listing-title{font-size:19px}.stream-ad ul,.make-model-grid,.dual-range,.paired-selects{grid-template-columns:1fr}.nav-shell{max-width:none}}
+@media(max-width:720px){.page{width:min(100% - 20px,1320px);padding:18px 0 34px}.results{padding:18px}.listing-actions{display:grid;grid-template-columns:1fr 1fr}}
+[data-theme="dark"] body{background:linear-gradient(180deg,#070912 0%,#0b1020 22%,#05070d 100%);color:#ececec}
+[data-theme="dark"] .hero-banner{box-shadow:0 20px 38px rgba(0,0,0,.3)}
+[data-theme="dark"] .hero-sponsored{background:rgba(15,23,42,.62)}
+[data-theme="dark"] .panel,
+[data-theme="dark"] .search-card,
+[data-theme="dark"] .filter-toggle,
+[data-theme="dark"] .mini,
+[data-theme="dark"] .field,
+[data-theme="dark"] .select,
+[data-theme="dark"] .listing-row,
+[data-theme="dark"] .stream-ad,
+[data-theme="dark"] .side-ad{background:#0d1220;border-color:#1f2937;box-shadow:0 16px 32px rgba(0,0,0,.25)}
+[data-theme="dark"] .results-top .count,
+[data-theme="dark"] .listing-title,
+[data-theme="dark"] .side-ad h3,
+[data-theme="dark"] .search-seg label,
+[data-theme="dark"] .filters h2{color:#f8fafc}
+[data-theme="dark"] .sub,
+[data-theme="dark"] .listing-location,
+[data-theme="dark"] .listing-meta,
+[data-theme="dark"] .side-ad p,
+[data-theme="dark"] .filters p,
+[data-theme="dark"] .fg label{color:#94a3b8}
+[data-theme="dark"] .range-input,
+[data-theme="dark"] .smart-input,
+[data-theme="dark"] .search-seg .select{color:#f8fafc}
+[data-theme="dark"] .range-input::placeholder,
+[data-theme="dark"] .smart-input::placeholder{color:#64748b}
+[data-theme="dark"] .search-seg .select option{color:#f8fafc;background:#0d1220}
+[data-theme="dark"] .seller-logo{background:#111827;border-color:#1f2937;color:#f8fafc}
+[data-theme="dark"] .seller-copy strong{color:#f8fafc}
+[data-theme="dark"] .seller-copy span{color:#94a3b8}
+[data-theme="dark"] .stream-ad-tag{background:#172554;color:#bfdbfe}
+[data-theme="dark"] .stream-ad-body p,
+[data-theme="dark"] .stream-ad li{color:#cbd5e1}
+[data-theme="dark"] .empty{background:#111827;border-color:rgba(201,168,76,.28)}
+[data-theme="dark"] .empty h3{color:#f8fafc}
+[data-theme="dark"] .empty p{color:#cbd5e1}
+</style>
+</head>
+<body>
+<script>
+var gbAdminSettings=window.GBPortalControl?GBPortalControl.getCachedSettings():{};
+if(window.GBPortalControl){
+  if(!GBPortalControl.applyMaintenanceMode(gbAdminSettings,'../coming-soon.html?section=maintenance')&&!GBPortalControl.isSectionLive('section_motors',gbAdminSettings)){
+    window.location.replace('../coming-soon.html?section=motors');
+  }
+}
+</script>
+<nav class="navbar">
+  <div class="nav-shell">
+    <a href="../home.html" class="nav-logo"><div class="nav-logo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#0e0e0e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><div class="nav-logo-text">Gulf<span>Habibi</span></div></a>
+    <div class="nav-links" id="navLinks">
+      <a href="../home.html" class="nav-link">Home</a>
+      <a href="index.html" class="nav-link active">Motors</a>
+      <a href="../property/index.html" class="nav-link">Property</a>
+      <a href="../jobs/index.html" class="nav-link">Jobs</a>
+      <a href="../marketplace/index.html" class="nav-link">Classifieds</a>
+      <a href="../services/index.html" class="nav-link">Services</a>
+      <a href="../directory/index.html" class="nav-link">Directory</a>
+      <a href="../about.html" class="nav-link">About Us</a>
+    </div>
+    <div class="nav-actions" id="authSection">
+      <button id="themeToggleBtn" onclick="toggleTheme()" title="Toggle Dark/Light" style="background:var(--bg-card,#0d0d1a);border:1px solid var(--border,#1a1828);border-radius:8px;color:var(--gold,#C9A84C);font-size:15px;padding:5px 9px;cursor:pointer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;flex-shrink:0"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>
+      <div id="navGuest" style="display:flex;gap:8px;align-items:center"><button class="btn btn-ghost btn-sm" onclick="openAuth('signin')">Sign In</button><button class="btn btn-gold btn-sm" onclick="openAuth('signup')">Sign Up Free</button></div>
+      <div id="navUser" style="display:none;gap:8px;align-items:center"><span id="navUserName" style="font-size:13px;color:#C9A84C;font-weight:600"></span><a href="../dashboard/index.html" class="btn btn-ghost btn-sm">&#128100; Dashboard</a><button class="btn btn-outline btn-sm" onclick="if(window.signOut){signOut();}" style="font-size:12px;padding:5px 12px">Sign Out</button></div>
+    </div>
+    <button class="nav-hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+  </div>
+</nav>
+<main class="page">
+  <section class="hero-banner" id="heroBanner"><div class="hero-copy"><span class="hero-kicker">UAE motors marketplace</span><h1>Used and new vehicles across the UAE.</h1><p>Keep the top of the page focused on serious inventory and fast search, while reserving this hero area for premium paid campaigns when dealers or approved brands want visibility.</p><div class="hero-points"><span>Compact live search</span><span>Dealer-ready listings</span><span>Optional paid banners</span></div></div><a class="hero-sponsored" id="heroSponsored" href="../pricing.html" target="_blank" rel="noopener" hidden></a></section>
+  <section class="search-shell">
+    <div class="search-card">
+      <div class="search-seg">
+        <label for="mType">Category and emirate</label>
+        <div class="paired-selects">
+          <select class="select" id="mType" onchange="changeType(this.value)"></select>
+          <select class="select" id="mEmirate" onchange="updateArea();loadMotors()"><option value="">Emirates</option><option>Dubai</option><option>Abu Dhabi</option><option>Sharjah</option><option>Ajman</option><option>RAK</option><option>Fujairah</option><option>UAQ</option></select>
+        </div>
+      </div>
+      <div class="search-seg">
+        <label>Make and model</label>
+        <div class="make-model-grid">
+          <input class="smart-input" id="mBrand" list="brandList" placeholder="Type brand" oninput="syncModelSuggestions();queueLoad()">
+          <input class="smart-input" id="mModel" list="modelList" placeholder="Type model" oninput="queueLoad()">
+        </div>
+        <datalist id="brandList"></datalist>
+        <datalist id="modelList"></datalist>
+      </div>
+      <div class="search-seg">
+        <label>Price range</label>
+        <div class="dual-range">
+          <input class="range-input" id="mPriceMin" type="number" min="0" placeholder="From AED" oninput="queueLoad()">
+          <input class="range-input" id="mPriceMax" type="number" min="0" placeholder="To AED" oninput="queueLoad()">
+        </div>
+      </div>
+      <div class="search-seg">
+        <label>Year</label>
+        <div class="dual-range">
+          <input class="range-input" id="mYearMin" type="number" min="1900" max="2035" placeholder="From year" oninput="queueLoad()">
+          <input class="range-input" id="mYearMax" type="number" min="1900" max="2035" placeholder="To year" oninput="queueLoad()">
+        </div>
+      </div>
+      <div class="search-seg">
+        <label>Kilometers</label>
+        <div class="dual-range">
+          <input class="range-input" id="mKmMin" type="number" min="0" placeholder="From km" oninput="queueLoad()">
+          <input class="range-input" id="mKmMax" type="number" min="0" placeholder="To km" oninput="queueLoad()">
+        </div>
+      </div>
+      <button class="filter-toggle" type="button" onclick="toggleFilters()">Filters <span>&#9662;</span></button>
+    </div>
+  </section>
+  <section class="layout">
+    <section class="panel results">
+      <div class="filters" id="advancedFilters"><div class="filters-head"><div><h2>More Motors filters</h2><p>Keep the main search simple, then use these extra controls only when needed.</p></div><span class="chip" id="mChip">All vehicles</span></div><div class="bar" id="filterBar"></div></div>
+      <div class="results-top"><div><div class="count" id="mCount">Loading vehicles...</div><div class="sub" id="mSub">Pulling the latest motors listings for this page.</div></div><div class="results-actions"><select class="select sort-select" id="mSort" onchange="loadMotors()"><option value="default">Sort: platform ranking</option><option value="newest">Sort: newest</option><option value="price_low">Sort: price low to high</option><option value="price_high">Sort: price high to low</option></select><a class="btn-sub" href="post.html">List your vehicle</a></div></div>
+      <div class="grid" id="mGrid"></div>
+    </section>
+    <aside class="panel ad-rail" id="sideAds" hidden></aside>
+  </section>
+</main>
+<script src="../shared/gb-ref.js"></script>
+<script src="../shared/auth.js"></script>
+<script src="../shared/theme.js"></script>
+<script>
+const SB=(window.GBPortalControl&&GBPortalControl.SUPABASE_URL)||'https://chfkssclmdshdcijfzdr.supabase.co',SK=(window.GBPortalControl&&GBPortalControl.SUPABASE_KEY)||'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNoZmtzc2NsbWRzaGRjaWpmemRyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM1ODc2ODUsImV4cCI6MjA4OTE2MzY4NX0.cbJBIgeDRIqFvk3WMmxRoDWo1C73wM44oBDekdcc3sE',H=(window.GBPortalControl&&GBPortalControl.HEADERS)||{apikey:SK,Authorization:'Bearer '+SK};
+const TYPES=[['all','All vehicles','Everything in Motors'],['car','Cars','Sedans and hatchbacks'],['suv','SUVs and 4x4','Family and off-road'],['truck','Trucks and pickups','Commercial inventory'],['van','Vans and buses','Passenger transport'],['bike','Motorcycles','Daily and sport bikes'],['boat','Boats','Marine listings'],['spare','Spare parts','Parts and accessories'],['number_plate','Number plates','Special plate inventory']];
+const BRANDS={all:['Toyota','Honda','Nissan','BMW','Mercedes-Benz','Ford','Kia','Hyundai'],car:['Toyota','Honda','Nissan','BMW','Mercedes-Benz','Audi','Lexus'],suv:['Toyota','Nissan','Ford','Jeep','Land Rover','BMW'],truck:['Toyota','Ford','Isuzu','GMC','RAM'],van:['Toyota','Ford','Mercedes-Benz','Volkswagen'],bike:['Yamaha','Honda','Kawasaki','Suzuki','BMW'],boat:['Yamaha','Sea Ray','Sunseeker'],spare:['Toyota','Honda','Nissan','BMW','Mercedes-Benz']};
+const MODELS={toyota:['Camry','Corolla','Land Cruiser','Prado','RAV4','Hilux'],honda:['Accord','Civic','CR-V'],nissan:['Patrol','Altima','Sentra','X-Trail'],bmw:['3 Series','5 Series','X5'],mercedesbenz:['C-Class','E-Class','GLE'],audi:['A4','A6','Q5'],lexus:['LX','GX','RX'],ford:['Mustang','Explorer','F-150'],jeep:['Wrangler','Grand Cherokee'],landrover:['Range Rover','Defender'],yamaha:['R1','MT-07','WaveRunner']};
+const AREAS={Dubai:['Al Quoz','Al Barsha','Deira','Jebel Ali'],'Abu Dhabi':['Mussafah','Khalifa City','Al Ain'],Sharjah:['Al Nahda','Al Sajaa','Muwaileh'],Ajman:['Al Jurf','Al Rashidiya'],RAK:['Al Hamra','Al Nakheel'],Fujairah:['Fujairah City','Dibba'],UAQ:['Al Salamah','Al Raas']};
+let activeType='all',timer=null,allItems=[],publicSettingsLoaded=false,inlineAdConfig=null;
+function esc(v){return String(v||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;')}
+function num(v){if(v===null||v===undefined)return null;var s=String(v).trim().replace(/,/g,'');if(s==='')return null;var n=Number(s);return Number.isFinite(n)?n:null}
+function norm(v){return String(v||'').toLowerCase().replace(/[^a-z0-9]/g,'')}
+function parseBool(v){return v===true||v==='true'||v===1||v==='1'}
+function detectType(v){var hay=[v.vehicle_type,v.vehicle_body,v.body_type,v.title,v.description,v.vehicle_brand,v.vehicle_model].map(norm).join(' ');if(/numberplate|plate/.test(hay))return'number_plate';if(/spare|parts|battery|tyre|rim/.test(hay))return'spare';if(/boat|yacht|jetski|marine/.test(hay))return'boat';if(/bike|motorcycle|yamaha|ducati|kawasaki|suzuki/.test(hay))return'bike';if(/truck|pickup|hilux|ranger|isuzu|ram/.test(hay))return'truck';if(/van|bus|sprinter|passengertransport/.test(hay))return'van';if(/suv|4x4|patrol|prado|rangerover|landcruiser|grandcherokee/.test(hay))return'suv';return'car'}
+function normalizeListing(v){var item=Object.assign({},v);item._typeKey=detectType(v);item._price=num(v.price);item._year=num(v.vehicle_year);item._km=num(v.vehicle_km);return item}
+function settingText(key){return window.GBPortalControl?GBPortalControl.settingText(gbAdminSettings,key,''):String(gbAdminSettings[key]||'').trim()}
+function settingBool(key){return window.GBPortalControl?GBPortalControl.isTrue(gbAdminSettings[key]):parseBool(gbAdminSettings[key])}
+function mergeSettingsRows(rows){if(window.GBPortalControl){gbAdminSettings=GBPortalControl.mergeSettingsRows(rows,gbAdminSettings);GBPortalControl.cacheSettings(gbAdminSettings);return}if(!Array.isArray(rows))return;rows.forEach(function(row){if(row.value==='true')gbAdminSettings[row.key]=true;else if(row.value==='false')gbAdminSettings[row.key]=false;else gbAdminSettings[row.key]=row.value});try{localStorage.setItem('gb_admin_settings',JSON.stringify(gbAdminSettings))}catch(e){}}
+async function loadPublicSettings(){if(publicSettingsLoaded)return gbAdminSettings;publicSettingsLoaded=true;if(window.GBPortalControl){gbAdminSettings=await GBPortalControl.loadSettings({base:gbAdminSettings});if(GBPortalControl.applyMaintenanceMode(gbAdminSettings,'../coming-soon.html?section=maintenance'))return gbAdminSettings;if(!GBPortalControl.isSectionLive('section_motors',gbAdminSettings)){window.location.replace('../coming-soon.html?section=motors');return gbAdminSettings}return gbAdminSettings}try{var saved=localStorage.getItem('gb_admin_settings');if(saved)gbAdminSettings=Object.assign({},gbAdminSettings,JSON.parse(saved)||{})}catch(e){}try{var r=await fetch(SB+'/rest/v1/site_settings?select=key,value',{headers:H});if(r.ok)mergeSettingsRows(await r.json())}catch(e){}return gbAdminSettings}
+function buildAdConfig(prefix,fallbackTitle,fallbackCopy,fallbackCta){return window.GBPortalControl?GBPortalControl.getAdConfig(gbAdminSettings,prefix,{link:'../pricing.html',title:fallbackTitle,copy:fallbackCopy,cta:fallbackCta}):{enabled:settingBool(prefix+'_enabled'),image:settingText(prefix+'_image'),link:settingText(prefix+'_link')||'../pricing.html',title:settingText(prefix+'_title')||fallbackTitle,copy:settingText(prefix+'_copy')||fallbackCopy,cta:settingText(prefix+'_cta')||fallbackCta}}
+function hasAdContent(cfg){return window.GBPortalControl?GBPortalControl.hasAdContent(cfg):!!(cfg&&cfg.enabled&&(cfg.image||cfg.title||cfg.copy||cfg.link))}
+function renderHeroAd(cfg){var hero=document.getElementById('heroBanner'),slot=document.getElementById('heroSponsored');if(!hasAdContent(cfg)){hero.classList.remove('has-sponsored');slot.hidden=true;slot.innerHTML='';return}hero.classList.add('has-sponsored');slot.hidden=false;slot.href=cfg.link;slot.innerHTML='<span class="tag">Paid sponsor</span>'+(cfg.image?'<span class="hero-ad-image"><img src="'+esc(cfg.image)+'" alt="'+esc(cfg.title)+'" loading="lazy"></span>':'')+'<div><h3>'+esc(cfg.title)+'</h3><p>'+esc(cfg.copy)+'</p></div><span class="hero-cta">'+esc(cfg.cta)+'</span>'}
+function renderSideAd(cfg){var rail=document.getElementById('sideAds'),layout=document.querySelector('.layout');if(!hasAdContent(cfg)){rail.hidden=true;rail.classList.remove('has-ad');rail.innerHTML='';layout.classList.remove('with-side-ad');return}rail.hidden=false;rail.classList.add('has-ad');layout.classList.add('with-side-ad');rail.innerHTML='<article class="side-ad"><span class="tag">Sidebar sponsor</span>'+(cfg.image?'<div class="slot-ad-media"><img src="'+esc(cfg.image)+'" alt="'+esc(cfg.title)+'" loading="lazy"></div>':'')+'<h3>'+esc(cfg.title)+'</h3><p>'+esc(cfg.copy)+'</p><a href="'+esc(cfg.link)+'" target="_blank" rel="noopener">'+esc(cfg.cta)+'</a></article>'}
+function queueLoad(){clearTimeout(timer);timer=setTimeout(loadMotors,220)}
+function guessType(q){q=String(q||'').toLowerCase();if(/boat|yacht|jetski/.test(q))return'boat';if(/bike|motorcycle|ducati|yamaha/.test(q))return'bike';if(/pickup|truck|hilux|ranger/.test(q))return'truck';if(/van|bus|sprinter/.test(q))return'van';if(/suv|4x4|patrol|prado|range rover/.test(q))return'suv';if(/plate|number/.test(q))return'number_plate';if(/spare|rim|battery|parts/.test(q))return'spare';return''}
+function getTypeCounts(){var counts={all:0};TYPES.forEach(function(t){counts[t[0]]=0});allItems.forEach(function(v){counts.all++;if(counts[v._typeKey]!==undefined)counts[v._typeKey]++});return counts}
+function updateChip(){var chip=document.getElementById('mChip');if(chip)chip.textContent=TYPES.find(function(x){return x[0]===activeType})?.[1]||'All vehicles'}
+function renderTypeSelect(){var sel=document.getElementById('mType');if(!sel)return;var counts=getTypeCounts();sel.innerHTML=TYPES.map(function(t){var total=counts[t[0]]||0;return'<option value="'+t[0]+'">'+t[1]+(t[0]==='all'?'':' ('+total+')')+'</option>'}).join('');sel.value=activeType}
+function updateArea(){var em=document.getElementById('mEmirate').value,area=document.getElementById('fArea');if(!area)return;area.innerHTML='<option value="">All areas</option>'+(AREAS[em]||[]).map(function(a){return'<option>'+esc(a)+'</option>'}).join('');area.disabled=!em}
+function clampMinMax(minVal,maxVal){var min=num(minVal),max=num(maxVal);return{min:min,max:max}}
+function applyIncomingQuery(q){q=String(q||'').trim();if(!q)return;var brands=[...new Set((BRANDS.all||[]).concat(allItems.map(function(v){return(v.vehicle_brand||'').trim()}).filter(Boolean)))],lower=q.toLowerCase(),matched=brands.sort(function(a,b){return b.length-a.length}).find(function(brand){return lower.startsWith(brand.toLowerCase())||lower===brand.toLowerCase()});if(matched){document.getElementById('mBrand').value=matched;var remainder=q.slice(matched.length).trim();if(remainder)document.getElementById('mModel').value=remainder;return}var keyword=document.getElementById('fKeyword');if(keyword)keyword.value=q}
+function buildBrandList(){var brands=[...new Set((BRANDS[activeType]||BRANDS.all).concat(allItems.filter(function(v){return activeType==='all'||v._typeKey===activeType}).map(function(v){return(v.vehicle_brand||'').trim()}).filter(Boolean)))].sort();document.getElementById('brandList').innerHTML=brands.map(function(b){return'<option value="'+esc(b)+'"></option>'}).join('')}
+function syncModelSuggestions(){var brand=document.getElementById('mBrand').value.trim(),brandKey=norm(brand),models=MODELS[brandKey]||[...new Set(allItems.filter(function(v){return (activeType==='all'||v._typeKey===activeType)&&(!brand||norm(v.vehicle_brand||'').includes(brandKey))}).map(function(v){return(v.vehicle_model||'').trim()}).filter(Boolean))].sort();document.getElementById('modelList').innerHTML=models.map(function(m){return'<option value="'+esc(m)+'"></option>'}).join('')}
+async function fetchInventory(){var size=1000,offset=0,rows=[];try{while(true){var r=await fetch(SB+'/rest/v1/listings?select=*&category=eq.vehicles&status=eq.active&order=created_at.desc&limit='+size+'&offset='+offset,{headers:H});var d=await r.json();if(!Array.isArray(d)||!d.length)break;rows=rows.concat(d);if(d.length<size)break;offset+=d.length;if(offset>=20000)break}}catch(e){rows=[]}allItems=rows.map(normalizeListing);renderTypeSelect();updateChip();buildBrandList();syncModelSuggestions()}
+async function buildFilters(){document.getElementById('filterBar').innerHTML='<div class="fg"><label>Area</label><select class="mini" id="fArea" onchange="loadMotors()"><option value="">All areas</option></select></div><div class="fg"><label>Condition</label><select class="mini" id="fCondition" onchange="loadMotors()"><option value="">Any condition</option><option>New</option><option>Used</option><option>Excellent</option><option>Good</option><option>Fair</option></select></div><div class="fg"><label>Keyword</label><input class="mini" id="fKeyword" placeholder="Regional specs or note..." oninput="queueLoad()"></div><div class="fg"><label>Reset</label><button class="mini" type="button" onclick="clearAll()">Clear filters</button></div>';updateArea()}
+function toggleFilters(){document.getElementById('advancedFilters').classList.toggle('open')}
+function changeType(type){activeType=type||'all';renderTypeSelect();updateChip();buildBrandList();syncModelSuggestions();loadMotors()}
+function clearAll(){activeType='all';document.getElementById('mBrand').value='';document.getElementById('mModel').value='';document.getElementById('mEmirate').value='';document.getElementById('mPriceMin').value='';document.getElementById('mPriceMax').value='';document.getElementById('mYearMin').value='';document.getElementById('mYearMax').value='';document.getElementById('mKmMin').value='';document.getElementById('mKmMax').value='';document.querySelectorAll('#filterBar select').forEach(function(el){el.selectedIndex=0});document.querySelectorAll('#filterBar input').forEach(function(el){el.value=''});renderTypeSelect();updateChip();updateArea();syncModelSuggestions();loadMotors()}
+function applyAdminDecor(){var showAds=window.GBPortalControl?GBPortalControl.shouldShowAds(gbAdminSettings):!(gbAdminSettings.show_ads===false||gbAdminSettings.show_ads==='false'),heroCfg=showAds?buildAdConfig('motors_hero_ad','Put a premium dealer campaign in the highest-visibility slot on Motors.','Animated banners, finance offers, inspection campaigns, or approved launches can live here once an ad package is active.','View campaign'):null,sideCfg=showAds?buildAdConfig('motors_side_ad','Run a paid sidebar campaign beside the Motors search results.','Use this space for dealer branding, financing, inspections, insurance, or approved cross-category placements.','Learn more'):null;inlineAdConfig=showAds?buildAdConfig('motors_inline_ad','Place a sponsored campaign directly inside the Motors results stream.','This keeps advertising visible without mixing it with the standard listing flow.','Open campaign'):null;if(!hasAdContent(inlineAdConfig))inlineAdConfig=null;renderHeroAd(heroCfg);renderSideAd(sideCfg)}
+function rankPriority(v){var now=new Date(),plan=String(v.plan||v.listing_tier||v.package_type||'').toLowerCase(),placement=String(v.placement||v.priority_level||'').toLowerCase(),priorityScore=num(v.priority_score)||num(v.sort_priority)||0,datedBoost=['featured_until','promoted_until','priority_until','boosted_until','top_until'].some(function(key){return v[key]&&new Date(v[key])>now}),tier=plan==='premium'||plan==='top'||placement==='top'?3:plan==='featured'||plan==='boosted'||placement==='boosted'?2:0,flag=v.is_featured||v.is_promoted||v.is_boosted||v.top_spot?2:0;return Math.max(tier,datedBoost?3:0,flag,priorityScore)}
+function sortList(items,sort){return items.slice().sort(function(a,b){var pa=rankPriority(a),pb=rankPriority(b);if(sort==='default'&&pb!==pa)return pb-pa;if(sort==='price_low'){var al=num(a.price),bl=num(b.price);if(al===null&&bl!==null)return 1;if(al!==null&&bl===null)return-1;if(al!==null&&bl!==null&&al!==bl)return al-bl}if(sort==='price_high'){var ah=num(a.price),bh=num(b.price);if(ah===null&&bh!==null)return 1;if(ah!==null&&bh===null)return-1;if(ah!==null&&bh!==null&&ah!==bh)return bh-ah}if(pb!==pa)return pb-pa;return new Date(b.created_at||0)-new Date(a.created_at||0)})}
+function renderStreamAd(cfg){return'<article class="stream-ad">'+(cfg.image?'<a class="stream-ad-media" href="'+esc(cfg.link)+'" target="_blank" rel="noopener"><img src="'+esc(cfg.image)+'" alt="'+esc(cfg.title)+'" loading="lazy"></a>':'<div class="stream-ad-media">Sponsored</div>')+'<div class="stream-ad-body"><span class="stream-ad-tag">Sponsored banner</span><h3>'+esc(cfg.title)+'</h3><p>'+esc(cfg.copy)+'</p></div><div class="stream-ad-cta"><a href="'+esc(cfg.link)+'" target="_blank" rel="noopener">'+esc(cfg.cta)+'</a></div></article>'}
+function sellerIdentity(v){var name=v.company_name||v.dealer_name||v.seller_company||v.user_name||'Private Seller',logo=v.company_logo||v.dealer_logo||v.seller_logo||v.logo_url||'',type=String(v.seller_type||v.account_type||'').toLowerCase(),isDealer=!!(logo||v.company_name||v.dealer_name||v.seller_company||type==='dealer'||type==='company'||type==='reseller'),initials=String(name).split(/\s+/).filter(Boolean).slice(0,2).map(function(x){return x[0]}).join('').toUpperCase()||'GH';return{label:name,logo:logo,initials:initials,caption:isDealer?'Dealer / reseller branding':'Private seller'}}
+async function bumpMetric(id,field,current){try{var payload={};payload[field]=(num(current)||0)+1;await fetch(SB+'/rest/v1/listings?id=eq.'+encodeURIComponent(id),{method:'PATCH',headers:{'Content-Type':'application/json',apikey:SK,Authorization:'Bearer '+SK},body:JSON.stringify(payload)})}catch(e){}}
+function openCall(ev,id,phone,current){ev.stopPropagation();if(!phone)return;void bumpMetric(id,'call_count',current);window.location.href='tel:'+phone}
+function openWhatsapp(ev,id,phone,current){ev.stopPropagation();var digits=String(phone||'').replace(/\D/g,'');if(!digits)return;void bumpMetric(id,'whatsapp_count',current);window.open('https://wa.me/'+digits+'?text='+encodeURIComponent('Hi, I am interested in your vehicle listing on GulfHabibi UAE.'),'_blank')}
+function renderCard(v){var img=v.images&&v.images[0]?'<img src="'+esc(v.images[0])+'" alt="'+esc(v.title||'Vehicle listing')+'" loading="lazy">':'<div class="ph">No photo</div>',price=v._price,waPhone=v.contact_whatsapp||v.contact_phone||'',meta=[[v.vehicle_brand&&v.vehicle_model?[v.vehicle_brand,v.vehicle_model].filter(Boolean).join(' '):v.vehicle_brand||v.vehicle_model||'',''],[v._year,''],[v.vehicle_condition,''],[v._km!==null?Number(v._km).toLocaleString()+' km':'','']].filter(function(x){return x[0]}).map(function(x){return'<span>'+esc(x[0])+'</span>'}).join(''),seller=sellerIdentity(v),logo=seller.logo?'<img src="'+esc(seller.logo)+'" alt="'+esc(seller.label)+'">':esc(seller.initials),callCount=num(v.call_count)||0,waCount=num(v.whatsapp_count)||0,callAction=v.contact_phone?'<a class="link call" href="#" onclick=\'openCall(event,'+JSON.stringify(String(v.id||''))+','+JSON.stringify(String(v.contact_phone||''))+','+callCount+');return false\'>Call</a>':'<span class="link call" style="opacity:.55;pointer-events:none">Call</span>',waAction=waPhone?'<button class="link wa" type="button" onclick=\'openWhatsapp(event,'+JSON.stringify(String(v.id||''))+','+JSON.stringify(String(waPhone||''))+','+waCount+')\'>WhatsApp</button>':'<span class="link wa" style="opacity:.55;pointer-events:none">WhatsApp</span>';return'<article class="listing-row" onclick="window.location.href=\'listing.html?id='+encodeURIComponent(v.id)+'\'"><div class="listing-media">'+img+'<div class="badges">'+(rankPriority(v)>=3?'<span class="badge gold">Top</span>':rankPriority(v)>=2?'<span class="badge gold">Boosted</span>':'')+'</div></div><div class="listing-body"><div class="listing-price">'+(price===null?'Contact seller':'AED '+price.toLocaleString())+'</div><h3 class="listing-title">'+esc(v.title||'Motors listing')+'</h3><div class="listing-meta">'+meta+'</div><div class="listing-location">'+esc([v.area,v.emirate].filter(Boolean).join(', ')||'UAE')+'</div><div class="seller-strip"><div class="seller-mini"><div class="seller-logo">'+logo+'</div><div class="seller-copy"><strong>'+esc(seller.label)+'</strong><span>'+esc(seller.caption)+'</span></div></div><div class="listing-actions">'+waAction+callAction+'</div></div></div></article>'}
+function includesNormalized(source,query){if(!query)return true;return norm(source).includes(norm(query))}
+function applyFilters(list){var brand=(document.getElementById('mBrand')?.value||'').trim(),model=(document.getElementById('mModel')?.value||'').trim(),em=document.getElementById('mEmirate')?.value||'',area=document.getElementById('fArea')?.value||'',cond=document.getElementById('fCondition')?.value||'',kw=(document.getElementById('fKeyword')?.value||'').trim(),priceRange=clampMinMax(document.getElementById('mPriceMin')?.value||'',document.getElementById('mPriceMax')?.value||''),yearRange=clampMinMax(document.getElementById('mYearMin')?.value||'',document.getElementById('mYearMax')?.value||''),kmRange=clampMinMax(document.getElementById('mKmMin')?.value||'',document.getElementById('mKmMax')?.value||'');return list.filter(function(v){var brandHay=[v.vehicle_brand,v.title,v.description].join(' '),modelHay=[v.vehicle_model,v.title,v.description].join(' '),keywordHay=[v.title,v.description,v.vehicle_brand,v.vehicle_model,v.vehicle_type,v._typeKey,v.emirate,v.area].join(' ');if(activeType!=='all'&&v._typeKey!==activeType)return false;if(em&&v.emirate!==em)return false;if(area&&v.area!==area)return false;if(cond&&String(v.vehicle_condition||'').toLowerCase()!==String(cond).toLowerCase())return false;if(!includesNormalized(brandHay,brand))return false;if(!includesNormalized(modelHay,model))return false;if(priceRange.min!==null&&(v._price===null||v._price<priceRange.min))return false;if(priceRange.max!==null&&(v._price===null||v._price>priceRange.max))return false;if(yearRange.min!==null&&(v._year===null||v._year<yearRange.min))return false;if(yearRange.max!==null&&(v._year===null||v._year>yearRange.max))return false;if(kmRange.min!==null&&(v._km===null||v._km<kmRange.min))return false;if(kmRange.max!==null&&(v._km===null||v._km>kmRange.max))return false;if(!includesNormalized(keywordHay,kw))return false;return true})}
+function loadMotors(){var grid=document.getElementById('mGrid'),sort=document.getElementById('mSort')?.value||'default',items=sortList(applyFilters(allItems),sort),brand=document.getElementById('mBrand')?.value.trim()||'',model=document.getElementById('mModel')?.value.trim()||'',em=document.getElementById('mEmirate')?.value||'',typeLabel=(TYPES.find(function(t){return t[0]===activeType})||['all','All vehicles'])[1];document.getElementById('mCount').textContent=items.length+' live listing'+(items.length===1?'':'s');document.getElementById('mSub').textContent=(brand||model||em||activeType!=='all')?'Showing '+typeLabel.toLowerCase()+' for '+[brand,model,em].filter(Boolean).join(' / ')+'. Paid placements, when active, stay separate from the normal listing flow.':'Showing all live Motors inventory. Paid placements, when active, stay separate from the normal listing flow.';if(!items.length){grid.innerHTML='<div class="empty"><h3>No motors matched this search</h3><p>Try broader ranges or another brand/model. You can also post the next quality listing for this section.</p><a href="post.html" class="btn btn-gold">Post vehicle free</a></div>';return}var html=[];items.forEach(function(item,idx){html.push(renderCard(item));if(inlineAdConfig&&(idx+1)%6===0)html.push(renderStreamAd(inlineAdConfig))});grid.innerHTML=html.join('')}
+async function init(){await loadPublicSettings();applyAdminDecor();var p=new URLSearchParams(window.location.search),q=p.get('q')||'',em=p.get('emirate')||'',type=p.get('type')||guessType(q)||'all';if(em)document.getElementById('mEmirate').value=em;activeType=type;await fetchInventory();await buildFilters();renderTypeSelect();updateChip();if(q){applyIncomingQuery(q);syncModelSuggestions()}loadMotors()}
+document.addEventListener('DOMContentLoaded',init);
+</script>
+</body>
+</html>
