@@ -16,8 +16,8 @@ export function SectionPage({
   children?: ReactNode;
 }) {
   return (
-    <section className="space-y-8">
-      <div className="gh-hero relative overflow-hidden rounded-[2.5rem] p-8 md:p-12 xl:p-16">
+    <section className="space-y-16 md:space-y-24">
+      <div className="gh-hero relative overflow-hidden rounded-[2.5rem] p-10 md:p-16 xl:p-20">
         {imageUrl && (
           <>
             <img src={imageUrl} alt={title} className="absolute inset-0 h-full w-full object-cover" />

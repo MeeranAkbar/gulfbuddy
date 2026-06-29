@@ -76,28 +76,16 @@ export default async function DetailPage({ params }: Props) {
               </div>
               <h1 className="mt-6 text-3xl font-bold tracking-tight text-[var(--text-primary)] md:text-5xl">{listing.title}</h1>
               <p className="mt-4 text-lg font-medium text-[var(--text-secondary)]">
-                {listing.location || listing.area || 'Dubai, UAE'}
+                {listing.location || 'Dubai, UAE'}
               </p>
             </div>
 
             {/* Spec Grid */}
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
-              
-              <div className="rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface-alt)] p-4 text-center">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--text-muted)]">Type</p>
-                <p className="mt-2 text-base font-semibold text-[var(--text-primary)]">{listing.seniorityLevel || '-'}</p>
-              </div>
-              
-              <div className="rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface-alt)] p-4 text-center">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--text-muted)]">Experience</p>
-                <p className="mt-2 text-base font-semibold text-[var(--text-primary)]">{listing.seniorityLevel || '-'}</p>
-              </div>
-              
               <div className="rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface-alt)] p-4 text-center">
                 <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--text-muted)]">Location</p>
                 <p className="mt-2 text-base font-semibold text-[var(--text-primary)]">{listing.location || '-'}</p>
               </div>
-              
             </div>
 
             <hr className="border-[var(--border-subtle)]" />

@@ -1,0 +1,13 @@
+node_modules
+.next
+.git
+.vercel
+**/.git
+**/.next
+**/node_modules
+**/*.zip
+**/*.sqlite*
+**/*.ps1
+**/*.py
+.turbo
+**/.turbo

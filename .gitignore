@@ -12,3 +12,6 @@ coverage
 .env.production
 supabase/.temp
 CODEX_PRIVATE_ACCESS.md
+
+.vercel
+.env*

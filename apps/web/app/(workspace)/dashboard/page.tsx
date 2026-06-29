@@ -2,7 +2,8 @@ import {
   EyeIcon, 
   ChatBubbleLeftIcon, 
   HeartIcon, 
-  ChartBarIcon 
+  ChartBarIcon,
+  PlusIcon
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 
@@ -23,27 +24,27 @@ export default function DashboardOverview() {
   return (
     <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
       <div>
-        <h1 className="text-2xl font-bold text-[var(--text-primary)]">Overview</h1>
-        <p className="text-sm text-[var(--text-secondary)]">Welcome back! Here is what is happening with your inventory today.</p>
+        <h1 className="text-2xl font-bold text-ink">Overview</h1>
+        <p className="text-sm text-[var(--text-secondary)] mt-1">Welcome back! Here is what is happening with your inventory today.</p>
       </div>
 
       <dl className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
         {stats.map((item) => (
           <div
             key={item.name}
-            className="relative overflow-hidden rounded-[1.5rem] border border-[var(--border-subtle)] bg-[var(--surface-alt)] p-5 shadow-[var(--shadow-md)]"
+            className="gh-card p-5"
           >
             <dt>
-              <div className="absolute rounded-xl bg-brand-primary/10 p-3">
-                <item.icon className="h-6 w-6 text-brand-primary" aria-hidden="true" />
+              <div className="absolute rounded-xl bg-[var(--surface-muted)] p-3">
+                <item.icon className="h-6 w-6 text-[var(--primary)]" aria-hidden="true" />
               </div>
-              <p className="ml-16 truncate text-sm font-medium text-[var(--text-secondary)]">{item.name}</p>
+              <p className="ml-16 truncate text-sm font-semibold text-[var(--text-secondary)]">{item.name}</p>
             </dt>
             <dd className="ml-16 flex items-baseline pb-1 sm:pb-2">
-              <p className="text-2xl font-semibold text-[var(--text-primary)]">{item.value}</p>
+              <p className="text-2xl font-bold text-ink">{item.value}</p>
               <p
                 className={`ml-2 flex items-baseline text-sm font-semibold ${
-                  item.changeType === 'positive' ? 'text-green-500' : 'text-red-500'
+                  item.changeType === 'positive' ? 'text-green-600' : 'text-red-600'
                 }`}
               >
                 {item.change}
@@ -55,8 +56,8 @@ export default function DashboardOverview() {
 
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
         {/* Recent Activity */}
-        <div className="rounded-[1.5rem] border border-[var(--border-subtle)] bg-[var(--surface-alt)] p-6 shadow-[var(--shadow-md)]">
-          <h2 className="text-lg font-bold text-[var(--text-primary)] mb-4">Recent Activity</h2>
+        <div className="gh-card p-6">
+          <h2 className="text-lg font-bold text-ink mb-6">Recent Activity</h2>
           <div className="flow-root">
             <ul role="list" className="-mb-8">
               {activity.map((event, eventIdx) => (
@@ -67,15 +68,15 @@ export default function DashboardOverview() {
                     ) : null}
                     <div className="relative flex space-x-3">
                       <div>
-                        <span className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-primary/20 ring-4 ring-[var(--surface-alt)]">
-                          {event.type === 'message' ? <ChatBubbleLeftIcon className="h-4 w-4 text-brand-primary" /> : <EyeIcon className="h-4 w-4 text-brand-primary" />}
+                        <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[var(--surface-muted)] ring-4 ring-[var(--surface)]">
+                          {event.type === 'message' ? <ChatBubbleLeftIcon className="h-4 w-4 text-ink" /> : <EyeIcon className="h-4 w-4 text-ink" />}
                         </span>
                       </div>
                       <div className="flex min-w-0 flex-1 justify-between space-x-4 pt-1.5">
                         <div>
-                          <p className="text-sm text-[var(--text-primary)]">{event.content}</p>
+                          <p className="text-sm font-medium text-ink">{event.content}</p>
                         </div>
-                        <div className="whitespace-nowrap text-right text-sm text-[var(--text-secondary)]">
+                        <div className="whitespace-nowrap text-right text-xs font-semibold text-[var(--text-secondary)]">
                           <time dateTime={event.date}>{event.date}</time>
                         </div>
                       </div>
@@ -88,20 +89,20 @@ export default function DashboardOverview() {
         </div>
 
         {/* Quick Actions */}
-        <div className="rounded-[1.5rem] border border-[var(--border-subtle)] bg-[var(--surface-alt)] p-6 shadow-[var(--shadow-md)]">
-          <h2 className="text-lg font-bold text-[var(--text-primary)] mb-4">Quick Actions</h2>
+        <div className="gh-card p-6">
+          <h2 className="text-lg font-bold text-ink mb-6">Quick Actions</h2>
           <div className="grid grid-cols-2 gap-4">
-            <Link href="/post" className="flex flex-col items-center justify-center rounded-xl border border-[var(--border-subtle)] bg-[var(--surface)] p-6 transition-all hover:border-brand-primary/50 hover:bg-white/5">
-              <span className="rounded-full bg-brand-primary/20 p-3 mb-3">
-                <PlusIcon className="h-6 w-6 text-brand-primary" />
+            <Link href="/listings/new" className="flex flex-col items-center justify-center rounded-xl border border-[var(--border-subtle)] bg-[var(--surface-alt)] p-6 transition-all hover:border-[var(--primary)] hover:bg-[var(--surface-muted)]">
+              <span className="rounded-full bg-white p-3 mb-3 shadow-sm">
+                <PlusIcon className="h-6 w-6 text-[var(--primary)]" />
               </span>
-              <span className="text-sm font-semibold text-[var(--text-primary)]">Post New Ad</span>
+              <span className="text-sm font-bold text-ink">Post New Ad</span>
             </Link>
-            <Link href="/dashboard/messages" className="flex flex-col items-center justify-center rounded-xl border border-[var(--border-subtle)] bg-[var(--surface)] p-6 transition-all hover:border-brand-primary/50 hover:bg-white/5">
-              <span className="rounded-full bg-blue-500/20 p-3 mb-3">
-                <ChatBubbleLeftIcon className="h-6 w-6 text-blue-500" />
+            <Link href="/dashboard/messages" className="flex flex-col items-center justify-center rounded-xl border border-[var(--border-subtle)] bg-[var(--surface-alt)] p-6 transition-all hover:border-[var(--primary)] hover:bg-[var(--surface-muted)]">
+              <span className="rounded-full bg-white p-3 mb-3 shadow-sm">
+                <ChatBubbleLeftIcon className="h-6 w-6 text-[var(--primary)]" />
               </span>
-              <span className="text-sm font-semibold text-[var(--text-primary)]">Check Inbox</span>
+              <span className="text-sm font-bold text-ink">View Messages</span>
             </Link>
           </div>
         </div>
@@ -109,6 +110,3 @@ export default function DashboardOverview() {
     </div>
   );
 }
-
-// Ensure PlusIcon is imported for the Quick Actions
-import { PlusIcon } from '@heroicons/react/24/outline';

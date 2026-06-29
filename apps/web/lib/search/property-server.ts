@@ -2,14 +2,28 @@ import { PrismaClient } from '@prisma/client';
 import { 
   PropertySearchParams, 
   PropertySearchResult, 
-  propertySearchSeeds,
-  buildSearchableHaystack,
-  propertyEmirateOptions,
-  buildPropertyResultRoute,
-  computeRankingScore
+  propertyEmirateOptions
 } from './property';
 import { humanizeSlug } from '../property/public-content';
 import { prisma } from '../prisma';
+
+function buildSearchableHaystack(item: any): string {
+  return [item.title, item.summary, item.area, item.communityName, item.buildingName, item.developerName]
+    .filter(Boolean)
+    .join(' ')
+    .toLowerCase();
+}
+
+function buildPropertyResultRoute(item: any): string {
+  return `/property/${item.slug || item.id}`;
+}
+
+function computeRankingScore(item: any, params: PropertySearchParams): number {
+  let score = 0;
+  if (item.verifiedCompany) score += 50;
+  if (item.badges?.includes('featured')) score += 100;
+  return score;
+}
 
 function normalizeText(text: string | null | undefined): string {
   if (!text) return '';
@@ -75,10 +89,9 @@ export async function searchPropertyListings(params: PropertySearchParams): Prom
     };
   });
 
-  // Combine real ads with our mock seeds so the UI doesn't look empty
-  const combinedInventory = [...mappedDbAds, ...propertySearchSeeds];
 
-  const ranked = combinedInventory
+
+  const ranked = mappedDbAds
     .filter((item) => item.marketMode === params.marketMode)
     .filter((item) => !params.emirate || item.emirate === params.emirate)
     .filter((item) => !params.keyword || buildSearchableHaystack(item).includes(normalizeText(params.keyword)))

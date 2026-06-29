@@ -76,7 +76,7 @@ export default async function DetailPage({ params }: Props) {
               </div>
               <h1 className="mt-6 text-3xl font-bold tracking-tight text-[var(--text-primary)] md:text-5xl">{listing.title}</h1>
               <p className="mt-4 text-lg font-medium text-[var(--text-secondary)]">
-                {listing.location || listing.area || 'Dubai, UAE'}
+                {listing.location || 'Dubai, UAE'}
               </p>
             </div>
 
@@ -95,7 +95,7 @@ export default async function DetailPage({ params }: Props) {
               
               <div className="rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface-alt)] p-4 text-center">
                 <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--text-muted)]">Rating</p>
-                <p className="mt-2 text-base font-semibold text-[var(--text-primary)]">{listing.rating || '-'}</p>
+                <p className="mt-3 text-lg font-bold text-ink">-</p>
               </div>
               
             </div>
@@ -117,7 +117,7 @@ export default async function DetailPage({ params }: Props) {
           <div>
             <div className="sticky top-28 rounded-[2rem] border border-[var(--border-default)] bg-[var(--surface)] p-8 shadow-[var(--shadow-md)]">
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--text-muted)]">Price</p>
-              <h2 className="mt-2 text-4xl font-bold tracking-tight text-[var(--text-primary)]">{listing.priceLabel || 'Price on request'}</h2>
+              <h2 className="mt-2 text-4xl font-bold tracking-tight text-[var(--text-primary)]">Price on request</h2>
 
               <div className="mt-8 space-y-4">
                 <button className="flex w-full items-center justify-center rounded-2xl bg-[#25D366] px-6 py-4 text-base font-bold text-white transition hover:bg-[#1EBE5C] shadow-lg shadow-green-500/20">

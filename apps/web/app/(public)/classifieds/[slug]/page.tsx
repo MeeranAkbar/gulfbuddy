@@ -76,7 +76,7 @@ export default async function DetailPage({ params }: Props) {
               </div>
               <h1 className="mt-6 text-3xl font-bold tracking-tight text-[var(--text-primary)] md:text-5xl">{listing.title}</h1>
               <p className="mt-4 text-lg font-medium text-[var(--text-secondary)]">
-                {listing.location || listing.area || 'Dubai, UAE'}
+                {listing.location || 'Dubai, UAE'}
               </p>
             </div>
 
@@ -95,7 +95,7 @@ export default async function DetailPage({ params }: Props) {
               
               <div className="rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface-alt)] p-4 text-center">
                 <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--text-muted)]">Delivery</p>
-                <p className="mt-2 text-base font-semibold text-[var(--text-primary)]">{listing.delivery || '-'}</p>
+                <p className="mt-2 text-base font-semibold text-[var(--text-primary)]">-</p>
               </div>
               
             </div>

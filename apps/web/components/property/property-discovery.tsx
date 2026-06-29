@@ -72,7 +72,7 @@ export function PropertySearchConsole({
   }
 
   return (
-    <section className="gh-card p-5 md:p-6">
+    <section className="gh-card p-8 md:p-10">
       <div className="flex flex-wrap gap-2">
         {propertyModeOrder.map((marketMode) => {
           const mode = getPropertyModeConfig(marketMode);
@@ -127,16 +127,16 @@ export function PropertySearchConsole({
 
 export function PropertyModeOverviewGrid({ modes }: { modes: PropertyModeConfig[] }) {
   const modeImages: Record<string, string> = {
-    long_term: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80',
-    short_stay: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=800&q=80',
-    off_plan: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80',
-    new_projects: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80',
+    long_term: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2075&auto=format&fit=crop',
+    short_term: 'https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?q=80&w=2070&auto=format&fit=crop',
+    off_plan: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop',
+    new_project: 'https://images.unsplash.com/photo-1430285561322-780c604615c5?q=80&w=2070&auto=format&fit=crop',
   };
 
   return (
-    <div className="grid gap-4 xl:grid-cols-2">
+    <div className="grid gap-8 xl:grid-cols-2">
       {modes.map((mode) => (
-        <article key={mode.marketMode} className="group relative flex h-[450px] flex-col justify-between overflow-hidden rounded-[2rem] p-6 shadow-lg transition-transform hover:-translate-y-1">
+        <article key={mode.marketMode} className="group relative flex h-[500px] flex-col justify-between overflow-hidden rounded-[2rem] p-8 shadow-lg transition-transform hover:-translate-y-1">
           <img 
             src={modeImages[mode.marketMode] || modeImages.long_term} 
             alt={mode.title} 
@@ -158,16 +158,8 @@ export function PropertyModeOverviewGrid({ modes }: { modes: PropertyModeConfig[
             <h3 className="text-2xl font-bold tracking-tight text-white">{mode.title}</h3>
             <p className="mt-3 text-sm leading-6 text-white/80">{mode.description}</p>
             
-            <div className="mt-6 flex flex-wrap gap-2">
-              {mode.trustSignals.slice(0, 3).map((signal) => (
-                <span key={signal} className="rounded-full border border-white/10 bg-white/10 px-3 py-1.5 text-xs font-semibold text-white/90 backdrop-blur-sm">
-                  {signal}
-                </span>
-              ))}
-            </div>
-            
-            <div className="mt-6">
-              <Link href={`/property/${mode.marketMode}`} className="inline-flex rounded-xl bg-[var(--primary)] px-6 py-3 text-sm font-bold text-white transition hover:bg-[var(--primary-hover)]">
+            <div className="mt-8">
+              <Link href={`/property/${mode.marketMode}`} className="text-sm font-bold uppercase tracking-[0.18em] text-white transition hover:text-white/70">
                 Explore {mode.label} &rarr;
               </Link>
             </div>
@@ -188,13 +180,13 @@ export function PropertyTrustPanel({
   signals: string[];
 }) {
   return (
-    <aside className="gh-card p-6 md:p-7">
+    <aside className="gh-card p-8 md:p-10">
       <p className="text-xs font-semibold uppercase tracking-[0.24em] text-muted">Trust layer</p>
-      <h3 className="mt-4 text-2xl font-semibold tracking-tight text-ink">{title}</h3>
-      <p className="mt-4 text-sm leading-7 text-[var(--text-secondary)]">{description}</p>
-      <div className="mt-6 space-y-3">
+      <h3 className="mt-6 text-2xl font-semibold tracking-tight text-ink">{title}</h3>
+      <p className="mt-5 text-base leading-7 text-[var(--text-secondary)]">{description}</p>
+      <div className="mt-8 space-y-5">
         {signals.map((signal) => (
-          <div key={signal} className="rounded-[1.2rem] border border-[var(--border-subtle)] bg-[var(--surface-alt)] px-4 py-4 text-sm font-medium text-ink">
+          <div key={signal} className="rounded-[1.2rem] border border-[var(--border-subtle)] bg-[var(--surface-alt)] px-6 py-5 text-base font-medium text-ink">
             {signal}
           </div>
         ))}
@@ -210,14 +202,13 @@ export function PropertyEmirateGrid({ marketMode }: { marketMode: PropertyModeCo
         <Link
           key={emirate.slug}
           href={`/property/${marketMode}/${emirate.slug}`}
-          className="gh-card group flex h-full flex-col justify-between p-5 transition hover:-translate-y-0.5 hover:shadow-[var(--shadow-md)]"
+          className="gh-card group flex h-full flex-col justify-between p-8 transition hover:-translate-y-0.5 hover:shadow-[var(--shadow-md)]"
         >
           <div>
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted">{emirate.label}</span>
-            <h3 className="mt-4 text-lg font-semibold tracking-tight text-ink">{emirate.headline}</h3>
+            <h3 className="text-xl font-semibold tracking-tight text-ink">{emirate.label}</h3>
             <p className="mt-3 text-sm leading-7 text-[var(--text-secondary)]">{emirate.summary}</p>
           </div>
-          <span className="mt-6 text-sm font-semibold text-ink transition group-hover:text-[var(--primary)]">Open local lane</span>
+          <span className="mt-6 text-sm font-semibold text-ink transition group-hover:text-[var(--primary)]">Explore &rarr;</span>
         </Link>
       ))}
     </div>
@@ -234,12 +225,12 @@ export function PropertyCommunityGrid({
   actionLabel?: string;
 }) {
   return (
-    <div className="grid gap-4 md:grid-cols-3">
+    <div className="grid gap-6 md:grid-cols-3">
       {communities.map((community) => (
-        <article key={community.name} className="gh-card p-5">
+        <article key={community.name} className="gh-card p-8">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted">{community.focus}</p>
-          <h3 className="mt-3 text-lg font-semibold tracking-tight text-ink">{community.name}</h3>
-          <p className="mt-3 text-sm leading-7 text-[var(--text-secondary)]">{community.detail}</p>
+          <h3 className="mt-4 text-lg font-semibold tracking-tight text-ink">{community.name}</h3>
+          <p className="mt-4 text-sm leading-7 text-[var(--text-secondary)]">{community.detail}</p>
           {actionHref && actionLabel ? (
             <Link href={actionHref} className="mt-5 inline-flex text-sm font-semibold text-ink transition hover:text-[var(--primary)]">
               {actionLabel}
@@ -263,12 +254,12 @@ export function PropertyShowcaseGrid({
   const showcaseItems = emirateLabel ? buildEmirateShowcaseItemsClean(marketMode, emirateLabel) : items;
 
   return (
-    <div className="grid gap-5 xl:grid-cols-3">
+    <div className="grid gap-8 xl:grid-cols-3">
       {showcaseItems.map((item) => (
         <article key={`${item.title}-${item.meta}`} className="gh-card overflow-hidden">
-          <div className="relative min-h-[15rem] overflow-hidden">
+          <div className="relative min-h-[16rem] overflow-hidden">
             <img
-              src={item.image}
+              src={item.imageUrl}
               alt={item.title}
               className="absolute inset-0 h-full w-full object-cover"
             />
@@ -283,20 +274,19 @@ export function PropertyShowcaseGrid({
             </div>
             </div>
           </div>
-          <div className="p-6">
-            <p className="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-muted">{item.subtitle}</p>
-            <h3 className="mt-3 text-xl font-semibold tracking-tight text-ink">{item.title}</h3>
-            <p className="mt-3 text-sm leading-7 text-[var(--text-secondary)]">{item.highlight}</p>
+          <div className="p-8">
+            <h3 className="text-lg font-semibold tracking-tight text-ink">{item.title}</h3>
+            <p className="mt-2 text-sm leading-7 text-[var(--text-secondary)]">{item.highlight}</p>
             <div className="mt-6 flex items-end justify-between gap-4">
               <div>
-                <p className="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-muted">Starting point</p>
-                <p className="mt-2 text-xl font-semibold text-ink">{item.price}</p>
+                <p className="text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-muted">Price</p>
+                <p className="mt-1 text-lg font-semibold text-ink">{item.price}</p>
               </div>
               <Link
                 href={`/property/listing/${item.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')}`}
-                className="gh-button-secondary"
+                className="text-sm font-semibold text-ink hover:text-[var(--primary)]"
               >
-                View listing
+                View details &rarr;
               </Link>
             </div>
           </div>
@@ -308,12 +298,12 @@ export function PropertyShowcaseGrid({
 
 export function PropertyOperatorGrid({ items }: { items: PropertyOperatorHighlight[] }) {
   return (
-    <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-1">
+    <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-1">
       {items.map((item) => (
-        <article key={item.title} className="gh-card p-5">
+        <article key={item.title} className="gh-card p-8">
           <span className="gh-pill">{item.badge}</span>
-          <h3 className="mt-4 text-lg font-semibold tracking-tight text-ink">{item.title}</h3>
-          <p className="mt-3 text-sm leading-7 text-[var(--text-secondary)]">{item.detail}</p>
+          <h3 className="mt-5 text-xl font-semibold tracking-tight text-ink">{item.title}</h3>
+          <p className="mt-4 text-base leading-7 text-[var(--text-secondary)]">{item.detail}</p>
         </article>
       ))}
     </div>

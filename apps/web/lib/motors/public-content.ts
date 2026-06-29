@@ -56,83 +56,83 @@ export const motorsQuickFilters = [
 ];
 
 export const motorsTrustSignals = [
-  'Dealer-ready public identity instead of anonymous listing clutter',
-  'Shared lead logging for call, WhatsApp, reveal, and premium clicks',
-  'Risk checks for duplicate vehicles, teaser pricing, and suspicious mileage',
-  'Premium placements that fit the search experience instead of overpowering it'
+  'Verified Dealer Network',
+  'Transparent Vehicle History',
+  'Secure Private Messaging',
+  'Market-Driven Pricing'
 ];
 
 export const motorsCategoryLanes: MotorsCategoryLane[] = [
   {
     slug: 'suvs',
     title: 'SUVs',
-    focus: 'Family and premium demand',
-    detail: 'Large-screen browsing, trust-first specs, and stronger dealer presence for high-intent buyers.'
+    focus: 'Family & Premium',
+    detail: 'Explore luxury and family SUVs from top verified dealers.'
   },
   {
     slug: 'sedans',
     title: 'Sedans',
-    focus: 'Daily driver and fleet demand',
-    detail: 'Sharper comparison between condition, mileage, trim, and ownership fit without noisy card overload.'
+    focus: 'Daily Driver',
+    detail: 'Find reliable sedans with full service history and warranty.'
   },
   {
     slug: 'electric',
     title: 'Electric',
-    focus: 'Future-facing inventory',
-    detail: 'EV and hybrid discovery should feel modern, premium, and technically confident.'
+    focus: 'Future-Ready',
+    detail: 'Browse the latest EVs and hybrids with certified battery health.'
   },
   {
     slug: 'commercial',
     title: 'Commercial',
-    focus: 'Business operators',
-    detail: 'Fleet and work-vehicle lanes need stronger specs, branch identity, and clearer seller trust.'
+    focus: 'Business Fleet',
+    detail: 'Heavy-duty trucks and vans for your business needs.'
   }
 ];
 
 export const motorsShowcaseItems: MotorsShowcaseItem[] = [
   {
     badge: 'Verified Dealer',
-    title: 'Premium SUVs with stronger dealer identity and faster comparison flow',
-    subtitle: 'Toyota Land Cruiser, Nissan Patrol, Range Rover, Defender',
+    title: 'Premium SUVs',
+    subtitle: 'Toyota Land Cruiser, Nissan Patrol, Range Rover',
     price: 'From AED 185K',
     imageUrl: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1200&q=80',
     meta: 'High-demand stock',
-    highlight: 'The cards should help buyers compare condition, year, mileage, and dealer trust in one calm scan.'
+    highlight: 'Compare condition, year, and mileage instantly.'
   },
   {
     badge: 'Certified Stock',
-    title: 'Used cars that feel safer because the platform actually surfaces trust',
-    subtitle: '1-owner history, service-backed, lower-mileage inventory',
+    title: 'Certified Pre-Owned',
+    subtitle: '1-owner history, service-backed',
     price: 'From AED 52K',
     imageUrl: 'https://images.unsplash.com/photo-1542282088-fe8426682b8f?auto=format&fit=crop&w=1200&q=80',
     meta: 'Used lane',
-    highlight: 'Motors should look sharper than ordinary classifieds without becoming visually noisy.'
+    highlight: 'Shop with confidence using verified vehicle history.'
   },
   {
     badge: 'Fleet & Utility',
-    title: 'Commercial and work-ready vehicles with cleaner business buying signals',
-    subtitle: 'Pickups, vans, light commercial, delivery-ready stock',
+    title: 'Commercial Vehicles',
+    subtitle: 'Pickups, vans, light commercial',
     price: 'From AED 78K',
     imageUrl: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1200&q=80',
     meta: 'Business lane',
-    highlight: 'Business buyers need strong specs, contact clarity, and seller legitimacy right away.'
+    highlight: 'Fleet-ready vehicles from official agencies.'
   }
 ];
 
 export const motorsOperatorHighlights: MotorsOperatorHighlight[] = [
   {
-    title: 'Dealer storefront identity',
-    badge: 'Dealer Workspace',
-    detail: 'Dealers should have stronger public profile surfaces, branded inventory presence, and cleaner lead routing than basic listing posters.'
+    title: 'Official Agencies',
+    badge: 'Dealer Inventory',
+    detail: 'Direct inventory from authorized brand distributors.'
   },
   {
-    title: 'Private seller lane with stronger checks',
-    badge: 'Seller Trust',
-    detail: 'Individuals can still list, but the public page should make it obvious when the vehicle is dealer-backed versus owner-posted.'
+    title: 'Verified Private Sellers',
+    badge: 'Owner Sales',
+    detail: 'Private listings vetted for authenticity and ownership.'
   },
   {
-    title: 'Premium promotion without ad-board clutter',
-    badge: 'Revenue Surface',
-    detail: 'Featured units, dealer campaigns, and sponsored positions should feel integrated into search rather than bolted on.'
+    title: 'Certified Pre-Owned',
+    badge: 'Warranty Active',
+    detail: 'Vehicles inspected to strict agency standards.'
   }
 ];

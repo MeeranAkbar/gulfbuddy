@@ -63,3 +63,7 @@ export function getServiceListingBySlug(slug: string) {
   const listings = searchServicesListings({ keyword: '', location: '', category: '' });
   return listings.find(l => l.routeHref.endsWith(slug)) || null;
 }
+
+export function getServicesListingBySlug(slug: string) {
+  return searchServicesListings({ keyword: '', location: '', category: '' }).find(item => item.routeHref.includes(slug)) || searchServicesListings({ keyword: '', location: '', category: '' })[0];
+}

@@ -36,7 +36,7 @@ export function searchMotorsListings(params: MotorsSearchParams) {
       summary: 'Excellent condition VXR. Full service history at official agency. Under warranty.',
       badges: ['GCC Specs', 'Agency Maintained', 'Warranty Active'],
       routeHref: '/motors/2023-toyota-land-cruiser-vxr',
-      imageUrl: 'https://images.unsplash.com/photo-1503376712344-652bb8fc59eb?q=80&w=2070&auto=format&fit=crop'
+      imageUrl: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800&q=80'
     },
     {
       id: 'm2',
@@ -51,7 +51,7 @@ export function searchMotorsListings(params: MotorsSearchParams) {
       summary: 'Stunning Guards Red with black interior. Sport Chrono package, sports exhaust.',
       badges: ['GCC Specs', 'Full Options', 'No Accidents'],
       routeHref: '/motors/2021-porsche-911-carrera-s',
-      imageUrl: 'https://images.unsplash.com/photo-1503376712344-652bb8fc59eb?q=80&w=2070&auto=format&fit=crop'
+      imageUrl: 'https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=800&q=80'
     },
     {
       id: 'm3',
@@ -66,7 +66,7 @@ export function searchMotorsListings(params: MotorsSearchParams) {
       summary: 'Perfect family car, very clean inside and out. Always parked in shade.',
       badges: ['GCC Specs', 'Private Seller', 'Clean Title'],
       routeHref: '/motors/2022-nissan-patrol-platinum',
-      imageUrl: 'https://images.unsplash.com/photo-1503376712344-652bb8fc59eb?q=80&w=2070&auto=format&fit=crop'
+      imageUrl: 'https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&w=800&q=80'
     }
   ];
 }

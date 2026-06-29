@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { SunIcon, MoonIcon, ComputerDesktopIcon } from '@heroicons/react/24/outline';
 
 type ThemeMode = 'light' | 'dark' | 'system';
 
@@ -48,6 +49,15 @@ export function ThemeToggle() {
     applyTheme(nextTheme);
   }
 
+  const getIcon = (mode: ThemeMode) => {
+    if (!mounted) return <div className="h-4 w-4" />;
+    switch (mode) {
+      case 'light': return <SunIcon className="h-4 w-4" />;
+      case 'dark': return <MoonIcon className="h-4 w-4" />;
+      case 'system': return <ComputerDesktopIcon className="h-4 w-4" />;
+    }
+  };
+
   return (
     <div className="gh-toggle-wrap">
       {themeModes.map((mode) => {
@@ -62,7 +72,7 @@ export function ThemeToggle() {
             aria-label={`Switch to ${mode} theme`}
             title={mode[0].toUpperCase() + mode.slice(1)}
           >
-            {mounted ? mode.slice(0, 1).toUpperCase() : mode.slice(0, 1).toUpperCase()}
+            {getIcon(mode)}
           </button>
         );
       })}

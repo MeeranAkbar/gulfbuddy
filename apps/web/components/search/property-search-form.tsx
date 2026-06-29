@@ -136,7 +136,7 @@ export function PropertySearchForm({
       </div>
 
       {showAdvanced && (
-        <div className="grid gap-4 rounded-[1.6rem] border border-[var(--border-subtle)] bg-[var(--surface-alt)] p-6 lg:grid-cols-4 animate-in slide-in-from-top-2 fade-in duration-200">
+        <div className="mt-4 grid gap-4 rounded-[1.6rem] border border-[var(--border-subtle)] bg-[var(--surface-alt)] p-6 lg:grid-cols-4 animate-in slide-in-from-top-2 fade-in duration-200">
           
           <label className="space-y-2">
             <span className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-muted">Area</span>
@@ -216,7 +216,7 @@ export function PropertySearchForm({
             </select>
           </label>
 
-          {marketMode === 'rent' && (
+          {(marketMode === 'long_term' || marketMode === 'short_term') && (
             <label className="space-y-2">
               <span className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-muted">Rent Frequency</span>
               <select className="gh-field !rounded-[1.15rem]" value={rentFrequency} onChange={(event) => setRentFrequency(event.target.value)}>

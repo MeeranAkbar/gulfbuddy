@@ -247,10 +247,10 @@ export function HomepageHeroSearch() {
           <div className="mt-3 border-t border-[var(--border-subtle)] pt-4 text-left grid gap-3 grid-cols-2 md:grid-cols-4 bg-[var(--surface-alt)] p-4 rounded-2xl transition-all duration-300">
             {section === 'property' && (
               <>
-                <label className="block text-xs font-semibold text-slate-700">
-                  Purpose
+                <label className="space-y-2 text-left block">
+                  <span className="block px-1 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-muted">Purpose</span>
                   <select
-                    className="mt-1 w-full rounded-xl border border-slate-200 px-3 py-2 text-xs bg-white"
+                    className="gh-field !rounded-[1.15rem] !border-[var(--border-subtle)] !bg-[var(--background-elevated)] !text-[var(--text-primary)]"
                     value={purpose}
                     onChange={(e) => setPurpose(e.target.value)}
                   >
@@ -259,10 +259,10 @@ export function HomepageHeroSearch() {
                     <option value="sale">Sale</option>
                   </select>
                 </label>
-                <label className="block text-xs font-semibold text-slate-700">
-                  Property Type
+                <label className="space-y-2 text-left block">
+                  <span className="block px-1 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-muted">Property Type</span>
                   <select
-                    className="mt-1 w-full rounded-xl border border-slate-200 px-3 py-2 text-xs bg-white"
+                    className="gh-field !rounded-[1.15rem] !border-[var(--border-subtle)] !bg-[var(--background-elevated)] !text-[var(--text-primary)]"
                     value={propertyType}
                     onChange={(e) => setPropertyType(e.target.value)}
                   >
@@ -273,10 +273,10 @@ export function HomepageHeroSearch() {
                     <option value="Penthouse">Penthouse</option>
                   </select>
                 </label>
-                <label className="block text-xs font-semibold text-slate-700">
-                  Bedrooms
+                <label className="space-y-2 text-left block">
+                  <span className="block px-1 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-muted">Bedrooms</span>
                   <select
-                    className="mt-1 w-full rounded-xl border border-slate-200 px-3 py-2 text-xs bg-white"
+                    className="gh-field !rounded-[1.15rem] !border-[var(--border-subtle)] !bg-[var(--background-elevated)] !text-[var(--text-primary)]"
                     value={beds}
                     onChange={(e) => setBeds(e.target.value)}
                   >
@@ -288,17 +288,17 @@ export function HomepageHeroSearch() {
                     <option value="4">4+ Beds</option>
                   </select>
                 </label>
-                <div className="block text-xs font-semibold text-slate-700">
-                  Price Limit (AED)
-                  <div className="flex gap-1 mt-1">
+                <div className="space-y-2 text-left block">
+                  <span className="block px-1 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-muted">Price Limit (AED)</span>
+                  <div className="flex gap-2">
                     <input
-                      className="w-1/2 rounded-xl border border-slate-200 px-2 py-1.5 text-xs bg-white"
+                      className="gh-field !rounded-[1.15rem] !border-[var(--border-subtle)] !bg-[var(--background-elevated)] !text-[var(--text-primary)]"
                       placeholder="Min"
                       value={minPrice}
                       onChange={(e) => setMinPrice(e.target.value)}
                     />
                     <input
-                      className="w-1/2 rounded-xl border border-slate-200 px-2 py-1.5 text-xs bg-white"
+                      className="gh-field !rounded-[1.15rem] !border-[var(--border-subtle)] !bg-[var(--background-elevated)] !text-[var(--text-primary)]"
                       placeholder="Max"
                       value={maxPrice}
                       onChange={(e) => setMaxPrice(e.target.value)}
@@ -310,10 +310,10 @@ export function HomepageHeroSearch() {
 
             {section === 'motors' && (
               <>
-                <label className="block text-xs font-semibold text-slate-700">
-                  Vehicle Category
+                <label className="space-y-2 text-left block">
+                  <span className="block px-1 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-muted">Vehicle Category</span>
                   <select
-                    className="mt-1 w-full rounded-xl border border-slate-200 px-3 py-2 text-xs bg-white"
+                    className="gh-field !rounded-[1.15rem] !border-[var(--border-subtle)] !bg-[var(--background-elevated)] !text-[var(--text-primary)]"
                     value={vehicleType}
                     onChange={(e) => setVehicleType(e.target.value)}
                   >
@@ -325,10 +325,10 @@ export function HomepageHeroSearch() {
                     <option value="pickup">Pickup</option>
                   </select>
                 </label>
-                <label className="block text-xs font-semibold text-slate-700">
-                  Year From
+                <label className="space-y-2 text-left block">
+                  <span className="block px-1 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-muted">Year From</span>
                   <select
-                    className="mt-1 w-full rounded-xl border border-slate-200 px-3 py-2 text-xs bg-white"
+                    className="gh-field !rounded-[1.15rem] !border-[var(--border-subtle)] !bg-[var(--background-elevated)] !text-[var(--text-primary)]"
                     value={vehicleYear}
                     onChange={(e) => setVehicleYear(e.target.value)}
                   >
@@ -342,17 +342,17 @@ export function HomepageHeroSearch() {
                     <option value="2020">2020</option>
                   </select>
                 </label>
-                <div className="block text-xs font-semibold text-slate-700 col-span-2">
-                  Budget (AED)
-                  <div className="flex gap-2 mt-1">
+                <div className="space-y-2 text-left block col-span-2">
+                  <span className="block px-1 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-muted">Budget (AED)</span>
+                  <div className="flex gap-2">
                     <input
-                      className="w-1/2 rounded-xl border border-slate-200 px-3 py-2 text-xs bg-white"
+                      className="gh-field !rounded-[1.15rem] !border-[var(--border-subtle)] !bg-[var(--background-elevated)] !text-[var(--text-primary)]"
                       placeholder="AED Min"
                       value={minPrice}
                       onChange={(e) => setMinPrice(e.target.value)}
                     />
                     <input
-                      className="w-1/2 rounded-xl border border-slate-200 px-3 py-2 text-xs bg-white"
+                      className="gh-field !rounded-[1.15rem] !border-[var(--border-subtle)] !bg-[var(--background-elevated)] !text-[var(--text-primary)]"
                       placeholder="AED Max"
                       value={maxPrice}
                       onChange={(e) => setMaxPrice(e.target.value)}
@@ -364,10 +364,10 @@ export function HomepageHeroSearch() {
 
             {section === 'jobs' && (
               <>
-                <label className="block text-xs font-semibold text-slate-700">
-                  Employment Style
+                <label className="space-y-2 text-left block">
+                  <span className="block px-1 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-muted">Employment Style</span>
                   <select
-                    className="mt-1 w-full rounded-xl border border-slate-200 px-3 py-2 text-xs bg-white"
+                    className="gh-field !rounded-[1.15rem] !border-[var(--border-subtle)] !bg-[var(--background-elevated)] !text-[var(--text-primary)]"
                     value={employmentType}
                     onChange={(e) => setEmploymentType(e.target.value)}
                   >
@@ -379,10 +379,10 @@ export function HomepageHeroSearch() {
                     <option value="freelance">Freelance</option>
                   </select>
                 </label>
-                <label className="block text-xs font-semibold text-slate-700">
-                  Experience Tier
+                <label className="space-y-2 text-left block">
+                  <span className="block px-1 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-muted">Experience Tier</span>
                   <select
-                    className="mt-1 w-full rounded-xl border border-slate-200 px-3 py-2 text-xs bg-white"
+                    className="gh-field !rounded-[1.15rem] !border-[var(--border-subtle)] !bg-[var(--background-elevated)] !text-[var(--text-primary)]"
                     value={experienceLevel}
                     onChange={(e) => setExperienceLevel(e.target.value)}
                   >
@@ -399,10 +399,10 @@ export function HomepageHeroSearch() {
 
             {section === 'services' && (
               <>
-                <label className="block text-xs font-semibold text-slate-700 col-span-2">
-                  Service Category
+                <label className="space-y-2 text-left block col-span-2">
+                  <span className="block px-1 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-muted">Service Category</span>
                   <select
-                    className="mt-1 w-full rounded-xl border border-slate-200 px-3 py-2 text-xs bg-white"
+                    className="gh-field !rounded-[1.15rem] !border-[var(--border-subtle)] !bg-[var(--background-elevated)] !text-[var(--text-primary)]"
                     value={serviceCategory}
                     onChange={(e) => setServiceCategory(e.target.value)}
                   >

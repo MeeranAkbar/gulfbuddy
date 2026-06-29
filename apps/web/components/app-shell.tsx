@@ -21,45 +21,50 @@ export function AppShell({
   showHeaderSearch?: boolean;
 }) {
   return (
-    <div className="gh-shell">
-      <header className="gh-shell-header">
-        <div className="gh-container flex flex-col gap-4 py-4">
-          <div className="flex items-center justify-between gap-6">
-            <Link className="flex items-center gap-3 font-semibold tracking-tight text-ink" href="/">
-              <span className="gh-brand-mark inline-flex h-8 w-8 items-center justify-center rounded-md bg-[var(--accent)] text-white font-bold shadow-md">
-                G
-              </span>
-              <span>
-                <span className="block text-[1.2rem] font-bold leading-none">
-                  Gulf<span className="text-[var(--accent)]">Habibi</span>
+    <div className="gh-shell flex flex-col min-h-screen">
+      <header className="gh-shell-header sticky top-0 z-50 w-full border-b border-[var(--border-subtle)] bg-[var(--background)]/80 backdrop-blur-lg">
+        <div className="gh-container">
+          <div className="flex h-16 items-center justify-between gap-6">
+            <div className="flex items-center gap-8">
+              <Link className="flex items-center gap-2 font-bold tracking-tight text-ink hover:opacity-80 transition-opacity" href="/">
+                <span className="gh-brand-mark inline-flex h-7 w-7 items-center justify-center rounded bg-[var(--primary)] text-white text-sm shadow-sm">
+                  G
                 </span>
-                <span className="mt-1 block text-[0.65rem] font-medium uppercase tracking-[0.22em] text-muted">UAE Marketplace</span>
-              </span>
-            </Link>
-            <nav className="hidden items-center gap-5 text-sm md:flex">
-              {publicNav.map((item) => (
-                <Link key={item.href} className="gh-nav-link" href={item.href}>
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
-            <div className="flex items-center gap-3 text-sm">
-              <ThemeToggle />
-              <Link className="gh-button-ghost hidden sm:inline-flex" href="/login">
+                <span className="text-[1.1rem] leading-none">
+                  Gulf<span className="text-[var(--primary)]">Habibi</span>
+                </span>
+              </Link>
+              <nav className="hidden items-center gap-6 text-[0.85rem] font-semibold text-[var(--text-secondary)] md:flex">
+                {publicNav.filter(item => item.label !== 'Home').map((item) => (
+                  <Link key={item.href} className="hover:text-ink transition-colors" href={item.href}>
+                    {item.label}
+                  </Link>
+                ))}
+              </nav>
+            </div>
+            
+            <div className="flex items-center gap-4 text-sm font-semibold">
+              {showHeaderSearch && (
+                <div className="hidden lg:block w-[300px] mr-2">
+                  <GlobalSearch compact />
+                </div>
+              )}
+              <Link className="hidden sm:inline-flex text-[var(--text-secondary)] hover:text-ink transition-colors" href="/login">
                 Sign in
               </Link>
-              <Link className="gh-button-secondary hidden lg:inline-flex" href="/pricing">
-                Pricing
-              </Link>
-              <Link className="gh-button-primary" href="/listings/new">
-                Post listing
+              <Link className="rounded-lg bg-[var(--primary)] px-4 py-2 text-white hover:opacity-90 transition-opacity shadow-sm" href="/listings/new">
+                Post ad
               </Link>
             </div>
           </div>
-          {showHeaderSearch ? <GlobalSearch compact /> : null}
+          {showHeaderSearch && (
+            <div className="pb-3 lg:hidden">
+              <GlobalSearch compact />
+            </div>
+          )}
         </div>
       </header>
-      <main className="gh-container gh-main">{children}</main>
+      <main className="flex-1 w-full">{children}</main>
     </div>
   );
 }

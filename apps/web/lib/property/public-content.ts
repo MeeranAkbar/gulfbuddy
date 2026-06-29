@@ -66,9 +66,9 @@ export const propertyModeConfigs: Record<PropertyMarketMode, PropertyModeConfig>
     marketMode: 'long_term',
     label: 'Sale & Rent',
     eyebrow: 'Long-Term Property',
-    title: 'Sale and rent discovery built for serious local intent, not noisy search overload.',
+    title: 'Discover premium homes and investment properties for sale and rent.',
     description:
-      'Long-term property should feel like a premium command center for buying and renting in the UAE, with cleaner search lanes, trusted advertiser identity, and sharper local discovery.',
+      'A curated collection of verified listings from the UAE\'s top real estate agencies and direct owners.',
     searchActionLabel: 'Explore long-term inventory',
     searchFields: [
       { label: 'Purpose', value: 'Sale or Rent' },
@@ -86,43 +86,43 @@ export const propertyModeConfigs: Record<PropertyMarketMode, PropertyModeConfig>
     ],
     showcaseItems: [
       {
-        badge: 'Verified Agency',
-        title: 'Waterfront apartments with cleaner comparison flow',
-        subtitle: 'Dubai Marina, Jumeirah Beach Residence, Palm Jumeirah',
-        price: 'From AED 1.28M',
-    imageUrl: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2075&auto=format&fit=crop',
-        meta: 'Long-term focus',
-        highlight: 'Built for genuine intent, not teaser-price noise.',
+        badge: 'Luxury Villa',
+        title: '5 Bed Custom Built Villa with Golf Course Views',
+        subtitle: 'Dubai Hills Estate, Parkway Vistas',
+        price: 'AED 42,000,000',
+        imageUrl: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2075&auto=format&fit=crop',
+        meta: 'Sale',
+        highlight: 'Private pool, cinema room, and fully upgraded interiors.',
       },
       {
-        badge: 'Family Demand',
-        title: 'Villa and townhouse communities with trust-first filters',
-        subtitle: 'Arabian Ranches, Tilal Al Ghaf, Yas Acres',
-        price: 'From AED 210K / year',
-    imageUrl: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2075&auto=format&fit=crop',
-        meta: 'Rent + Sale',
-        highlight: 'Purpose, beds, and community depth should stay visible at first glance.',
+        badge: 'Premium Apartment',
+        title: '3 Bed Penthouse with Full Palm Jumeirah View',
+        subtitle: 'Dubai Marina, Elite Residence',
+        price: 'AED 380,000 / year',
+        imageUrl: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80',
+        meta: 'Rent',
+        highlight: 'High floor, maid room, and premium appliances included.',
       },
       {
-        badge: 'Commercial Stock',
-        title: 'Office, retail, and mixed-use discovery for business buyers',
-        subtitle: 'Business Bay, DIFC, Abu Dhabi Corniche',
-        price: 'From AED 85K / year',
-    imageUrl: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2075&auto=format&fit=crop',
+        badge: 'Commercial Office',
+        title: 'Fitted Office Space in Grade A Building',
+        subtitle: 'Business Bay, The Opus',
+        price: 'AED 185,000 / year',
+        imageUrl: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80',
         meta: 'Commercial',
-        highlight: 'High-value inventory needs cleaner facts, maps, and company credibility.',
+        highlight: 'Close to metro, 3 parking spots, and Burj Khalifa view.',
       }
     ],
     operatorHighlights: [
       {
-        title: 'Agencies with branch identity',
-        badge: 'Agency Workspace',
-        detail: 'Showcase verified agencies, branch teams, and broker-linked inventory instead of anonymous generic listings.'
+        title: 'Top Tier Agencies',
+        badge: 'Verified Agency',
+        detail: 'Connect with RERA-certified brokers offering exclusive stock.'
       },
       {
-        title: 'Owner-assisted lane with tighter review',
-        badge: 'Controlled Owner Flow',
-        detail: 'Individuals can participate, but long-term property should still route risky submissions into trust and compliance review.'
+        title: 'Direct from Owner',
+        badge: 'No Commission',
+        detail: 'Verified private owners listing directly to save you agency fees.'
       }
     ]
   },
@@ -130,9 +130,9 @@ export const propertyModeConfigs: Record<PropertyMarketMode, PropertyModeConfig>
     marketMode: 'short_term',
     label: 'Short Stay',
     eyebrow: 'Holiday Homes & Daily Stay',
-    title: 'Short-stay discovery for holiday homes, serviced apartments, and monthly flex living.',
+    title: 'Luxury holiday homes and serviced apartments for flexible stays.',
     description:
-      'Daily and short-term property should feel distinct from long-term rent, with operator trust signals, stay-length friendly filters, and clean local travel intent.',
+      'Discover fully furnished, premium properties for daily, weekly, or monthly stays.',
     searchActionLabel: 'Explore short-stay options',
     searchFields: [
       { label: 'Stay Type', value: 'Daily, Weekly, Monthly' },
@@ -151,42 +151,42 @@ export const propertyModeConfigs: Record<PropertyMarketMode, PropertyModeConfig>
     showcaseItems: [
       {
         badge: 'Holiday Home',
-        title: 'Downtown and waterfront stays for short urban trips',
-        subtitle: 'Downtown Dubai, JBR, Dubai Marina',
-        price: 'From AED 520 / night',
-    imageUrl: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2075&auto=format&fit=crop',
+        title: 'Luxury 2 Bed Waterfront Apartment',
+        subtitle: 'Jumeirah Beach Residence, Sadaf 4',
+        price: 'AED 850 / night',
+        imageUrl: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=800&q=80',
         meta: 'Short stay',
-        highlight: 'Short-term pages should prioritise stay duration, operator trust, and local fit.',
+        highlight: 'Direct beach access, high-speed WiFi, and weekly cleaning.',
       },
       {
         badge: 'Monthly Flex',
-        title: 'Serviced apartments for relocation and business travellers',
-        subtitle: 'Business Bay, Al Reem Island, Aljada',
-        price: 'From AED 9,500 / month',
-    imageUrl: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2075&auto=format&fit=crop',
+        title: 'Fully Serviced Studio in Downtown',
+        subtitle: 'Downtown Dubai, The Address',
+        price: 'AED 12,500 / month',
+        imageUrl: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2075&auto=format&fit=crop',
         meta: 'Flexible rent',
-        highlight: 'A clean flex-living lane can capture Airbnb-style demand without mixing it into long-term rent.',
+        highlight: 'All bills included, room service, and valet parking.',
       },
       {
         badge: 'Family Escape',
-        title: 'Beachfront villas and branded residences with premium support',
-        subtitle: 'Palm Jumeirah, Saadiyat, Al Marjan Island',
-        price: 'From AED 2,950 / night',
-    imageUrl: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2075&auto=format&fit=crop',
+        title: '4 Bed Beachfront Villa with Private Pool',
+        subtitle: 'Palm Jumeirah, Frond M',
+        price: 'AED 4,200 / night',
+        imageUrl: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80',
         meta: 'Curated stays',
-        highlight: 'Trust badges and operator quality should do the heavy lifting here.',
+        highlight: 'Sleeps 8, private chef on request, and direct beach access.',
       }
     ],
     operatorHighlights: [
       {
-        title: 'Operator-first trust profile',
+        title: 'Superhosts & Premium Operators',
         badge: 'Managed Inventory',
-        detail: 'Short-stay supply should highlight operator response quality, approval status, and guest-ready service cues.'
+        detail: 'Stay with DTCM-approved operators for a safe, hassle-free experience.'
       },
       {
-        title: 'Stay-ready filters',
+        title: 'Flexible Stay Terms',
         badge: 'Flexible Search',
-        detail: 'Guests should quickly understand location, stay length, amenities, and whether the operator is built for real hospitality.'
+        detail: 'Extend your stay easily with flexible daily, weekly, and monthly rates.'
       }
     ]
   },
@@ -194,9 +194,9 @@ export const propertyModeConfigs: Record<PropertyMarketMode, PropertyModeConfig>
     marketMode: 'off_plan',
     label: 'Off-Plan',
     eyebrow: 'Developer Launch Inventory',
-    title: 'Off-plan should feel like a premium developer marketplace, not a generic listing dump.',
+    title: 'Exclusive access to premium off-plan launches and developer inventory.',
     description:
-      'This lane should elevate launches, payment plans, handover timing, developer identity, and project-level trust so investors can compare serious opportunities quickly.',
+      'Explore the latest off-plan projects with flexible payment plans and direct developer access.',
     searchActionLabel: 'Explore off-plan launches',
     searchFields: [
       { label: 'Emirate', value: 'Dubai, Abu Dhabi, Ras Al Khaimah' },
@@ -215,42 +215,42 @@ export const propertyModeConfigs: Record<PropertyMarketMode, PropertyModeConfig>
     showcaseItems: [
       {
         badge: 'Launch Spotlight',
-        title: 'Waterfront launch campaigns with payment-plan comparison',
-        subtitle: 'Dubai Creek Harbour, Rashid Yachts & Marina, Saadiyat Lagoons',
-        price: 'From AED 1.05M',
-    imageUrl: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2075&auto=format&fit=crop',
+        title: '3 Bed Townhouse with 5-Year Payment Plan',
+        subtitle: 'Dubai Creek Harbour, The Cove',
+        price: 'From AED 1.85M',
+        imageUrl: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2075&auto=format&fit=crop',
         meta: 'Off-plan',
-        highlight: 'Off-plan pages should surface handover, payment plan, and developer trust before long-form copy.',
+        highlight: '10% downpayment and handover in Q4 2026.',
       },
       {
         badge: 'Investor Focus',
-        title: 'Early-phase branded residences and high-yield towers',
-        subtitle: 'Business Bay, JVC, Yas Island',
-        price: 'From AED 780K',
-    imageUrl: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2075&auto=format&fit=crop',
+        title: 'High-Yield Branded Residences by Aston Martin',
+        subtitle: 'Business Bay, Peninsula',
+        price: 'From AED 2.1M',
+        imageUrl: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80',
         meta: 'Flexible terms',
-        highlight: 'Premium investors want cleaner entry-price, cashflow, and launch signals.',
+        highlight: 'Guaranteed 8% ROI for 3 years post handover.',
       },
       {
         badge: 'Project Profile',
-        title: 'Project-centric discovery with unit mix and availability cues',
-        subtitle: 'Townhouses, apartments, duplexes, signature penthouses',
-        price: 'Starting launches',
-    imageUrl: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2075&auto=format&fit=crop',
+        title: 'Ultra-Luxury Mansions on Private Island',
+        subtitle: 'Jumeirah Bay Island',
+        price: 'Starting AED 85M',
+        imageUrl: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80',
         meta: 'Project SEO',
-        highlight: 'Project objects should be first-class, not buried behind generic listing cards.',
+        highlight: 'Exclusive 12 mansions only, private beach access.',
       }
     ],
     operatorHighlights: [
       {
-        title: 'Developer branding that earns trust',
+        title: 'Verified Master Developers',
         badge: 'Developer Profile',
-        detail: 'Off-plan supply should foreground the developer, project identity, and confidence-building launch structure.'
+        detail: 'Direct access to Emaar, Aldar, and Damac sales teams.'
       },
       {
-        title: 'Campaign-friendly premium surfaces',
-        badge: 'Launch Monetization',
-        detail: 'This lane is where sponsored launches, hero campaigns, and premium project pages should feel natural instead of intrusive.'
+        title: 'Exclusive Launch Campaigns',
+        badge: 'Launch Access',
+        detail: 'Get priority access to pre-launch pricing and VIP inventory.'
       }
     ]
   },
@@ -258,9 +258,9 @@ export const propertyModeConfigs: Record<PropertyMarketMode, PropertyModeConfig>
     marketMode: 'new_project',
     label: 'New Projects',
     eyebrow: 'Project Discovery',
-    title: 'New projects deserve profile-first discovery with cleaner developer storytelling and stronger trust signals.',
+    title: 'Discover master-planned communities and upcoming mega-projects.',
     description:
-      'Project pages should behave like premium public objects: indexable, shareable, rich in handover and unit information, and tightly connected to developer and agency workflows.',
+      'Browse comprehensive project profiles, complete with floor plans, amenities, and delivery timelines.',
     searchActionLabel: 'Explore new projects',
     searchFields: [
       { label: 'Emirate', value: 'Dubai, Abu Dhabi, Sharjah' },
@@ -278,100 +278,100 @@ export const propertyModeConfigs: Record<PropertyMarketMode, PropertyModeConfig>
     ],
     showcaseItems: [
       {
-        badge: 'Project Profile',
-        title: 'Masterplan communities with deep public profiles',
-        subtitle: 'The Valley, Sobha Hartland, Saadiyat cultural districts',
+        badge: 'Masterplan',
+        title: 'The Oasis by Emaar',
+        subtitle: 'Dubailand',
         price: 'Project-first',
-    imageUrl: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2075&auto=format&fit=crop',
-        meta: 'Shareable pages',
-        highlight: 'The page itself should become the marketing asset, not only the lead form.',
+        imageUrl: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2075&auto=format&fit=crop',
+        meta: 'Villas & Mansions',
+        highlight: '100 million sq ft of luxury resort-style living with lakes.',
       },
       {
         badge: 'Developer Story',
-        title: 'Launch storytelling with trust, area context, and unit mix',
-        subtitle: 'Townhouses, villas, mid-rise, branded towers',
+        title: 'Sobha Hartland II',
+        subtitle: 'Mohammed Bin Rashid City',
         price: 'Curated pipeline',
-    imageUrl: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2075&auto=format&fit=crop',
-        meta: 'Developer-led',
-        highlight: 'New projects need richer narrative and stronger page composition than ordinary stock.',
+        imageUrl: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80',
+        meta: 'Apartments',
+        highlight: '8 million sq ft of waterfront living with 2 international schools.',
       },
       {
         badge: 'Sales Enablement',
-        title: 'Project pages that support agencies, brokers, and paid campaigns',
-        subtitle: 'Launch decks, handover highlights, premium inventory slots',
+        title: 'Saadiyat Grove',
+        subtitle: 'Saadiyat Island, Abu Dhabi',
         price: 'Flexible campaigns',
-    imageUrl: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2075&auto=format&fit=crop',
-        meta: 'Monetization',
-        highlight: 'This is one of the strongest premium revenue surfaces in the whole property module.',
+        imageUrl: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80',
+        meta: 'Mixed-Use',
+        highlight: 'Museum-district living integrated with retail and hospitality.',
       }
     ],
     operatorHighlights: [
       {
-        title: 'Developer and agency collaboration',
+        title: 'Developer Showcases',
         badge: 'Shared Distribution',
-        detail: 'Projects should support both developer ownership and controlled agency distribution without losing trust context.'
+        detail: 'Explore full project portfolios from the UAEs most trusted developers.'
       },
       {
-        title: 'SEO-grade public objects',
+        title: 'Project Availability',
         badge: 'Indexable Pages',
-        detail: 'Project pages can become long-term search assets when the design and data structure are treated as first-class product work.'
+        detail: 'See exactly which units are available directly from the master developer.'
       }
     ]
   }
 };
 
 export const propertyLandingTrustSignals = [
-  'Compliance-aware publishing for regulated lanes',
-  'Public company profiles for agencies, developers, and operators',
-  'Area-first discovery so the portal feels local, not generic',
-  'Premium placements that fit the experience instead of cluttering it'
+  'Verified Agency Network',
+  'Direct Developer Access',
+  'Transparent Property History',
+  'Secure Transaction Environment'
 ];
 
 export const propertyLandingOperators: PropertyOperatorHighlight[] = [
   {
     title: 'Agencies and brokers',
     badge: 'Sales + Rent',
-    detail: 'Professional agencies need elegant public identity, team visibility, and cleaner trust signals than typical classified pages.'
+    detail: 'Connect with top-tier, verified real estate brokers.'
   },
   {
     title: 'Developers and launch partners',
     badge: 'Projects + Off-Plan',
-    detail: 'Off-plan and new-project workflows should feel built for launches, campaigns, and project profile pages from day one.'
+    detail: 'Direct access to new launches from master developers.'
   },
   {
     title: 'Holiday-home operators',
     badge: 'Short Stay',
-    detail: 'Short-term stays should be intentionally separated so the UX stays clean and policy handling remains controlled.'
+    detail: 'Premium serviced apartments from trusted operators.'
   }
 ];
 
 export const propertyLandingCollections: PropertyShowcaseItem[] = [
   {
     badge: 'Prime Demand',
-    title: 'Waterfront living, family communities, and investor towers in one controlled module',
-    subtitle: 'Dubai Marina, Yas Island, Sharjah Waterfront, Al Marjan Island',
-    price: 'Multi-lane discovery',
-    imageUrl: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2075&auto=format&fit=crop',
-    meta: 'Public module direction',
-    highlight: 'Property should feel premium enough for high-value inventory, but still approachable for normal users.',
+    title: 'Luxury Waterfront Apartments',
+    subtitle: 'Dubai Marina & JBR',
+    price: 'AED 3.5M',
+    imageUrl: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=800&q=80',
+    meta: 'Ready to move',
+    highlight: 'Full sea views, upgraded interiors, and direct beach access.',
   },
   {
     badge: 'Trust-First',
-    title: 'Verified operator identity, permit cues, and cleaner listing detail design',
-    subtitle: 'Agencies, developers, owners, and approved short-stay operators',
-    price: 'Higher quality supply',
+    title: 'Family Villas & Townhouses',
+    subtitle: 'Dubai Hills Estate',
+    price: 'AED 4.2M',
     imageUrl: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2075&auto=format&fit=crop',
-    meta: 'Compliance-ready',
-    highlight: 'The public experience should constantly reinforce that GulfHabibi is moderated and structured.',
+    meta: 'Parks & Schools',
+    highlight: 'Close to international schools, 18-hole golf course, and mall.',
   },
   {
     badge: 'Revenue-Ready',
-    title: 'Launch campaigns, premium placements, and public project pages that feel natural',
-    subtitle: 'No noisy ad-board experience, no wasted hero space, no cheap template feel',
-    price: 'Premium monetization',
-    imageUrl: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2075&auto=format&fit=crop',
-    meta: 'Platform fit',
-    highlight: 'Monetization should feel integrated into the page composition instead of screaming for attention.',
+    title: 'Premium Off-Plan Launches',
+    subtitle: 'Palm Jebel Ali',
+    price: 'AED 18M',
+    imageUrl: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80',
+    meta: 'Launch Phase',
+    highlight: 'Exclusive VIP access to the newest beachfront mega-project.',
   }
 ];
 
@@ -379,8 +379,8 @@ export const propertyEmirateSpotlights: PropertyEmirateSpotlight[] = [
   {
     slug: 'dubai',
     label: 'Dubai',
-    headline: 'Investor demand, luxury supply, and the most mature permit-aware discovery lane.',
-    summary: 'Dubai should lead with premium area discovery, verified agency and developer identity, and cleaner trust signals across sale, rent, off-plan, and projects.',
+    headline: 'The ultimate destination for luxury real estate and high-yield investments.',
+    summary: 'Explore premium waterfront apartments, family villas, and exclusive branded residences across Dubai.',
     communities: [
       { name: 'Dubai Marina', focus: 'Waterfront apartments', detail: 'Fast-moving residential demand, investor stock, and short-term crossover.' },
       { name: 'Business Bay', focus: 'Urban mixed-use', detail: 'Commercial demand, branded residences, and high-turnover buyer traffic.' },
@@ -390,8 +390,8 @@ export const propertyEmirateSpotlights: PropertyEmirateSpotlight[] = [
   {
     slug: 'abu-dhabi',
     label: 'Abu Dhabi',
-    headline: 'Institutional-grade stock, premium family communities, and stronger company credibility cues.',
-    summary: 'Abu Dhabi needs calmer, trust-first discovery with strong developer and agency visibility, not a copy of Dubai search patterns.',
+    headline: 'Premium family communities, cultural districts, and institutional-grade real estate.',
+    summary: 'Discover serene island living, luxury villas, and high-end apartments in the capital.',
     communities: [
       { name: 'Yas Island', focus: 'Leisure-led investment', detail: 'Branded living, off-plan launches, and destination-led growth.' },
       { name: 'Al Reem Island', focus: 'High-rise living', detail: 'Investor demand, skyline stock, and mixed family/professional appeal.' },
@@ -401,8 +401,8 @@ export const propertyEmirateSpotlights: PropertyEmirateSpotlight[] = [
   {
     slug: 'sharjah',
     label: 'Sharjah',
-    headline: 'Value-driven family demand with strong local business and commuter relevance.',
-    summary: 'Sharjah should feel simpler and more approachable, while still carrying strong trust cues and cleaner area-led search.',
+    headline: 'Value-driven family communities with excellent commuter links.',
+    summary: 'Explore spacious, affordable family homes with premium community amenities and easy access to Dubai.',
     communities: [
       { name: 'Aljada', focus: 'New community growth', detail: 'Modern masterplan stock, family demand, and launch-driven inventory.' },
       { name: 'Muwaileh', focus: 'Rental demand', detail: 'Commuter-led movement, education hubs, and mid-market occupancy.' },
@@ -413,7 +413,7 @@ export const propertyEmirateSpotlights: PropertyEmirateSpotlight[] = [
     slug: 'ras-al-khaimah',
     label: 'Ras Al Khaimah',
     headline: 'Resort-led growth, branded projects, and short-stay opportunity.',
-    summary: 'RAK should combine branded launch storytelling with more intentional short-stay and holiday-home discovery.',
+    summary: 'Discover luxury beachfront properties, holiday homes, and exclusive resort communities.',
     communities: [
       { name: 'Al Marjan Island', focus: 'Beachfront projects', detail: 'Hospitality-backed developments, branded residences, and tourism growth.' },
       { name: 'Mina Al Arab', focus: 'Coastal communities', detail: 'Lifestyle living, villas, and mid-to-premium family stock.' },

@@ -10,7 +10,7 @@ const sectionTiles = [
   },
   { 
     title: 'Motors', href: '/motors/search', meta: 'Cars / SUVs / dealers', 
-    imageUrl: 'https://images.unsplash.com/photo-1503376712344-652bb8fc59eb?auto=format&fit=crop&w=800&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=800&q=80',
     color: 'from-orange-600/80 to-orange-900/90'
   },
   { 
@@ -30,7 +30,7 @@ const sectionTiles = [
   },
   { 
     title: 'Classifieds', href: '/classifieds/search', meta: 'Resale / deals / promoted', 
-    imageUrl: 'https://images.unsplash.com/photo-1588702545922-77eb618a8ea4?auto=format&fit=crop&w=800&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80',
     color: 'from-purple-600/80 to-purple-900/90'
   }
 ] as const;
@@ -77,7 +77,7 @@ const heroSignals = [
 export default function HomePage() {
   return (
     <div className="space-y-8 md:space-y-12">
-      <section className="relative overflow-hidden rounded-[2.4rem] bg-[#0b1220] shadow-[var(--shadow-lg)]">
+      <section className="relative overflow-hidden bg-[#0b1220] shadow-[var(--shadow-lg)] w-screen relative left-1/2 -translate-x-1/2">
         <img
           src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1800&q=80"
           alt="Luxury modern property exterior"
@@ -86,33 +86,33 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,12,24,0.48),rgba(7,12,24,0.82))]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_center,rgba(224,182,75,0.16),transparent_24%),radial-gradient(circle_at_bottom_left,rgba(72,93,139,0.26),transparent_28%)]" />
 
-        <div className="relative z-10 px-5 py-8 md:px-10 md:py-12 xl:px-14 xl:py-14">
+        <div className="relative z-10 px-5 py-12 md:px-10 md:py-20 xl:px-14 xl:py-24">
           <div className="mx-auto flex max-w-5xl flex-col items-center text-center">
-            <span className="inline-flex rounded-full border border-white/16 bg-white/8 px-4 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-white/88">
+            <span className="inline-flex rounded-full border border-white/16 bg-white/10 px-4 py-2 text-[0.72rem] font-bold uppercase tracking-[0.22em] text-white/90 shadow-sm">
               UAE multi-category marketplace
             </span>
 
-            <h1 className="mt-6 max-w-4xl text-4xl font-semibold tracking-[-0.06em] text-white md:text-6xl md:leading-[0.98] xl:text-7xl">
+            <h1 className="mt-8 max-w-4xl text-4xl font-semibold tracking-[-0.06em] text-white md:text-6xl md:leading-[1.05] xl:text-7xl">
               Find anything in the UAE
-              <span className="block text-[#e0b64b]">all in one place.</span>
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#e0b64b] to-[#f4d485] mt-2">all in one place.</span>
             </h1>
 
-            <p className="mt-5 max-w-3xl text-base leading-8 text-white/78 md:text-lg">
+            <p className="mt-6 max-w-2xl text-base leading-8 text-white/80 md:text-lg font-medium">
               One trusted platform to browse motors, property, jobs, classifieds, services, and businesses across all seven emirates.
             </p>
 
-            <div className="mt-8 w-full max-w-5xl">
+            <div className="relative z-50 mt-10 w-full max-w-5xl">
               <HomepageHeroSearch />
             </div>
 
-            <div className="mt-6 grid w-full max-w-4xl gap-3 md:grid-cols-3">
+            <div className="mt-12 grid w-full max-w-4xl gap-6 md:grid-cols-3">
               {heroSignals.map(([title, copy]) => (
                 <div
                   key={title}
-                  className="rounded-[1.2rem] border border-white/20 bg-black/40 px-5 py-4 text-left backdrop-blur-md shadow-lg"
+                  className="rounded-[1.4rem] border border-white/20 bg-black/30 px-6 py-5 text-left backdrop-blur-xl shadow-xl transition-transform hover:-translate-y-1"
                 >
-                  <p className="text-[0.95rem] font-bold text-white tracking-tight">{title}</p>
-                  <p className="mt-1.5 text-sm font-medium text-white/90">{copy}</p>
+                  <p className="text-[1rem] font-bold text-white tracking-tight">{title}</p>
+                  <p className="mt-2 text-sm font-medium leading-relaxed text-white/80">{copy}</p>
                 </div>
               ))}
             </div>
@@ -122,8 +122,8 @@ export default function HomePage() {
 
       <AdBanner type="leaderboard" />
 
-      <section className="grid gap-5 xl:grid-cols-[1.1fr_0.9fr]">
-        <div className="gh-card p-6 md:p-8">
+      <section className="grid gap-8 xl:grid-cols-[1.1fr_0.9fr]">
+        <div className="gh-card p-8 md:p-12">
           <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-muted">Marketplace sections</p>
@@ -136,12 +136,12 @@ export default function HomePage() {
             </Link>
           </div>
 
-          <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
             {sectionTiles.map((tile) => (
               <Link
                 key={tile.title}
                 href={tile.href}
-                className="group relative overflow-hidden rounded-[1.5rem] border border-[var(--border-subtle)] p-6 transition-all hover:-translate-y-1 hover:border-[var(--border-default)] hover:shadow-[var(--shadow-md)] h-48 flex flex-col justify-end"
+                className="group relative overflow-hidden rounded-[1.5rem] border border-[var(--border-subtle)] p-8 transition-all hover:-translate-y-1 hover:border-[var(--border-default)] hover:shadow-[var(--shadow-md)] h-64 flex flex-col justify-end"
               >
                 <img src={tile.imageUrl} alt={tile.title} className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" />
                 <div className={`absolute inset-0 bg-gradient-to-t ${tile.color} mix-blend-multiply opacity-80 transition-opacity group-hover:opacity-90`} />
@@ -161,11 +161,11 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="grid gap-5">
+        <div className="grid gap-8">
           <div className="overflow-hidden rounded-[1.7rem] bg-[linear-gradient(135deg,#10192f,#213865)] shadow-[var(--shadow-md)]">
-            <div className="border-b border-white/10 px-6 py-5">
+            <div className="border-b border-white/10 px-8 py-6">
               <p className="text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-white/60">Premium ad zone</p>
-              <h2 className="mt-2 text-2xl font-semibold tracking-tight text-white">Hero banner placement</h2>
+              <h2 className="mt-3 text-2xl font-semibold tracking-tight text-white">Hero banner placement</h2>
             </div>
             <div className="space-y-5 p-6 text-white">
               <p className="max-w-md text-sm leading-7 text-white/74">
@@ -185,12 +185,12 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="gh-card p-6">
+          <div className="gh-card p-8 md:p-12">
             <p className="text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-muted">Trust strip</p>
-            <div className="mt-5 space-y-4">
+            <div className="mt-6 space-y-6">
               {trustTiles.map(([title, copy]) => (
-                <div key={title} className="rounded-[1.2rem] border border-[var(--border-subtle)] bg-[var(--surface-alt)] p-4">
-                  <h3 className="text-base font-semibold text-ink">{title}</h3>
+                <div key={title} className="rounded-[1.2rem] border border-[var(--border-subtle)] bg-[var(--surface-alt)] p-6">
+                  <h3 className="text-lg font-semibold text-ink">{title}</h3>
                   <p className="mt-2 text-sm leading-7 text-[var(--text-secondary)]">{copy}</p>
                 </div>
               ))}
@@ -199,11 +199,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="gh-card p-6 md:p-8">
-        <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+      <section className="gh-card p-8 md:p-12">
+        <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-muted">Featured now</p>
-            <h2 className="mt-2 text-2xl font-semibold tracking-[-0.04em] text-ink md:text-3xl">
+            <h2 className="mt-3 text-3xl font-semibold tracking-[-0.04em] text-ink md:text-4xl">
               Featured inventory that makes the portal feel real.
             </h2>
           </div>
@@ -212,7 +212,7 @@ export default function HomePage() {
           </Link>
         </div>
 
-        <div className="mt-6 grid gap-5 xl:grid-cols-3">
+        <div className="mt-10 grid gap-8 xl:grid-cols-3">
           {featuredCards.map((item) => (
             <Link
               key={item.title}
@@ -230,10 +230,10 @@ export default function HomePage() {
                   {item.badge}
                 </div>
               </div>
-              <div className="p-5">
-                <h3 className="text-xl font-semibold tracking-tight text-ink">{item.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-[var(--text-secondary)]">{item.meta}</p>
-                <span className="mt-6 inline-flex items-center rounded-full border border-[var(--border-subtle)] bg-[var(--surface-alt)] px-3 py-2 text-sm font-semibold text-ink transition group-hover:translate-x-1">
+              <div className="p-8">
+                <h3 className="text-2xl font-semibold tracking-tight text-ink">{item.title}</h3>
+                <p className="mt-4 text-base leading-7 text-[var(--text-secondary)]">{item.meta}</p>
+                <span className="mt-8 inline-flex items-center rounded-full border border-[var(--border-subtle)] bg-[var(--surface-alt)] px-4 py-2.5 text-sm font-semibold text-ink transition group-hover:translate-x-1">
                   Open detail
                 </span>
               </div>
